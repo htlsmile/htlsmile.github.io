@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"htlsmile.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="¶前言 借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈直播">
+<meta property="og:url" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/index.html">
+<meta property="og:site_name" content="激不起的涟漪">
+<meta property="og:description" content="¶前言 借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-20.png">
+<meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-34.png">
+<meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-04-09.png">
+<meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-10-13.png">
+<meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-20-55-56.png">
+<meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-43-28.png">
+<meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-30-03.png">
+<meta property="article:published_time" content="2020-03-19T09:22:49.000Z">
+<meta property="article:modified_time" content="2020-04-25T06:52:05.965Z">
+<meta property="article:author" content="只往反向走">
+<meta property="article:tag" content="OBS">
+<meta property="article:tag" content="SMTP">
+<meta property="article:tag" content="UDP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-20.png">
+
+<link rel="canonical" href="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>浅谈直播 | 激不起的涟漪</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-115015828-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">激不起的涟漪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-hot">
+
+    <a href="/hot/" rel="section"><i class="fa fa-fw fa-signal"></i>热度排行</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/htlsmile" class="github-corner" title="全球最大同性交友平台？" aria-label="全球最大同性交友平台？" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="只往反向走">
+      <meta itemprop="description" content="躲在被遗忘的角落">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="激不起的涟漪">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          浅谈直播
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 17:22:49" itemprop="dateCreated datePublished" datetime="2020-03-19T17:22:49+08:00">2020-03-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/" class="post-meta-item leancloud_visitors" data-flag-title="浅谈直播" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/19/浅谈直播/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。</p>
+<a id="more"></a>
+<h3 id="忆往昔"><a class="header-anchor" href="#忆往昔">¶</a>忆往昔</h3>
+<p>大学的毕业设计，我选的课题叫做<strong>多媒体电子教室的设计与实现</strong>。</p>
+<p>貌似全班就我一个人选了，连个讨论的人都找不到。😂</p>
+<p>这个课题简单来说就是设计一款局域网屏幕传输软件，方便老师在计算机教室上课教学。</p>
+<p>如果你对“方便”有疑惑的话，我就描述一下应用场景，印象中大学的计算机教室架了四台还是六台投影仪，幕布摆放的位置也只能穿插在两排座位之间，这就导致投影的效果很差，大部分位置的视角都很别扭。</p>
+<p>另说，那时候是用飞鸽传书来互传文件，比如交作业（代码）给老师。课堂上理所当然不允许讲话，所以咯，我们经常用飞鸽来聊天，搞定点爆破（针对性连续发送文件）。🤐</p>
+<h4 id="作品"><a class="header-anchor" href="#作品">¶</a>作品</h4>
+<blockquote>
+<p>C#写的 Winform 程序，实现了局域网内的屏幕广播、聊天对话、举手和远程开关机。</p>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-20.png" class="">
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-34.png" class="">
+<h4 id="过程"><a class="header-anchor" href="#过程">¶</a>过程</h4>
+<p>已经不记得当时的技术水平和具体思路了，毕业有点久了，只能捡一些回忆来讲。</p>
+<p>首先拿到这个课题，大脑里简单构思了一下，主要就是两项功能，一个是屏幕传输，另一个是聊天。</p>
+<p>作为一个度娘养大的孩子，凡事不懂先百度的习惯已经深入骨髓，搜了一些信息，就盯着“红蜘蛛”这款软件了。但是很显然，我只能看到一些功能描述和界面，具体源码是不可能搞得到的。所以，只能自己动手了。</p>
+<p>屏幕传输，简单点，就是连续截图，再连续发送就完了。实际用代码去实现的时候就发现问题来了，截图好说，TCP 发送好说，效果就很不好说了，开启广播就有巨大的流量，但客户端显示效果极差，比放 PPT 还差。</p>
+<p>遇到问题了，再次请教度娘，借鉴了网友的思路，TCP 是不行的，既然是有指不定多少个客户端要看到画面，而且要流畅，也就是说丟几帧画面也没关系，那就改用 UDP 吧。</p>
+<p>用 UDP 就发现，UDP 单次发送的数据包大小是有限制的。为此，服务端又将截图进行切片，又给片段进行编号，客户端在一小段时间内对这些片段按照编号重组，如果编号缺失或者超时，就直接放弃这一次画面的显示。</p>
+<p>换成这种实现方式，效果出奇得好，好到我准备的其他优化手段都用不上了。在局域网内，没有其他流量干扰，屏幕广播的延迟不超过一秒，流畅度和看电影差不多。</p>
+<p>聊天，那就更简单了，定向 TCP 连接就完了，不谈。远程开关机之类的，太简单，不谈。</p>
+<p>后续就是拿着软件，改了三遍论文，就去答辩了。</p>
+<h4 id="后续"><a class="header-anchor" href="#后续">¶</a>后续</h4>
+<p>答辩结束后，老师说想将我的软件实际投入教学使用，我那时候考虑的是，这个软件目前远不如我的预期，但迫于论文答辩，只能仓促完成，便婉拒了老师。当时还想着毕业了再完善一下这个软件，等到我自己认可这个软件的时候，再和老师联系。现实情况是，毕业了就开始忙着找工作，早就忘了这件事了。😅</p>
+<p>其实，作为一个电子教室软件，界面丑我是心知肚明的，对客户端的强力控制也是一个重点，奈何当初技术菜、时间短，就写了个 Kill 任务管理器的线程，然后在启动广播的时候把客户端置顶；另外，虽然屏幕传输实现了，但是音频传输也需要考虑，在教室四周摆上大音响的做法太不计科了；还有聊天功能，也不能只是纯文字聊天，富文本聊天、传输文件的功能也是要加的。</p>
+<p>基于以上种种要做却没做的功能，这个软件我自己实在不能认可。</p>
+<h3 id="看今朝"><a class="header-anchor" href="#看今朝">¶</a>看今朝</h3>
+<p>直播行业大火的时候，我就了解到 <a href="https://obsproject.com/zh-cn" target="_blank" rel="noopener">OBS</a> 这款软件，简单上手把玩了一番，发现此乃神器，全方位吊打我当初毕设软件的理想终极版。先简单说下直播的技术。</p>
+<ul>
+<li>知乎：<a href="https://www.zhihu.com/question/42162310" target="_blank" rel="noopener">如何搭建一个完整的视频直播系统？</a></li>
+<li>博客：<a href="https://blog.csdn.net/kingmax54212008/article/details/84307500" target="_blank" rel="noopener">直播平台整体架构</a></li>
+</ul>
+<p>直播的技术架构到如今也是很成熟的了，毕竟活不下去的也差不多都倒闭了，先来盗些图</p>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-04-09.png" class="">
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-10-13.png" class="">
+<p>简单来讲，就是有人主动发起直播（推流），有流媒体服务器在处理（分发），有人在看（拉流）。</p>
+<p>我尝试着使用 OBS、SRS 和 Potplayer，在我那 1 核 2GB 1Mbps 的小水管服务器做了个测试，直播效果很勉强，有明显的卡顿，但至少是有效果的。</p>
+<h4 id="OBS（推流）"><a class="header-anchor" href="#OBS（推流）">¶</a><a href="https://obsproject.com/zh-cn" target="_blank" rel="noopener">OBS</a>（推流）</h4>
+<blockquote>
+<p>OBS Studio 是免费的开源软件，用于视频记录和实时流媒体。目前可以使用 Linux，Mac 和 Windows Build。</p>
+<ul>
+<li>官方 OBS Studio 构建：<a href="https://github.com/obsproject/obs-studio/releases" target="_blank" rel="noopener">Github Release</a></li>
+<li>手动构建 OBS Studio：<a href="https://obsproject.com/wiki/Install-Instructions" target="_blank" rel="noopener">安装说明</a></li>
+</ul>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-20-55-56.png" class="">
+<h4 id="SRS（分发）"><a class="header-anchor" href="#SRS（分发）">¶</a><a href="https://github.com/ossrs/srs" target="_blank" rel="noopener">SRS</a>（分发）</h4>
+<blockquote>
+<p>SRS/3.0，OuXuli，是一个流媒体集群，支持 RTMP/HLS/WebRTC/SRT/GB28181，高效、稳定、易用，简单而快乐。</p>
+<p>SRS 定位是运营级的互联网直播服务器集群，追求更好的概念完整性和最简单实现的代码。SRS 提供了丰富的接入方案将 RTMP 流接入 SRS， 包括推送 RTMP 到 SRS、推送 RTSP/UDP/FLV 到 SRS、拉取流到 SRS。 SRS 还支持将接入的 RTMP 流进行各种变换，譬如将 RTMP 流转码、流截图、 转发给其他服务器、转封装成 HTTP-FLV 流、转封装成 HLS、 转封装成 HDS、转封装成 DASH、录制成 FLV/MP4。SRS 包含支大规模集群如 CDN 业务的关键特性， 譬如 RTMP 多级集群、源站集群、VHOST 虚拟服务器 、 无中断服务 Reload、HTTP-FLV 集群。此外，SRS 还提供丰富的应用接口， 包括 HTTP 回调、安全策略 Security、HTTP API 接口、 RTMP 测速。SRS 在源站和 CDN 集群中都得到了广泛的应用 Applications。</p>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-43-28.png" class="">
+<h4 id="VLC（拉流）"><a class="header-anchor" href="#VLC（拉流）">¶</a><a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">VLC</a>（拉流）</h4>
+<blockquote>
+<p>VLC 是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议。</p>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-30-03.png" class="">
+<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
+<p>依旧是留坑，看啥时候研究下 OBS，给当初的毕设软件换换血，再顺带把远程控制的功能一并做了。😁</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>真诚赞赏，手留余香</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="只往反向走 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="只往反向走 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>只往反向走
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/" title="浅谈直播">https://htlsmile.github.io/2020/03/19/浅谈直播/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/OBS/" rel="tag"><i class="fa fa-tag"></i> OBS</a>
+              <a href="/tags/SMTP/" rel="tag"><i class="fa fa-tag"></i> SMTP</a>
+              <a href="/tags/UDP/" rel="tag"><i class="fa fa-tag"></i> UDP</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" rel="prev" title="浅谈远程桌面">
+      <i class="fa fa-chevron-left"></i> 浅谈远程桌面
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/20/%E9%99%88%E5%B9%B4%E5%BE%80%E4%BA%8B/" rel="next" title="陈年往事">
+      陈年往事 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-disqus">disqus</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">¶前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忆往昔"><span class="nav-number">2.</span> <span class="nav-text">¶忆往昔</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作品"><span class="nav-number">2.1.</span> <span class="nav-text">¶作品</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程"><span class="nav-number">2.2.</span> <span class="nav-text">¶过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后续"><span class="nav-number">2.3.</span> <span class="nav-text">¶后续</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#看今朝"><span class="nav-number">3.</span> <span class="nav-text">¶看今朝</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OBS（推流）"><span class="nav-number">3.1.</span> <span class="nav-text">¶OBS（推流）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SRS（分发）"><span class="nav-number">3.2.</span> <span class="nav-text">¶SRS（分发）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VLC（拉流）"><span class="nav-number">3.3.</span> <span class="nav-text">¶VLC（拉流）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">¶后记</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="只往反向走"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">只往反向走</p>
+  <div class="site-description" itemprop="description">躲在被遗忘的角落</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/htlsmile" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;htlsmile" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:htlsmile@vip.qq.com" title="E-Mail → mailto:htlsmile@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">只往反向走</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">33k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">30 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 23836,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://htlsmile.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/";
+    this.page.identifier = "2020/03/19/浅谈直播/";
+    this.page.title = "浅谈直播";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://htlsmile.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'OeYIMOjg1V1yRtmt9QnVP8eL-gzGzoHsz',
+      appKey     : 'mgwTd8BfdTntGIrHEQF5KWgS',
+      placeholder: "友好的评论有助于顺利沟通",
+      avatar     : 'gg',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>

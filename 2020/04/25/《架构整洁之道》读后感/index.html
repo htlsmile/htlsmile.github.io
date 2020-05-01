@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"htlsmile.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="¶前言 昨晚（2020年4月24日）看完了《架构整洁之道》，这应该是我读的第一本Bob大叔的书。其中使我印象深刻的并不是那些所谓“新瓶装旧酒”的技术知识，毕竟写过几年代码的人，应该早在其他地方学习过这些知识了。真正让我印象深刻的是，不论时间和空间存在着多大的差异，面对着同样的问题，“猿类”都有着类似的思考过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《架构整洁之道》读后感">
+<meta property="og:url" content="https://htlsmile.github.io/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/index.html">
+<meta property="og:site_name" content="激不起的涟漪">
+<meta property="og:description" content="¶前言 昨晚（2020年4月24日）看完了《架构整洁之道》，这应该是我读的第一本Bob大叔的书。其中使我印象深刻的并不是那些所谓“新瓶装旧酒”的技术知识，毕竟写过几年代码的人，应该早在其他地方学习过这些知识了。真正让我印象深刻的是，不论时间和空间存在着多大的差异，面对着同样的问题，“猿类”都有着类似的思考过程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-25T06:42:44.000Z">
+<meta property="article:modified_time" content="2020-04-28T13:03:36.080Z">
+<meta property="article:author" content="只往反向走">
+<meta property="article:tag" content="架构">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://htlsmile.github.io/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>《架构整洁之道》读后感 | 激不起的涟漪</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-115015828-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">激不起的涟漪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-hot">
+
+    <a href="/hot/" rel="section"><i class="fa fa-fw fa-signal"></i>热度排行</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/htlsmile" class="github-corner" title="全球最大同性交友平台？" aria-label="全球最大同性交友平台？" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://htlsmile.github.io/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="只往反向走">
+      <meta itemprop="description" content="躲在被遗忘的角落">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="激不起的涟漪">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          《架构整洁之道》读后感
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-25 14:42:44" itemprop="dateCreated datePublished" datetime="2020-04-25T14:42:44+08:00">2020-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/" class="post-meta-item leancloud_visitors" data-flag-title="《架构整洁之道》读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/25/《架构整洁之道》读后感/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>昨晚（2020年4月24日）看完了《架构整洁之道》，这应该是我读的第一本Bob大叔的书。其中使我印象深刻的并不是那些所谓“新瓶装旧酒”的技术知识，毕竟写过几年代码的人，应该早在其他地方学习过这些知识了。真正让我印象深刻的是，不论时间和空间存在着多大的差异，面对着同样的问题，“猿类”都有着类似的思考过程。</p>
+<a id="more"></a>
+<hr>
+<h3 id="内容概括"><a class="header-anchor" href="#内容概括">¶</a>内容概括</h3>
+<p>对于技术内容的详细回顾，还是直接看阿里巴巴的总结吧。</p>
+<blockquote>
+<p>阿里巴巴——<a href="https://mp.weixin.qq.com/s/Kd1T40KZWvdThKC3IN6n-Q" target="_blank" rel="noopener">架构整洁之道, 看这一篇就够了！</a></p>
+</blockquote>
+<p>从目录来看整体的内容：</p>
+<ol>
+<li>概述</li>
+<li>编程范式
+<ul>
+<li>结构化编程：结构化编程对程序控制权的直接转移进行了限制和规范。</li>
+<li>面向对象编程：面向对象编程对程序控制权的间接转移进行了限制和规范。</li>
+<li>函数式编程：函数式编程对程序中的赋值操作进行了限制和规范。</li>
+</ul>
+</li>
+<li>设计原则（SOLID原则）
+<ul>
+<li>SRP (Single Responsibility Principle) 单一职责原则：每个软件模块有且只有一个需要被改变的理由。</li>
+<li>OCP (Open Closed Principle) 开闭原则：允许新增代码来修改系统行为，而非只能靠修改原来的代码。</li>
+<li>LSP (Liskov Substitution Principle) 里氏替换原则：组件必须遵守同一个约定，以便让这些组件可以相互替换。</li>
+<li>ISP (Interface Segregation Principle) 接口隔离原则：避免不必要的依赖。</li>
+<li>DIP (Dependence Inversion Principle) 依赖反转原则：实现底层细节的代码应该依赖高层策略性的代码。</li>
+</ul>
+</li>
+<li>组件构建原则
+<ul>
+<li>组件聚合</li>
+<li>组件耦合</li>
+</ul>
+</li>
+<li>软件架构
+<ul>
+<li>整洁架构</li>
+</ul>
+</li>
+<li>实现细节
+<ul>
+<li>数据库只是实现细节</li>
+<li>Web是实现细节</li>
+<li>应用程序框架是实现细节</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="摘抄"><a class="header-anchor" href="#摘抄">¶</a>摘抄</h3>
+<blockquote>
+<p>问题就像有一个生命体一样，它们会不断地繁殖和进化。</p>
+<p>大多数人的目标不是设计出一个优质的软件或架构，而是快速地解决一个具体的问题，完成自己的工作。</p>
+<p>所谓软件架构，就是你希望在项目一开始就能做对，但是却不一定能够做得对的决策的集合。  ——Ralph Johnson</p>
+<p>软件架构是一个猜想，只有通过实际实现和测量才能证实。  ——Tom Gilb</p>
+<p>走快的唯一方法是先走好。  ——Robert C. Martin</p>
+<p>软件架构的终极目标是，用最小的人力成本来满足构建和维护该系统的需求。</p>
+<p>“我们可以未来再重构代码，产品上线最重要！”但是结果大家都知道，产品上线以后重构工作就再没人提起了。</p>
+<p>胡乱编写代码的工作速度其实比循规蹈矩更慢。</p>
+<p>业务部门原本就是没有能力评估系统架构的重要程度的，这本来就应该是研发人员自己的工作职责！</p>
+<p>研发团队必须从公司长远利益出发与其他部门抗争，这和管理团队的工作一样，甚至市场团队、销售团队、运营团队都是这样。公司内部的抗争本来就是无止境的。</p>
+</blockquote>
+<hr>
+<h3 id="片段感想"><a class="header-anchor" href="#片段感想">¶</a>片段感想</h3>
+<blockquote>
+<h4 id="事件溯源"><a class="header-anchor" href="#事件溯源">¶</a>事件溯源</h4>
+<p>只存储事务记录，不存储具体状态。当需要具体状态时，只要从头开始计算所有的事务即可。</p>
+</blockquote>
+<p>应用程序不提供完整的CRUD，只提供CR。说实话，基于某个政府项目的需求，我真的有在实际项目中考虑过这种实现方式，不过由于我无法解决性能方面的问题，就此作罢了。</p>
+<p>这种实现方式听起来的确不太靠谱，但Bob大叔指出“源代码管理程序”的时候，令我醍醐灌顶。不过，话说回来，演算这种做法被我放弃后，用户的需求可没变，最后还是采用了另外建立一张日志表来记录变化的做法。</p>
+<hr>
+<blockquote>
+<h4 id="实现细节"><a class="header-anchor" href="#实现细节">¶</a>实现细节</h4>
+<ul>
+<li>数据库只是实现细节</li>
+<li>Web是实现细节</li>
+<li>应用程序框架是实现细节</li>
+</ul>
+</blockquote>
+<p>这句话让我想起刚毕业找工作时的场景，我带着毕业设计（一款局域网直播软件）四处面试，其中的一间公司的某位面试官，在看了我的简历和作品后，首先是质问我为何没有用数据库，然后慷慨激昂的向我普及了数据库的重要性。听罢令我十分羞愧，似乎没有使用数据库，我就犯了原则性错误一样。这一度让我怀疑自己的价值，也怀疑那张省级优秀毕业论文奖状的价值。</p>
+<p>也不记得多久之后就释怀了，用了多么优秀或者多么适合的工具，并不能彰显自己的核心价值，解决了问题才有核心价值。用数据库存储数据还是直接读写文件，都只是实现细节，不影响软件的核心直播功能。我很感激那位面试官，面对着一位已经被淘汰的面试者，仍愿意分享自己的经验，尽管语气强烈了一点。</p>
+<hr>
+<blockquote>
+<h4 id="业务逻辑"><a class="header-anchor" href="#业务逻辑">¶</a>业务逻辑</h4>
+<p>业务逻辑是一个软件系统存在的意义，它们属于核心功能，是系统用来赚钱或省钱的那部分代码，是整个系统中的皇冠明珠。</p>
+</blockquote>
+<p>之前持续了很长一段时间，特别喜欢搜集一些工具类(<code>Utility Class</code>)，例如<code>DbHelper</code>。自己也曾一度沉迷于写这些工具类，就像给自己准备了一堆像锤子、起子、螺丝刀、钳子和扳手之类的工具，似乎有了这些储备，就能在以后的代码之路披荆斩棘一般。可实际上，这些工具类代码，使用的频率低的可怕，绝大部分代码基本写出来后就再没看过。</p>
+<p>每一个让我花费大量精力和时间的项目，都是在梳理业务逻辑（当然这里包括了解用户需求），用代码实现这些逻辑相比之下倒成了相当轻松的事情（再次当然，我目前接触到的项目，的确也用不上很尖端的技术水平）。</p>
+<hr>
+<blockquote>
+<h4 id="Web是实现细节"><a class="header-anchor" href="#Web是实现细节">¶</a>Web是实现细节</h4>
+<p>20世纪90年代的时候，你已经是程序员了吗？还记得Web是如何改变一切的吗？你记得我们在有了崭新的Web技术之后，是如何鄙视那些老旧的客户端/服务器架构的吗？</p>
+<p>然而，Web技术事实上并没有改变任何东西，或者说它也没有能力改变任何东西。这一次Web热潮只是软件行业从1960年来经历的数次振荡中的一次。这些振荡一会儿将全部计算资源集中在中央服务器上，一会儿又将计算资源分散到各个终端上。</p>
+<p>事实上，在过去十年内，或者说自Web技术被普遍应用以来，这样的振荡也发生了几次。一开始我们以为计算资源应该集中在服务器集群中，浏览器应该保持简单。但随后我们又开始在浏览器中引入 Applets 。再后来我们又改了主意，发明了 Web 2.0，用 Ajax 和 Javascript 将很多计算过程挪回浏览器中。我们先是非常兴奋地将整个应用程序挪到浏览器去执行，后来又非常开心地采用 Node 技术将那些 JavaScript 代码挪回服务器上执行。</p>
+<p>一声叹息！</p>
+</blockquote>
+<p>读到这里不禁笑出了声，话说天下大势，分久必合，合久必分，软件行业也难置身事外。</p>
+<p>云计算、边缘计算等概念层出不穷，现在各种3A大作，是越来越吃电脑性能了，CPU、显卡、内存、硬盘，是一个都不放过，为了玩这类游戏，掏钱买个正版还只是拿了张门票。</p>
+<p>就拿云游戏举个例子，游戏在云端运行，本地只处理IO，我实际体验了一番，效果的确不错，但游戏体验，就受限于网络水平和服务公司的收费水平了。</p>
+<p>本地只处理IO这个概念，在网页应用上体现得更为彻底，例如网页版office，使用体验不亚于桌面版office，但万一断网，那就无计可施了。</p>
+<blockquote>
+<p>就像CAP的三选二的理论一样，这个世界不存在完美的解决方案，无论什么方案都有好的一面和不好的一面。  ——陈皓（@左耳朵耗子）</p>
+</blockquote>
+<hr>
+<blockquote>
+<h4 id="本书拾遗"><a class="header-anchor" href="#本书拾遗">¶</a>本书拾遗</h4>
+<p>这一章的中心思想就是，如果不考虑具体实现细节，再好的设计也无法长久。必须要将设计映射到对应的代码结构上，考虑如何组织代码树，以及在编译期和运行期采用哪种解耦合的模式。保持开放，但一定要务实，同时要考虑到团队的大小、技术水平，以及对应的时间和预算限制。最好能利用编译器来维护所选的系统架构设计风格，小心防范来自其他地方的耦合模式，例如数据结构。所有的实现细节都是关键的！</p>
+</blockquote>
+<p>纸上谈来终觉浅，绝知此事要躬行。再美好的想法，能踏实落地才算。</p>
+<hr>
+<blockquote>
+<h4 id="后序"><a class="header-anchor" href="#后序">¶</a>后序</h4>
+<p>我的软件工程师生涯开始于20世纪90年代，那是一个恐龙级大型架构统治世界的时代。要想在那样的时代获得一席之地，我们必须学会对象及其组件、设计模式、统一建模语言（包括其前身）的相关知识。</p>
+<p>现在想起来，或许真的可以考虑把我们那段日子所做的事情叫做 “童子军项目” 。每个项目的开头都会有一段长长的设计阶段，以便那些 “高级” 程序员为一些跟随他们的、较 “低级” 的程序员制订好系统的设计蓝图，当然，这些“高级”程序员似乎永远完不成这件事。</p>
+<p>于是乎，做这件事的人被升级到了 “软件架构师” ，接着是 “首席架构师” “总架构师” “枢密院首席架构师” 以及其他各种高不可言的头衔，最终，我们还是让一切回到了原点。而我似乎注定要把时间花在画那些带箭头的盒子和编写 PowerPoint 的事情上，而这些事对真实代码的影响近乎为零。</p>
+<p>这让我无比受挫，每一行代码本身都至少包含了一条设计决策，任何一个写代码的家伙对软件质量的影响都远在我这个 PowerPoint专业户之上。</p>
+<p>幸运的是，接下来发生的敏捷软件开发革命终于让我们这些架构师脱离了苦海。毕竟我是一名程序员，喜欢的是编程。而且我也发现影响软件质量最好的方法还是编写代码。</p>
+<p>这些大型架构像恐龙一样在大进程式的原始平原上游荡，然后被一颗叫做 “敏捷开发” 的小行星灭绝了，真是老天开眼啊！</p>
+<p>现在，开发团队们可以自由地专注于真正重要的内容，并思考如何为他们所做的事情添加更多价值了。也就是说，他们现在再也不需要浪费几周或几个月的时间等待那些大型架构的设计文档了，他们可以名正言顺地忽略这些设计，直接按照自己的想法编写代码。然后，开发团队只需要安排客户直接参与测试，并在快速设计会议上得到用户的支持，然后他们就可以继续写代码了。</p>
+<p>大型架构像恐龙一样消失了，前期设计够用、后期进行大量重构的设计思想和小巧玲珑的哺乳动物一样代替了它们，软件架构迎来了响应式设计的时代。</p>
+<p>好吧，无论如何，以上这些都属于理论。</p>
+</blockquote>
+<p>我此刻便是终日画那些带箭头的盒子和写PPT，如果我对代码亲力亲为，还会受到领导的批评，😂。敏捷开发这个概念，至少领导听过，尽管领导并不理解，仍旧要求我们按照那本二十多年前的《软件工程导论》严格执行。在这里，我不是说《软件工程导论》写得不好或内容过时，对于小公司而言，涉及到公司管理问题，😶私以为，写文档还是比敏捷开发靠谱多了。</p>
+<p>但终究还是要做正确的事情，走上正确的道路。如果说博士是突破知识的边界，提升上限水平，那是谁在提高下限水平呢？应该就是政府吧。</p>
+<hr>
+<h3 id="感想"><a class="header-anchor" href="#感想">¶</a>感想</h3>
+<p>整本书读完，犹如和一位老友相谈甚欢，只惜相见太晚，不过，也正如陈皓在序言里所写：</p>
+<blockquote>
+<p>我个人觉得，这本书是架构方面的入门级读物，但也并不适合经验不足的人员学习，这本书更适合的读者群是，有3~5年编程经验、需要入门软件设计和架构的工程师或程序员。</p>
+</blockquote>
+<p>此刻的相遇，却也恰好是感悟最深的阶段，幸甚至哉。</p>
+<p>那么，全书在我看来，就是在告诉我，对于软件开发而言，什么是重要的事情，软件的核心价值在哪里。</p>
+<p>在这里，引入《计算机组成原理》的知识来举例，典型的冯·诺依曼计算机结构里，是以运算器为中心，四周辅以控制器、存储器、输入设备和输出设备，那么类比到软件，业务逻辑便是中心，软件框架、数据库、Web或GUI或命令行都只是辅助。</p>
+<p>墨客在面对着大好河山，他想要一支笔，你却给他一把杀猪刀，可谓冬扇夏炉。软件是要用来解决问题，而不是单纯用来炫技的，这也大概就是算法为什么这么重要了吧。</p>
+<p>可话又说回来，《计算机组成原理》里紧接着就表明，现代的计算机是以存储器为中心的，那类比过来是不是说数据库是最重要的呢？我认为不是，这需要从另一个角度来看。举个简单的算法例子，如何判断一个数是否为质数，尽力降低时间复杂度和空间复杂度才是这个问题所要研究的，但是在限定范围内，打表才是最优的解决方案。祖冲之可能穷极一生“也才仅仅”算到圆周率的第七位，以存储器为中心的概念，不是指这七位数字的重要性，而是记录传承前人所做的研究的重要性，文化如果无法传承，那生存也就没有意义了吧。所以，以存储器为核心，我觉得应该是认可数据的价值，而不是容器的价值。</p>
+<p>这也就很自然的引入了另一个问题，是不是一款软件只需要把业务逻辑（或者叫核心算法）做好，其他部分就可以从简呢？我觉得那也不是，毕竟软件还是要讲用户体验的，这大概就是Linux系统在个人使用领域一直都干不过Windows的原因吧。</p>
+<p>达则兼济天下，穷则独善其身。站在顶峰的人，应该不仅仅是为了解决眼下的问题，更多的是解决未来的问题，他们的研究成果可能需要数十年甚至几代人的传承后才得以绽放光芒。而我，还是先坚持公司“以客户为中心”的经营理念来解决温饱问题吧。</p>
+<hr>
+<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
+<blockquote>
+<p>易读、可扩展、可维护、可重用的代码。</p>
+<p>简单 vs. 简陋、平衡 vs. 妥协、迭代 vs. 半成品</p>
+<p>普通程序员 -&gt; 工程师 -&gt; 架构师</p>
+</blockquote>
+<p>光阴荏苒，日月如梭，本猿的进化之路依旧望不到头，达尔文可否放我一马？</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>真诚赞赏，手留余香</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="只往反向走 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="只往反向走 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>只往反向走
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://htlsmile.github.io/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/" title="《架构整洁之道》读后感">https://htlsmile.github.io/2020/04/25/《架构整洁之道》读后感/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 架构</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/30/%E8%BD%AF%E4%BB%B6%E8%AE%B0%E5%BD%95/" rel="prev" title="软件记录">
+      <i class="fa fa-chevron-left"></i> 软件记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/30/%E4%BD%95%E5%8E%BB%E4%BD%95%E4%BB%8E/" rel="next" title="何去何从">
+      何去何从 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-disqus">disqus</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">¶前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容概括"><span class="nav-number">2.</span> <span class="nav-text">¶内容概括</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摘抄"><span class="nav-number">3.</span> <span class="nav-text">¶摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#片段感想"><span class="nav-number">4.</span> <span class="nav-text">¶片段感想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件溯源"><span class="nav-number">4.1.</span> <span class="nav-text">¶事件溯源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现细节"><span class="nav-number">4.2.</span> <span class="nav-text">¶实现细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#业务逻辑"><span class="nav-number">4.3.</span> <span class="nav-text">¶业务逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web是实现细节"><span class="nav-number">4.4.</span> <span class="nav-text">¶Web是实现细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本书拾遗"><span class="nav-number">4.5.</span> <span class="nav-text">¶本书拾遗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后序"><span class="nav-number">4.6.</span> <span class="nav-text">¶后序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感想"><span class="nav-number">5.</span> <span class="nav-text">¶感想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">¶后记</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="只往反向走"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">只往反向走</p>
+  <div class="site-description" itemprop="description">躲在被遗忘的角落</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/htlsmile" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;htlsmile" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:htlsmile@vip.qq.com" title="E-Mail → mailto:htlsmile@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">只往反向走</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">33k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">30 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 23836,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://htlsmile.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://htlsmile.github.io/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/";
+    this.page.identifier = "2020/04/25/《架构整洁之道》读后感/";
+    this.page.title = "《架构整洁之道》读后感";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://htlsmile.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'OeYIMOjg1V1yRtmt9QnVP8eL-gzGzoHsz',
+      appKey     : 'mgwTd8BfdTntGIrHEQF5KWgS',
+      placeholder: "友好的评论有助于顺利沟通",
+      avatar     : 'gg',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>
