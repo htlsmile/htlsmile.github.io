@@ -1498,4 +1498,122 @@ n! = 1 x 2 x 3 x … x (n - 1) x n , n &gt; 0</p>
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>自动更新功能设计与实现</title>
+    <url>/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>“自动更新”功能通常包含在各类软件中，操作系统类例如 Windows；应用软件类例如 Google Chrome。通过“自动更新”功能，可以使用最新的更新和增强功能来自动使软件保持最新。用户不必再主动搜索重要的更新和信息，软件通常可以识别网络情况，并使用 Internet 连接从指定网站获取更新内容，每当有新的更新可用时，软件可以提示用户进行升级或进行自动升级。</p>
+<a id="more"></a>
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-11-31-13.png" class="" title="Windows 更新">
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-11-34-25.png" class="" title="Google Chrome 更新">
+<p>当然也有其他情况，例如在 iOS 中，软件的更新由 App Store 接管，并且对于热更新有着严格的使用限制，详见 <a href="https://www.zhihu.com/question/56794578">知乎：如何看待苹果禁止 JSPatch 等 iOS APP 热更新方案？</a>。</p>
+<hr>
+<h1>参考</h1>
+<ul>
+<li><a href="https://www.zhihu.com/question/24263552/answer/27216798">软件的升级、更新是个怎样的过程？ - 姚冬的回答 - 知乎</a></li>
+<li><a href="http://www.daemonology.net/papers/bsdiff.pdf">BSDiff</a></li>
+<li><a href="http://dev.chromium.org/developers/design-documents/software-updates-courgette">Courgette</a></li>
+<li><a href="https://github.com/ravibpatel/AutoUpdater.NET">AutoUpdater.NET - GitHub</a></li>
+</ul>
+<hr>
+<h1>设计</h1>
+<p>简单来说，自动更新功能流程如下：</p>
+<div class="mermaid">
+graph LR
+A([启动更新]) --&gt; B[查询新版本]
+B --&gt; C{是否有新版本}
+C --否--&gt; D([结束更新])
+C --是--&gt; E[下载更新内容]
+E --&gt; F[应用更新内容]
+F --&gt; G([结束更新])
+</div>
+<h2 id="版本定义"><a class="header-anchor" href="#版本定义">¶</a>版本定义</h2>
+<p>参考 iOS，<a href="https://apps.apple.com/cn/app/%E9%93%81%E8%B7%AF12306/id564818797">铁路12306</a> 的版本记录有版本号、更新说明及一些其他信息（例如发布日期）。</p>
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-15-21-48.png" class="" title="铁路12306 版本历史">
+<h3 id="版本号（Version）"><a class="header-anchor" href="#版本号（Version）">¶</a>版本号（Version）</h3>
+<p>关于版本号的定义，借鉴 <a href="https://docs.microsoft.com/zh-cn/dotnet/core/versions/#semantic-versioning">.NET的版本控制</a>。</p>
+<p>遵循<a href="https://semver.org/">语义版本控制 (SemVer)</a>，也就是采用 <code>MAJOR.MINOR.PATCH</code> 版本控制。</p>
+<blockquote>
+<p>MAJOR 在下列情况时递增：</p>
+<ul>
+<li>产品或新产品方向发生重大更改。</li>
+<li>发生了中断性变更。 接受中断性变更存在较大障碍。</li>
+<li>旧版本不再受支持。</li>
+<li>采用了现有依赖项的较新 MAJOR 版本。</li>
+</ul>
+<p>MINOR 在下列情况时递增：</p>
+<ul>
+<li>添加了公共 API 外围应用。</li>
+<li>添加了新行为。</li>
+<li>采用了现有依赖项的较新 MINOR 版本。</li>
+<li>引入了新依赖项。</li>
+</ul>
+<p>PATCH 在下列情况时递增：</p>
+<ul>
+<li>进行了 Bug 修复。</li>
+<li>添加了对较新平台的支持。</li>
+<li>采用了现有依赖项的较新 PATCH 版本。</li>
+<li>任何其他不符合上述情况的更改。</li>
+</ul>
+</blockquote>
+<h3 id="更新说明（Changelog）"><a class="header-anchor" href="#更新说明（Changelog）">¶</a>更新说明（<a href="https://en.wikipedia.org/wiki/Changelog">Changelog</a>）</h3>
+<p>描述本次更新修改的内容，参考以下格式：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">YYYY-MM-DD  John Doe  &lt;johndoe@example.com&gt;</span><br><span class="line"></span><br><span class="line">   * myfile.ext (myfunction): my changes made</span><br><span class="line">   additional changes</span><br><span class="line"></span><br><span class="line">   * myfile.ext (unrelated_change): my changes made</span><br><span class="line">   to myfile.ext but completely unrelated to the above</span><br><span class="line"></span><br><span class="line">   * anotherfile.ext (somefunction): more changes</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="安装程序（Installer）"><a class="header-anchor" href="#安装程序（Installer）">¶</a>安装程序（Installer）</h3>
+<p>提供 <strong>安装程序</strong> 的文件名及 Hash，例如 MD5、SHA-1、CRC32。</p>
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-17-35-59.png" class="" title="EasyDrv7">
+<p>其他的 Hash 可以参考下图：</p>
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-17-32-46.png" class="" title="HashCalc">
+<h3 id="版本存档（Archive）"><a class="header-anchor" href="#版本存档（Archive）">¶</a>版本存档（Archive）</h3>
+<p>将指定版本添加存档属性后，该版本拒绝提供下载，只能进入服务端查看信息。</p>
+<h3 id="强制更新（Mandatory）"><a class="header-anchor" href="#强制更新（Mandatory）">¶</a>强制更新（Mandatory）</h3>
+<p>将指定版本设置为强制更新，则客户端程序检测到该版本为新版本时，会进行后台自动更新，更新完成后提示用户重启程序后生效。</p>
+<h3 id="最新版本（LastestVersion）"><a class="header-anchor" href="#最新版本（LastestVersion）">¶</a>最新版本（LastestVersion）</h3>
+<p>将指定版本设置为最新版本，即该版本可以不是实际上最新的版本，则客户端在检测更新时，只会截止到该版本，如果客户端版本高于该版本，可以进行降级更新。</p>
+<p>这项设置的意义是，当发布某个新版本后，发现该版本有严重 BUG ，在解决 BUG 之前可以将上个版本设置为最新版本，并同时设置强制更新，让客户端程序自动进行降级处理。</p>
+<h3 id="版本资源"><a class="header-anchor" href="#版本资源">¶</a>版本资源</h3>
+<p>对<strong>版本资源</strong>提供查询服务，提供某个版本所有文件的相对路径及 Hash 值。</p>
+<h2 id="服务端资源"><a class="header-anchor" href="#服务端资源">¶</a>服务端资源</h2>
+<p>假设应用程序的名称为<code>APP</code>，则创建如下目录存放资源：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">USERS</span>\<span class="title">PUBLIC</span>\<span class="title">DOCUMENTS</span>\<span class="title">PUBLISH</span>\<span class="title">APP</span></span></span><br><span class="line"><span class="function">├─<span class="title">Installer</span></span></span><br><span class="line"><span class="function">│      <span class="title">APP</span>-<span class="title">Setup</span>-0.1.0.<span class="title">exe</span></span></span><br><span class="line"><span class="function">│      <span class="title">APP</span>-<span class="title">Setup</span>-0.2.0.<span class="title">exe</span></span></span><br><span class="line"><span class="function">│      <span class="title">APP</span>-<span class="title">Setup</span>-0.3.0.<span class="title">exe</span></span></span><br><span class="line"><span class="function">│</span></span><br><span class="line"><span class="function">└─<span class="title">Version</span></span></span><br><span class="line"><span class="function">    ├─0.1.0</span></span><br><span class="line"><span class="function">    │      <span class="title">APP.dll</span></span></span><br><span class="line"><span class="function">    │      <span class="title">d1.dll</span></span></span><br><span class="line"><span class="function">    │</span></span><br><span class="line"><span class="function">    ├─0.2.0</span></span><br><span class="line"><span class="function">    │  │  <span class="title">APP.dll</span></span></span><br><span class="line"><span class="function">    │  │  <span class="title">d1.dll</span></span></span><br><span class="line"><span class="function">    │  │</span></span><br><span class="line"><span class="function">    │  └─<span class="title">directory1</span></span></span><br><span class="line"><span class="function">    │          <span class="title">d2.dll</span></span></span><br><span class="line"><span class="function">    │</span></span><br><span class="line"><span class="function">    └─0.3.0</span></span><br><span class="line"><span class="function">        │  <span class="title">APP.dll</span></span></span><br><span class="line"><span class="function">        │</span></span><br><span class="line"><span class="function">        ├─<span class="title">directory1</span></span></span><br><span class="line"><span class="function">        │      <span class="title">d2.dll</span></span></span><br><span class="line"><span class="function">        │</span></span><br><span class="line"><span class="function">        └─<span class="title">directory2</span></span></span><br><span class="line"><span class="function">                <span class="title">d3.dll</span></span></span><br></pre></td></tr></table></figure>
+<p>版本信息记录：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;Name&quot;</span>:<span class="string">&quot;APP&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;LastestVersion&quot;</span>:<span class="string">&quot;0.3.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;Mandatory&quot;</span>:&#123;</span><br><span class="line">        <span class="attr">&quot;IsEnabled&quot;</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;MinVersion&quot;</span>:<span class="string">&quot;0.2.0&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;Versions&quot;</span>:[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;Version&quot;</span>:<span class="string">&quot;0.1.0&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;Installer&quot;</span>:<span class="string">&quot;APP-Setup-0.1.0.exe&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;a21701759faa69ac13fd73b8f0c5540f902893dc&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">&quot;Changelog&quot;</span>:<span class="string">&quot;log1&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;Files&quot;</span>:[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;APP.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/APP.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;5e7e3f131ff3e34aa1afb8b896496c3250acf706&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;d1.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/d1.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;ec4467dc951ceca5e0c3847e9616d12a5df034c6&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;Version&quot;</span>:<span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;Installer&quot;</span>:<span class="string">&quot;APP-Setup-0.2.0.exe&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;1035b0bbf0b5bb3ca293c849bdd7b05fdbcb02c5&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">&quot;Changelog&quot;</span>:<span class="string">&quot;log2&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;Files&quot;</span>:[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;APP.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/APP.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;5e7e3f131ff3e34aa1afb8b896496c3250acf706&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;d1.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/d1.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;43e19c5733e776077d61ec77843605871e8a836b&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;d2.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/directory1/d2.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;04798252b1562c0d343322b0400603751125eb89&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;Version&quot;</span>:<span class="string">&quot;0.3.0&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;Installer&quot;</span>:<span class="string">&quot;APP-Setup-0.3.0.exe&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;613999ce29210ec6f729177ab082ed3790e3ecf7&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">&quot;Changelog&quot;</span>:<span class="string">&quot;log3&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;Files&quot;</span>:[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;APP.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/APP.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;e23d34dbb69dd1f4d0bc3944fc30ac1b51ab9beb&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;d2.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/directory1/d2.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;6325d6305301eeeff4446249e7caaa9c935b2565&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;Filename&quot;</span>:<span class="string">&quot;d3.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;Path&quot;</span>:<span class="string">&quot;/directory2/d3.dll&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;CheckSum&quot;</span>:&#123;</span><br><span class="line">                        <span class="attr">&quot;SHA-1&quot;</span>:<span class="string">&quot;f66d766856d94cf117c07f4a1fc7734387915ff7&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="客户端资源"><a class="header-anchor" href="#客户端资源">¶</a>客户端资源</h2>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">Program</span> <span class="title">Files</span>\<span class="title">APP</span></span></span><br><span class="line"><span class="function">│  <span class="title">APP.exe</span></span></span><br><span class="line"><span class="function">│</span></span><br><span class="line"><span class="function">└─0.1.0</span></span><br><span class="line"><span class="function">      <span class="title">APP.dll</span></span></span><br><span class="line"><span class="function">      <span class="title">d1.dll</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="客户端更新逻辑"><a class="header-anchor" href="#客户端更新逻辑">¶</a>客户端更新逻辑</h2>
+<div class="mermaid">
+sequenceDiagram
+%% autonumber
+
+客户端-&gt;&gt;客户端: 程序启动
+客户端-&gt;&gt;客户端: 搜索本地最新版本(1)，将老版本(2)删除
+loop
+客户端-&gt;&gt;服务端: 定期查询新版本
+    alt 有新版本
+        服务端-&gt;&gt;客户端: 提供新版本(3)及文件列表信息(4)
+        客户端-&gt;&gt;客户端: 创建文件夹(3)，并将(1)中的文件复制到(3)
+        客户端-&gt;&gt;服务端: 根据(4)的信息，请求下载更新文件
+        服务端-&gt;&gt;客户端: 传输有差异的文件（新增或替换）
+        客户端-&gt;&gt;客户端: 删除本地不在(4)中的文件
+    else
+        服务端--&gt;&gt;客户端: 结束更新
+    end    
+end
+
+</div>
+<hr>
+<h1>实现</h1>
+<p>留坑。</p>
+<hr>
+<h1>后记</h1>
+<p>本篇内容只粗略介绍了自动更新功能，但在真实的应用场景中，需要考虑更多因素，例如 Ubuntu 中更新源的设置，Windows 中的传递优化。</p>
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-22-10-18-19.png" class="" title="Ubuntu 软件">
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-22-10-19-43.png" class="" title="Ubuntu 更新">
+<img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-22-10-14-07.png" class="" title="Windows 10 传递优化">]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
 </search>
