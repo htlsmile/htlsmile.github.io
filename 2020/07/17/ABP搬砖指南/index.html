@@ -11,21 +11,20 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="前言 之前读完了《架构整洁之道》，对其中提出的整洁架构深以为然。很早之前就了解到AspNet Boilerplate，但也一直没有实际上手过。倒是看了很久的中文文档，由ABPFrameWorkGroup&#x2F;AbpDocument2Chinese带来的翻译文档abp20170501_A4.pdf，感谢无私奉献的前辈们。 随后，也了解到他们的下一代作品ABP vNext，也就是ABP Framework">
 <meta property="og:type" content="article">
@@ -57,6 +56,7 @@
 </script>
 <title>ABP搬砖指南 | 激不起的涟漪</title>
   
+
 
 
 
@@ -97,14 +97,14 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
 
   <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -131,36 +131,12 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">23</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
-
-  </li>
-        <li class="menu-item menu-item-hot">
-
-    <a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>hot</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">23</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>hot</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -180,7 +156,7 @@
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -196,7 +172,7 @@
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -216,12 +192,12 @@
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
+        <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">应用程序启动模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">开发顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
-        </section>
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="只往反向走"
       src="/images/avatar.png">
@@ -265,7 +241,7 @@
 
 
 
-        </section>
+        </div>
       </div>
     </div>
   </aside>
@@ -275,7 +251,7 @@
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -342,13 +318,6 @@
       </span>
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
     </span>
       </div>
       <div class="post-meta">
@@ -476,7 +445,7 @@
 
 
 
-    <div class="comments" id="gitalk-container"></div>
+    <div class="comments gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -555,13 +524,12 @@
   
   <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-
   <script>
   if (CONFIG.page.isPost) {
     wpac_init = window.wpac_init || [];
@@ -588,8 +556,16 @@
 
 
 <script>
-if (document.querySelectorAll('.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js', () => {
+var mermaidElements = document.querySelectorAll('.mermaid');
+if (mermaidElements.length) {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js', () => {
+    mermaidElements.forEach(element => {
+      const newElement = document.createElement('div');
+      newElement.innerHTML = element.innerHTML;
+      newElement.className = element.className;
+      element.parentNode.replaceChild(newElement, element);
+    });
+
     mermaid.init({
       theme    : 'forest',
       logLevel : 3,
@@ -624,7 +600,6 @@ if (document.querySelectorAll('.mermaid').length) {
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
 
 
 <script>
@@ -724,7 +699,7 @@ if (document.querySelectorAll('.mermaid').length) {
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
 <script>
-NexT.utils.loadComments('#gitalk-container', () => {
+NexT.utils.loadComments('.gitalk-container', () => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
       clientID    : '41a8f63772bf69b69880',
@@ -733,10 +708,11 @@ NexT.utils.loadComments('#gitalk-container', () => {
       owner       : 'htlsmile',
       admin       : ['htlsmile'],
       id          : 'c38ea410a2edcb7e929f03f1ead72d1d',
+      proxy       : 'https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token',
         language: 'zh-CN',
       distractionFreeMode: true
     });
-    gitalk.render('gitalk-container');
+    gitalk.render(document.querySelector('.gitalk-container'));
   }, window.Gitalk);
 });
 </script>
