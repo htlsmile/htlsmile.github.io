@@ -169,19 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">远程桌面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDP-Wrapper-%EF%BC%88%E6%AD%A4%E6%96%B9%E6%B3%95%E5%B7%B2%E6%97%A0%E6%95%88%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">RDP Wrapper （此方法已无效）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">组策略gpedit.msc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Hyper-V</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Hyper-V"><span class="nav-number">4.1.</span> <span class="nav-text">添加Hyper-V</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AFHyper-V"><span class="nav-number">4.2.</span> <span class="nav-text">开启Hyper-V</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%97%ADHyper-V"><span class="nav-number">4.3.</span> <span class="nav-text">关闭Hyper-V</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code%EF%BF%BC4"><span class="nav-number">4.4.</span> <span class="nav-text">1
-2
-3
-4
-5
-@echo off
-
-bcdedit &#x2F;set hypervisorlaunchtype off
-
-pause
-</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">伪装Win10专业版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#code%EF%BF%BC5"><span class="nav-number">5.1.</span> <span class="nav-text">1
-REG ADD &quot;HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion&quot; &#x2F;v EditionId &#x2F;T REG_EXPAND_SZ &#x2F;d Professional &#x2F;F
-</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">远程桌面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDP-Wrapper-%EF%BC%88%E6%AD%A4%E6%96%B9%E6%B3%95%E5%B7%B2%E6%97%A0%E6%95%88%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">RDP Wrapper （此方法已无效）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">组策略gpedit.msc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Hyper-V</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Hyper-V"><span class="nav-number">4.1.</span> <span class="nav-text">添加Hyper-V</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AFHyper-V"><span class="nav-number">4.2.</span> <span class="nav-text">开启Hyper-V</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%97%ADHyper-V"><span class="nav-number">4.3.</span> <span class="nav-text">关闭Hyper-V</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">伪装Win10专业版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -335,7 +323,7 @@ REG ADD &quot;HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion&qu
     <div class="post-body" itemprop="articleBody">
         <h1>前言</h1>
 <p>不建议使用，会有法律风险，请支持正版。</p>
-<a id="more"></a>
+<span id="more"></span>
 <hr>
 <h1>远程桌面</h1>
 <h2 id="RDP-Wrapper-（此方法已无效）"><a class="header-anchor" href="#RDP-Wrapper-（此方法已无效）">¶</a><s><a target="_blank" rel="noopener" href="https://github.com/stascorp/rdpwrap">RDP Wrapper</a></s> （此方法已无效）</h2>
@@ -393,14 +381,16 @@ REG ADD &quot;HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion&qu
 <li>下载链接：<a href="/download/%E5%85%B3%E9%97%ADHyper-V.bat">关闭Hyper-V.bat</a></li>
 </ul>
 <p>将以下内容保存为bat文件，以管理员身份运行。</p>
-<h2 id="code￼4"><a class="header-anchor" href="#code￼4">¶</a><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line">bcdedit /<span class="built_in">set</span> hypervisorlaunchtype off</span><br><span class="line"></span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure></h2>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line">bcdedit /<span class="built_in">set</span> hypervisorlaunchtype off</span><br><span class="line"></span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<hr>
 <h1>伪装Win10专业版</h1>
 <p>安装Docker需要Win10专业版。</p>
 <ul>
 <li>下载链接：<a href="/download/%E4%BC%AA%E8%A3%85Win10%E4%B8%93%E4%B8%9A%E7%89%88.bat">伪装Win10专业版.bat</a></li>
 </ul>
 <p>将以下内容保存为bat文件，以管理员身份运行。</p>
-<h2 id="code￼5"><a class="header-anchor" href="#code￼5">¶</a><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG ADD &quot;HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion&quot; /v EditionId /T REG_EXPAND_SZ /d Professional /F</span><br></pre></td></tr></table></figure></h2>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG ADD &quot;HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion&quot; /v EditionId /T REG_EXPAND_SZ /d Professional /F</span><br></pre></td></tr></table></figure>
+<hr>
 <h1>后记</h1>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/windows/get-windows-10">获取 Windows 10</a></p>

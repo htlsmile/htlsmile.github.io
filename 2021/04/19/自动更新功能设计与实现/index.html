@@ -322,7 +322,7 @@
     <div class="post-body" itemprop="articleBody">
         <h1>前言</h1>
 <p>“自动更新”功能通常包含在各类软件中，操作系统类例如 Windows；应用软件类例如 Google Chrome。通过“自动更新”功能，可以使用最新的更新和增强功能来自动使软件保持最新。用户不必再主动搜索重要的更新和信息，软件通常可以识别网络情况，并使用 Internet 连接从指定网站获取更新内容，每当有新的更新可用时，软件可以提示用户进行升级或进行自动升级。</p>
-<a id="more"></a>
+<span id="more"></span>
 <img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-11-31-13.png" class="" title="Windows 更新">
 <img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-11-34-25.png" class="" title="Google Chrome 更新">
 <p>当然也有其他情况，例如在 iOS 中，软件的更新由 App Store 接管，并且对于热更新有着严格的使用限制，详见 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/56794578">知乎：如何看待苹果禁止 JSPatch 等 iOS APP 热更新方案？</a>。</p>
@@ -337,7 +337,7 @@
 <hr>
 <h1>设计</h1>
 <p>简单来说，自动更新功能流程如下：</p>
-<div class="mermaid">
+<pre class="mermaid">
 graph LR
 A([启动更新]) --&gt; B[查询新版本]
 B --&gt; C{是否有新版本}
@@ -345,7 +345,7 @@ C --否--&gt; D([结束更新])
 C --是--&gt; E[下载更新内容]
 E --&gt; F[应用更新内容]
 F --&gt; G([结束更新])
-</div>
+</pre>
 <h2 id="版本定义"><a class="header-anchor" href="#版本定义">¶</a>版本定义</h2>
 <p>参考 iOS，<a target="_blank" rel="noopener" href="https://apps.apple.com/cn/app/%E9%93%81%E8%B7%AF12306/id564818797">铁路12306</a> 的版本记录有版本号、更新说明及一些其他信息（例如发布日期）。</p>
 <img data-src="/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/2021-04-20-15-21-48.png" class="" title="铁路12306 版本历史">
@@ -402,7 +402,7 @@ F --&gt; G([结束更新])
 <h2 id="客户端资源"><a class="header-anchor" href="#客户端资源">¶</a>客户端资源</h2>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">Program</span> <span class="title">Files</span>\<span class="title">APP</span></span></span><br><span class="line"><span class="function">│  <span class="title">APP.exe</span></span></span><br><span class="line"><span class="function">│</span></span><br><span class="line"><span class="function">└─0.1.0</span></span><br><span class="line"><span class="function">      <span class="title">APP.dll</span></span></span><br><span class="line"><span class="function">      <span class="title">d1.dll</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="客户端更新逻辑"><a class="header-anchor" href="#客户端更新逻辑">¶</a>客户端更新逻辑</h2>
-<div class="mermaid">
+<pre class="mermaid">
 sequenceDiagram
 %% autonumber
 
@@ -421,7 +421,7 @@ loop
     end    
 end
 
-</div>
+</pre>
 <hr>
 <h1>实现</h1>
 <p>留坑。</p>
