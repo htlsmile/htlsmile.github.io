@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://htlsmile.github.io/games/2048/index.html</loc>
+    
+    <lastmod>2021-07-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://htlsmile.github.io/games/index.html</loc>
+    
+    <lastmod>2021-07-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://htlsmile.github.io/categories/index.html</loc>
+    
+    <lastmod>2021-07-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://htlsmile.github.io/tags/index.html</loc>
+    
+    <lastmod>2021-07-03</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://htlsmile.github.io/2021/06/29/%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     
     <lastmod>2021-06-29</lastmod>
@@ -177,20 +205,6 @@
   </url>
   
   <url>
-    <loc>https://htlsmile.github.io/tags/index.html</loc>
-    
-    <lastmod>2020-03-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://htlsmile.github.io/categories/index.html</loc>
-    
-    <lastmod>2020-03-07</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://htlsmile.github.io/2019/12/29/AES%E5%8A%A0%E5%AF%86/</loc>
     
     <lastmod>2019-12-29</lastmod>
@@ -270,7 +284,7 @@
 
   <url>
     <loc>https://htlsmile.github.io/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -278,161 +292,161 @@
   
   <url>
     <loc>https://htlsmile.github.io/tags/NET/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/Framework/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/Core/</loc>
-    <lastmod>2021-07-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://htlsmile.github.io/tags/Docker/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/Hexo/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://htlsmile.github.io/tags/Docker/</loc>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E7%BB%84%E7%AD%96%E7%95%A5/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/Hyper-V/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/ZeroTier/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/Moon/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/OpenCV/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/Tesseract/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/OCR/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/OBS/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/SMTP/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/UDP/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E5%8D%8F%E8%AE%AE/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E9%80%92%E5%BD%92/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -441,42 +455,42 @@
   
   <url>
     <loc>https://htlsmile.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/categories/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/categories/%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://htlsmile.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-07-01</lastmod>
+    <lastmod>2021-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
