@@ -25,25 +25,28 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="躲在被遗忘的角落">
+<meta name="description" content="var camera &#x3D; undefined,             scene &#x3D; undefined,             renderer &#x3D; undefined,             light &#x3D; undefined,             mouseX &#x3D; undefined,">
 <meta property="og:type" content="website">
-<meta property="og:title" content="激不起的涟漪">
-<meta property="og:url" content="https://htlsmile.github.io/categories/%E9%9A%8F%E7%AC%94/page/2/index.html">
+<meta property="og:title" content="Astray">
+<meta property="og:url" content="https://htlsmile.github.io/games/Astray/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="躲在被遗忘的角落">
+<meta property="og:description" content="var camera &#x3D; undefined,             scene &#x3D; undefined,             renderer &#x3D; undefined,             light &#x3D; undefined,             mouseX &#x3D; undefined,">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-04T12:12:10.000Z">
+<meta property="article:modified_time" content="2021-07-04T12:12:10.000Z">
 <meta property="article:author" content="只往反向走">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://htlsmile.github.io/categories/%E9%9A%8F%E7%AC%94/page/2/">
+<link rel="canonical" href="https://htlsmile.github.io/games/Astray/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/随笔/page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"https://htlsmile.github.io/games/Astray/index.html","path":"games/Astray/index.html","title":"Astray"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: 随笔 | 激不起的涟漪</title>
+<title>Astray | 激不起的涟漪
+</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false}</script>
@@ -227,53 +230,351 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner page posts-expand">
+  
+  
 
 
-  
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">随笔
-          <small>分类</small>
-        </h2>
-      </div>
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Astray
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/games/">GAMES</a></li>
+          <li>ASTRAY</li>
+        
+  </ul>
+</div>
+
+</header>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2017</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2017-07-26T10:56:59+08:00"
-              content="2017-07-26">
-          07-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2017/07/26/The-Evolution-of-a-Software-Engineer/" itemprop="url">
-            <span itemprop="name">The Evolution of a Software Engineer</span>
-          </a>
-      </div>
-
       
-    </header>
-  </article>
+      <div class="post-body">
+          
+<head>
 
+    <script src='Box2dWeb.min.js'></script>
+    <script src="Three.js"></script>
+    <script src="keyboard.js"></script>
+    <script src="jquery.js"></script>
+    <script src="maze.js"></script>
+
+    <script>
+
+        var camera = undefined,
+            scene = undefined,
+            renderer = undefined,
+            light = undefined,
+            mouseX = undefined,
+            mouseY = undefined,
+            maze = undefined,
+            mazeMesh = undefined,
+            mazeDimension = 11,
+            planeMesh = undefined,
+            ballMesh = undefined,
+            ballRadius = 0.25,
+            keyAxis = [0, 0],
+            ironTexture = THREE.ImageUtils.loadTexture('./ball.png'),
+            planeTexture = THREE.ImageUtils.loadTexture('./concrete.png'),
+            brickTexture = THREE.ImageUtils.loadTexture('./brick.png'),
+            gameState = undefined,
+
+            // Box2D shortcuts
+            b2World = Box2D.Dynamics.b2World,
+            b2FixtureDef = Box2D.Dynamics.b2FixtureDef,
+            b2BodyDef = Box2D.Dynamics.b2BodyDef,
+            b2Body = Box2D.Dynamics.b2Body,
+            b2CircleShape = Box2D.Collision.Shapes.b2CircleShape,
+            b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape,
+            b2Settings = Box2D.Common.b2Settings,
+            b2Vec2 = Box2D.Common.Math.b2Vec2,
+
+            // Box2D world variables 
+            wWorld = undefined,
+            wBall = undefined;
+
+
+        function createPhysicsWorld() {
+            // Create the world object.
+            wWorld = new b2World(new b2Vec2(0, 0), true);
+
+            // Create the ball.
+            var bodyDef = new b2BodyDef();
+            bodyDef.type = b2Body.b2_dynamicBody;
+            bodyDef.position.Set(1, 1);
+            wBall = wWorld.CreateBody(bodyDef);
+            var fixDef = new b2FixtureDef();
+            fixDef.density = 1.0;
+            fixDef.friction = 0.0;
+            fixDef.restitution = 0.25;
+            fixDef.shape = new b2CircleShape(ballRadius);
+            wBall.CreateFixture(fixDef);
+
+            // Create the maze.
+            bodyDef.type = b2Body.b2_staticBody;
+            fixDef.shape = new b2PolygonShape();
+            fixDef.shape.SetAsBox(0.5, 0.5);
+            for (var i = 0; i < maze.dimension; i++) {
+                for (var j = 0; j < maze.dimension; j++) {
+                    if (maze[i][j]) {
+                        bodyDef.position.x = i;
+                        bodyDef.position.y = j;
+                        wWorld.CreateBody(bodyDef).CreateFixture(fixDef);
+                    }
+                }
+            }
+        }
+
+
+        function generate_maze_mesh(field) {
+            var dummy = new THREE.Geometry();
+            for (var i = 0; i < field.dimension; i++) {
+                for (var j = 0; j < field.dimension; j++) {
+                    if (field[i][j]) {
+                        var geometry = new THREE.CubeGeometry(1, 1, 1, 1, 1, 1);
+                        var mesh_ij = new THREE.Mesh(geometry);
+                        mesh_ij.position.x = i;
+                        mesh_ij.position.y = j;
+                        mesh_ij.position.z = 0.5;
+                        THREE.GeometryUtils.merge(dummy, mesh_ij);
+                    }
+                }
+            }
+            var material = new THREE.MeshPhongMaterial({ map: brickTexture });
+            var mesh = new THREE.Mesh(dummy, material)
+            return mesh;
+        }
+
+
+        function createRenderWorld() {
+
+            // Create the scene object.
+            scene = new THREE.Scene();
+
+            // Add the light.
+            light = new THREE.PointLight(0xffffff, 1);
+            light.position.set(1, 1, 1.3);
+            scene.add(light);
+
+            // Add the ball.
+            g = new THREE.SphereGeometry(ballRadius, 32, 16);
+            m = new THREE.MeshPhongMaterial({ map: ironTexture });
+            ballMesh = new THREE.Mesh(g, m);
+            ballMesh.position.set(1, 1, ballRadius);
+            scene.add(ballMesh);
+
+            // Add the camera.
+            var aspect = window.innerWidth / window.innerHeight;
+            camera = new THREE.PerspectiveCamera(60, aspect, 1, 1000);
+            camera.position.set(1, 1, 5);
+            scene.add(camera);
+
+            // Add the maze.
+            mazeMesh = generate_maze_mesh(maze);
+            scene.add(mazeMesh);
+
+            // Add the ground.
+            g = new THREE.PlaneGeometry(mazeDimension * 10, mazeDimension * 10, mazeDimension, mazeDimension);
+            planeTexture.wrapS = planeTexture.wrapT = THREE.RepeatWrapping;
+            planeTexture.repeat.set(mazeDimension * 5, mazeDimension * 5);
+            m = new THREE.MeshPhongMaterial({ map: planeTexture });
+            planeMesh = new THREE.Mesh(g, m);
+            planeMesh.position.set((mazeDimension - 1) / 2, (mazeDimension - 1) / 2, 0);
+            planeMesh.rotation.set(Math.PI / 2, 0, 0);
+            scene.add(planeMesh);
+
+        }
+
+
+        function updatePhysicsWorld() {
+
+            // Apply "friction". 
+            var lv = wBall.GetLinearVelocity();
+            lv.Multiply(0.95);
+            wBall.SetLinearVelocity(lv);
+
+            // Apply user-directed force.
+            var f = new b2Vec2(keyAxis[0] * wBall.GetMass() * 0.25, keyAxis[1] * wBall.GetMass() * 0.25);
+            wBall.ApplyImpulse(f, wBall.GetPosition());
+            keyAxis = [0, 0];
+
+            // Take a time step.
+            wWorld.Step(1 / 60, 8, 3);
+        }
+
+
+        function updateRenderWorld() {
+
+            // Update ball position.
+            var stepX = wBall.GetPosition().x - ballMesh.position.x;
+            var stepY = wBall.GetPosition().y - ballMesh.position.y;
+            ballMesh.position.x += stepX;
+            ballMesh.position.y += stepY;
+
+            // Update ball rotation.
+            var tempMat = new THREE.Matrix4();
+            tempMat.makeRotationAxis(new THREE.Vector3(0, 1, 0), stepX / ballRadius);
+            tempMat.multiplySelf(ballMesh.matrix);
+            ballMesh.matrix = tempMat;
+            tempMat = new THREE.Matrix4();
+            tempMat.makeRotationAxis(new THREE.Vector3(1, 0, 0), -stepY / ballRadius);
+            tempMat.multiplySelf(ballMesh.matrix);
+            ballMesh.matrix = tempMat;
+            ballMesh.rotation.getRotationFromMatrix(ballMesh.matrix);
+
+            // Update camera and light positions.
+            camera.position.x += (ballMesh.position.x - camera.position.x) * 0.1;
+            camera.position.y += (ballMesh.position.y - camera.position.y) * 0.1;
+            camera.position.z += (5 - camera.position.z) * 0.1;
+            light.position.x = camera.position.x;
+            light.position.y = camera.position.y;
+            light.position.z = camera.position.z - 3.7;
+        }
+
+
+        function gameLoop() {
+
+            switch (gameState) {
+
+                case 'initialize':
+                    maze = generateSquareMaze(mazeDimension);
+                    maze[mazeDimension - 1][mazeDimension - 2] = false;
+                    createPhysicsWorld();
+                    createRenderWorld();
+                    camera.position.set(1, 1, 5);
+                    light.position.set(1, 1, 1.3);
+                    light.intensity = 0;
+                    var level = Math.floor((mazeDimension - 1) / 2 - 4);
+                    $('#level').html('Level ' + level);
+                    gameState = 'fade in';
+                    break;
+
+                case 'fade in':
+                    light.intensity += 0.1 * (1.0 - light.intensity);
+                    renderer.render(scene, camera);
+                    if (Math.abs(light.intensity - 1.0) < 0.05) {
+                        light.intensity = 1.0;
+                        gameState = 'play'
+                    }
+                    break;
+
+                case 'play':
+                    updatePhysicsWorld();
+                    updateRenderWorld();
+                    renderer.render(scene, camera);
+
+                    // Check for victory.
+                    var mazeX = Math.floor(ballMesh.position.x + 0.5);
+                    var mazeY = Math.floor(ballMesh.position.y + 0.5);
+                    if (mazeX == mazeDimension && mazeY == mazeDimension - 2) {
+                        mazeDimension += 2;
+                        gameState = 'fade out';
+                    }
+                    break;
+
+                case 'fade out':
+                    updatePhysicsWorld();
+                    updateRenderWorld();
+                    light.intensity += 0.1 * (0.0 - light.intensity);
+                    renderer.render(scene, camera);
+                    if (Math.abs(light.intensity - 0.0) < 0.1) {
+                        light.intensity = 0.0;
+                        renderer.render(scene, camera);
+                        gameState = 'initialize'
+                    }
+                    break;
+
+            }
+
+            requestAnimationFrame(gameLoop);
+
+        }
+
+        function onMoveKey(axis) {
+            keyAxis = axis.slice(0);
+        }
+
+        $(document).ready(function () {
+
+            // Create the renderer.
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(800, 450);
+            document.getElementById('game-container').appendChild(renderer.domElement);
+
+            // Bind keyboard and resize events.
+            KeyboardJS.bind.axis('left', 'right', 'down', 'up', onMoveKey);
+            KeyboardJS.bind.axis('h', 'l', 'j', 'k', onMoveKey);
+
+            // Set the initial game state.
+            gameState = 'initialize';
+
+            // Start the game loop.
+            requestAnimationFrame(gameLoop);
+
+        })
+
+
+
+    </script>
+
+    <style>
+        #message {
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        #level {
+            left: 0px;
+            top: 0px;
+            padding: 4px;
+            color: black;
+            font-weight: bold;
+        }
+
+        #game-container {
+            margin: 0 auto;
+            width: 800px;
+            height: 450px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="message">
+        <p>
+          Created by <a href="https://github.com/wwwtyro" target="_blank">Rye Terrell.</a>&nbsp;
+          <a href="https://github.com/wwwtyro/Astray" target="_blank">GitHub - wwwtyro/Astray</a>
+        </p>
+        <div id='level'>
+            Level 1
+        </div>
     </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/categories/%E9%9A%8F%E7%AC%94/">1</a><span class="page-number current">2</span>
-  </nav>
+
+    <div id='game-container'></div>
+
+
+</body>
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/games/">GAMES</a></li>
+          <li>ASTRAY</li>
+        
+  </ul>
+
+    
+    
+
 
 </div>
   </main>
@@ -359,7 +660,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"htlsmile","repo":"htlsmile.github.io","client_id":"0866a79ffdaf4c2e398c","client_secret":"f025796617054905d1a32f9fccbe170085646951","admin_user":"htlsmile","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"0248e6f2a419ff0797cd490aeff759d7"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"htlsmile","repo":"htlsmile.github.io","client_id":"0866a79ffdaf4c2e398c","client_secret":"f025796617054905d1a32f9fccbe170085646951","admin_user":"htlsmile","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"d6077977732de29a3cc3720dc548c742"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
