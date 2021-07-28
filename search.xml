@@ -672,7 +672,11 @@
     <title>压缩工具使用指南</title>
     <url>/2021/06/29/%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h1>前言</h1>
-<p>Windows上安装WinRAR，5.61简体中文版无广告，自动识别32位和64位系统：<a href="https://htlsmilework-my.sharepoint.com/:u:/g/personal/htlsmilework_htlsmilework_onmicrosoft_com/ERg6d4qIxQRFqp4KIGvzgXwBKGlMWzfdYgiY7Pcrr4erOw?e=x9QjWO">WinRAR-x86+x64-561sc.exe</a></p>
+<p>Windows上安装WinRAR</p>
+<ul>
+<li>5.61简体中文版无广告，自动识别32位和64位系统：<a href="https://htlsmilework.glitch.me/Software/WinRAR/WinRAR-x86%2Bx64-561sc.exe">WinRAR-x86+x64-561sc.exe</a></li>
+<li>5.70简体中文版无广告，自动识别32位和64位系统：<a href="https://htlsmilework.glitch.me/Software/WinRAR/winrar-x86%2Bx64-570sc.exe">winrar-x86+x64-570sc.exe</a></li>
+</ul>
 <p>Linux发行版通常自带tar、zip、unzip等命令。</p>
 <p>如果有跨平台的需求，建议使用zip格式。</p>
 <span id="more"></span>
@@ -2261,6 +2265,67 @@ end
 ]]></content>
       <categories>
         <category>记录</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>创建Windows快捷方式（相对路径）</title>
+    <url>/2021/07/19/%E5%88%9B%E5%BB%BAWindows%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%EF%BC%88%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%EF%BC%89/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>相对路径的快捷方式，通常要求删除“起始位置”属性的值，这会导致一些依赖“起始位置”的程序报错，请谨慎使用。</p>
+<span id="more"></span>
+<hr>
+<h1>CMD</h1>
+<h2 id="目标"><a class="header-anchor" href="#目标">¶</a>目标</h2>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="variable">%windir%</span>\system32\<span class="built_in">cmd</span>.exe /c <span class="built_in">start</span> directory\app.exe</span><br></pre></td></tr></table></figure>
+<h2 id="起始位置"><a class="header-anchor" href="#起始位置">¶</a>起始位置</h2>
+<p>清空</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>Explorer</h1>
+<h2 id="目标-v2"><a class="header-anchor" href="#目标-v2">¶</a>目标</h2>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">explorer.exe directory\app.exe</span><br></pre></td></tr></table></figure>
+<h2 id="起始位置-v2"><a class="header-anchor" href="#起始位置-v2">¶</a>起始位置</h2>
+<p>清空</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>获取本机WLAN密码</title>
+    <url>/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p><a href="./get_wifi_password.bat"><strong>下载运行此BAT脚本</strong></a>，会在当前目录输出<code>WiFi.txt</code>文件。</p>
+<span id="more"></span>
+<hr>
+<h2 id="方式一：PowerShell脚本"><a class="header-anchor" href="#方式一：PowerShell脚本">¶</a>方式一：PowerShell脚本</h2>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">(netsh wlan show profiles) | <span class="built_in">Select-String</span> <span class="string">&quot;\:(.+)<span class="variable">$</span>&quot;</span> | %&#123;<span class="variable">$name</span>=<span class="variable">$_</span>.Matches.Groups[<span class="number">1</span>].Value.Trim(); <span class="variable">$_</span>&#125; | %&#123;(netsh wlan show profile name=<span class="string">&quot;<span class="variable">$name</span>&quot;</span> key=<span class="built_in">clear</span>)&#125;  | <span class="built_in">Select-String</span> <span class="string">&quot;(关键内容|Key Content)\W+\:(.+)<span class="variable">$</span>&quot;</span> | %&#123;<span class="variable">$pass</span>=<span class="variable">$_</span>.Matches.Groups[<span class="number">2</span>].Value.Trim(); <span class="variable">$_</span>&#125; | %&#123; [<span class="type">pscustomobject</span>]<span class="selector-tag">@</span>&#123; <span class="string">&#x27;名称&#x27;</span>=<span class="variable">$name</span>;<span class="string">&#x27;密码&#x27;</span>=<span class="variable">$pass</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>鼠标右键单击<strong>开始菜单按钮</strong>，打开<strong>PowerShell</strong></li>
+</ol>
+<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-40-31.png" class="">
+<ol start="2">
+<li>将上述代码粘贴到终端</li>
+</ol>
+<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-42-01.png" class="">
+<ol start="3">
+<li>敲击回车键</li>
+</ol>
+<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-42-31.png" class="">
+<h2 id="方式二：CMD脚本"><a class="header-anchor" href="#方式二：CMD脚本">¶</a>方式二：CMD脚本</h2>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">color</span> <span class="number">2</span>f</span><br><span class="line"><span class="built_in">mode</span> <span class="built_in">con</span>: cols=<span class="number">40</span> lines=<span class="number">15</span></span><br><span class="line"><span class="built_in">title</span> WiFi密码查询</span><br><span class="line"><span class="built_in">echo</span> 正在查询结果</span><br><span class="line"><span class="built_in">setlocal</span> enabledelayedexpansion</span><br><span class="line"><span class="keyword">for</span> /f &quot;tokens=<span class="number">2</span>* delims=:&quot; <span class="variable">%%i</span> <span class="keyword">in</span> (&#x27;netsh wlan show profiles&#x27;) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">set</span> str=<span class="variable">%%i</span></span><br><span class="line">    <span class="keyword">for</span> /f &quot;tokens=<span class="number">3</span>* delims= &quot; <span class="variable">%%d</span> <span class="keyword">in</span> (&#x27;netsh wlan show profiles key^=clear name^=&quot;<span class="variable">!str:~1!</span>&quot;^| <span class="built_in">findstr</span> &quot;关键内容&quot;&#x27;) <span class="keyword">do</span> (</span><br><span class="line">        <span class="built_in">echo</span> &quot;<span class="variable">!str:~1!</span>&quot;密码为：【<span class="variable">%%d</span>】</span><br><span class="line">        <span class="built_in">echo</span> &quot;<span class="variable">!str:~1!</span>&quot;密码为：【<span class="variable">%%d</span>】&gt;&gt;WiFi.txt</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"><span class="built_in">echo</span> 保存在脚本所在目录的WiFi.txt文件中</span><br><span class="line"><span class="built_in">echo</span> 任意键退出查询</span><br><span class="line"><span class="built_in">pause</span>&gt;<span class="built_in">nul</span></span><br></pre></td></tr></table></figure>
+<p>将上述代码以ANSI编码方式保存到<code>.txt</code>文件，然后将文件后缀名改为<code>.bat</code>。</p>
+<hr>
+<h1>后记</h1>
+<ul>
+<li>PowerShell脚本，感谢作者：<a href="https://www.52pojie.cn/home.php?mod=space&amp;uid=999304">kumamiko</a></li>
+<li>CMD脚本，感谢作者</li>
+</ul>
+]]></content>
+      <categories>
+        <category>随笔</category>
       </categories>
   </entry>
 </search>
