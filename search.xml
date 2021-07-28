@@ -2297,7 +2297,7 @@ end
     <title>获取本机WLAN密码</title>
     <url>/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<h1>前言</h1>
-<p><a href="./get_wifi_password.bat"><strong>下载运行此BAT脚本</strong></a>，会在当前目录输出<code>WiFi.txt</code>文件。</p>
+<p><a href="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/get_wifi_password.bat"><strong>下载运行此BAT脚本</strong></a>，会在当前目录输出<code>WiFi.txt</code>文件。</p>
 <span id="more"></span>
 <hr>
 <h2 id="方式一：PowerShell脚本"><a class="header-anchor" href="#方式一：PowerShell脚本">¶</a>方式一：PowerShell脚本</h2>
