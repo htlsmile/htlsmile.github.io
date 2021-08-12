@@ -2328,4 +2328,47 @@ end
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>Github添加SSH密钥</title>
+    <url>/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>初次安装 Git 到 Windows 上，手动创建 SSH 密钥并添加到 GitHub 上。</p>
+<p>【转载】 <a href="https://docs.github.com/cn/github/authenticating-to-github/connecting-to-github-with-ssh">使用 SSH 连接到 GitHub</a></p>
+<span id="more"></span>
+<hr>
+<h1>生成新 SSH 密钥</h1>
+<ol>
+<li>打开 Git Bash 或 其他终端（例如PowerShell）。</li>
+<li>粘贴下面的文本（替换为您的 GitHub 电子邮件地址）。</li>
+</ol>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<p>如果您使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span> -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<p>这将创建以所提供的电子邮件地址为标签的新 SSH 密钥。</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Generating public/private ed25519 key pair.</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>提示您“Enter a file in which to save the key（输入要保存密钥的文件）”时，按 Enter 键。 这将接受默认文件位置。</li>
+</ol>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter a file <span class="keyword">in</span> which to save the key (C:\Users\htlsmile/.ssh/id_ed25519):[Press enter]</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在提示时输入安全密码。 更多信息请参阅“<a href="https://docs.github.com/cn/articles/working-with-ssh-key-passphrases">使用 SSH 密钥密码</a>”。</li>
+</ol>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="built_in">Type</span> a passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [<span class="built_in">Type</span> passphrase again]</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-35-10.png" class="" title="生成SSH密钥">
+<h1>修改 SSH 私钥的密码</h1>
+<p>在 <code>C:\Users\htlsmile\.ssh</code> 目录里启动终端，针对特定的私钥文件（例如 <code>id_ed25519</code> ）执行以下命令</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -f id_ed25519 -p</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-42-13.png" class="" title="修改SSH私钥密码">
+<h1>Git 全局配置</h1>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;htlsmile&quot;</span><br><span class="line">git config --global user.email &quot;htlsmile@outlook.com&quot;</span><br><span class="line">git config --global http.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
 </search>
