@@ -38,6 +38,55 @@
       </categories>
   </entry>
   <entry>
+    <title>Docker的使用</title>
+    <url>/2018/04/15/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="Docker-常用命令"><a class="header-anchor" href="#Docker-常用命令">¶</a>Docker 常用命令</h3>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker images //镜像列表</span><br><span class="line">docker ps -a //所有运行过的容器</span><br><span class="line">docker ps -l //最后运行容器</span><br><span class="line">docker export 容器id &gt; 文件  //持久化容器</span><br><span class="line">docker import 文件 //导入容器</span><br><span class="line">cat export.tar | docker import - linezero/demo-export:latest</span><br><span class="line">docker save 镜像id &gt; 文件 //持久化镜像</span><br><span class="line">docker load &lt; 文件</span><br><span class="line">docker rm 容器id //删除容器</span><br><span class="line">docker rmi 镜像id/镜像名称  //删除镜像</span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> 镜像 //运行</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="Dockerfile-文本内容（项目名称为-WebDemo）"><a class="header-anchor" href="#Dockerfile-文本内容（项目名称为-WebDemo）">¶</a>Dockerfile 文本内容（项目名称为 WebDemo）</h3>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> microsoft/aspnetcore</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . /webdemo</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /webdemo</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;dotnet&quot;</span>, <span class="string">&quot;WebDemo.dll&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<p>webdemo 为项目所在文件夹，Dockerfile 也放入该文件夹内，WebDemo.dll 为项目文件</p>
+<!-- more -->
+<h3 id="重新生成项目"><a class="header-anchor" href="#重新生成项目">¶</a>重新生成项目</h3>
+<ol>
+<li>查看所有容器</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line"><span class="comment">#以下为示例输出</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES</span><br><span class="line">a98e451e8545        webdemo             <span class="string">&quot;dotnet WebDemo…&quot;</span>   <span class="number">5</span> minutes ago       Up <span class="number">5</span> minutes        <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">80</span>-&gt;<span class="number">80</span>/tcp   webdemo</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>删除项目容器</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker rm a98e</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看项目镜像</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker images</span><br><span class="line"><span class="comment">#以下为示例输出</span></span><br><span class="line">REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">webdemo                latest              <span class="number">51656978590</span>e        <span class="number">14</span> minutes ago      <span class="number">405</span>MB</span><br><span class="line">microsoft/dotnet       latest              <span class="number">3</span>cd958947571        <span class="number">2</span> months ago        <span class="number">1.75</span>GB</span><br><span class="line">microsoft/aspnetcore   latest              <span class="number">36</span>f6b6bc707a        <span class="number">2</span> months ago        <span class="number">325</span>MB</span><br><span class="line">hello-world            latest              f2a91732366c        <span class="number">6</span> months ago        <span class="number">1.85</span>kB</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>删除项目镜像</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker rmi webdemo</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>跳转到项目目录，即 CD 到 webdemo 文件夹</li>
+<li>编译生成镜像</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker build . -t webdemo</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>后台运行 Docker 容器</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> --name webdemo -p 80:80 -d webdemo</span></span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>访问网站主页</li>
+</ol>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>.NET</tag>
+        <tag>Core</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AES加密</title>
     <url>/2019/12/29/AES%E5%8A%A0%E5%AF%86/</url>
     <content><![CDATA[<h3 id="代码记录"><a class="header-anchor" href="#代码记录">¶</a>代码记录</h3>
@@ -49,8 +98,8 @@
       </categories>
       <tags>
         <tag>.NET</tag>
-        <tag>Framework</tag>
         <tag>Core</tag>
+        <tag>Framework</tag>
       </tags>
   </entry>
   <entry>
@@ -155,52 +204,55 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker的使用</title>
-    <url>/2018/04/15/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="Docker-常用命令"><a class="header-anchor" href="#Docker-常用命令">¶</a>Docker 常用命令</h3>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker images //镜像列表</span><br><span class="line">docker ps -a //所有运行过的容器</span><br><span class="line">docker ps -l //最后运行容器</span><br><span class="line">docker export 容器id &gt; 文件  //持久化容器</span><br><span class="line">docker import 文件 //导入容器</span><br><span class="line">cat export.tar | docker import - linezero/demo-export:latest</span><br><span class="line">docker save 镜像id &gt; 文件 //持久化镜像</span><br><span class="line">docker load &lt; 文件</span><br><span class="line">docker rm 容器id //删除容器</span><br><span class="line">docker rmi 镜像id/镜像名称  //删除镜像</span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> 镜像 //运行</span></span><br></pre></td></tr></table></figure>
+    <title>Github添加SSH密钥</title>
+    <url>/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>初次安装 Git 到 Windows 上，手动创建 SSH 密钥并添加到 GitHub 上。</p>
+<p>【转载】 <a href="https://docs.github.com/cn/github/authenticating-to-github/connecting-to-github-with-ssh">使用 SSH 连接到 GitHub</a></p>
 <span id="more"></span>
-<h3 id="Dockerfile-文本内容（项目名称为-WebDemo）"><a class="header-anchor" href="#Dockerfile-文本内容（项目名称为-WebDemo）">¶</a>Dockerfile 文本内容（项目名称为 WebDemo）</h3>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> microsoft/aspnetcore</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . /webdemo</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /webdemo</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;dotnet&quot;</span>, <span class="string">&quot;WebDemo.dll&quot;</span>]</span></span><br></pre></td></tr></table></figure>
-<p>webdemo 为项目所在文件夹，Dockerfile 也放入该文件夹内，WebDemo.dll 为项目文件</p>
-<!-- more -->
-<h3 id="重新生成项目"><a class="header-anchor" href="#重新生成项目">¶</a>重新生成项目</h3>
+<hr>
+<h1>生成新 SSH 密钥</h1>
 <ol>
-<li>查看所有容器</li>
+<li>打开 Git Bash 或 其他终端（例如PowerShell）。</li>
+<li>粘贴下面的文本（替换为您的 GitHub 电子邮件地址）。</li>
 </ol>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line"><span class="comment">#以下为示例输出</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES</span><br><span class="line">a98e451e8545        webdemo             <span class="string">&quot;dotnet WebDemo…&quot;</span>   <span class="number">5</span> minutes ago       Up <span class="number">5</span> minutes        <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">80</span>-&gt;<span class="number">80</span>/tcp   webdemo</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>删除项目容器</li>
-</ol>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker rm a98e</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<p>如果您使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span> -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<p>这将创建以所提供的电子邮件地址为标签的新 SSH 密钥。</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Generating public/private ed25519 key pair.</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>查看项目镜像</li>
+<li>提示您“Enter a file in which to save the key（输入要保存密钥的文件）”时，按 Enter 键。 这将接受默认文件位置。</li>
 </ol>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker images</span><br><span class="line"><span class="comment">#以下为示例输出</span></span><br><span class="line">REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">webdemo                latest              <span class="number">51656978590</span>e        <span class="number">14</span> minutes ago      <span class="number">405</span>MB</span><br><span class="line">microsoft/dotnet       latest              <span class="number">3</span>cd958947571        <span class="number">2</span> months ago        <span class="number">1.75</span>GB</span><br><span class="line">microsoft/aspnetcore   latest              <span class="number">36</span>f6b6bc707a        <span class="number">2</span> months ago        <span class="number">325</span>MB</span><br><span class="line">hello-world            latest              f2a91732366c        <span class="number">6</span> months ago        <span class="number">1.85</span>kB</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter a file <span class="keyword">in</span> which to save the key (C:\Users\htlsmile/.ssh/id_ed25519):[Press enter]</span><br></pre></td></tr></table></figure>
 <ol start="4">
-<li>删除项目镜像</li>
+<li>在提示时输入安全密码。 更多信息请参阅“<a href="https://docs.github.com/cn/articles/working-with-ssh-key-passphrases">使用 SSH 密钥密码</a>”。</li>
 </ol>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker rmi webdemo</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>跳转到项目目录，即 CD 到 webdemo 文件夹</li>
-<li>编译生成镜像</li>
-</ol>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker build . -t webdemo</span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>后台运行 Docker 容器</li>
-</ol>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> --name webdemo -p 80:80 -d webdemo</span></span><br></pre></td></tr></table></figure>
-<ol start="8">
-<li>访问网站主页</li>
-</ol>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="built_in">Type</span> a passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [<span class="built_in">Type</span> passphrase again]</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-35-10.png" class="" title="生成SSH密钥">
+<h1>修改 SSH 私钥的密码</h1>
+<p>在 <code>C:\Users\htlsmile\.ssh</code> 目录里启动终端，针对特定的私钥文件（例如 <code>id_ed25519</code> ）执行以下命令</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -f id_ed25519 -p</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-42-13.png" class="" title="修改SSH私钥密码">
+<h1>Git 全局配置</h1>
+<p>可以直接打开 <code>‪C:\Users\htlsmile\.gitconfig</code> 文件手动配置。</p>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-13-09-17-22.png" class="" title=".gitconfig">
+<h2 id="查看全局配置"><a class="header-anchor" href="#查看全局配置">¶</a>查看全局配置</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
+<h2 id="设置用户名与邮箱"><a class="header-anchor" href="#设置用户名与邮箱">¶</a>设置用户名与邮箱</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;htlsmile&quot;</span><br><span class="line">git config --global user.email &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="设置-取消-全局代理"><a class="header-anchor" href="#设置-取消-全局代理">¶</a>设置/取消 全局代理</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line"></span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+<h2 id="设置-取消-全局代理（仅对-github-com-生效）"><a class="header-anchor" href="#设置-取消-全局代理（仅对-github-com-生效）">¶</a>设置/取消 全局代理（仅对 <a href="http://github.com">github.com</a> 生效）</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global http.https://github.com.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.https://github.com.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line"></span><br><span class="line">git config --global --unset http.https://github.com.proxy</span><br><span class="line">git config --global --unset https.https://github.com.proxy</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
 ]]></content>
       <categories>
-        <category>教程</category>
+        <category>随笔</category>
       </categories>
       <tags>
-        <tag>.NET</tag>
-        <tag>Core</tag>
-        <tag>Docker</tag>
+        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
@@ -664,6 +716,32 @@
   </div>
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>创建Windows快捷方式（相对路径）</title>
+    <url>/2021/07/19/%E5%88%9B%E5%BB%BAWindows%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%EF%BC%88%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%EF%BC%89/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>相对路径的快捷方式，通常要求删除“起始位置”属性的值，这会导致一些依赖“起始位置”的程序报错，请谨慎使用。</p>
+<span id="more"></span>
+<hr>
+<h1>CMD</h1>
+<h2 id="目标"><a class="header-anchor" href="#目标">¶</a>目标</h2>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="variable">%windir%</span>\system32\<span class="built_in">cmd</span>.exe /c <span class="built_in">start</span> directory\app.exe</span><br></pre></td></tr></table></figure>
+<h2 id="起始位置"><a class="header-anchor" href="#起始位置">¶</a>起始位置</h2>
+<p>清空</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>Explorer</h1>
+<h2 id="目标-v2"><a class="header-anchor" href="#目标-v2">¶</a>目标</h2>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">explorer.exe directory\app.exe</span><br></pre></td></tr></table></figure>
+<h2 id="起始位置-v2"><a class="header-anchor" href="#起始位置-v2">¶</a>起始位置</h2>
+<p>清空</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+]]></content>
       <categories>
         <category>随笔</category>
       </categories>
@@ -1134,157 +1212,6 @@
       </categories>
   </entry>
   <entry>
-    <title>浅谈直播</title>
-    <url>/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。</p>
-<span id="more"></span>
-<h3 id="忆往昔"><a class="header-anchor" href="#忆往昔">¶</a>忆往昔</h3>
-<p>大学的毕业设计，我选的课题叫做<strong>多媒体电子教室的设计与实现</strong>。</p>
-<p>貌似全班就我一个人选了，连个讨论的人都找不到。😂</p>
-<p>这个课题简单来说就是设计一款局域网屏幕传输软件，方便老师在计算机教室上课教学。</p>
-<p>如果你对“方便”有疑惑的话，我就描述一下应用场景，印象中大学的计算机教室架了四台还是六台投影仪，幕布摆放的位置也只能穿插在两排座位之间，这就导致投影的效果很差，大部分位置的视角都很别扭。</p>
-<p>另说，那时候是用飞鸽传书来互传文件，比如交作业（代码）给老师。课堂上理所当然不允许讲话，所以咯，我们经常用飞鸽来聊天，搞定点爆破（针对性连续发送文件）。🤐</p>
-<h4 id="作品"><a class="header-anchor" href="#作品">¶</a>作品</h4>
-<blockquote>
-<p>C#写的 Winform 程序，实现了局域网内的屏幕广播、聊天对话、举手和远程开关机。</p>
-</blockquote>
-<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-20.png" class="">
-<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-34.png" class="">
-<h4 id="过程"><a class="header-anchor" href="#过程">¶</a>过程</h4>
-<p>已经不记得当时的技术水平和具体思路了，毕业有点久了，只能捡一些回忆来讲。</p>
-<p>首先拿到这个课题，大脑里简单构思了一下，主要就是两项功能，一个是屏幕传输，另一个是聊天。</p>
-<p>作为一个度娘养大的孩子，凡事不懂先百度的习惯已经深入骨髓，搜了一些信息，就盯着“红蜘蛛”这款软件了。但是很显然，我只能看到一些功能描述和界面，具体源码是不可能搞得到的。所以，只能自己动手了。</p>
-<p>屏幕传输，简单点，就是连续截图，再连续发送就完了。实际用代码去实现的时候就发现问题来了，截图好说，TCP 发送好说，效果就很不好说了，开启广播就有巨大的流量，但客户端显示效果极差，比放 PPT 还差。</p>
-<p>遇到问题了，再次请教度娘，借鉴了网友的思路，TCP 是不行的，既然是有指不定多少个客户端要看到画面，而且要流畅，也就是说丟几帧画面也没关系，那就改用 UDP 吧。</p>
-<p>用 UDP 就发现，UDP 单次发送的数据包大小是有限制的。为此，服务端又将截图进行切片，又给片段进行编号，客户端在一小段时间内对这些片段按照编号重组，如果编号缺失或者超时，就直接放弃这一次画面的显示。</p>
-<p>换成这种实现方式，效果出奇得好，好到我准备的其他优化手段都用不上了。在局域网内，没有其他流量干扰，屏幕广播的延迟不超过一秒，流畅度和看电影差不多。</p>
-<p>聊天，那就更简单了，定向 TCP 连接就完了，不谈。远程开关机之类的，太简单，不谈。</p>
-<p>后续就是拿着软件，改了三遍论文，就去答辩了。</p>
-<h4 id="后续"><a class="header-anchor" href="#后续">¶</a>后续</h4>
-<p>答辩结束后，老师说想将我的软件实际投入教学使用，我那时候考虑的是，这个软件目前远不如我的预期，但迫于论文答辩，只能仓促完成，便婉拒了老师。当时还想着毕业了再完善一下这个软件，等到我自己认可这个软件的时候，再和老师联系。现实情况是，毕业了就开始忙着找工作，早就忘了这件事了。😅</p>
-<p>其实，作为一个电子教室软件，界面丑我是心知肚明的，对客户端的强力控制也是一个重点，奈何当初技术菜、时间短，就写了个 Kill 任务管理器的线程，然后在启动广播的时候把客户端置顶；另外，虽然屏幕传输实现了，但是音频传输也需要考虑，在教室四周摆上大音响的做法太不计科了；还有聊天功能，也不能只是纯文字聊天，富文本聊天、传输文件的功能也是要加的。</p>
-<p>基于以上种种要做却没做的功能，这个软件我自己实在不能认可。</p>
-<h3 id="看今朝"><a class="header-anchor" href="#看今朝">¶</a>看今朝</h3>
-<p>直播行业大火的时候，我就了解到 <a href="https://obsproject.com/zh-cn">OBS</a> 这款软件，简单上手把玩了一番，发现此乃神器，全方位吊打我当初毕设软件的理想终极版。先简单说下直播的技术。</p>
-<ul>
-<li>知乎：<a href="https://www.zhihu.com/question/42162310">如何搭建一个完整的视频直播系统？</a></li>
-<li>博客：<a href="https://blog.csdn.net/kingmax54212008/article/details/84307500">直播平台整体架构</a></li>
-</ul>
-<p>直播的技术架构到如今也是很成熟的了，毕竟活不下去的也差不多都倒闭了，先来盗些图</p>
-<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-04-09.png" class="">
-<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-10-13.png" class="">
-<p>简单来讲，就是有人主动发起直播（推流），有流媒体服务器在处理（分发），有人在看（拉流）。</p>
-<p>我尝试着使用 OBS、SRS 和 Potplayer，在我那 1 核 2GB 1Mbps 的小水管服务器做了个测试，直播效果很勉强，有明显的卡顿，但至少是有效果的。</p>
-<h4 id="OBS（推流）"><a class="header-anchor" href="#OBS（推流）">¶</a><a href="https://obsproject.com/zh-cn">OBS</a>（推流）</h4>
-<blockquote>
-<p>OBS Studio 是免费的开源软件，用于视频记录和实时流媒体。目前可以使用 Linux，Mac 和 Windows Build。</p>
-<ul>
-<li>官方 OBS Studio 构建：<a href="https://github.com/obsproject/obs-studio/releases">Github Release</a></li>
-<li>手动构建 OBS Studio：<a href="https://obsproject.com/wiki/Install-Instructions">安装说明</a></li>
-</ul>
-</blockquote>
-<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-20-55-56.png" class="">
-<h4 id="SRS（分发）"><a class="header-anchor" href="#SRS（分发）">¶</a><a href="https://github.com/ossrs/srs">SRS</a>（分发）</h4>
-<blockquote>
-<p>SRS/3.0，OuXuli，是一个流媒体集群，支持 RTMP/HLS/WebRTC/SRT/GB28181，高效、稳定、易用，简单而快乐。</p>
-<p>SRS 定位是运营级的互联网直播服务器集群，追求更好的概念完整性和最简单实现的代码。SRS 提供了丰富的接入方案将 RTMP 流接入 SRS， 包括推送 RTMP 到 SRS、推送 RTSP/UDP/FLV 到 SRS、拉取流到 SRS。 SRS 还支持将接入的 RTMP 流进行各种变换，譬如将 RTMP 流转码、流截图、 转发给其他服务器、转封装成 HTTP-FLV 流、转封装成 HLS、 转封装成 HDS、转封装成 DASH、录制成 FLV/MP4。SRS 包含支大规模集群如 CDN 业务的关键特性， 譬如 RTMP 多级集群、源站集群、VHOST 虚拟服务器 、 无中断服务 Reload、HTTP-FLV 集群。此外，SRS 还提供丰富的应用接口， 包括 HTTP 回调、安全策略 Security、HTTP API 接口、 RTMP 测速。SRS 在源站和 CDN 集群中都得到了广泛的应用 Applications。</p>
-</blockquote>
-<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-43-28.png" class="">
-<h4 id="VLC（拉流）"><a class="header-anchor" href="#VLC（拉流）">¶</a><a href="https://www.videolan.org/vlc/">VLC</a>（拉流）</h4>
-<blockquote>
-<p>VLC 是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议。</p>
-</blockquote>
-<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-30-03.png" class="">
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>依旧是留坑，看啥时候研究下 OBS，给当初的毕设软件换换血，再顺带把远程控制的功能一并做了。😁</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>OBS</tag>
-        <tag>SMTP</tag>
-        <tag>UDP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>浅谈远程桌面</title>
-    <url>/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>为了能够流畅的使用远程桌面（GUI），我尝试了多款软件，也查了一些资料，在这里记录一下。</p>
-<span id="more"></span>
-<h3 id="协议"><a class="header-anchor" href="#协议">¶</a>协议</h3>
-<table>
-<thead>
-<tr>
-<th>协议</th>
-<th><a href="https://support.microsoft.com/zh-cn/help/186607/understanding-the-remote-desktop-protocol-rdp">RDP</a></th>
-<th><a href="https://docs.vmware.com/cn/VMware-Horizon-7/7.2/com.vmware.horizon-view.installation.doc/GUID-E2FFCC1F-B14A-4A4E-A36C-994EACC542B6.html">PCoIP</a></th>
-<th><a href="https://en.wikipedia.org/wiki/Independent_Computing_Architecture">ICA</a></th>
-<th><a href="https://spice-space.org/">SPICE</a></th>
-<th><a href="https://en.wikipedia.org/wiki/RFB_protocol">RFB</a></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>公司</td>
-<td>Microsoft</td>
-<td>VMWare</td>
-<td>Citrix</td>
-<td>Red Hat</td>
-<td>RealVNC</td>
-</tr>
-<tr>
-<td>特点</td>
-<td>本地显卡渲染</td>
-<td>传输差分图像</td>
-<td>增强型 RDP</td>
-<td>KVM 虚拟化</td>
-<td>瘦客户端</td>
-</tr>
-<tr>
-<td>软件</td>
-<td>mstsc、FreeRDP</td>
-<td>TeamViwer、Splashtop</td>
-<td>Citrix Virtual</td>
-<td></td>
-<td>RealVNC、TightVNC</td>
-</tr>
-</tbody>
-</table>
-<p>另外，AnyDesk 和向日葵没找到具体协议信息，我个人用起来感觉是和 TeamViwer 一样的。</p>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-32.png" class="" title="盗图1">
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-42.png" class="" title="盗图2">
-<h3 id="建议"><a class="header-anchor" href="#建议">¶</a>建议</h3>
-<ol>
-<li>偶尔才用一次的朋友，用 QQ 或钉钉的远程协助功能就好</li>
-<li>首推 TeamViewer，综合实力杠杠的，虽然经常会检测到商用，然后就不免费了</li>
-</ol>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-06.png" class="" title="TeamViewer">
-<ol start="3">
-<li>自从 TeamViewer 把我 ban 掉后，向日葵已成为我的主力</li>
-</ol>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-52.png" class="" title="向日葵">
-<ol start="4">
-<li>其实 ZeroTier 等内网穿透方案，配合 mstsc 或 Splashtop 也挺好的</li>
-</ol>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-06-26.png" class="" title="mstsc">
-<ol start="5">
-<li>mstsc 由于是本地渲染，导致我远程玩全屏游戏的时候，会提示 DirectX 错误，具体原因待查</li>
-<li>Splashtop 的控制端和被控端是两个软件</li>
-</ol>
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>向日葵也是一款优秀的国产良心软件啊，👍</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>协议</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用微信发送视频文件</title>
     <url>/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
@@ -1368,6 +1295,81 @@
       <categories>
         <category>记录</category>
       </categories>
+  </entry>
+  <entry>
+    <title>浅谈直播</title>
+    <url>/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。</p>
+<span id="more"></span>
+<h3 id="忆往昔"><a class="header-anchor" href="#忆往昔">¶</a>忆往昔</h3>
+<p>大学的毕业设计，我选的课题叫做<strong>多媒体电子教室的设计与实现</strong>。</p>
+<p>貌似全班就我一个人选了，连个讨论的人都找不到。😂</p>
+<p>这个课题简单来说就是设计一款局域网屏幕传输软件，方便老师在计算机教室上课教学。</p>
+<p>如果你对“方便”有疑惑的话，我就描述一下应用场景，印象中大学的计算机教室架了四台还是六台投影仪，幕布摆放的位置也只能穿插在两排座位之间，这就导致投影的效果很差，大部分位置的视角都很别扭。</p>
+<p>另说，那时候是用飞鸽传书来互传文件，比如交作业（代码）给老师。课堂上理所当然不允许讲话，所以咯，我们经常用飞鸽来聊天，搞定点爆破（针对性连续发送文件）。🤐</p>
+<h4 id="作品"><a class="header-anchor" href="#作品">¶</a>作品</h4>
+<blockquote>
+<p>C#写的 Winform 程序，实现了局域网内的屏幕广播、聊天对话、举手和远程开关机。</p>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-20.png" class="">
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-34.png" class="">
+<h4 id="过程"><a class="header-anchor" href="#过程">¶</a>过程</h4>
+<p>已经不记得当时的技术水平和具体思路了，毕业有点久了，只能捡一些回忆来讲。</p>
+<p>首先拿到这个课题，大脑里简单构思了一下，主要就是两项功能，一个是屏幕传输，另一个是聊天。</p>
+<p>作为一个度娘养大的孩子，凡事不懂先百度的习惯已经深入骨髓，搜了一些信息，就盯着“红蜘蛛”这款软件了。但是很显然，我只能看到一些功能描述和界面，具体源码是不可能搞得到的。所以，只能自己动手了。</p>
+<p>屏幕传输，简单点，就是连续截图，再连续发送就完了。实际用代码去实现的时候就发现问题来了，截图好说，TCP 发送好说，效果就很不好说了，开启广播就有巨大的流量，但客户端显示效果极差，比放 PPT 还差。</p>
+<p>遇到问题了，再次请教度娘，借鉴了网友的思路，TCP 是不行的，既然是有指不定多少个客户端要看到画面，而且要流畅，也就是说丟几帧画面也没关系，那就改用 UDP 吧。</p>
+<p>用 UDP 就发现，UDP 单次发送的数据包大小是有限制的。为此，服务端又将截图进行切片，又给片段进行编号，客户端在一小段时间内对这些片段按照编号重组，如果编号缺失或者超时，就直接放弃这一次画面的显示。</p>
+<p>换成这种实现方式，效果出奇得好，好到我准备的其他优化手段都用不上了。在局域网内，没有其他流量干扰，屏幕广播的延迟不超过一秒，流畅度和看电影差不多。</p>
+<p>聊天，那就更简单了，定向 TCP 连接就完了，不谈。远程开关机之类的，太简单，不谈。</p>
+<p>后续就是拿着软件，改了三遍论文，就去答辩了。</p>
+<h4 id="后续"><a class="header-anchor" href="#后续">¶</a>后续</h4>
+<p>答辩结束后，老师说想将我的软件实际投入教学使用，我那时候考虑的是，这个软件目前远不如我的预期，但迫于论文答辩，只能仓促完成，便婉拒了老师。当时还想着毕业了再完善一下这个软件，等到我自己认可这个软件的时候，再和老师联系。现实情况是，毕业了就开始忙着找工作，早就忘了这件事了。😅</p>
+<p>其实，作为一个电子教室软件，界面丑我是心知肚明的，对客户端的强力控制也是一个重点，奈何当初技术菜、时间短，就写了个 Kill 任务管理器的线程，然后在启动广播的时候把客户端置顶；另外，虽然屏幕传输实现了，但是音频传输也需要考虑，在教室四周摆上大音响的做法太不计科了；还有聊天功能，也不能只是纯文字聊天，富文本聊天、传输文件的功能也是要加的。</p>
+<p>基于以上种种要做却没做的功能，这个软件我自己实在不能认可。</p>
+<h3 id="看今朝"><a class="header-anchor" href="#看今朝">¶</a>看今朝</h3>
+<p>直播行业大火的时候，我就了解到 <a href="https://obsproject.com/zh-cn">OBS</a> 这款软件，简单上手把玩了一番，发现此乃神器，全方位吊打我当初毕设软件的理想终极版。先简单说下直播的技术。</p>
+<ul>
+<li>知乎：<a href="https://www.zhihu.com/question/42162310">如何搭建一个完整的视频直播系统？</a></li>
+<li>博客：<a href="https://blog.csdn.net/kingmax54212008/article/details/84307500">直播平台整体架构</a></li>
+</ul>
+<p>直播的技术架构到如今也是很成熟的了，毕竟活不下去的也差不多都倒闭了，先来盗些图</p>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-04-09.png" class="">
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-10-13.png" class="">
+<p>简单来讲，就是有人主动发起直播（推流），有流媒体服务器在处理（分发），有人在看（拉流）。</p>
+<p>我尝试着使用 OBS、SRS 和 Potplayer，在我那 1 核 2GB 1Mbps 的小水管服务器做了个测试，直播效果很勉强，有明显的卡顿，但至少是有效果的。</p>
+<h4 id="OBS（推流）"><a class="header-anchor" href="#OBS（推流）">¶</a><a href="https://obsproject.com/zh-cn">OBS</a>（推流）</h4>
+<blockquote>
+<p>OBS Studio 是免费的开源软件，用于视频记录和实时流媒体。目前可以使用 Linux，Mac 和 Windows Build。</p>
+<ul>
+<li>官方 OBS Studio 构建：<a href="https://github.com/obsproject/obs-studio/releases">Github Release</a></li>
+<li>手动构建 OBS Studio：<a href="https://obsproject.com/wiki/Install-Instructions">安装说明</a></li>
+</ul>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-20-55-56.png" class="">
+<h4 id="SRS（分发）"><a class="header-anchor" href="#SRS（分发）">¶</a><a href="https://github.com/ossrs/srs">SRS</a>（分发）</h4>
+<blockquote>
+<p>SRS/3.0，OuXuli，是一个流媒体集群，支持 RTMP/HLS/WebRTC/SRT/GB28181，高效、稳定、易用，简单而快乐。</p>
+<p>SRS 定位是运营级的互联网直播服务器集群，追求更好的概念完整性和最简单实现的代码。SRS 提供了丰富的接入方案将 RTMP 流接入 SRS， 包括推送 RTMP 到 SRS、推送 RTSP/UDP/FLV 到 SRS、拉取流到 SRS。 SRS 还支持将接入的 RTMP 流进行各种变换，譬如将 RTMP 流转码、流截图、 转发给其他服务器、转封装成 HTTP-FLV 流、转封装成 HLS、 转封装成 HDS、转封装成 DASH、录制成 FLV/MP4。SRS 包含支大规模集群如 CDN 业务的关键特性， 譬如 RTMP 多级集群、源站集群、VHOST 虚拟服务器 、 无中断服务 Reload、HTTP-FLV 集群。此外，SRS 还提供丰富的应用接口， 包括 HTTP 回调、安全策略 Security、HTTP API 接口、 RTMP 测速。SRS 在源站和 CDN 集群中都得到了广泛的应用 Applications。</p>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-43-28.png" class="">
+<h4 id="VLC（拉流）"><a class="header-anchor" href="#VLC（拉流）">¶</a><a href="https://www.videolan.org/vlc/">VLC</a>（拉流）</h4>
+<blockquote>
+<p>VLC 是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议。</p>
+</blockquote>
+<img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-30-03.png" class="">
+<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
+<p>依旧是留坑，看啥时候研究下 OBS，给当初的毕设软件换换血，再顺带把远程控制的功能一并做了。😁</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>OBS</tag>
+        <tag>SMTP</tag>
+        <tag>UDP</tag>
+      </tags>
   </entry>
   <entry>
     <title>简历</title>
@@ -1662,6 +1664,82 @@
       </tags>
   </entry>
   <entry>
+    <title>浅谈远程桌面</title>
+    <url>/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>为了能够流畅的使用远程桌面（GUI），我尝试了多款软件，也查了一些资料，在这里记录一下。</p>
+<span id="more"></span>
+<h3 id="协议"><a class="header-anchor" href="#协议">¶</a>协议</h3>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th><a href="https://support.microsoft.com/zh-cn/help/186607/understanding-the-remote-desktop-protocol-rdp">RDP</a></th>
+<th><a href="https://docs.vmware.com/cn/VMware-Horizon-7/7.2/com.vmware.horizon-view.installation.doc/GUID-E2FFCC1F-B14A-4A4E-A36C-994EACC542B6.html">PCoIP</a></th>
+<th><a href="https://en.wikipedia.org/wiki/Independent_Computing_Architecture">ICA</a></th>
+<th><a href="https://spice-space.org/">SPICE</a></th>
+<th><a href="https://en.wikipedia.org/wiki/RFB_protocol">RFB</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公司</td>
+<td>Microsoft</td>
+<td>VMWare</td>
+<td>Citrix</td>
+<td>Red Hat</td>
+<td>RealVNC</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>本地显卡渲染</td>
+<td>传输差分图像</td>
+<td>增强型 RDP</td>
+<td>KVM 虚拟化</td>
+<td>瘦客户端</td>
+</tr>
+<tr>
+<td>软件</td>
+<td>mstsc、FreeRDP</td>
+<td>TeamViwer、Splashtop</td>
+<td>Citrix Virtual</td>
+<td></td>
+<td>RealVNC、TightVNC</td>
+</tr>
+</tbody>
+</table>
+<p>另外，AnyDesk 和向日葵没找到具体协议信息，我个人用起来感觉是和 TeamViwer 一样的。</p>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-32.png" class="" title="盗图1">
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-42.png" class="" title="盗图2">
+<h3 id="建议"><a class="header-anchor" href="#建议">¶</a>建议</h3>
+<ol>
+<li>偶尔才用一次的朋友，用 QQ 或钉钉的远程协助功能就好</li>
+<li>首推 TeamViewer，综合实力杠杠的，虽然经常会检测到商用，然后就不免费了</li>
+</ol>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-06.png" class="" title="TeamViewer">
+<ol start="3">
+<li>自从 TeamViewer 把我 ban 掉后，向日葵已成为我的主力</li>
+</ol>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-52.png" class="" title="向日葵">
+<ol start="4">
+<li>其实 ZeroTier 等内网穿透方案，配合 mstsc 或 Splashtop 也挺好的</li>
+</ol>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-06-26.png" class="" title="mstsc">
+<ol start="5">
+<li>mstsc 由于是本地渲染，导致我远程玩全屏游戏的时候，会提示 DirectX 错误，具体原因待查</li>
+<li>Splashtop 的控制端和被控端是两个软件</li>
+</ol>
+<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
+<p>向日葵也是一款优秀的国产良心软件啊，👍</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>协议</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法小结之递归</title>
     <url>/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E9%80%92%E5%BD%92/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
@@ -1782,6 +1860,25 @@ n! = 1 x 2 x 3 x … x (n - 1) x n , n &gt; 0</p>
       </tags>
   </entry>
   <entry>
+    <title>职业规划有意义吗？</title>
+    <url>/2019/01/01/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92%E6%9C%89%E6%84%8F%E4%B9%89%E5%90%97%EF%BC%9F/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
+  <script id="hbeData" type="hbeData" data-hmacdigest="cb8a86e0474e2a26acb24c656b8b480d328849927727d90b4bdd41d90747d9f7">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46bfedddb10749696fe3a7ab39a5ca73e76c682e72046293012f754d757f8dbe2a0433638f0569053f413f4cfbfcd2381375c399070e87672bc7357ce5767e146f287b08b3c837fa8824ca3a930430ba181ae9358e87f682bb36d3ff932a0e566e7e4d7da6c9b9aec351a010fc4d162612c1e8959230a9420aace7cda6b55e6cbe89868c34d5d766cacb0c96cd9d151f5e5b1325839f3ba36532494a109e52b63fdf187cd778501751b7ffdc4585f6538e277bc5a1bd11a0e8b6bf2c6cfd6b255f479c06a721698ecb0a061fbecb81b474d13eefebb7663b62b6f09eaecc64d02d9547606bf08ff3ba666121df9fb6376f6d40fd2a05b0fe5f778aeb7951d52d8ff1f8be08723bd9af3d03377d580e3741aabeeb807ff437587063d7e44f18bac42820bf545c3f593072cb0d023f9677a6d16dec7ffa272fdd258c8572f804fc737ce3bad9a66d8ac7ba9e89f6f72bd8a4487ac4f8807cac0a55b4ee6010afee13c5fbb6ea3a766dd6ccc2135e0ae4238e380bc24fd78c2424a6c584a5d35ce54e353792303f1bcf0b915ade2faae82daa1d35b415287750c599ca72a945b8427321501737a38271d8a96e785601b887c304ae97d5f256c6cde99825d5f91992bdcb1a8c1cb6373aa96df663416ccb78bdd88c266a5718e999bf61f5603d352462fea4112e200a31bfb5ab4a1f560ff6a86f64eecaedef582131ec0a475107af7e6e5d145131f4ac50ae033d5c7ed8756236e798f3f994d46bd8891d28a0030079c5330a7217a62e7f6a7a80ab30a5bc147f739dbebf6f5aee41e6432f3918bcd62b06e90d4ad69e6c6a566954e960016c090c22825f33cc19f12abae780e191ce1ebec6b884e376ffea764b5e38c38e8d00d55e9ef7efa3ddc914519a6e8353450188d33bb0a992a2c5ca2428c58cbabff35ea2ecbc9de629571e922a720d1f3553d7366b99822cb4c5a20958ddb672a704de53d63f0b116d635830df6d5d79135bf11e96e1da771b11c4a890ee04d7310f81c7e6698ec218257b7b6c61964bb06a2c4644a2ecef73c5e1e46f9fff4b980c7f756e07173bdc969411f36fd7e7ad65ac5fde43bf3c8e8d0f5bc74c1986b49ce574bc6ce1e98fc5042a5234fb6e5a11401ff3c47d43ae229b3fb0603352b141526fb7cb5f3dec354ede2f10cb37e21facf1e1ccf427311af3ede4b919cc8857da902e98e89081bbf1b6bd095aee509b9671c3e193e87a3aa31435783175fb56dccc94388d37b1672aec7c4d30a8ec0419ee51c52f6d0b922e0465b81ecc102f9d86a6076f328dcbb673ce683c7c5f5104231ac836a33fc06078653837de36821dc246b03031b64c8c0782b21b6dd95e885fc416823f7da1657ffae01909bdbb54c8c3f69ba8970d9d0932bbdd463e80e151a4dec754b3c87a103d6f960af9bacc86a744d8a869079a6e9d10986b62071ed484c37b3733ad290063b7ca07977b33567411b029e9d4779c904a202311c5865c2da6bdac04bb33b733b43197515e009fdb9d190aad7a564d15b60c7503e2e44f48c789ed5c2fa5699b851f09581c552bd91e7c868e6c90cb11520a35fd3baeda120c3a6bf16b8239601c479e5f14e14ff56fc8dc809eacac8434b786a9207de0d937987d8841fa014f297e116f90e0b12250f4af171c66d5c1afe3d4c25bcdcdd2b2b677be0341d4530e5d1f835d2ef543c09f34c1111328aa2ca7aadc2ea0a515289fac9a17b4c77aef5f3dc06e66bc5fcc809ee51e5e31e121a0e2d187211ae88ca368a0b17e6e2d25c5f67442b14d15f2b2f57c347b27d5cb6a1f81aa39691146bf20e6f3677489d4a1bc58ee379a4c9435c44fdd4eaf6305155bf777d2465de6d9f095999f6b2fe530526274c01abc48064d89069d7aa80fa3d4c98a2b20751ed884454906b3df29674e43dc8539bf22992c14ed6df2bbe0223f4cb2ca4c9b36481bd279c45832eb54c535449ed8d48f80104340526b27e3562d4e7199b6db50b06223b0c3587d96c47af29da19b058dfcbc0bfb9413d4e5b44603bba49cc5de25fb45bea6eae7021ab916f5ad6dae6327f9ae4798f2fb2e010cc32d354484d3413f7bcabb88f18a0b57e712e5a64c07853621423252ac8f1b4a33e3f4cceab423d3a0962eeaf4386e526e08e194eb2fd95e9e314833372a620351db71c8c242db5220ff7b056fbb179c5403ba10270fd061cb8bed44d7f8e1cd69aca20b7c544021f7a883b75e10df4f47be3a092049cc9df5b8f806e765654fda6aabbbf7c6b5830e493f33572babf426d415927da9d2383af392b14b7d6a13bd4e9eff9a956c0edb0ef00927198a7679ad3b915eaf1cda6a630ca1893234bbac741a62bca83e3bbdbf0efe7f16bfb0189f5675ea41ebad6a28488958eccbe8d430eae6603ee4a6018c8dfa9453b17c272ebf2a9faa9e63053311e6339983832831949ba921918556b3aaedfbdbd3ae9a1509e734fea78cf3cae2900caad16abbbcbfa7ca46ee24205d57db99e0fc3e0573d9671633ab09f1f76de2c7361f28daf5c60c8094b2d354d89473e66d19e732d82156f2fa517f266c68661cc712607ece9ef132f30ef6781e40cbf80d77e8dea0ae88c3a817e7f95a5128ae9d94a8d3f50376e6e876bd13aa0faae9c852cf73caf76c5036f6b0409664c3836bb5c30277304ecf50eae5232dbd923b8dfb3a6f752a729dbc597e67143eac4ef215780790831ad420706b657627be7955963787b434b6f4888fa7555f51f14ee4bbbcd63baf1fe156358a847e42e8cde892fbeb2063d68260e8a922a5510ae02b628dc03d168a1c4a21357dea6c037dd2b7c836094195728b1ce8de65f334f28c7d86dfbfce9020e58c8ed7fce7406c3ff41dd70a51999f4c4970454cb601c29e757c64c5f11344a7cd13bfaf6a429261d07c3fc1f3a6fb15d5a2958fbf48e966bf195e925ec3ee3c245462f7b0999c9d2a302636c9b26dd24dc503b8204e3872763170e80d20e814c3323907c8c956366a15cd0c3193d7d9697c8c83d0f4ee7ff11fa9f624161206c9ebdc96dff29c72242904f8fd27c37881d8b86d24d704c95fb9a6d2e859e8530efbaa612703d960a3c85593ef02d749c3a9499dd3ce194e1d17184434aceaeff4ee5674150615aba9117e1aa2b51e7effeeb0b97142c0ce0555b5df86430ec3ba5ee44c34cb360506f301d4f9d214cec60c7e0f18ff60ea5b724b9f434b13f764c4a8e8ea877a970c74381a222da0aee43e9a43e24f4222e5bcf6f13747ec54d20878d386e7da19b0390ed8339fa83f1964c41074c3cd42850cd061405ee0c4139844d050611b5722c541c199a7395a5e8ebc90ff58af3b4dba684238bda3526cfdd2662a2493242394a934df257f8086ecd4302aa935f3c572cc2ca392ed9718455146c435b98bb694636556f0dca3bb395fe77b84395548d720c1b73562cd29100d06709fdce08e4f407e44e8742741e0528f061b5477c640d99875f56a65f75a7efb617c2e41e2435c4d344becf0d42ab4b4e516a7e0161e8852a4d6da7209040752b574fdcbb2442a19e9307b37e9cda7da2b428f93abfb51acb0d240d31f2e4d49c7d20c6d5f78247f7233ef8ef46e7f016e93edb4f9e46020b4943d723b4f1ba20bb46127859b4bd785cb30800b3453efe3cac9e7194f491a6f3297be0be56bd9f4567a5a7e42ac6adc09aebaf7d9e8376c8f012ffeebbbe6530ab69e21711afa3cce94b9ae4153cb09311b3c94afa0608233bd80aaa78be9720d17e995142cc2ccebc81b73974d0313dc581ade0266f86c28f4a184b0f92c79795733f4b19c8b633e6d9e3cc805d415b70f0227e8f0ef8703bf227c3c41df19194bc7b4c19618f7825bf80c2ff48c27d5729a4acd62369d3bc3e219cb0b68a5f54e6bc23c5ea7adf7caabaee730acec58c1aaa8a4aac32d36ad6bb0bb453b9a55be4401fb00ef44a8863497db2cffc772440f3f802ab6d99fea55027bd73596bd1811098f7b2c0d904020d4e79b9c03641d333e30175266ff2bf30f86ab1</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-blink">
+      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>自动更新功能设计与实现</title>
     <url>/2021/04/19/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<h1>前言</h1>
@@ -1900,20 +1997,36 @@ end
       </categories>
   </entry>
   <entry>
-    <title>职业规划有意义吗？</title>
-    <url>/2019/01/01/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92%E6%9C%89%E6%84%8F%E4%B9%89%E5%90%97%EF%BC%9F/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
-  <script id="hbeData" type="hbeData" data-hmacdigest="cb8a86e0474e2a26acb24c656b8b480d328849927727d90b4bdd41d90747d9f7">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46bfedddb10749696fe3a7ab39a5ca73e76c682e72046293012f754d757f8dbe2a0433638f0569053f413f4cfbfcd2381375c399070e87672bc7357ce5767e146f287b08b3c837fa8824ca3a930430ba181ae9358e87f682bb36d3ff932a0e566e7e4d7da6c9b9aec351a010fc4d162612c1e8959230a9420aace7cda6b55e6cbe89868c34d5d766cacb0c96cd9d151f5e5b1325839f3ba36532494a109e52b63fdf187cd778501751b7ffdc4585f6538e277bc5a1bd11a0e8b6bf2c6cfd6b255f479c06a721698ecb0a061fbecb81b474d13eefebb7663b62b6f09eaecc64d02d9547606bf08ff3ba666121df9fb6376f6d40fd2a05b0fe5f778aeb7951d52d8ff1f8be08723bd9af3d03377d580e3741aabeeb807ff437587063d7e44f18bac42820bf545c3f593072cb0d023f9677a6d16dec7ffa272fdd258c8572f804fc737ce3bad9a66d8ac7ba9e89f6f72bd8a4487ac4f8807cac0a55b4ee6010afee13c5fbb6ea3a766dd6ccc2135e0ae4238e380bc24fd78c2424a6c584a5d35ce54e353792303f1bcf0b915ade2faae82daa1d35b415287750c599ca72a945b8427321501737a38271d8a96e785601b887c304ae97d5f256c6cde99825d5f91992bdcb1a8c1cb6373aa96df663416ccb78bdd88c266a5718e999bf61f5603d352462fea4112e200a31bfb5ab4a1f560ff6a86f64eecaedef582131ec0a475107af7e6e5d145131f4ac50ae033d5c7ed8756236e798f3f994d46bd8891d28a0030079c5330a7217a62e7f6a7a80ab30a5bc147f739dbebf6f5aee41e6432f3918bcd62b06e90d4ad69e6c6a566954e960016c090c22825f33cc19f12abae780e191ce1ebec6b884e376ffea764b5e38c38e8d00d55e9ef7efa3ddc914519a6e8353450188d33bb0a992a2c5ca2428c58cbabff35ea2ecbc9de629571e922a720d1f3553d7366b99822cb4c5a20958ddb672a704de53d63f0b116d635830df6d5d79135bf11e96e1da771b11c4a890ee04d7310f81c7e6698ec218257b7b6c61964bb06a2c4644a2ecef73c5e1e46f9fff4b980c7f756e07173bdc969411f36fd7e7ad65ac5fde43bf3c8e8d0f5bc74c1986b49ce574bc6ce1e98fc5042a5234fb6e5a11401ff3c47d43ae229b3fb0603352b141526fb7cb5f3dec354ede2f10cb37e21facf1e1ccf427311af3ede4b919cc8857da902e98e89081bbf1b6bd095aee509b9671c3e193e87a3aa31435783175fb56dccc94388d37b1672aec7c4d30a8ec0419ee51c52f6d0b922e0465b81ecc102f9d86a6076f328dcbb673ce683c7c5f5104231ac836a33fc06078653837de36821dc246b03031b64c8c0782b21b6dd95e885fc416823f7da1657ffae01909bdbb54c8c3f69ba8970d9d0932bbdd463e80e151a4dec754b3c87a103d6f960af9bacc86a744d8a869079a6e9d10986b62071ed484c37b3733ad290063b7ca07977b33567411b029e9d4779c904a202311c5865c2da6bdac04bb33b733b43197515e009fdb9d190aad7a564d15b60c7503e2e44f48c789ed5c2fa5699b851f09581c552bd91e7c868e6c90cb11520a35fd3baeda120c3a6bf16b8239601c479e5f14e14ff56fc8dc809eacac8434b786a9207de0d937987d8841fa014f297e116f90e0b12250f4af171c66d5c1afe3d4c25bcdcdd2b2b677be0341d4530e5d1f835d2ef543c09f34c1111328aa2ca7aadc2ea0a515289fac9a17b4c77aef5f3dc06e66bc5fcc809ee51e5e31e121a0e2d187211ae88ca368a0b17e6e2d25c5f67442b14d15f2b2f57c347b27d5cb6a1f81aa39691146bf20e6f3677489d4a1bc58ee379a4c9435c44fdd4eaf6305155bf777d2465de6d9f095999f6b2fe530526274c01abc48064d89069d7aa80fa3d4c98a2b20751ed884454906b3df29674e43dc8539bf22992c14ed6df2bbe0223f4cb2ca4c9b36481bd279c45832eb54c535449ed8d48f80104340526b27e3562d4e7199b6db50b06223b0c3587d96c47af29da19b058dfcbc0bfb9413d4e5b44603bba49cc5de25fb45bea6eae7021ab916f5ad6dae6327f9ae4798f2fb2e010cc32d354484d3413f7bcabb88f18a0b57e712e5a64c07853621423252ac8f1b4a33e3f4cceab423d3a0962eeaf4386e526e08e194eb2fd95e9e314833372a620351db71c8c242db5220ff7b056fbb179c5403ba10270fd061cb8bed44d7f8e1cd69aca20b7c544021f7a883b75e10df4f47be3a092049cc9df5b8f806e765654fda6aabbbf7c6b5830e493f33572babf426d415927da9d2383af392b14b7d6a13bd4e9eff9a956c0edb0ef00927198a7679ad3b915eaf1cda6a630ca1893234bbac741a62bca83e3bbdbf0efe7f16bfb0189f5675ea41ebad6a28488958eccbe8d430eae6603ee4a6018c8dfa9453b17c272ebf2a9faa9e63053311e6339983832831949ba921918556b3aaedfbdbd3ae9a1509e734fea78cf3cae2900caad16abbbcbfa7ca46ee24205d57db99e0fc3e0573d9671633ab09f1f76de2c7361f28daf5c60c8094b2d354d89473e66d19e732d82156f2fa517f266c68661cc712607ece9ef132f30ef6781e40cbf80d77e8dea0ae88c3a817e7f95a5128ae9d94a8d3f50376e6e876bd13aa0faae9c852cf73caf76c5036f6b0409664c3836bb5c30277304ecf50eae5232dbd923b8dfb3a6f752a729dbc597e67143eac4ef215780790831ad420706b657627be7955963787b434b6f4888fa7555f51f14ee4bbbcd63baf1fe156358a847e42e8cde892fbeb2063d68260e8a922a5510ae02b628dc03d168a1c4a21357dea6c037dd2b7c836094195728b1ce8de65f334f28c7d86dfbfce9020e58c8ed7fce7406c3ff41dd70a51999f4c4970454cb601c29e757c64c5f11344a7cd13bfaf6a429261d07c3fc1f3a6fb15d5a2958fbf48e966bf195e925ec3ee3c245462f7b0999c9d2a302636c9b26dd24dc503b8204e3872763170e80d20e814c3323907c8c956366a15cd0c3193d7d9697c8c83d0f4ee7ff11fa9f624161206c9ebdc96dff29c72242904f8fd27c37881d8b86d24d704c95fb9a6d2e859e8530efbaa612703d960a3c85593ef02d749c3a9499dd3ce194e1d17184434aceaeff4ee5674150615aba9117e1aa2b51e7effeeb0b97142c0ce0555b5df86430ec3ba5ee44c34cb360506f301d4f9d214cec60c7e0f18ff60ea5b724b9f434b13f764c4a8e8ea877a970c74381a222da0aee43e9a43e24f4222e5bcf6f13747ec54d20878d386e7da19b0390ed8339fa83f1964c41074c3cd42850cd061405ee0c4139844d050611b5722c541c199a7395a5e8ebc90ff58af3b4dba684238bda3526cfdd2662a2493242394a934df257f8086ecd4302aa935f3c572cc2ca392ed9718455146c435b98bb694636556f0dca3bb395fe77b84395548d720c1b73562cd29100d06709fdce08e4f407e44e8742741e0528f061b5477c640d99875f56a65f75a7efb617c2e41e2435c4d344becf0d42ab4b4e516a7e0161e8852a4d6da7209040752b574fdcbb2442a19e9307b37e9cda7da2b428f93abfb51acb0d240d31f2e4d49c7d20c6d5f78247f7233ef8ef46e7f016e93edb4f9e46020b4943d723b4f1ba20bb46127859b4bd785cb30800b3453efe3cac9e7194f491a6f3297be0be56bd9f4567a5a7e42ac6adc09aebaf7d9e8376c8f012ffeebbbe6530ab69e21711afa3cce94b9ae4153cb09311b3c94afa0608233bd80aaa78be9720d17e995142cc2ccebc81b73974d0313dc581ade0266f86c28f4a184b0f92c79795733f4b19c8b633e6d9e3cc805d415b70f0227e8f0ef8703bf227c3c41df19194bc7b4c19618f7825bf80c2ff48c27d5729a4acd62369d3bc3e219cb0b68a5f54e6bc23c5ea7adf7caabaee730acec58c1aaa8a4aac32d36ad6bb0bb453b9a55be4401fb00ef44a8863497db2cffc772440f3f802ab6d99fea55027bd73596bd1811098f7b2c0d904020d4e79b9c03641d333e30175266ff2bf30f86ab1</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-blink">
-      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <title>获取本机WLAN密码</title>
+    <url>/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p><a href="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/get_wifi_password.bat"><strong>下载运行此BAT脚本</strong></a>，会在当前目录输出<code>WiFi.txt</code>文件。</p>
+<span id="more"></span>
+<hr>
+<h2 id="方式一：PowerShell脚本"><a class="header-anchor" href="#方式一：PowerShell脚本">¶</a>方式一：PowerShell脚本</h2>
+<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">(netsh wlan show profiles) | <span class="built_in">Select-String</span> <span class="string">&quot;\:(.+)<span class="variable">$</span>&quot;</span> | %&#123;<span class="variable">$name</span>=<span class="variable">$_</span>.Matches.Groups[<span class="number">1</span>].Value.Trim(); <span class="variable">$_</span>&#125; | %&#123;(netsh wlan show profile name=<span class="string">&quot;<span class="variable">$name</span>&quot;</span> key=<span class="built_in">clear</span>)&#125;  | <span class="built_in">Select-String</span> <span class="string">&quot;(关键内容|Key Content)\W+\:(.+)<span class="variable">$</span>&quot;</span> | %&#123;<span class="variable">$pass</span>=<span class="variable">$_</span>.Matches.Groups[<span class="number">2</span>].Value.Trim(); <span class="variable">$_</span>&#125; | %&#123; [<span class="type">pscustomobject</span>]<span class="selector-tag">@</span>&#123; <span class="string">&#x27;名称&#x27;</span>=<span class="variable">$name</span>;<span class="string">&#x27;密码&#x27;</span>=<span class="variable">$pass</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>鼠标右键单击<strong>开始菜单按钮</strong>，打开<strong>PowerShell</strong></li>
+</ol>
+<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-40-31.png" class="">
+<ol start="2">
+<li>将上述代码粘贴到终端</li>
+</ol>
+<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-42-01.png" class="">
+<ol start="3">
+<li>敲击回车键</li>
+</ol>
+<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-42-31.png" class="">
+<h2 id="方式二：CMD脚本"><a class="header-anchor" href="#方式二：CMD脚本">¶</a>方式二：CMD脚本</h2>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">color</span> <span class="number">2</span>f</span><br><span class="line"><span class="built_in">mode</span> <span class="built_in">con</span>: cols=<span class="number">40</span> lines=<span class="number">15</span></span><br><span class="line"><span class="built_in">title</span> WiFi密码查询</span><br><span class="line"><span class="built_in">echo</span> 正在查询结果</span><br><span class="line"><span class="built_in">setlocal</span> enabledelayedexpansion</span><br><span class="line"><span class="keyword">for</span> /f &quot;tokens=<span class="number">2</span>* delims=:&quot; <span class="variable">%%i</span> <span class="keyword">in</span> (&#x27;netsh wlan show profiles&#x27;) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">set</span> str=<span class="variable">%%i</span></span><br><span class="line">    <span class="keyword">for</span> /f &quot;tokens=<span class="number">3</span>* delims= &quot; <span class="variable">%%d</span> <span class="keyword">in</span> (&#x27;netsh wlan show profiles key^=clear name^=&quot;<span class="variable">!str:~1!</span>&quot;^| <span class="built_in">findstr</span> &quot;关键内容&quot;&#x27;) <span class="keyword">do</span> (</span><br><span class="line">        <span class="built_in">echo</span> &quot;<span class="variable">!str:~1!</span>&quot;密码为：【<span class="variable">%%d</span>】</span><br><span class="line">        <span class="built_in">echo</span> &quot;<span class="variable">!str:~1!</span>&quot;密码为：【<span class="variable">%%d</span>】&gt;&gt;WiFi.txt</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"><span class="built_in">echo</span> 保存在脚本所在目录的WiFi.txt文件中</span><br><span class="line"><span class="built_in">echo</span> 任意键退出查询</span><br><span class="line"><span class="built_in">pause</span>&gt;<span class="built_in">nul</span></span><br></pre></td></tr></table></figure>
+<p>将上述代码以ANSI编码方式保存到<code>.txt</code>文件，然后将文件后缀名改为<code>.bat</code>。</p>
+<hr>
+<h1>后记</h1>
+<ul>
+<li>PowerShell脚本，感谢作者：<a href="https://www.52pojie.cn/home.php?mod=space&amp;uid=999304">kumamiko</a></li>
+<li>CMD脚本，感谢作者</li>
+</ul>
+]]></content>
       <categories>
         <category>随笔</category>
       </categories>
@@ -2266,109 +2379,5 @@ end
       <categories>
         <category>记录</category>
       </categories>
-  </entry>
-  <entry>
-    <title>创建Windows快捷方式（相对路径）</title>
-    <url>/2021/07/19/%E5%88%9B%E5%BB%BAWindows%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%EF%BC%88%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%EF%BC%89/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>相对路径的快捷方式，通常要求删除“起始位置”属性的值，这会导致一些依赖“起始位置”的程序报错，请谨慎使用。</p>
-<span id="more"></span>
-<hr>
-<h1>CMD</h1>
-<h2 id="目标"><a class="header-anchor" href="#目标">¶</a>目标</h2>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="variable">%windir%</span>\system32\<span class="built_in">cmd</span>.exe /c <span class="built_in">start</span> directory\app.exe</span><br></pre></td></tr></table></figure>
-<h2 id="起始位置"><a class="header-anchor" href="#起始位置">¶</a>起始位置</h2>
-<p>清空</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<h1>Explorer</h1>
-<h2 id="目标-v2"><a class="header-anchor" href="#目标-v2">¶</a>目标</h2>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">explorer.exe directory\app.exe</span><br></pre></td></tr></table></figure>
-<h2 id="起始位置-v2"><a class="header-anchor" href="#起始位置-v2">¶</a>起始位置</h2>
-<p>清空</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<hr>
-<h1>后记</h1>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>获取本机WLAN密码</title>
-    <url>/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p><a href="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/get_wifi_password.bat"><strong>下载运行此BAT脚本</strong></a>，会在当前目录输出<code>WiFi.txt</code>文件。</p>
-<span id="more"></span>
-<hr>
-<h2 id="方式一：PowerShell脚本"><a class="header-anchor" href="#方式一：PowerShell脚本">¶</a>方式一：PowerShell脚本</h2>
-<figure class="highlight ps"><table><tr><td class="code"><pre><span class="line">(netsh wlan show profiles) | <span class="built_in">Select-String</span> <span class="string">&quot;\:(.+)<span class="variable">$</span>&quot;</span> | %&#123;<span class="variable">$name</span>=<span class="variable">$_</span>.Matches.Groups[<span class="number">1</span>].Value.Trim(); <span class="variable">$_</span>&#125; | %&#123;(netsh wlan show profile name=<span class="string">&quot;<span class="variable">$name</span>&quot;</span> key=<span class="built_in">clear</span>)&#125;  | <span class="built_in">Select-String</span> <span class="string">&quot;(关键内容|Key Content)\W+\:(.+)<span class="variable">$</span>&quot;</span> | %&#123;<span class="variable">$pass</span>=<span class="variable">$_</span>.Matches.Groups[<span class="number">2</span>].Value.Trim(); <span class="variable">$_</span>&#125; | %&#123; [<span class="type">pscustomobject</span>]<span class="selector-tag">@</span>&#123; <span class="string">&#x27;名称&#x27;</span>=<span class="variable">$name</span>;<span class="string">&#x27;密码&#x27;</span>=<span class="variable">$pass</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>鼠标右键单击<strong>开始菜单按钮</strong>，打开<strong>PowerShell</strong></li>
-</ol>
-<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-40-31.png" class="">
-<ol start="2">
-<li>将上述代码粘贴到终端</li>
-</ol>
-<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-42-01.png" class="">
-<ol start="3">
-<li>敲击回车键</li>
-</ol>
-<img data-src="/2021/07/28/%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAWLAN%E5%AF%86%E7%A0%81/2021-07-28-16-42-31.png" class="">
-<h2 id="方式二：CMD脚本"><a class="header-anchor" href="#方式二：CMD脚本">¶</a>方式二：CMD脚本</h2>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">color</span> <span class="number">2</span>f</span><br><span class="line"><span class="built_in">mode</span> <span class="built_in">con</span>: cols=<span class="number">40</span> lines=<span class="number">15</span></span><br><span class="line"><span class="built_in">title</span> WiFi密码查询</span><br><span class="line"><span class="built_in">echo</span> 正在查询结果</span><br><span class="line"><span class="built_in">setlocal</span> enabledelayedexpansion</span><br><span class="line"><span class="keyword">for</span> /f &quot;tokens=<span class="number">2</span>* delims=:&quot; <span class="variable">%%i</span> <span class="keyword">in</span> (&#x27;netsh wlan show profiles&#x27;) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">set</span> str=<span class="variable">%%i</span></span><br><span class="line">    <span class="keyword">for</span> /f &quot;tokens=<span class="number">3</span>* delims= &quot; <span class="variable">%%d</span> <span class="keyword">in</span> (&#x27;netsh wlan show profiles key^=clear name^=&quot;<span class="variable">!str:~1!</span>&quot;^| <span class="built_in">findstr</span> &quot;关键内容&quot;&#x27;) <span class="keyword">do</span> (</span><br><span class="line">        <span class="built_in">echo</span> &quot;<span class="variable">!str:~1!</span>&quot;密码为：【<span class="variable">%%d</span>】</span><br><span class="line">        <span class="built_in">echo</span> &quot;<span class="variable">!str:~1!</span>&quot;密码为：【<span class="variable">%%d</span>】&gt;&gt;WiFi.txt</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"><span class="built_in">echo</span> 保存在脚本所在目录的WiFi.txt文件中</span><br><span class="line"><span class="built_in">echo</span> 任意键退出查询</span><br><span class="line"><span class="built_in">pause</span>&gt;<span class="built_in">nul</span></span><br></pre></td></tr></table></figure>
-<p>将上述代码以ANSI编码方式保存到<code>.txt</code>文件，然后将文件后缀名改为<code>.bat</code>。</p>
-<hr>
-<h1>后记</h1>
-<ul>
-<li>PowerShell脚本，感谢作者：<a href="https://www.52pojie.cn/home.php?mod=space&amp;uid=999304">kumamiko</a></li>
-<li>CMD脚本，感谢作者</li>
-</ul>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Github添加SSH密钥</title>
-    <url>/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>初次安装 Git 到 Windows 上，手动创建 SSH 密钥并添加到 GitHub 上。</p>
-<p>【转载】 <a href="https://docs.github.com/cn/github/authenticating-to-github/connecting-to-github-with-ssh">使用 SSH 连接到 GitHub</a></p>
-<span id="more"></span>
-<hr>
-<h1>生成新 SSH 密钥</h1>
-<ol>
-<li>打开 Git Bash 或 其他终端（例如PowerShell）。</li>
-<li>粘贴下面的文本（替换为您的 GitHub 电子邮件地址）。</li>
-</ol>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
-<p>如果您使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span> -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
-<p>这将创建以所提供的电子邮件地址为标签的新 SSH 密钥。</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Generating public/private ed25519 key pair.</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>提示您“Enter a file in which to save the key（输入要保存密钥的文件）”时，按 Enter 键。 这将接受默认文件位置。</li>
-</ol>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter a file <span class="keyword">in</span> which to save the key (C:\Users\htlsmile/.ssh/id_ed25519):[Press enter]</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>在提示时输入安全密码。 更多信息请参阅“<a href="https://docs.github.com/cn/articles/working-with-ssh-key-passphrases">使用 SSH 密钥密码</a>”。</li>
-</ol>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="built_in">Type</span> a passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [<span class="built_in">Type</span> passphrase again]</span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-35-10.png" class="" title="生成SSH密钥">
-<h1>修改 SSH 私钥的密码</h1>
-<p>在 <code>C:\Users\htlsmile\.ssh</code> 目录里启动终端，针对特定的私钥文件（例如 <code>id_ed25519</code> ）执行以下命令</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -f id_ed25519 -p</span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-42-13.png" class="" title="修改SSH私钥密码">
-<h1>Git 全局配置</h1>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;htlsmile&quot;</span><br><span class="line">git config --global user.email &quot;htlsmile@outlook.com&quot;</span><br><span class="line">git config --global http.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1>后记</h1>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>教程</tag>
-      </tags>
   </entry>
 </search>
