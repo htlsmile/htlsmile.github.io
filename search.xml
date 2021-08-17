@@ -38,6 +38,22 @@
       </categories>
   </entry>
   <entry>
+    <title>AES加密</title>
+    <url>/2019/12/29/AES%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[<h3 id="代码记录"><a class="header-anchor" href="#代码记录">¶</a>代码记录</h3>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 基于Rijndael算法实现的AES加密类</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">public static class Aes</span><br><span class="line">&#123;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 对称算法的密钥</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private static readonly byte[] Key = Convert.FromBase64String(&quot;rAO85BOVE3bIh2KEjbFlQ7uVYjzD5UdHGPET2YnDxbM=&quot;);</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 对称算法的初始化向量</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private static readonly byte[] IV = Convert.FromBase64String(&quot;fsUfF+aIEeTsp9SfmMvHkA==&quot;);</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 加密</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;plainText&quot;&gt;明文&lt;/param&gt;</span><br><span class="line">    /// &lt;param name=&quot;encoding&quot;&gt;编码方式（默认为UTF8）&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;密文（Base64编码）&lt;/returns&gt;</span><br><span class="line">    public static string Encrypt(string plainText, Encoding encoding = null)</span><br><span class="line">    &#123;</span><br><span class="line">        encoding = encoding ?? Encoding.UTF8;</span><br><span class="line">        using (var rij = new RijndaelManaged &#123; Key = Key, IV = IV, Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7 &#125;)</span><br><span class="line">        &#123;</span><br><span class="line">            var plainBytes = encoding.GetBytes(plainText);</span><br><span class="line">            return Convert.ToBase64String(rij.CreateEncryptor().TransformFinalBlock(plainBytes, 0, plainBytes.Length));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 解密</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;cipherText&quot;&gt;密文（Base64编码）&lt;/param&gt;</span><br><span class="line">    /// &lt;param name=&quot;encoding&quot;&gt;编码方式（默认为UTF8）&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;明文&lt;/returns&gt;</span><br><span class="line">    public static string Decrypt(string cipherText, Encoding encoding = null)</span><br><span class="line">    &#123;</span><br><span class="line">        encoding = encoding ?? Encoding.UTF8;</span><br><span class="line">        using (var rij = new RijndaelManaged &#123; Key = Key, IV = IV, Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7 &#125;)</span><br><span class="line">        &#123;</span><br><span class="line">            var cipherBytes = Convert.FromBase64String(cipherText);</span><br><span class="line">            return encoding.GetString(rij.CreateDecryptor().TransformFinalBlock(cipherBytes, 0, cipherBytes.Length));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>.NET</tag>
+        <tag>Framework</tag>
+        <tag>Core</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker的使用</title>
     <url>/2018/04/15/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h3 id="Docker-常用命令"><a class="header-anchor" href="#Docker-常用命令">¶</a>Docker 常用命令</h3>
@@ -87,19 +103,59 @@
       </tags>
   </entry>
   <entry>
-    <title>AES加密</title>
-    <url>/2019/12/29/AES%E5%8A%A0%E5%AF%86/</url>
-    <content><![CDATA[<h3 id="代码记录"><a class="header-anchor" href="#代码记录">¶</a>代码记录</h3>
+    <title>Github添加SSH密钥</title>
+    <url>/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>初次安装 Git 到 Windows 上，手动创建 SSH 密钥并添加到 GitHub 上。</p>
+<p>【转载】 <a href="https://docs.github.com/cn/github/authenticating-to-github/connecting-to-github-with-ssh">使用 SSH 连接到 GitHub</a></p>
 <span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 基于Rijndael算法实现的AES加密类</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">public static class Aes</span><br><span class="line">&#123;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 对称算法的密钥</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private static readonly byte[] Key = Convert.FromBase64String(&quot;rAO85BOVE3bIh2KEjbFlQ7uVYjzD5UdHGPET2YnDxbM=&quot;);</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 对称算法的初始化向量</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private static readonly byte[] IV = Convert.FromBase64String(&quot;fsUfF+aIEeTsp9SfmMvHkA==&quot;);</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 加密</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;plainText&quot;&gt;明文&lt;/param&gt;</span><br><span class="line">    /// &lt;param name=&quot;encoding&quot;&gt;编码方式（默认为UTF8）&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;密文（Base64编码）&lt;/returns&gt;</span><br><span class="line">    public static string Encrypt(string plainText, Encoding encoding = null)</span><br><span class="line">    &#123;</span><br><span class="line">        encoding = encoding ?? Encoding.UTF8;</span><br><span class="line">        using (var rij = new RijndaelManaged &#123; Key = Key, IV = IV, Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7 &#125;)</span><br><span class="line">        &#123;</span><br><span class="line">            var plainBytes = encoding.GetBytes(plainText);</span><br><span class="line">            return Convert.ToBase64String(rij.CreateEncryptor().TransformFinalBlock(plainBytes, 0, plainBytes.Length));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 解密</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;cipherText&quot;&gt;密文（Base64编码）&lt;/param&gt;</span><br><span class="line">    /// &lt;param name=&quot;encoding&quot;&gt;编码方式（默认为UTF8）&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;明文&lt;/returns&gt;</span><br><span class="line">    public static string Decrypt(string cipherText, Encoding encoding = null)</span><br><span class="line">    &#123;</span><br><span class="line">        encoding = encoding ?? Encoding.UTF8;</span><br><span class="line">        using (var rij = new RijndaelManaged &#123; Key = Key, IV = IV, Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7 &#125;)</span><br><span class="line">        &#123;</span><br><span class="line">            var cipherBytes = Convert.FromBase64String(cipherText);</span><br><span class="line">            return encoding.GetString(rij.CreateDecryptor().TransformFinalBlock(cipherBytes, 0, cipherBytes.Length));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>生成新 SSH 密钥</h1>
+<ol>
+<li>打开 Git Bash 或 其他终端（例如PowerShell）。</li>
+<li>粘贴下面的文本（替换为您的 GitHub 电子邮件地址）。</li>
+</ol>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<p>如果您使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span> -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<p>这将创建以所提供的电子邮件地址为标签的新 SSH 密钥。</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Generating public/private ed25519 key pair.</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>提示您“Enter a file in which to save the key（输入要保存密钥的文件）”时，按 Enter 键。 这将接受默认文件位置。</li>
+</ol>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter a file <span class="keyword">in</span> which to save the key (C:\Users\htlsmile/.ssh/id_ed25519):[Press enter]</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在提示时输入安全密码。 更多信息请参阅“<a href="https://docs.github.com/cn/articles/working-with-ssh-key-passphrases">使用 SSH 密钥密码</a>”。</li>
+</ol>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="built_in">Type</span> a passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [<span class="built_in">Type</span> passphrase again]</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-35-10.png" class="" title="生成SSH密钥">
+<h1>修改 SSH 私钥的密码</h1>
+<p>在 <code>C:\Users\htlsmile\.ssh</code> 目录里启动终端，针对特定的私钥文件（例如 <code>id_ed25519</code> ）执行以下命令</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -f id_ed25519 -p</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-42-13.png" class="" title="修改SSH私钥密码">
+<h1>Git 全局配置</h1>
+<p>可以直接打开 <code>‪C:\Users\htlsmile\.gitconfig</code> 文件手动配置。</p>
+<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-13-09-17-22.png" class="" title=".gitconfig">
+<h2 id="查看全局配置"><a class="header-anchor" href="#查看全局配置">¶</a>查看全局配置</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
+<h2 id="设置用户名与邮箱"><a class="header-anchor" href="#设置用户名与邮箱">¶</a>设置用户名与邮箱</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;htlsmile&quot;</span><br><span class="line">git config --global user.email &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="设置全局代理"><a class="header-anchor" href="#设置全局代理">¶</a>设置全局代理</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="取消全局代理"><a class="header-anchor" href="#取消全局代理">¶</a>取消全局代理</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+<h2 id="设置全局代理（仅对-github-com-生效）"><a class="header-anchor" href="#设置全局代理（仅对-github-com-生效）">¶</a>设置全局代理（仅对 <a href="http://github.com">github.com</a> 生效）</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global http.https://github.com.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.https://github.com.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="取消全局代理（仅对-github-com-生效）"><a class="header-anchor" href="#取消全局代理（仅对-github-com-生效）">¶</a>取消全局代理（仅对 <a href="http://github.com">github.com</a> 生效）</h2>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.https://github.com.proxy</span><br><span class="line">git config --global --unset https.https://github.com.proxy</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>随笔</category>
       </categories>
       <tags>
-        <tag>.NET</tag>
-        <tag>Core</tag>
-        <tag>Framework</tag>
+        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
@@ -204,55 +260,616 @@
       </tags>
   </entry>
   <entry>
-    <title>Github添加SSH密钥</title>
-    <url>/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/</url>
+    <title>Office Tool Plus 使用教程</title>
+    <url>/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1>前言</h1>
-<p>初次安装 Git 到 Windows 上，手动创建 SSH 密钥并添加到 GitHub 上。</p>
-<p>【转载】 <a href="https://docs.github.com/cn/github/authenticating-to-github/connecting-to-github-with-ssh">使用 SSH 连接到 GitHub</a></p>
+<p>目前购买的电脑通常自带 <strong>Windows 家庭版</strong> 与 <strong>Office 家庭与学生版</strong> 的正版授权，所以本教程着重于安装激活Visio和Project。</p>
+<p>本篇内容参考<a href="https://www.coolhub.top/archives/14">[激活 Office] Office Tool Plus 入门教程</a>，感谢作者<a href="https://www.coolhub.top/"><strong>Yerong</strong></a></p>
 <span id="more"></span>
 <hr>
-<h1>生成新 SSH 密钥</h1>
-<ol>
-<li>打开 Git Bash 或 其他终端（例如PowerShell）。</li>
-<li>粘贴下面的文本（替换为您的 GitHub 电子邮件地址）。</li>
-</ol>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
-<p>如果您使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span> -C &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
-<p>这将创建以所提供的电子邮件地址为标签的新 SSH 密钥。</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Generating public/private ed25519 key pair.</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>提示您“Enter a file in which to save the key（输入要保存密钥的文件）”时，按 Enter 键。 这将接受默认文件位置。</li>
-</ol>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter a file <span class="keyword">in</span> which to save the key (C:\Users\htlsmile/.ssh/id_ed25519):[Press enter]</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>在提示时输入安全密码。 更多信息请参阅“<a href="https://docs.github.com/cn/articles/working-with-ssh-key-passphrases">使用 SSH 密钥密码</a>”。</li>
-</ol>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">&gt; Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="built_in">Type</span> a passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [<span class="built_in">Type</span> passphrase again]</span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-35-10.png" class="" title="生成SSH密钥">
-<h1>修改 SSH 私钥的密码</h1>
-<p>在 <code>C:\Users\htlsmile\.ssh</code> 目录里启动终端，针对特定的私钥文件（例如 <code>id_ed25519</code> ）执行以下命令</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -f id_ed25519 -p</span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-42-13.png" class="" title="修改SSH私钥密码">
-<h1>Git 全局配置</h1>
-<p>可以直接打开 <code>‪C:\Users\htlsmile\.gitconfig</code> 文件手动配置。</p>
-<img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-13-09-17-22.png" class="" title=".gitconfig">
-<h2 id="查看全局配置"><a class="header-anchor" href="#查看全局配置">¶</a>查看全局配置</h2>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
-<h2 id="设置用户名与邮箱"><a class="header-anchor" href="#设置用户名与邮箱">¶</a>设置用户名与邮箱</h2>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;htlsmile&quot;</span><br><span class="line">git config --global user.email &quot;htlsmile@outlook.com&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="设置-取消-全局代理"><a class="header-anchor" href="#设置-取消-全局代理">¶</a>设置/取消 全局代理</h2>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line"></span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-<h2 id="设置-取消-全局代理（仅对-github-com-生效）"><a class="header-anchor" href="#设置-取消-全局代理（仅对-github-com-生效）">¶</a>设置/取消 全局代理（仅对 <a href="http://github.com">github.com</a> 生效）</h2>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global http.https://github.com.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line">git config --global https.https://github.com.proxy &quot;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">10808</span>&quot;</span><br><span class="line"></span><br><span class="line">git config --global --unset http.https://github.com.proxy</span><br><span class="line">git config --global --unset https.https://github.com.proxy</span><br></pre></td></tr></table></figure>
+<h1>下载 Office Tool Plus</h1>
+<ul>
+<li>
+<p>官方网址：<a href="https://otp.landian.vip/zh-cn/">https://otp.landian.vip/zh-cn/</a></p>
+</li>
+<li>
+<p>下载地址：<a href="https://otp.landian.vip/redirect/download.html?type=runtime">独立运行（包含 .NET 5 Desktop Runtime）</a></p>
+</li>
+<li>
+<p>本地下载：<a href="/download/Office_Tool_with_runtime_v8.2.4.3.zip">Office Tool Plus (8.2.4.3)</a></p>
+</li>
+</ul>
+<h1>启动 Office Tool Plus</h1>
+<p>解压到目录中</p>
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-11-10-00.png" class="" title="目录结构">
+<p>双击 <strong>Office Tool Plus.exe</strong> 启动程序，如果报错，双击 <strong>RunMe.bat</strong> 启动</p>
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-10-36-41.png" class="" title="接受协议">
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-10-37-47.png" class="" title="主界面">
+<h1>部署 Office 组件</h1>
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-10-38-36.png" class="" title="部署按钮">
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-11-40-05.png" class="" title="已安装 Office 2019">
+<p>点击添加产品，选择需要的组件，例如 <strong>Visio</strong> 和 <strong>Project</strong>，下图所示为<strong>零售版</strong>，点击开始部署</p>
+<p><strong>注意：如果是准备通过设置KMS服务器激活，请选择Volume版本，即批量版。</strong></p>
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-11-54-04.png" class="" title="部署界面">
+<h1>激活 Office 组件（KMS激活，仅支持批量版，以 Visio 为例）</h1>
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-12-01-13.png" class="" title="激活按钮">
+<p><strong>要求</strong>：部署 Office 组件时，选择的是 <strong>Visio 专业版 2019 -批量版- [VisioPro2019Volume]</strong></p>
+<img data-src="/2021/08/17/Office-Tool-Plus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2021-08-17-12-05-49.png" class="" title="激活界面">
+<p>输入信息，依次点击安装许可证、安装密钥、保存设置、激活。</p>
+<h1>KMS激活信息（仅支持批量版）</h1>
+<ul>
+<li><strong>通用批量许可证密钥（GVLK）：</strong><a href="https://docs.microsoft.com/zh-cn/deployoffice/vlactivation/gvlks">用于 Office 2019 和 Office 2016 的 KMS 和基于 Active Directory 激活的 GVLK</a></li>
+<li><strong>KMS服务器列表：</strong><a href="https://www.coolhub.top/tech-articles/kms_list.html">KMS地址列表</a></li>
+</ul>
+<h2 id="Office-2019-的-GVLK"><a class="header-anchor" href="#Office-2019-的-GVLK">¶</a>Office 2019 的 GVLK</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>GVLK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Office 专业增强版 2019</td>
+<td>NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP</td>
+</tr>
+<tr>
+<td>Office 标准版 2019</td>
+<td>6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK</td>
+</tr>
+<tr>
+<td>Project 专业版 2019</td>
+<td>B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B</td>
+</tr>
+<tr>
+<td>Project 标准版 2019</td>
+<td>C4F7P-NCP8C-6CQPT-MQHV9-JXD2M</td>
+</tr>
+<tr>
+<td>Visio 专业版 2019</td>
+<td>9BGNQ-K37YR-RQHF2-38RQ3-7VCBB</td>
+</tr>
+<tr>
+<td>Visio 标准版 2019</td>
+<td>7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2</td>
+</tr>
+<tr>
+<td>Access 2019</td>
+<td>9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT</td>
+</tr>
+<tr>
+<td>Excel 2019</td>
+<td>TMJWT-YYNMB-3BKTF-644FC-RVXBD</td>
+</tr>
+<tr>
+<td>Outlook 2019</td>
+<td>7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK</td>
+</tr>
+<tr>
+<td>PowerPoint 2019</td>
+<td>RRNCX-C64HY-W2MM7-MCH9G-TJHMQ</td>
+</tr>
+<tr>
+<td>Publisher 2019</td>
+<td>G2KWX-3NW6P-PY93R-JXK2T-C9Y9V</td>
+</tr>
+<tr>
+<td>Skype for Business 2019</td>
+<td>NCJ33-JHBBY-HTK98-MYCV8-HMKHJ</td>
+</tr>
+<tr>
+<td>Word 2019</td>
+<td>PBX3G-NWMT6-Q7XBW-PYJGG-WXD33</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Office-2016-的-GVLK"><a class="header-anchor" href="#Office-2016-的-GVLK">¶</a>Office 2016 的 GVLK</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>GVLK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Office 专业增强版 2016</td>
+<td>XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99</td>
+</tr>
+<tr>
+<td>Office Standard 2016</td>
+<td>JNRGM-WHDWX-FJJG3-K47QV-DRTFM</td>
+</tr>
+<tr>
+<td>Project Professional 2016</td>
+<td>YG9NW-3K39V-2T3HJ-93F3Q-G83KT</td>
+</tr>
+<tr>
+<td>Project Standard 2016</td>
+<td>GNFHQ-F6YQM-KQDGJ-327XX-KQBVC</td>
+</tr>
+<tr>
+<td>Visio Professional 2016</td>
+<td>PD3PC-RHNGV-FXJ29-8JK7D-RJRJK</td>
+</tr>
+<tr>
+<td>Visio Standard 2016</td>
+<td>7WHWN-4T7MP-G96JF-G33KR-W8GF4</td>
+</tr>
+<tr>
+<td>Access 2016</td>
+<td>GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW</td>
+</tr>
+<tr>
+<td>Excel 2016</td>
+<td>9C2PK-NWTVB-JMPW8-BFT28-7FTBF</td>
+</tr>
+<tr>
+<td>OneNote 2016</td>
+<td>DR92N-9HTF2-97XKM-XW2WJ-XW3J6</td>
+</tr>
+<tr>
+<td>Outlook 2016</td>
+<td>R69KK-NTPKF-7M3Q4-QYBHW-6MT9B</td>
+</tr>
+<tr>
+<td>PowerPoint 2016</td>
+<td>J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6</td>
+</tr>
+<tr>
+<td>Publisher 2016</td>
+<td>F47MM-N3XJP-TQXJ9-BP99D-8837K</td>
+</tr>
+<tr>
+<td>Skype for Business 2016</td>
+<td>869NQ-FJ69K-466HW-QYCP2-DDBV6</td>
+</tr>
+<tr>
+<td>Word 2016</td>
+<td>WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6</td>
+</tr>
+</tbody>
+</table>
+<h2 id="KMS-地址列表"><a class="header-anchor" href="#KMS-地址列表">¶</a>KMS 地址列表</h2>
+<table>
+<thead>
+<tr>
+<th>KMS 主机</th>
+<th>成功率</th>
+<th>近期成功率</th>
+<th>成功</th>
+<th>超时</th>
+<th>失败</th>
+<th>平均延迟</th>
+<th>检测时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kms.loli.beer</td>
+<td>99%</td>
+<td>100%</td>
+<td>6422</td>
+<td>34</td>
+<td>4</td>
+<td>637ms</td>
+<td>08/17 17:10:00</td>
+</tr>
+<tr>
+<td>kms.loli.best</td>
+<td>99%</td>
+<td>100%</td>
+<td>6419</td>
+<td>26</td>
+<td>13</td>
+<td>2323ms</td>
+<td>08/17 17:10:01</td>
+</tr>
+<tr>
+<td><a href="http://kms.iaini.net">kms.iaini.net</a></td>
+<td>97%</td>
+<td>0%</td>
+<td>6267</td>
+<td>182</td>
+<td>9</td>
+<td>-</td>
+<td>08/17 17:10:01</td>
+</tr>
+<tr>
+<td><a href="http://kms.03k.org">kms.03k.org</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6449</td>
+<td>9</td>
+<td>0</td>
+<td>181ms</td>
+<td>08/17 17:10:02</td>
+</tr>
+<tr>
+<td><a href="http://kms.cangshui.net">kms.cangshui.net</a></td>
+<td>96%</td>
+<td>100%</td>
+<td>6244</td>
+<td>153</td>
+<td>61</td>
+<td>1381ms</td>
+<td>08/17 17:10:02</td>
+</tr>
+<tr>
+<td>kms.cary.tech</td>
+<td>99%</td>
+<td>100%</td>
+<td>6395</td>
+<td>60</td>
+<td>2</td>
+<td>1142ms</td>
+<td>08/17 17:10:03</td>
+</tr>
+<tr>
+<td><a href="http://kms.catqu.com">kms.catqu.com</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>5902</td>
+<td>0</td>
+<td>0</td>
+<td>281ms</td>
+<td>08/17 17:10:03</td>
+</tr>
+<tr>
+<td><a href="http://kms.cgtsoft.com">kms.cgtsoft.com</a></td>
+<td>99%</td>
+<td>90%</td>
+<td>6447</td>
+<td>1</td>
+<td>9</td>
+<td>665ms</td>
+<td>08/17 17:10:04</td>
+</tr>
+<tr>
+<td><a href="http://kms.ghpym.com">kms.ghpym.com</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6444</td>
+<td>11</td>
+<td>2</td>
+<td>281ms</td>
+<td>08/17 17:10:04</td>
+</tr>
+<tr>
+<td><a href="http://kms.heng07.com">kms.heng07.com</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6429</td>
+<td>23</td>
+<td>5</td>
+<td>884ms</td>
+<td>08/17 17:10:05</td>
+</tr>
+<tr>
+<td><a href="http://kms.mc06.net">kms.mc06.net</a></td>
+<td>93%</td>
+<td>100%</td>
+<td>5494</td>
+<td>390</td>
+<td>18</td>
+<td>238ms</td>
+<td>08/17 17:10:05</td>
+</tr>
+<tr>
+<td>kms.moeyuuko.top</td>
+<td>99%</td>
+<td>100%</td>
+<td>5896</td>
+<td>2</td>
+<td>4</td>
+<td>1076ms</td>
+<td>08/17 17:10:06</td>
+</tr>
+<tr>
+<td><a href="http://kms.sixyin.com">kms.sixyin.com</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6433</td>
+<td>12</td>
+<td>12</td>
+<td>332ms</td>
+<td>08/17 17:10:07</td>
+</tr>
+<tr>
+<td><a href="http://kms.wlrxy.cn">kms.wlrxy.cn</a></td>
+<td>95%</td>
+<td>100%</td>
+<td>6186</td>
+<td>271</td>
+<td>0</td>
+<td>294ms</td>
+<td>08/17 17:10:07</td>
+</tr>
+<tr>
+<td><a href="http://kms.wxlost.com">kms.wxlost.com</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6413</td>
+<td>0</td>
+<td>44</td>
+<td>4733ms</td>
+<td>08/17 17:10:07</td>
+</tr>
+<tr>
+<td><a href="http://xincheng213618.cn">xincheng213618.cn</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>5901</td>
+<td>1</td>
+<td>0</td>
+<td>301ms</td>
+<td>08/17 17:10:07</td>
+</tr>
+<tr>
+<td><a href="http://s8.now.im">s8.now.im</a></td>
+<td>90%</td>
+<td>70%</td>
+<td>5826</td>
+<td>413</td>
+<td>218</td>
+<td>1706ms</td>
+<td>08/17 17:10:18</td>
+</tr>
+<tr>
+<td><a href="http://home.aalook.com">home.aalook.com</a></td>
+<td>97%</td>
+<td>100%</td>
+<td>6291</td>
+<td>165</td>
+<td>0</td>
+<td>370ms</td>
+<td>08/17 17:10:18</td>
+</tr>
+<tr>
+<td>kms.000606.xyz</td>
+<td>99%</td>
+<td>100%</td>
+<td>6454</td>
+<td>2</td>
+<td>0</td>
+<td>263ms</td>
+<td>08/17 17:10:18</td>
+</tr>
+<tr>
+<td>kms.bearlele.top</td>
+<td>98%</td>
+<td>90%</td>
+<td>5824</td>
+<td>70</td>
+<td>7</td>
+<td>1519ms</td>
+<td>08/17 17:10:19</td>
+</tr>
+<tr>
+<td><a href="http://kms.bige0.com">kms.bige0.com</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6453</td>
+<td>3</td>
+<td>0</td>
+<td>324ms</td>
+<td>08/17 17:10:19</td>
+</tr>
+<tr>
+<td><a href="http://kms.ddddg.cn">kms.ddddg.cn</a></td>
+<td>89%</td>
+<td>0%</td>
+<td>5761</td>
+<td>649</td>
+<td>46</td>
+<td>-</td>
+<td>08/17 17:10:40</td>
+</tr>
+<tr>
+<td><a href="http://kms.jm33.me">kms.jm33.me</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6455</td>
+<td>1</td>
+<td>0</td>
+<td>315ms</td>
+<td>08/17 17:10:40</td>
+</tr>
+<tr>
+<td><a href="http://kms.kmzs123.cn">kms.kmzs123.cn</a></td>
+<td>99%</td>
+<td>90%</td>
+<td>5885</td>
+<td>10</td>
+<td>6</td>
+<td>357ms</td>
+<td>08/17 17:10:41</td>
+</tr>
+<tr>
+<td><a href="http://kms.kuretru.com">kms.kuretru.com</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6448</td>
+<td>6</td>
+<td>2</td>
+<td>318ms</td>
+<td>08/17 17:10:41</td>
+</tr>
+<tr>
+<td><a href="http://kms.litbear.cn">kms.litbear.cn</a></td>
+<td>94%</td>
+<td>100%</td>
+<td>6114</td>
+<td>86</td>
+<td>256</td>
+<td>272ms</td>
+<td>08/17 17:10:41</td>
+</tr>
+<tr>
+<td><a href="http://kms.luody.info">kms.luody.info</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>6454</td>
+<td>2</td>
+<td>0</td>
+<td>598ms</td>
+<td>08/17 17:10:42</td>
+</tr>
+<tr>
+<td><a href="http://kms.magicwall.org">kms.magicwall.org</a></td>
+<td>96%</td>
+<td>100%</td>
+<td>6217</td>
+<td>238</td>
+<td>1</td>
+<td>586ms</td>
+<td>08/17 17:10:42</td>
+</tr>
+<tr>
+<td><a href="http://kms.moeclub.org">kms.moeclub.org</a></td>
+<td>98%</td>
+<td>100%</td>
+<td>6352</td>
+<td>99</td>
+<td>5</td>
+<td>299ms</td>
+<td>08/17 17:10:42</td>
+</tr>
+<tr>
+<td>kms.myds.cloud</td>
+<td>96%</td>
+<td>100%</td>
+<td>5443</td>
+<td>178</td>
+<td>1</td>
+<td>621ms</td>
+<td>08/17 17:10:43</td>
+</tr>
+<tr>
+<td><a href="http://kms.sdit163.com">kms.sdit163.com</a></td>
+<td>98%</td>
+<td>100%</td>
+<td>6389</td>
+<td>67</td>
+<td>0</td>
+<td>410ms</td>
+<td>08/17 17:10:43</td>
+</tr>
+<tr>
+<td><a href="http://kms.sevenxu.cc">kms.sevenxu.cc</a></td>
+<td>99%</td>
+<td>100%</td>
+<td>5898</td>
+<td>3</td>
+<td>0</td>
+<td>336ms</td>
+<td>08/17 17:10:44</td>
+</tr>
+<tr>
+<td><a href="http://kms.srv.crsoo.com">kms.srv.crsoo.com</a></td>
+<td>91%</td>
+<td>100%</td>
+<td>5417</td>
+<td>424</td>
+<td>60</td>
+<td>1688ms</td>
+<td>08/17 17:10:45</td>
+</tr>
+<tr>
+<td><a href="http://kms.tttal.com">kms.tttal.com</a></td>
+<td>93%</td>
+<td>100%</td>
+<td>5251</td>
+<td>371</td>
+<td>0</td>
+<td>277ms</td>
+<td>08/17 17:10:45</td>
+</tr>
+<tr>
+<td><a href="http://kms.yaosiqian.cn">kms.yaosiqian.cn</a></td>
+<td>99%</td>
+<td>90%</td>
+<td>5896</td>
+<td>3</td>
+<td>2</td>
+<td>562ms</td>
+<td>08/17 17:10:45</td>
+</tr>
+<tr>
+<td><a href="http://kms.zhuxiaole.org">kms.zhuxiaole.org</a></td>
+<td>97%</td>
+<td>100%</td>
+<td>6294</td>
+<td>156</td>
+<td>6</td>
+<td>1717ms</td>
+<td>08/17 17:10:46</td>
+</tr>
+<tr>
+<td>nb.shenqw.win</td>
+<td>97%</td>
+<td>100%</td>
+<td>6275</td>
+<td>181</td>
+<td>0</td>
+<td>301ms</td>
+<td>08/17 17:10:47</td>
+</tr>
+<tr>
+<td>windows.kms.app</td>
+<td>97%</td>
+<td>100%</td>
+<td>6302</td>
+<td>154</td>
+<td>0</td>
+<td>339ms</td>
+<td>08/17 17:10:47</td>
+</tr>
+<tr>
+<td><a href="http://zh.us.to">zh.us.to</a></td>
+<td>96%</td>
+<td>100%</td>
+<td>5430</td>
+<td>176</td>
+<td>16</td>
+<td>1547ms</td>
+<td>08/17 17:10:48</td>
+</tr>
+<tr>
+<td><a href="http://zhumc.cn">zhumc.cn</a></td>
+<td>100%</td>
+<td>100%</td>
+<td>5901</td>
+<td>0</td>
+<td>0</td>
+<td>229ms</td>
+<td>08/17 17:10:48</td>
+</tr>
+<tr>
+<td><a href="http://kms.digiboy.ir">kms.digiboy.ir</a></td>
+<td>99%</td>
+<td>90%</td>
+<td>4442</td>
+<td>20</td>
+<td>6</td>
+<td>13178ms</td>
+<td>08/17 17:11:11</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h1>后记</h1>
+<p>请支持正版。</p>
 ]]></content>
       <categories>
         <category>随笔</category>
       </categories>
       <tags>
         <tag>教程</tag>
+        <tag>office</tag>
+        <tag>visio</tag>
+        <tag>project</tag>
       </tags>
   </entry>
   <entry>
@@ -981,25 +1598,6 @@
       </categories>
   </entry>
   <entry>
-    <title>密钥</title>
-    <url>/2020/08/25/%E5%AF%86%E9%92%A5/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
-  <script id="hbeData" type="hbeData" data-hmacdigest="8ffcd44e4ad7c4ad76ab7d8db51aa0135243178ba6e2ebf9b14d638ce7f6d081">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46bc0ab206439d1c0b4b5eba2057f9e0b6b97c706e200b244e1e7e0b61d7767ddf45ddb5dbaba20b69432d0999834c54942f7f567cec7df09931358570548b57efc303a903d285a8448372cf19fa27fbc6427f9a7917f76aa30b08d4e02c6341eded0542615d86a973e946d4367a251d045e2042d4ef1ffe4d1f45920fa5ed4cebb48c21c8938b2aae1e4a2fad93d28597d8d525abcd18f69bd2458f888c01aa0ad5d8879e3eb2613e84a7eb8074eae7a23dcf7e8103e1309b6895b3a86bad4e2e8b5cf07bfd53297b4ab3c6c8cb676ba40e65984fdfc84d69e283461d454326bdc67680505ca79e5dd96baaa7d3fd01a17a301b1f22b12533fe0c32e32eb527ca5a92d7f6090e5048d985704b851781584f3342e65867b78cd3946b1c53bff40921a57acd1ac18bd41c4104b21450f4039db19ddfda361d30ef60e4b5d6a0ade3898867d30cc3f7cd80f2b99980e3824c738ddda38a96b95c4f7cf5685f02bdf62a270c271a0fc86657658a7d7a247ffe818125c496dde899d83a65fc069989fb6100b10ae7aa53cb8db79d49f21cfde4207b516325d78ab40d393eaa8e3b3edf380637260aff1ff5a96afe7c3148bdc33a6694bcc0c95f548814228b06b8f79f0e1b942ba6d7c8f83ce84e94653473d86ceff0278d32fafb4f42b2cc0e6884e37d72d31dd0bd6c65bb16a641e58239891</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-blink">
-      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>记录</category>
-      </categories>
-  </entry>
-  <entry>
     <title>数独的识别与求解</title>
     <url>/2020/03/08/%E6%95%B0%E7%8B%AC%E7%9A%84%E8%AF%86%E5%88%AB%E4%B8%8E%E6%B1%82%E8%A7%A3/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
@@ -1073,6 +1671,25 @@
         <tag>Tesseract</tag>
         <tag>OCR</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>密钥</title>
+    <url>/2020/08/25/%E5%AF%86%E9%92%A5/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
+  <script id="hbeData" type="hbeData" data-hmacdigest="8ffcd44e4ad7c4ad76ab7d8db51aa0135243178ba6e2ebf9b14d638ce7f6d081">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46bc0ab206439d1c0b4b5eba2057f9e0b6b97c706e200b244e1e7e0b61d7767ddf45ddb5dbaba20b69432d0999834c54942f7f567cec7df09931358570548b57efc303a903d285a8448372cf19fa27fbc6427f9a7917f76aa30b08d4e02c6341eded0542615d86a973e946d4367a251d045e2042d4ef1ffe4d1f45920fa5ed4cebb48c21c8938b2aae1e4a2fad93d28597d8d525abcd18f69bd2458f888c01aa0ad5d8879e3eb2613e84a7eb8074eae7a23dcf7e8103e1309b6895b3a86bad4e2e8b5cf07bfd53297b4ab3c6c8cb676ba40e65984fdfc84d69e283461d454326bdc67680505ca79e5dd96baaa7d3fd01a17a301b1f22b12533fe0c32e32eb527ca5a92d7f6090e5048d985704b851781584f3342e65867b78cd3946b1c53bff40921a57acd1ac18bd41c4104b21450f4039db19ddfda361d30ef60e4b5d6a0ade3898867d30cc3f7cd80f2b99980e3824c738ddda38a96b95c4f7cf5685f02bdf62a270c271a0fc86657658a7d7a247ffe818125c496dde899d83a65fc069989fb6100b10ae7aa53cb8db79d49f21cfde4207b516325d78ab40d393eaa8e3b3edf380637260aff1ff5a96afe7c3148bdc33a6694bcc0c95f548814228b06b8f79f0e1b942ba6d7c8f83ce84e94653473d86ceff0278d32fafb4f42b2cc0e6884e37d72d31dd0bd6c65bb16a641e58239891</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-blink">
+      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
   </entry>
   <entry>
     <title>明日嫣红</title>
@@ -1212,91 +1829,6 @@
       </categories>
   </entry>
   <entry>
-    <title>用微信发送视频文件</title>
-    <url>/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>近日有不止一个朋友，用微信发送的视频或者大文件的时候，被微信无情拒绝，问我何解。</p>
-<p>其实百度就有一堆答案，文件或视频太大就压缩，这里就写写用 <strong>格式工厂</strong> 来压缩视频吧。</p>
-<span id="more"></span>
-<h3 id="格式工厂"><a class="header-anchor" href="#格式工厂">¶</a>格式工厂</h3>
-<p>官方定位是一款免费多功能的多媒体文件转换工具。</p>
-<p><a href="http://down.pcgeshi.com/FormatFactory_setup.exe">下载链接</a>： <a href="http://down.pcgeshi.com/FormatFactory_setup.exe">http://down.pcgeshi.com/FormatFactory_setup.exe</a></p>
-<h3 id="微信限制"><a class="header-anchor" href="#微信限制">¶</a>微信限制</h3>
-<p>微信对于文件和视频有如下的大小限制：</p>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-41-57.png" class="">
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-42-35.png" class="">
-<p>你问为什么有这种限制，或者为什么限制到这么小，别问，问就是企业流量贼贵。</p>
-<h3 id="使用方法"><a class="header-anchor" href="#使用方法">¶</a>使用方法</h3>
-<ol>
-<li>下载安装好后，我们打开软件，进入主界面，点击按钮</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-32-11.png" class="">
-<ol start="2">
-<li>点击输出配置</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-33-46.png" class="">
-<ol start="3">
-<li>选择自定义</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-23.png" class="">
-<ol start="4">
-<li>在大小限制里，选择 25 MB</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-58.png" class="">
-<ol start="5">
-<li>其他不用改，点击确定</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-36-30.png" class="">
-<ol start="6">
-<li>点击添加文件，或者直接将文件拖入空白区域</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-37-30.png" class="">
-<ol start="7">
-<li>添加好后，点击确定</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-08.png" class="">
-<ol start="8">
-<li>在主界面可以看到该任务，点击开始</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-40.png" class="">
-<ol start="9">
-<li>任务完成后，我们点击进入输出文件夹</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-39-30.png" class="">
-<ol start="10">
-<li>这里可以看到，视频文件已经被压缩到 25 MB 以内了</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-40-44.png" class="">
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>格式工厂真是一款国产良心软件，免费无广告不说，连个捐赠方式都没有，这让我设置打赏的这个操作很是汗颜。</p>
-]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>私人信息</title>
-    <url>/2020/05/15/%E7%A7%81%E4%BA%BA%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
-  <script id="hbeData" type="hbeData" data-hmacdigest="33dce9b9d0df6b39827aaa272ec5d010d5d4bf64bb9c40bbf7faf81be71aeb5a">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46b9129b7f99f7c919a391372be5fd99bcbd53543e6392c1be282ac1d917e265d34e5ea67580e29a83c6c4de59d5712464f2b2a5b00f65aab2f089fb2ca67afe43628e008b82e97449f4fc095a9d39085764a34e87ff71451cb97c658624afecdf51fee48b07ed2e5ef5664633168e976b7d55a38f99ca3e9ef6e92fc978978f7918edeca5d6dca5c861ac7cbc3e8c9305f67db3fe938d7e17ae7810309f252d54ec6a03c2ee5d46bc290fad95da57d94319ed19ad4de9563e039038fc0389d30754fdd79f36a4cdf72d73bf6b48785524cf4d597504e3a46b0cd9aed9b1d7706532d3eb05d99e49c3b91346d91e3d33f11171e723dc3168b5ea1cc57ee4bb184ac32ae8481f3781f08f9376aee0bfe07146f99f1f285334af906e8b85ef57790628c597c90d52542cd9562b62e615b7d9d27948765aad0ac1a8a6a2ceb131e2a61b024e2ae3b4f07dd9d42447769346b49f3789eb8b3d3f6a40705ae5be94e4c1a6804666bc6707a7c8b47de39462c6cb77f2ab076377470507cbad21daae0689a332558c1e97630d6b8743ccc634894749ba9b74d028a741e92a996552b3c7d61aa0efaab429c4f8790698d3b07448161c654c78ed3848d38de5c335d3c7588617d8495db60dac4ea9ecc76843be61b33506bd1cf1e6f1bc24c94b3ff967829ab7bfdef91380e573a992b7567fa14d9f4e2686aecf87452d9cffadd80aabd101963dd743bd7444feda7b4ddb1b1c02aefa88c6d85419940181df42612de2b1f9fb229b6eddf3d89f56e21ec423622b0527adfe9502ab4fd1c11d2e2f2953af984109c209cd27522faafded6ce935a3a009a12cde6d2f51a68487d08d424cfa21f0111b4087ed2544502b2019fc0e783a858986740ecd2e892a9677837e2d37a472058aa49e634424421a6ba035cc87347beb4ac17806f36574ded4e84e6cf34bc2555381da8451b6d23d41f1ffc9d56cad89535ff1d784ae54e23aa2bde0f85e2a6e62f3427760f8890bcb6475087b9019a16cef566db6d9e25dc43525c95f486fecaa0b596c3a8cecc0b79b78e876ce4eb34a74222d5cfd494a638ec36907ece275788303a1f35ca56d8fd74f0eea5e9640033fdd07872c30162993d954a417d1b723e1828e86f13dd9f45fee993697d2a7a379cc85f7fb7783bbf1b5d636119b84c055deb9ebb146645bd58ca4112fb8214f995485da9ea708b07427dae4e379e5995765f4a77e66fa7685aa2dcce3ff641c3ff7831c46cb69cba6e17a69b2f011cb5e2eae8ad11d9e2b9db2c7a0d661f44a246b8bf3083d3d51652e71a37bff549667b094d0ca6d129dd4e8e6f88b9b96abdddd0e29305ec66a15b09952375fbbf594e6a378b038c274999d2a1d9e77ce6fe138cf296f8efa7b0b4db4ebf3bea50b51b6b73eb8eeb3fd59adec5e899cf39c50c5ca8481115dd58ad6f5d2a2e1b2f357662aa0ef0d4d2e8d22dc2ad19f818f6f141dae17ae19c3194f0de96fdd45b4a1ce1eea9cf70ab840d3f551ad36e4b68fa629da72d1222591395afa5b7566aefbe5ea144454e0d3835a61ca45a820d441dd2ada0854359702066ccc426df320137af00d41c66b201c8f2aef6405e3035b1ff9dce46e7023afe0ac13b009629bb91485560c5c7702fa7fa11dc70eb77ab2ce709e52ebdc4696f39975d50f9aefeb9f9d1337f3e957959412e1acdbb79de5819d24009670910cabc8679ded6e0783baa7ef0398748169af2c06732c68db4c1e226c97e0810718b270ec3ea5dcd1ee331861a2bdd27ea32c716b09096b79294e3cfa158a4b670428e392e8b26a945efd8e47853cc6162893190dce4e030f4342c1b64ee493093df963d478380526538e754d2ca281eb5ca55c2be4903043e9a552b934680595b5a0a5c13bf69207ecbf40f775d6634df3ee7a2fabdbffddb8c1a9680a3becc27aac91111c186aac056b28db03ff896b918fb10e6e8957938fa5cfe9bdffe137f9bcc97b237e8bbbf3d3562d16397d5cf0bb586fc25fb4dcd0fc7bec9995fad08c91a0b940f20024a30cefcbfc77998243f86546cd635ed0c014f687b2df79ca3191d072618add02e6fc94b40de7e97fc6f6769d396a9f78f5d1e26e1aea04ea9c2c2acb7ea71b9e2bcd9adad765ae8db9abc0431a58315c600b06491658a392c8a3b03e6b099253e4f1ca3dce82c445089d373256c4b6c3943d77706231404cfbe908aa82886825167e0e0c1441c0dba34e4d4294b1c9d45f0f9815a0369592413840bbc5a903a2c2656f048286cb3fdd827ac4ab0d52517e30e3290d12ce98eaf593f1797b67e6816b49ea67eb4064340d9d4eb50f368db916d2d54ffe61d34452a4e8661afd1568f2ccf66d5140a3770abbc27a7ec9d5796ed7e9cf491e635f7057a0913163d99050848a3a9b150821781dad7c00d34a0da34583b7ce79cc9576daf48e87feb89297715d1ffbde4d90edcfa735be92521d75ea5fa38d469f7214bd1b80752207313ed5fc2e275669a6f585e4bc059dff236bf0505ced2c83a3fcf786c139861a4fafb67a4d50bb416dcee9afcc6c986f8a554b5ed30b84d944d12895a5fb932b084337ed7dffbc97a3f64920074c0a9cef2ad9e4daf86606dc0aa65349144d70c8caa217e2e65289b28f9289e8af2f337118f09b4587c88f3e93caae1df89e829357c3c51a10db166ea91710e31e756f106024392242bb988b3945db4264479ec95afc8c18e9ee93c0281b7124ff6aba5d96dd10bed922548660cc3050efe68a2e1614950d8fee7feed2da9fda002a8f9079b536f5e379638f23d6c95006bbbce6b3c52629bb9cac8148958b4c7d6c361422fb41c996f13f821310fa65fa1df0bb14ef8de3b69090b97fbca9764f0c7af1bf9d288418437fd08c1a4d35b16424c0278d6eb43d34167a88986ab3208a3904d78328da3fafd2d0910e007cd7b0bcca48838314d4be750df5acacb2d0ab51f68a1d8b08a214ebf5a7f4f219b1233b5ac1fb83e9c96e89ecf0698e55e05291e2e0105a0e0d26233aa6b553ca909ae99fd54b34d36e39960d3c208ed7a1516587108bd9ad3fcf18ec278bb0104cab223ac3830f93cac371568f38c55d7d99413886cbcc474c65be796e698899eae88eac48cf5ae9dfcae7fc720762c7f88ae1fb85d934008f1e53c4271881a150b6ded699accce1408bdcc77b1ecb4d99d63b48017751a35a0c2442bf9654bdf4887e2c70700e10b8ffc48670dc89418bcee939d417a571d50c95ef73ecea04bfb89d199514fe3df602475ed424b82ef2e3f2e10b14e86511d8c6a898948a76762174514541e8177188ca9e65f3fda5c918bbcd670b638fddb5a0dbdb7574442a8d5f3a77d771bac91d2dff4cac2462decde7e551a492c88328c3f308e3ccafedf54db67faf4f74fc65809b7293dd46def8df645f3d911fd8fd91c58fe7e0e92d3514137aa3692ced0cad73749eb24dc5e334e99bdcff05bde9af0e3b9b1330a31aa4370865d6c26de37ec84ed05d6cf53deaa5c98eb60404fb13258a395f0a93b60e431a4cb1768bd5b72a520c92cc34c68f05f141b1f5c1f0ef819099767e3701c1d3396140dbf74b3cb0d45660891c649a28f198776610615b3ba1a0752b704953b3e76c2b819552c8d8b1cb4a87f8be88abd9ac33a66aa5cc1e9c1771bae91f89cea3d08d731feffe61713617bd746531420ce59dcd87f1722dd3ebc2e50dc4300032fe631504bcf98eb26d4d0888fe7138499fabf2ff4ef2a40f8a44cec6800399ab08503f3dd085ecf63bdacc1bd53f496e4bccbc487a7180c655a15b71c221d1083c415b7c06ac97899c2af374bba57be914310cf1d8285f817c1a15edae4d26ef626cf1b16a424404d7c7d06b2838e29ffc2b8bfecea0ba8137dc4f63af6470203c09cab9fdfd010edfc20d9a21d511dd5836e048c5e92a9127cea37fd47e6f2ab2bf75c8e14cb913a763ea9ed3bfc2cf644ac889f6ff0deb15b7a8c933371519ac5234b624a3c040852ec121e3b62d5c1400b2102ab0da5527ef1e64666dc5b4e634d89ba3d25f27a88cd05f64711fe32a5e143089cc25cf240a224a9c124bce30386f6521c5a8da2d992a0ba9282d0998475cbf115a4778bda0c2aafc891a5cee3eb836c6ffe65c43d52e2f82d174ab17bc23fee530d34c84f11cf10dab50d71b12876457b7a3df868f21a26f69acfe393078fc07c67eaa8e3c648a26d805a2be8ccda4ea09e3b0e589de89078b5c43b6829814cac97cd4e0776cb98b5a9d39722e92d45d496f4cf7a60e13ce91d6f8ef09e84b4e343c385e7ddf157e52e17b269ba1ed48c2feb24889be8e67a647e4483e1bef08e8e6d7f8a75242d158f7404da4ed586d9fbc2ee87b9d66f2d4dc7405ddd4c146648abd6dc35a86b96f388fafa2189ffd43d73c1d4cdc5fe7192b449ca0b4eebedefe7f3e6f6fbf29822e6697d0c05c2438f52dcd8f22fd89fbea854c46dfa9bca7241040da2d82d86dea80024bbbec03180f387d0100fef616fb03b351643899bab281007e106c9b9a8b6ace123afe4ea30eef41c1d2b7384eac69d6eb3703c0b7adf4cf54d00843cc521435d267991327a6e328bc47c37789220590812fc42b2288ef6fd5c0b3171c045c9511b55ccd5f8681d1936d76f7d3daa506db704ac36b40a6f261ec9c4eef9a67d05067f89c0e775a5e9d15779e287f77562d56b18bc66020145c4cdb927b3d3e34b2fb1a35756fd7883b88dbd002e46d6ecf1397999a7fe09f8121456f88b8d102cb825bd301684603ef16418c2048fc8d9c1de6e41bf6da3c4f403629c1f8583a3da573608f1e88e83bc128e9d037bb0206e44653b180f5189d8c643aac3f58f0a08218248caea6710ef302b4ac247a51e4e7fb08e671ecb395bfc948ed5dec95820cb418ce673e01d3b29596ce8232f0c46c1bd83c798fe248c81daa6c5768c645d39759fe03ebf373bc4c935d67717669f034af78f0bc95c2b45d444446c700608145284e6f367561abedbad2b4cdd43bdfef540d6dead5b413528521fe81c7ef8fb4fd2f4bf09c3a2e0939e485e16b2ad0e5b4632aec211dcb4099b241848ca76456dcbcff744fd0c4f367a481fc22a6fbf459c52a465e2ab55b10b06fe05f911e334ade304cd3779ce0b14ba8e512249f49f5905a76907869af61349193fe0c40e3728eb341806fb28d6faa0bd17b410246bd23f9f548cbf5dc0baebb4adaac3906313f8eb81853d05cb4e771e9024e8feb6bd1d7f649f05bbdda05cdb8159d5c3e115cb722b95561b8e8731a808c3d59edf62fa20c66afc2249492a9df9807d572ed66d54c5434cfed11819c4e0a64af41f278b8e8583265e107893991eb54e3241a065a3801dc05b10aabb4e2df525e71c2f4dfe8a0ccc811856b4e890d2c74ceb01db5b28eda467f60df5863cfad1bed009166929ea4a7a158f84a2c33c47eeb9d2d1386d0ba01861362eca533bdf95e41497aa3bdb02f7822b94d46bed8cf2d636bf9d4b6e204a549f5e85fff971c1f25a04390159df0d3f029bb9e88a516d469f16f190bc071fc5cf7802c1ff963f1630d15b1f49b5aebfed4e4c97101f4113f25402db9194f151f9515e1e3e5aa65bb7748d2ce62fec02d7fa76fe460b79cd074e9f73fc895e3c6e647495f9fe145b785f74b7379ee043e378c55fda83310f5f7bf350b3617c013fff6e83e6680e89c25d714f4e1ece262dcb201933e24dc82ded433b3e3ed072a9fd6a9674946cedb02041e517548cf426155cc0f70cc4d5d6553e6990881a43d18e3a21cf548ce20d20031f4958ba18390755e6112f035abc0476fe9e50097f274bac388ea65364be97fd6985d15c7d727332aa73686a3368e946522c99168beec63aa9c94ed914dfdc448cf5b9dc2316cd16ad6cc38173a06fc52a9d04647badd0e18b8d0081c9d1e02ef5f2c6a5fe3778285ad5ba546c6a414ddc1e9085193f8061f21208fad10e6605577b4fb62bc13225c9a42957e15da681d430b1b692383de67ca52367ce26cf66d5f3b584f833c61e1fbeedc249656c302541158449c266bdbaf46f33fc865bb4b76d0b68ab5c240c682cf40314eacaa5d2e9b2a66935f5afa14da8d5a5f1e262ec4f29ad30a8f0a76626a9f65bccd62662b6ce0387c06835a1117a25006be8b2b56f5207f0d6bc2425553f6ac551a714f9b1c40b514ea364d606bd7eeb32629a143f71912aaf69782e5293bb76a7e9eff1647cef26391cbf1cefcead43cdb992319d76e9d274be6faf5ec3c323f902b952fcf31bb740a4e91f57ec60d08c9bec756606417b1e6f6718fed1588a85a79ea7f67cf94e01b9117ddede6afb75414875e854f11c384d7f53fb989cf18d46a8229d4a1369b4c7631dedbce2bb06221420b18eb19b3638f18463fb58f2930e92a791cc21bccd3f12f3495bd8b240bf94fb56453caf4ba5c461354ada6249c762f19e84b33de45acd37d8ba08b33dd5d573a0a214d5f85b5528fda173b77cd8d51adaace0f858a623b9a8fb2d972eb99d501d93dffdab3169af851641929f647bf33645b0bb455b0b220d3865a7bf80369af67ac522d93b8fc1d9474370f53bd2546695990d8d59b5cb4e4e43ac922d9dccd974413ec666486aa0bc14766e50bc6fbea4ea107d598fcaaf71bc20e6ff0afbbee418432c41926199dc2e51ce54a63c775686f7781a4fe916bf9b5b5975515017b6c100cc5e26d1499ae4397c47b2aaacbe61d50836021356da85e4c55fd004d937c505a95f3dd01b9edee1d72d8a5fa6e27eaa724228939432c9bb6f92fa8e5ed25b6ce233317096c04b1e101d6f06e572baeadee5137b1d163a2d87bd825cf92438e470468328b7c9e8e89840c1952adbb66e4f1220ece56f94324910c5335036ad477d076bfa2bfa4068377f5c1f6df6305d9785a0c7de563bcb01c562441e5f2e9fd20733537c13476ede10272c5314f7fd1ed029d833f38484d0209c29bbe9f803000122db529a83ef40de9c9781ad3bfcf7cc18f9d690d0758e26ce1fcb98e9753a7b892f12c846f8e2833664db77e13c0998ca9aa64ddd4f6c852b39621d9348133333fafe2c808da713b5b9ec645326996f3bd136846b257c38a5c718e501ef6e03f86b756deb67f999a0c124569b4ead5fc35ccdb14b1e7656fd4a3279328230edf7c494438cf322f52b1fe2f92176c3a2247366fa40a73dd92c059bc6730d6f948e53ce4ec8f9a6bfeb90eb33139ef0212b2fd4c0f1a746e9459af61cc2670823f012f77ce1e8cda6f97dca2ef70af1ee52d1cedc09ee8e57e8106101a33fe7ead17e1bb293a79d22b7fee88237a44310a1f3f76d8722ba66125cde1345cab6ed89541b670035b39067d2254eb936d5321d26d0b37bf5941f2a140cc770ae1e3d4c9b28dbb62a04b6347e5a6983f81205ee37f5665b018332b21673cd8002d271b7474e419282e37ff708d0d41d46662e6083199a535e6892bdec5cd44b3c372df8de056737644b42b8c9fa589c567fee6c02189ad8484ec696c1f8507ab29a39cb9b7c4fdc8a6c7b6b36fa6f415067450b725df60e4d7406ca9b8484467ceda1a71ebfcb442c20f73be58a692e5027bf77f087be15c8d752d9678b4f4996e2dde4e28cc862688bd07d9d06fd61d38736e46fb50dd8932c95b00b897085d2a1904268c1b68c8069b15f39e372ae0740e42aca13f5f4d1b382bb20cfbe0c4a25829290b7685775119db2d077f70bfd328c3dac6f5ba6de9983dea41a0a78d8031f738e98f18010e09c22770d457d50650f9c3c41f89132d3384afe14d8ea314d2aa64d7e15fe49ca9654866548f7750afaf81ceb4ced77e8418c7104a880c9bdb6987f04a2bde6e200f69c81e53191e0d907d9d70aff5951c47164a6d4159e721f459fbf8575a9a0dcefa98cd2ea5ca6db7d47a417c8a0cf5207a15185d63194a46e61cc06606c7e8636c49d9d1f766a8b8a5dbf4a8057f169d843566b3f1b5ffacd1b2952488da503c149164bc3d2e8d1ef9606a43cc8ae448026e38748ef13a60acf54b935978287623c46880a0519aa6150eb3d0360f48470b2f97d584c9e29cf8e8a006a12de80b8b47bce2a4eb6881f09d945eb2fe0b830086421a70e9d0868500b64856cf08a5557b98cf5339fbcb2a9ad17c547402306cb024d9252bb91854df06389972702339b5dacccba2d4674f2ce053a1036d4e4264219358cd080b9a7b0e90bdcd4115db93d0b8c8b16de19c3ccd917422aebf6eff00be0c61ac981e9b858fa058152c0a544323fba1835dd12b108277bf570b73d4b170472486f1bbc7c67c7a3267860b1ddcd60e640499d5234c63f2b44fc13664b9635d8bc298e68d94923b8b8e0390c603bd658916f145f8c2db87563e58b50c2ac8f405a9f5feeac09e35561e94f543edfd89fa2b76dedb8184adf6575f998f0c189e27a2d1d4c04b76abeb34fe72fe98cb319466e12e7766082604d6bc78b98c112984ef9abc762e9b253bb7102838220d98e03f89c53c5a18d88ec1535e0583833cdab3af73c1cc7ff2e225fb0e7636939824a2e7db6e64568035a8cff9fa6be579101d4b2eb1cfc3ce240b2b1bac6eca6595636cd27a2f0a9c90ac57189bc83c54e28818361cb35ed516e746782ac5e78dd8fad7f661d545ab86863d02940444ff11fd9c3c2df709826429e7f09fcfc257ae5e98a671aa3fb50bc7a66ff22b71c0ca12f70d50f7ddf2dd54228a2bca0a7c9de081c5ae60e1e4fa6c368d2aed5b9d4a167bcd1cb347507410ce6d94c14d6407035021bd47da591843d0b844c6615593a3d2a711c39f6674c7ba4140208213c3944c7b772f9a32bb3f8b7c40ea679b6dcb721cb7694db353dbc2795bbaa9c861e9e368a7c48ae1621cae1248ea7b4cd3738b95b31d97c492f1b2d115adfa2dbcc2e593842a6d84e2cf6923454600992e59c89fdfab6e762e93288e56377de3d3a539550b9c23681c11f60776d5b53c26727d70de6401326d3b9a376f69439eff75ef6bbaf5ec3c3528234549945b9d052c30506c703d84af999c4ee551f89e12c5f028e974d669c857b7d007bbc9bde0595fdbd93d020f91dbd1b2668fe35143f129414a3ae6439a92a0812e1c83ed9a700f844e018e9a481e61cbdd0b53787905708d7e52a0f5de75eb2004cbdf22273900c2332e41c1413ed36b315aa63aaf7a0e7b31c15e8e8aae51071645583cf44811a0558c90a2e7cc39254f0213b0b82df79a1a5e7bb75e38af86c2b550c54287d9d4eacc67bd3c859e609d9ab0c510e2aa971ddf4e52611cf00b19eaa651c762d0a40df74e3d47d58d4f328c990b9f246fcd69f130631ca0c9d148bdddee73b7bd1c93a276d0927aad8350a83daf7193a7a2ea35c1599812c023d9a621a24a8440878fdf887bcc4334f306f085ecce44084f6118bb68208e09d9226b1875e21ebe94feaf42e1859a9f1b3a4006437add862193483b22cfaab0aeca956a60499426f81bc3adca183464e57730d3d25b49e10fd81d15429367f7f6c41493157a599200deaa2830a2e9c572ac2135aed62bfe7a0acd39aff2ee0bbb76d9dcc4351bddf3cfe3c3c266e83319d39a529c3d29f95ada2ff8c8019b43c9edb936cf10a8d6319314842a20bf3cefec24a8a251543bc5e7543c08fc882848974f4d8b33401449355522b807d6852f1eeb23d4f11924791e4fc66460a2d1c8b666ba7d9361dab72d8491b3206110e587babac58bd426a763dbcbb6cdca409921e5fb54d1f6314c03e5d28ac15cee422b43094ab0bffed0791addf129d5af2a9866ae0a359ab89aa631e6dc0e7af14e59cd2b355ebb1fdf3f671899e3f2fba46fef9e4d0196602123688f83e316f76be2440405cf4649f8570b9aa902ef03c94ff28529ae5e2716baa2f9433d48756038f16064a4f41dc1113427c6ef8410548c4b06158af6a9229df6b908cabae6b4809377b63d9c4c9d1722acd8758d4c3d14e5a43cc94e3bcbec7b3a46fcc30177169e5d87a340f0c877a00a57ed819420c62f0dc97a6236cfebf3fbae0412769c00ce3cd1a67c33496de2b73858f88b0d392fb177d563c083447ce060b3bd7adc3ecaae90ce1b33b21a8a3daaad28f2498089a8f1c9c8a79cdb726c52520f53a5537c99587303de6f48b4cf2c79c23a4675c9e47d767a5f5a1de5319034d3679863bdd27a76d984e0500234d0ff15546841b9a9dfbe1058483da137b17ef0fd4f81229ae47614bc8d52c2117353d30e583c6e49280460cecaead7a0587c809e322d5696b7add4cc24bfde0f4b682c037aaf16f119f9e8ef46a314a7dda124dfdfbfa8b9f84a66858fc0b483addfb5a35d5cfca15d62bc765d7c1699b6f138c7d13216b66d118bcd6e1aaef5a67dd54a68b626edeeec8457f603da2b8f5e4d5babddaa82976e567f7fd4f05cecaee825fa5b903ca22864e99230a12e198e28dbc00f9444c7c1d5e9bf7301c28e61c38fe7d4bb4feb6bb6749e9369c033ca208625bfff1aae1667bf86577f8343224a90aab25a03ffc1822a9011bf7a1b588fdd4353e41afcd9faadd9f7d23da92499267b892764943dfdca797c6a1def5ddca6b804c721338d27634a603d6d5deaec4b508af7380be908697c292a716df1e013520a509e32ef5b7e8ef9d5f3421819ad711b392ed2e4371eee1c550b0b103f7dc85d6079dcf80f975260ac9bf242acf71ecc2dafccc6862638e4f5a7fc983063cc67a8fc70bbc2d59f4f9d3477c3e168e3b53ad13bc7544764f4bf0edaba418815f8847af2fd155099704486feef2e773b6680ec9a5f9144d28c72f22c35567a552315bcdad0c2b5057224d93323c73c912d72bf66180d4f4426597c2fcc5a59c26bff90f707a04a0c427cfede4c7080ab68174491ccbe1dd5c70001e19004c5662c31d686bf898c3d8c615d9afdaebc8ced00731503b4f03cd93d28e960fde17ec7627d0e231c73ac0c4db063aa19eac8452dee5d4befc9e84d11f8d5a185bc0825adfdff7a2888c05a3c515eb9ebaca01f6bb2cfb27e9fbb6abafa2313034926ec196c4677a8b63d713a6c349bfeb3bd330137bbdb27e46bf2b62ae2026216cd0970796b49f807bfe955104129a7686a52257770ca41ae9c7776077236755f1056762c9dfbb40d7184e53bea7e47730052a54804e7c6a8a11756d2423da235be2c6be3fed376cc205bf80ed8715b84d3e2a0b71b534b54963927a91ea9b039579be721332d54ba021f78ad2241445776f79f5c562cc9238d18f403f63b1779c290befd2c905a3b0224e27562c31e3efb0b648616e9a8cf8ed15da37fb21833cd7e9c244866df396943b255b405f6527eabab6d72bf7cc73097f84451c6a1668f86504033bfaa639c5df1ccb454b3e7bc81e90a398b3adc5e5dfcd0a804106e6bcc1b9e0ab28048b45df9754e4c59c42c3a58b7c264a14f994dd8a849849c082496f52a9ef2140835b48ca195f906706b8525dd17719ff1d71d7d778e52682e44bd33c9fb33bfd94cf879f1a1331e42d8f318a98d9f263b0d53b12f6812584f683a42851374b79b8fd11efc06753b168826390b8e5179795ddfb0fae163f3b5caef72d1fd1c133e99e9bdb22d86db7f3368fd48ce434ff9dcb11834ca2958eb31d765a7d427448a1e734b0f4c47f8cb48949b77dca7cfe41884dde63d33fd70b83c8fd56d74552adbeab78610bb73e1aec5f1639eeb2106745e18edcfafc15162853a819226e9c219c415868de5c8fba6516bf3836b68b871c2e34c8ca7781de8d6f0715b28561338f646b39288ae8d150a5af0c31a43079c8d4a0b9a2c3175dd4a46b8da838635aff7d3c09f0735b1e4cf7fc509d3643317e0a99cdf512e70e6a6661fbd236db8d88349e81ea360cdebd44759ee5971fb0b1992dd313d9de8f4bdffcd60ef238c40da69660701011f259c1473d177e1d625376d35fd802b817cdd3ba4e26e60613b7d9ee2770333eeed221a99f9df5f333d5858a0d19fd62e5826a20bb4e448797efe20310e1b65e23d9f9b56bca97de9f00ab3e0c708214950956b5e12ebe4d2504f73a0920f77af591f713517bc9ed6d89749c555926329b049b7df3318fa892c27df8396247832cb3a6603e8057187f4ff143594c02d6c6f047a24de6b7e3c142249376c8bacb1c15efc0c6945929c78d0da0e4ddf1f8f28d41fafaa4da3c13ae0496d2241ba734214420effcc554a181a1f55d311ee6a936312efa54ca305bcb6fe76b78442e4e74c30a9462846ab3e59267ece430fc5d305d6355ceaf60b7fabe1159605488305b5b96457969bd0c7d4e436bfc883b1e0c06726ba2968c3595f4970847bc857c32c142dc939384b791a12b157bc4ffe5352c88b163726c52be8cfc4da6d935ba183b53afc3bd3c2d54907402b0b6d2da6a90b0c1b2c364fe25e8c96428992aa190fbbe0d71543833a13b25e943c3511adb7ce7eefb504a3a805af1bb9d5f2733603e4c838a487e90efc1a5d7e4ea998f4cf7ea5b15070afef79288bf7270d0452705d3a9f66048b4bad971d30024b412d0f8e2ebb21a8855b8ddcb8aa801ab765ee7b92e4d289e08e2d1e8022c18969fce3c16ec1df5f6c15cce2cf4866dc654d884fefba2187db05617ef896847d14f086538a418dd14f96ee2a1d4f2be1e31bebd18e9f925c39054f60da4166cac63fa84e0045c5a811466a0032892af1b817a8b1f0bad46b224e0e63a8b40c08df125222ece414b27f2cd3302891ef3e082d15daeefc8344ad19393d4c0595ddd6b0fecf38d80ebbffe41d39277049514a660d5c202bd11346cc08fc726f55d058b876706bae690d9ee9e3a4353bba3ebd62ce978a05f3b673dac4d5cf4181eaa5ae566959b118c7c0eb7b4fdaf38c03a6e0c28e2785ff46a8b17f163b0a3e4fa10f6c881eb46cd084fe355e9cf90a7ad374fa218eb70cd3c408a0eb4d57dc23843cd5c83f067df3c309b12047893d121a190ae3af602b80603f2d468ca9ce1b800a0e753019eacd967d094fbedfa4c733560f03887082b9e36980e4def82809ea60bd6caeddb4636d7ee2311cb0dc0d91e700e394b5f00d33e4bb4b00ca5012011f2791cbb2c0c5d1c20ada6649649b88c48ce64d24b7fa2dbccd719301d96765e67b538331cf2c162ec2ada8f15277eb9de36aa4c4b664dca8319ddd817576f4267656aff3b6dc1dc181fd3e8d5c304e2414fccbf46fa499ceda59f9a57f086505485ac09833fdd5dcb3b97b688d5953b92cbe4a5b54359b55932e1ac59446f45091855d56a34a5606b58b98cd0642d912f5a5e8cb09b8813b1519408b1f963a9b2c7ed05d8b63894aebc20ba9ed243242518b73c3457d7b8182c5af96e0ec90f349046b81b2ba8be5330eb44404a0752bedc1e30b9036c515845b8d21967360ef113e2362b955e29f82b81978b1781363d8ccf98d6bc128bba5a2d13114913e9fd0f60ba2de40f1620999f8c5828b29d9cd7fccfaf72e07f780cb0ba0be08bbdc40fc0803cb2b928258de25ac152fc0c4cd6002b120fb08297404bf477a6c971c180be4e766f085d6a1cbe239bb04f486a8436df5068b5615df52555717ff63be5774ca3e7bbc0b4751f95aa046dc4b46810479b5e770809de9e3e33e530b6a09d925a4bbb674cd4f9775637cf99bb23d1330eb1a0c9babb34b363df68fb0c9090f67e8c7d9baaad5106a0dab29f1f09fcda477799fee3393194ca4e41ac85bc70724bad901d8e33aed4af5ed355523747fbdf9804391bea6f43b684b37cb3f41f40ffcee1a10803962a12d69510440dcc1ba2f74b821c58f42fc79155d9aa019a320482109ddba8edfc76029dfd0e9e0dbde33576cba0315528787127fcfd13611cf5ec11b378d145f56684adbbe4da7c2c545681a51697129ae58c56d4fbb72add6a75b5bd502ea2e59bb35381e7ac84ba91973c831ef6e43b5333620d6737c9677524afef10ba5d555b41e9f996d742c9cf0fa7ba69dcb63f1b1a0119390a3bc30777fd78cea7b4490f5e6a42f96a66ee79dd9bb04549fdba97c6f9532adf7f93ead1d85c62ef70d516ee0d9ce2ec85dfe3cb6f12663c271935e6ef4ffd76a5477c77c34a37555b408df5517cd967c5f3d53bb331f165fa489f15d3e3cf1718a71021455baa9ab06a3be5d11ff0cf89df497ca4940dca5c998bb053c7ec907cefef0b6303c689911d74bc971bb194dc169dd899e8b5c2b871122eb2c9d1b9f170829882d19631b18dc2c7a14741e1d29509321d4f0822618b750b0cf9596c4c1fbd37d3ed8c6779c2c60d217e65519af529cee3ef280a5cec485ead1355d6b50ddb84</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-blink">
-      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>记录</category>
-      </categories>
-  </entry>
-  <entry>
     <title>浅谈直播</title>
     <url>/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
@@ -1370,6 +1902,167 @@
         <tag>SMTP</tag>
         <tag>UDP</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>用微信发送视频文件</title>
+    <url>/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>近日有不止一个朋友，用微信发送的视频或者大文件的时候，被微信无情拒绝，问我何解。</p>
+<p>其实百度就有一堆答案，文件或视频太大就压缩，这里就写写用 <strong>格式工厂</strong> 来压缩视频吧。</p>
+<span id="more"></span>
+<h3 id="格式工厂"><a class="header-anchor" href="#格式工厂">¶</a>格式工厂</h3>
+<p>官方定位是一款免费多功能的多媒体文件转换工具。</p>
+<p><a href="http://down.pcgeshi.com/FormatFactory_setup.exe">下载链接</a>： <a href="http://down.pcgeshi.com/FormatFactory_setup.exe">http://down.pcgeshi.com/FormatFactory_setup.exe</a></p>
+<h3 id="微信限制"><a class="header-anchor" href="#微信限制">¶</a>微信限制</h3>
+<p>微信对于文件和视频有如下的大小限制：</p>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-41-57.png" class="">
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-42-35.png" class="">
+<p>你问为什么有这种限制，或者为什么限制到这么小，别问，问就是企业流量贼贵。</p>
+<h3 id="使用方法"><a class="header-anchor" href="#使用方法">¶</a>使用方法</h3>
+<ol>
+<li>下载安装好后，我们打开软件，进入主界面，点击按钮</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-32-11.png" class="">
+<ol start="2">
+<li>点击输出配置</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-33-46.png" class="">
+<ol start="3">
+<li>选择自定义</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-23.png" class="">
+<ol start="4">
+<li>在大小限制里，选择 25 MB</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-58.png" class="">
+<ol start="5">
+<li>其他不用改，点击确定</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-36-30.png" class="">
+<ol start="6">
+<li>点击添加文件，或者直接将文件拖入空白区域</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-37-30.png" class="">
+<ol start="7">
+<li>添加好后，点击确定</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-08.png" class="">
+<ol start="8">
+<li>在主界面可以看到该任务，点击开始</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-40.png" class="">
+<ol start="9">
+<li>任务完成后，我们点击进入输出文件夹</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-39-30.png" class="">
+<ol start="10">
+<li>这里可以看到，视频文件已经被压缩到 25 MB 以内了</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-40-44.png" class="">
+<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
+<p>格式工厂真是一款国产良心软件，免费无广告不说，连个捐赠方式都没有，这让我设置打赏的这个操作很是汗颜。</p>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>浅谈远程桌面</title>
+    <url>/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>为了能够流畅的使用远程桌面（GUI），我尝试了多款软件，也查了一些资料，在这里记录一下。</p>
+<span id="more"></span>
+<h3 id="协议"><a class="header-anchor" href="#协议">¶</a>协议</h3>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th><a href="https://support.microsoft.com/zh-cn/help/186607/understanding-the-remote-desktop-protocol-rdp">RDP</a></th>
+<th><a href="https://docs.vmware.com/cn/VMware-Horizon-7/7.2/com.vmware.horizon-view.installation.doc/GUID-E2FFCC1F-B14A-4A4E-A36C-994EACC542B6.html">PCoIP</a></th>
+<th><a href="https://en.wikipedia.org/wiki/Independent_Computing_Architecture">ICA</a></th>
+<th><a href="https://spice-space.org/">SPICE</a></th>
+<th><a href="https://en.wikipedia.org/wiki/RFB_protocol">RFB</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公司</td>
+<td>Microsoft</td>
+<td>VMWare</td>
+<td>Citrix</td>
+<td>Red Hat</td>
+<td>RealVNC</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>本地显卡渲染</td>
+<td>传输差分图像</td>
+<td>增强型 RDP</td>
+<td>KVM 虚拟化</td>
+<td>瘦客户端</td>
+</tr>
+<tr>
+<td>软件</td>
+<td>mstsc、FreeRDP</td>
+<td>TeamViwer、Splashtop</td>
+<td>Citrix Virtual</td>
+<td></td>
+<td>RealVNC、TightVNC</td>
+</tr>
+</tbody>
+</table>
+<p>另外，AnyDesk 和向日葵没找到具体协议信息，我个人用起来感觉是和 TeamViwer 一样的。</p>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-32.png" class="" title="盗图1">
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-42.png" class="" title="盗图2">
+<h3 id="建议"><a class="header-anchor" href="#建议">¶</a>建议</h3>
+<ol>
+<li>偶尔才用一次的朋友，用 QQ 或钉钉的远程协助功能就好</li>
+<li>首推 TeamViewer，综合实力杠杠的，虽然经常会检测到商用，然后就不免费了</li>
+</ol>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-06.png" class="" title="TeamViewer">
+<ol start="3">
+<li>自从 TeamViewer 把我 ban 掉后，向日葵已成为我的主力</li>
+</ol>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-52.png" class="" title="向日葵">
+<ol start="4">
+<li>其实 ZeroTier 等内网穿透方案，配合 mstsc 或 Splashtop 也挺好的</li>
+</ol>
+<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-06-26.png" class="" title="mstsc">
+<ol start="5">
+<li>mstsc 由于是本地渲染，导致我远程玩全屏游戏的时候，会提示 DirectX 错误，具体原因待查</li>
+<li>Splashtop 的控制端和被控端是两个软件</li>
+</ol>
+<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
+<p>向日葵也是一款优秀的国产良心软件啊，👍</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>私人信息</title>
+    <url>/2020/05/15/%E7%A7%81%E4%BA%BA%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
+  <script id="hbeData" type="hbeData" data-hmacdigest="33dce9b9d0df6b39827aaa272ec5d010d5d4bf64bb9c40bbf7faf81be71aeb5a">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46b9129b7f99f7c919a391372be5fd99bcbd53543e6392c1be282ac1d917e265d34e5ea67580e29a83c6c4de59d5712464f2b2a5b00f65aab2f089fb2ca67afe43628e008b82e97449f4fc095a9d39085764a34e87ff71451cb97c658624afecdf51fee48b07ed2e5ef5664633168e976b7d55a38f99ca3e9ef6e92fc978978f7918edeca5d6dca5c861ac7cbc3e8c9305f67db3fe938d7e17ae7810309f252d54ec6a03c2ee5d46bc290fad95da57d94319ed19ad4de9563e039038fc0389d30754fdd79f36a4cdf72d73bf6b48785524cf4d597504e3a46b0cd9aed9b1d7706532d3eb05d99e49c3b91346d91e3d33f11171e723dc3168b5ea1cc57ee4bb184ac32ae8481f3781f08f9376aee0bfe07146f99f1f285334af906e8b85ef57790628c597c90d52542cd9562b62e615b7d9d27948765aad0ac1a8a6a2ceb131e2a61b024e2ae3b4f07dd9d42447769346b49f3789eb8b3d3f6a40705ae5be94e4c1a6804666bc6707a7c8b47de39462c6cb77f2ab076377470507cbad21daae0689a332558c1e97630d6b8743ccc634894749ba9b74d028a741e92a996552b3c7d61aa0efaab429c4f8790698d3b07448161c654c78ed3848d38de5c335d3c7588617d8495db60dac4ea9ecc76843be61b33506bd1cf1e6f1bc24c94b3ff967829ab7bfdef91380e573a992b7567fa14d9f4e2686aecf87452d9cffadd80aabd101963dd743bd7444feda7b4ddb1b1c02aefa88c6d85419940181df42612de2b1f9fb229b6eddf3d89f56e21ec423622b0527adfe9502ab4fd1c11d2e2f2953af984109c209cd27522faafded6ce935a3a009a12cde6d2f51a68487d08d424cfa21f0111b4087ed2544502b2019fc0e783a858986740ecd2e892a9677837e2d37a472058aa49e634424421a6ba035cc87347beb4ac17806f36574ded4e84e6cf34bc2555381da8451b6d23d41f1ffc9d56cad89535ff1d784ae54e23aa2bde0f85e2a6e62f3427760f8890bcb6475087b9019a16cef566db6d9e25dc43525c95f486fecaa0b596c3a8cecc0b79b78e876ce4eb34a74222d5cfd494a638ec36907ece275788303a1f35ca56d8fd74f0eea5e9640033fdd07872c30162993d954a417d1b723e1828e86f13dd9f45fee993697d2a7a379cc85f7fb7783bbf1b5d636119b84c055deb9ebb146645bd58ca4112fb8214f995485da9ea708b07427dae4e379e5995765f4a77e66fa7685aa2dcce3ff641c3ff7831c46cb69cba6e17a69b2f011cb5e2eae8ad11d9e2b9db2c7a0d661f44a246b8bf3083d3d51652e71a37bff549667b094d0ca6d129dd4e8e6f88b9b96abdddd0e29305ec66a15b09952375fbbf594e6a378b038c274999d2a1d9e77ce6fe138cf296f8efa7b0b4db4ebf3bea50b51b6b73eb8eeb3fd59adec5e899cf39c50c5ca8481115dd58ad6f5d2a2e1b2f357662aa0ef0d4d2e8d22dc2ad19f818f6f141dae17ae19c3194f0de96fdd45b4a1ce1eea9cf70ab840d3f551ad36e4b68fa629da72d1222591395afa5b7566aefbe5ea144454e0d3835a61ca45a820d441dd2ada0854359702066ccc426df320137af00d41c66b201c8f2aef6405e3035b1ff9dce46e7023afe0ac13b009629bb91485560c5c7702fa7fa11dc70eb77ab2ce709e52ebdc4696f39975d50f9aefeb9f9d1337f3e957959412e1acdbb79de5819d24009670910cabc8679ded6e0783baa7ef0398748169af2c06732c68db4c1e226c97e0810718b270ec3ea5dcd1ee331861a2bdd27ea32c716b09096b79294e3cfa158a4b670428e392e8b26a945efd8e47853cc6162893190dce4e030f4342c1b64ee493093df963d478380526538e754d2ca281eb5ca55c2be4903043e9a552b934680595b5a0a5c13bf69207ecbf40f775d6634df3ee7a2fabdbffddb8c1a9680a3becc27aac91111c186aac056b28db03ff896b918fb10e6e8957938fa5cfe9bdffe137f9bcc97b237e8bbbf3d3562d16397d5cf0bb586fc25fb4dcd0fc7bec9995fad08c91a0b940f20024a30cefcbfc77998243f86546cd635ed0c014f687b2df79ca3191d072618add02e6fc94b40de7e97fc6f6769d396a9f78f5d1e26e1aea04ea9c2c2acb7ea71b9e2bcd9adad765ae8db9abc0431a58315c600b06491658a392c8a3b03e6b099253e4f1ca3dce82c445089d373256c4b6c3943d77706231404cfbe908aa82886825167e0e0c1441c0dba34e4d4294b1c9d45f0f9815a0369592413840bbc5a903a2c2656f048286cb3fdd827ac4ab0d52517e30e3290d12ce98eaf593f1797b67e6816b49ea67eb4064340d9d4eb50f368db916d2d54ffe61d34452a4e8661afd1568f2ccf66d5140a3770abbc27a7ec9d5796ed7e9cf491e635f7057a0913163d99050848a3a9b150821781dad7c00d34a0da34583b7ce79cc9576daf48e87feb89297715d1ffbde4d90edcfa735be92521d75ea5fa38d469f7214bd1b80752207313ed5fc2e275669a6f585e4bc059dff236bf0505ced2c83a3fcf786c139861a4fafb67a4d50bb416dcee9afcc6c986f8a554b5ed30b84d944d12895a5fb932b084337ed7dffbc97a3f64920074c0a9cef2ad9e4daf86606dc0aa65349144d70c8caa217e2e65289b28f9289e8af2f337118f09b4587c88f3e93caae1df89e829357c3c51a10db166ea91710e31e756f106024392242bb988b3945db4264479ec95afc8c18e9ee93c0281b7124ff6aba5d96dd10bed922548660cc3050efe68a2e1614950d8fee7feed2da9fda002a8f9079b536f5e379638f23d6c95006bbbce6b3c52629bb9cac8148958b4c7d6c361422fb41c996f13f821310fa65fa1df0bb14ef8de3b69090b97fbca9764f0c7af1bf9d288418437fd08c1a4d35b16424c0278d6eb43d34167a88986ab3208a3904d78328da3fafd2d0910e007cd7b0bcca48838314d4be750df5acacb2d0ab51f68a1d8b08a214ebf5a7f4f219b1233b5ac1fb83e9c96e89ecf0698e55e05291e2e0105a0e0d26233aa6b553ca909ae99fd54b34d36e39960d3c208ed7a1516587108bd9ad3fcf18ec278bb0104cab223ac3830f93cac371568f38c55d7d99413886cbcc474c65be796e698899eae88eac48cf5ae9dfcae7fc720762c7f88ae1fb85d934008f1e53c4271881a150b6ded699accce1408bdcc77b1ecb4d99d63b48017751a35a0c2442bf9654bdf4887e2c70700e10b8ffc48670dc89418bcee939d417a571d50c95ef73ecea04bfb89d199514fe3df602475ed424b82ef2e3f2e10b14e86511d8c6a898948a76762174514541e8177188ca9e65f3fda5c918bbcd670b638fddb5a0dbdb7574442a8d5f3a77d771bac91d2dff4cac2462decde7e551a492c88328c3f308e3ccafedf54db67faf4f74fc65809b7293dd46def8df645f3d911fd8fd91c58fe7e0e92d3514137aa3692ced0cad73749eb24dc5e334e99bdcff05bde9af0e3b9b1330a31aa4370865d6c26de37ec84ed05d6cf53deaa5c98eb60404fb13258a395f0a93b60e431a4cb1768bd5b72a520c92cc34c68f05f141b1f5c1f0ef819099767e3701c1d3396140dbf74b3cb0d45660891c649a28f198776610615b3ba1a0752b704953b3e76c2b819552c8d8b1cb4a87f8be88abd9ac33a66aa5cc1e9c1771bae91f89cea3d08d731feffe61713617bd746531420ce59dcd87f1722dd3ebc2e50dc4300032fe631504bcf98eb26d4d0888fe7138499fabf2ff4ef2a40f8a44cec6800399ab08503f3dd085ecf63bdacc1bd53f496e4bccbc487a7180c655a15b71c221d1083c415b7c06ac97899c2af374bba57be914310cf1d8285f817c1a15edae4d26ef626cf1b16a424404d7c7d06b2838e29ffc2b8bfecea0ba8137dc4f63af6470203c09cab9fdfd010edfc20d9a21d511dd5836e048c5e92a9127cea37fd47e6f2ab2bf75c8e14cb913a763ea9ed3bfc2cf644ac889f6ff0deb15b7a8c933371519ac5234b624a3c040852ec121e3b62d5c1400b2102ab0da5527ef1e64666dc5b4e634d89ba3d25f27a88cd05f64711fe32a5e143089cc25cf240a224a9c124bce30386f6521c5a8da2d992a0ba9282d0998475cbf115a4778bda0c2aafc891a5cee3eb836c6ffe65c43d52e2f82d174ab17bc23fee530d34c84f11cf10dab50d71b12876457b7a3df868f21a26f69acfe393078fc07c67eaa8e3c648a26d805a2be8ccda4ea09e3b0e589de89078b5c43b6829814cac97cd4e0776cb98b5a9d39722e92d45d496f4cf7a60e13ce91d6f8ef09e84b4e343c385e7ddf157e52e17b269ba1ed48c2feb24889be8e67a647e4483e1bef08e8e6d7f8a75242d158f7404da4ed586d9fbc2ee87b9d66f2d4dc7405ddd4c146648abd6dc35a86b96f388fafa2189ffd43d73c1d4cdc5fe7192b449ca0b4eebedefe7f3e6f6fbf29822e6697d0c05c2438f52dcd8f22fd89fbea854c46dfa9bca7241040da2d82d86dea80024bbbec03180f387d0100fef616fb03b351643899bab281007e106c9b9a8b6ace123afe4ea30eef41c1d2b7384eac69d6eb3703c0b7adf4cf54d00843cc521435d267991327a6e328bc47c37789220590812fc42b2288ef6fd5c0b3171c045c9511b55ccd5f8681d1936d76f7d3daa506db704ac36b40a6f261ec9c4eef9a67d05067f89c0e775a5e9d15779e287f77562d56b18bc66020145c4cdb927b3d3e34b2fb1a35756fd7883b88dbd002e46d6ecf1397999a7fe09f8121456f88b8d102cb825bd301684603ef16418c2048fc8d9c1de6e41bf6da3c4f403629c1f8583a3da573608f1e88e83bc128e9d037bb0206e44653b180f5189d8c643aac3f58f0a08218248caea6710ef302b4ac247a51e4e7fb08e671ecb395bfc948ed5dec95820cb418ce673e01d3b29596ce8232f0c46c1bd83c798fe248c81daa6c5768c645d39759fe03ebf373bc4c935d67717669f034af78f0bc95c2b45d444446c700608145284e6f367561abedbad2b4cdd43bdfef540d6dead5b413528521fe81c7ef8fb4fd2f4bf09c3a2e0939e485e16b2ad0e5b4632aec211dcb4099b241848ca76456dcbcff744fd0c4f367a481fc22a6fbf459c52a465e2ab55b10b06fe05f911e334ade304cd3779ce0b14ba8e512249f49f5905a76907869af61349193fe0c40e3728eb341806fb28d6faa0bd17b410246bd23f9f548cbf5dc0baebb4adaac3906313f8eb81853d05cb4e771e9024e8feb6bd1d7f649f05bbdda05cdb8159d5c3e115cb722b95561b8e8731a808c3d59edf62fa20c66afc2249492a9df9807d572ed66d54c5434cfed11819c4e0a64af41f278b8e8583265e107893991eb54e3241a065a3801dc05b10aabb4e2df525e71c2f4dfe8a0ccc811856b4e890d2c74ceb01db5b28eda467f60df5863cfad1bed009166929ea4a7a158f84a2c33c47eeb9d2d1386d0ba01861362eca533bdf95e41497aa3bdb02f7822b94d46bed8cf2d636bf9d4b6e204a549f5e85fff971c1f25a04390159df0d3f029bb9e88a516d469f16f190bc071fc5cf7802c1ff963f1630d15b1f49b5aebfed4e4c97101f4113f25402db9194f151f9515e1e3e5aa65bb7748d2ce62fec02d7fa76fe460b79cd074e9f73fc895e3c6e647495f9fe145b785f74b7379ee043e378c55fda83310f5f7bf350b3617c013fff6e83e6680e89c25d714f4e1ece262dcb201933e24dc82ded433b3e3ed072a9fd6a9674946cedb02041e517548cf426155cc0f70cc4d5d6553e6990881a43d18e3a21cf548ce20d20031f4958ba18390755e6112f035abc0476fe9e50097f274bac388ea65364be97fd6985d15c7d727332aa73686a3368e946522c99168beec63aa9c94ed914dfdc448cf5b9dc2316cd16ad6cc38173a06fc52a9d04647badd0e18b8d0081c9d1e02ef5f2c6a5fe3778285ad5ba546c6a414ddc1e9085193f8061f21208fad10e6605577b4fb62bc13225c9a42957e15da681d430b1b692383de67ca52367ce26cf66d5f3b584f833c61e1fbeedc249656c302541158449c266bdbaf46f33fc865bb4b76d0b68ab5c240c682cf40314eacaa5d2e9b2a66935f5afa14da8d5a5f1e262ec4f29ad30a8f0a76626a9f65bccd62662b6ce0387c06835a1117a25006be8b2b56f5207f0d6bc2425553f6ac551a714f9b1c40b514ea364d606bd7eeb32629a143f71912aaf69782e5293bb76a7e9eff1647cef26391cbf1cefcead43cdb992319d76e9d274be6faf5ec3c323f902b952fcf31bb740a4e91f57ec60d08c9bec756606417b1e6f6718fed1588a85a79ea7f67cf94e01b9117ddede6afb75414875e854f11c384d7f53fb989cf18d46a8229d4a1369b4c7631dedbce2bb06221420b18eb19b3638f18463fb58f2930e92a791cc21bccd3f12f3495bd8b240bf94fb56453caf4ba5c461354ada6249c762f19e84b33de45acd37d8ba08b33dd5d573a0a214d5f85b5528fda173b77cd8d51adaace0f858a623b9a8fb2d972eb99d501d93dffdab3169af851641929f647bf33645b0bb455b0b220d3865a7bf80369af67ac522d93b8fc1d9474370f53bd2546695990d8d59b5cb4e4e43ac922d9dccd974413ec666486aa0bc14766e50bc6fbea4ea107d598fcaaf71bc20e6ff0afbbee418432c41926199dc2e51ce54a63c775686f7781a4fe916bf9b5b5975515017b6c100cc5e26d1499ae4397c47b2aaacbe61d50836021356da85e4c55fd004d937c505a95f3dd01b9edee1d72d8a5fa6e27eaa724228939432c9bb6f92fa8e5ed25b6ce233317096c04b1e101d6f06e572baeadee5137b1d163a2d87bd825cf92438e470468328b7c9e8e89840c1952adbb66e4f1220ece56f94324910c5335036ad477d076bfa2bfa4068377f5c1f6df6305d9785a0c7de563bcb01c562441e5f2e9fd20733537c13476ede10272c5314f7fd1ed029d833f38484d0209c29bbe9f803000122db529a83ef40de9c9781ad3bfcf7cc18f9d690d0758e26ce1fcb98e9753a7b892f12c846f8e2833664db77e13c0998ca9aa64ddd4f6c852b39621d9348133333fafe2c808da713b5b9ec645326996f3bd136846b257c38a5c718e501ef6e03f86b756deb67f999a0c124569b4ead5fc35ccdb14b1e7656fd4a3279328230edf7c494438cf322f52b1fe2f92176c3a2247366fa40a73dd92c059bc6730d6f948e53ce4ec8f9a6bfeb90eb33139ef0212b2fd4c0f1a746e9459af61cc2670823f012f77ce1e8cda6f97dca2ef70af1ee52d1cedc09ee8e57e8106101a33fe7ead17e1bb293a79d22b7fee88237a44310a1f3f76d8722ba66125cde1345cab6ed89541b670035b39067d2254eb936d5321d26d0b37bf5941f2a140cc770ae1e3d4c9b28dbb62a04b6347e5a6983f81205ee37f5665b018332b21673cd8002d271b7474e419282e37ff708d0d41d46662e6083199a535e6892bdec5cd44b3c372df8de056737644b42b8c9fa589c567fee6c02189ad8484ec696c1f8507ab29a39cb9b7c4fdc8a6c7b6b36fa6f415067450b725df60e4d7406ca9b8484467ceda1a71ebfcb442c20f73be58a692e5027bf77f087be15c8d752d9678b4f4996e2dde4e28cc862688bd07d9d06fd61d38736e46fb50dd8932c95b00b897085d2a1904268c1b68c8069b15f39e372ae0740e42aca13f5f4d1b382bb20cfbe0c4a25829290b7685775119db2d077f70bfd328c3dac6f5ba6de9983dea41a0a78d8031f738e98f18010e09c22770d457d50650f9c3c41f89132d3384afe14d8ea314d2aa64d7e15fe49ca9654866548f7750afaf81ceb4ced77e8418c7104a880c9bdb6987f04a2bde6e200f69c81e53191e0d907d9d70aff5951c47164a6d4159e721f459fbf8575a9a0dcefa98cd2ea5ca6db7d47a417c8a0cf5207a15185d63194a46e61cc06606c7e8636c49d9d1f766a8b8a5dbf4a8057f169d843566b3f1b5ffacd1b2952488da503c149164bc3d2e8d1ef9606a43cc8ae448026e38748ef13a60acf54b935978287623c46880a0519aa6150eb3d0360f48470b2f97d584c9e29cf8e8a006a12de80b8b47bce2a4eb6881f09d945eb2fe0b830086421a70e9d0868500b64856cf08a5557b98cf5339fbcb2a9ad17c547402306cb024d9252bb91854df06389972702339b5dacccba2d4674f2ce053a1036d4e4264219358cd080b9a7b0e90bdcd4115db93d0b8c8b16de19c3ccd917422aebf6eff00be0c61ac981e9b858fa058152c0a544323fba1835dd12b108277bf570b73d4b170472486f1bbc7c67c7a3267860b1ddcd60e640499d5234c63f2b44fc13664b9635d8bc298e68d94923b8b8e0390c603bd658916f145f8c2db87563e58b50c2ac8f405a9f5feeac09e35561e94f543edfd89fa2b76dedb8184adf6575f998f0c189e27a2d1d4c04b76abeb34fe72fe98cb319466e12e7766082604d6bc78b98c112984ef9abc762e9b253bb7102838220d98e03f89c53c5a18d88ec1535e0583833cdab3af73c1cc7ff2e225fb0e7636939824a2e7db6e64568035a8cff9fa6be579101d4b2eb1cfc3ce240b2b1bac6eca6595636cd27a2f0a9c90ac57189bc83c54e28818361cb35ed516e746782ac5e78dd8fad7f661d545ab86863d02940444ff11fd9c3c2df709826429e7f09fcfc257ae5e98a671aa3fb50bc7a66ff22b71c0ca12f70d50f7ddf2dd54228a2bca0a7c9de081c5ae60e1e4fa6c368d2aed5b9d4a167bcd1cb347507410ce6d94c14d6407035021bd47da591843d0b844c6615593a3d2a711c39f6674c7ba4140208213c3944c7b772f9a32bb3f8b7c40ea679b6dcb721cb7694db353dbc2795bbaa9c861e9e368a7c48ae1621cae1248ea7b4cd3738b95b31d97c492f1b2d115adfa2dbcc2e593842a6d84e2cf6923454600992e59c89fdfab6e762e93288e56377de3d3a539550b9c23681c11f60776d5b53c26727d70de6401326d3b9a376f69439eff75ef6bbaf5ec3c3528234549945b9d052c30506c703d84af999c4ee551f89e12c5f028e974d669c857b7d007bbc9bde0595fdbd93d020f91dbd1b2668fe35143f129414a3ae6439a92a0812e1c83ed9a700f844e018e9a481e61cbdd0b53787905708d7e52a0f5de75eb2004cbdf22273900c2332e41c1413ed36b315aa63aaf7a0e7b31c15e8e8aae51071645583cf44811a0558c90a2e7cc39254f0213b0b82df79a1a5e7bb75e38af86c2b550c54287d9d4eacc67bd3c859e609d9ab0c510e2aa971ddf4e52611cf00b19eaa651c762d0a40df74e3d47d58d4f328c990b9f246fcd69f130631ca0c9d148bdddee73b7bd1c93a276d0927aad8350a83daf7193a7a2ea35c1599812c023d9a621a24a8440878fdf887bcc4334f306f085ecce44084f6118bb68208e09d9226b1875e21ebe94feaf42e1859a9f1b3a4006437add862193483b22cfaab0aeca956a60499426f81bc3adca183464e57730d3d25b49e10fd81d15429367f7f6c41493157a599200deaa2830a2e9c572ac2135aed62bfe7a0acd39aff2ee0bbb76d9dcc4351bddf3cfe3c3c266e83319d39a529c3d29f95ada2ff8c8019b43c9edb936cf10a8d6319314842a20bf3cefec24a8a251543bc5e7543c08fc882848974f4d8b33401449355522b807d6852f1eeb23d4f11924791e4fc66460a2d1c8b666ba7d9361dab72d8491b3206110e587babac58bd426a763dbcbb6cdca409921e5fb54d1f6314c03e5d28ac15cee422b43094ab0bffed0791addf129d5af2a9866ae0a359ab89aa631e6dc0e7af14e59cd2b355ebb1fdf3f671899e3f2fba46fef9e4d0196602123688f83e316f76be2440405cf4649f8570b9aa902ef03c94ff28529ae5e2716baa2f9433d48756038f16064a4f41dc1113427c6ef8410548c4b06158af6a9229df6b908cabae6b4809377b63d9c4c9d1722acd8758d4c3d14e5a43cc94e3bcbec7b3a46fcc30177169e5d87a340f0c877a00a57ed819420c62f0dc97a6236cfebf3fbae0412769c00ce3cd1a67c33496de2b73858f88b0d392fb177d563c083447ce060b3bd7adc3ecaae90ce1b33b21a8a3daaad28f2498089a8f1c9c8a79cdb726c52520f53a5537c99587303de6f48b4cf2c79c23a4675c9e47d767a5f5a1de5319034d3679863bdd27a76d984e0500234d0ff15546841b9a9dfbe1058483da137b17ef0fd4f81229ae47614bc8d52c2117353d30e583c6e49280460cecaead7a0587c809e322d5696b7add4cc24bfde0f4b682c037aaf16f119f9e8ef46a314a7dda124dfdfbfa8b9f84a66858fc0b483addfb5a35d5cfca15d62bc765d7c1699b6f138c7d13216b66d118bcd6e1aaef5a67dd54a68b626edeeec8457f603da2b8f5e4d5babddaa82976e567f7fd4f05cecaee825fa5b903ca22864e99230a12e198e28dbc00f9444c7c1d5e9bf7301c28e61c38fe7d4bb4feb6bb6749e9369c033ca208625bfff1aae1667bf86577f8343224a90aab25a03ffc1822a9011bf7a1b588fdd4353e41afcd9faadd9f7d23da92499267b892764943dfdca797c6a1def5ddca6b804c721338d27634a603d6d5deaec4b508af7380be908697c292a716df1e013520a509e32ef5b7e8ef9d5f3421819ad711b392ed2e4371eee1c550b0b103f7dc85d6079dcf80f975260ac9bf242acf71ecc2dafccc6862638e4f5a7fc983063cc67a8fc70bbc2d59f4f9d3477c3e168e3b53ad13bc7544764f4bf0edaba418815f8847af2fd155099704486feef2e773b6680ec9a5f9144d28c72f22c35567a552315bcdad0c2b5057224d93323c73c912d72bf66180d4f4426597c2fcc5a59c26bff90f707a04a0c427cfede4c7080ab68174491ccbe1dd5c70001e19004c5662c31d686bf898c3d8c615d9afdaebc8ced00731503b4f03cd93d28e960fde17ec7627d0e231c73ac0c4db063aa19eac8452dee5d4befc9e84d11f8d5a185bc0825adfdff7a2888c05a3c515eb9ebaca01f6bb2cfb27e9fbb6abafa2313034926ec196c4677a8b63d713a6c349bfeb3bd330137bbdb27e46bf2b62ae2026216cd0970796b49f807bfe955104129a7686a52257770ca41ae9c7776077236755f1056762c9dfbb40d7184e53bea7e47730052a54804e7c6a8a11756d2423da235be2c6be3fed376cc205bf80ed8715b84d3e2a0b71b534b54963927a91ea9b039579be721332d54ba021f78ad2241445776f79f5c562cc9238d18f403f63b1779c290befd2c905a3b0224e27562c31e3efb0b648616e9a8cf8ed15da37fb21833cd7e9c244866df396943b255b405f6527eabab6d72bf7cc73097f84451c6a1668f86504033bfaa639c5df1ccb454b3e7bc81e90a398b3adc5e5dfcd0a804106e6bcc1b9e0ab28048b45df9754e4c59c42c3a58b7c264a14f994dd8a849849c082496f52a9ef2140835b48ca195f906706b8525dd17719ff1d71d7d778e52682e44bd33c9fb33bfd94cf879f1a1331e42d8f318a98d9f263b0d53b12f6812584f683a42851374b79b8fd11efc06753b168826390b8e5179795ddfb0fae163f3b5caef72d1fd1c133e99e9bdb22d86db7f3368fd48ce434ff9dcb11834ca2958eb31d765a7d427448a1e734b0f4c47f8cb48949b77dca7cfe41884dde63d33fd70b83c8fd56d74552adbeab78610bb73e1aec5f1639eeb2106745e18edcfafc15162853a819226e9c219c415868de5c8fba6516bf3836b68b871c2e34c8ca7781de8d6f0715b28561338f646b39288ae8d150a5af0c31a43079c8d4a0b9a2c3175dd4a46b8da838635aff7d3c09f0735b1e4cf7fc509d3643317e0a99cdf512e70e6a6661fbd236db8d88349e81ea360cdebd44759ee5971fb0b1992dd313d9de8f4bdffcd60ef238c40da69660701011f259c1473d177e1d625376d35fd802b817cdd3ba4e26e60613b7d9ee2770333eeed221a99f9df5f333d5858a0d19fd62e5826a20bb4e448797efe20310e1b65e23d9f9b56bca97de9f00ab3e0c708214950956b5e12ebe4d2504f73a0920f77af591f713517bc9ed6d89749c555926329b049b7df3318fa892c27df8396247832cb3a6603e8057187f4ff143594c02d6c6f047a24de6b7e3c142249376c8bacb1c15efc0c6945929c78d0da0e4ddf1f8f28d41fafaa4da3c13ae0496d2241ba734214420effcc554a181a1f55d311ee6a936312efa54ca305bcb6fe76b78442e4e74c30a9462846ab3e59267ece430fc5d305d6355ceaf60b7fabe1159605488305b5b96457969bd0c7d4e436bfc883b1e0c06726ba2968c3595f4970847bc857c32c142dc939384b791a12b157bc4ffe5352c88b163726c52be8cfc4da6d935ba183b53afc3bd3c2d54907402b0b6d2da6a90b0c1b2c364fe25e8c96428992aa190fbbe0d71543833a13b25e943c3511adb7ce7eefb504a3a805af1bb9d5f2733603e4c838a487e90efc1a5d7e4ea998f4cf7ea5b15070afef79288bf7270d0452705d3a9f66048b4bad971d30024b412d0f8e2ebb21a8855b8ddcb8aa801ab765ee7b92e4d289e08e2d1e8022c18969fce3c16ec1df5f6c15cce2cf4866dc654d884fefba2187db05617ef896847d14f086538a418dd14f96ee2a1d4f2be1e31bebd18e9f925c39054f60da4166cac63fa84e0045c5a811466a0032892af1b817a8b1f0bad46b224e0e63a8b40c08df125222ece414b27f2cd3302891ef3e082d15daeefc8344ad19393d4c0595ddd6b0fecf38d80ebbffe41d39277049514a660d5c202bd11346cc08fc726f55d058b876706bae690d9ee9e3a4353bba3ebd62ce978a05f3b673dac4d5cf4181eaa5ae566959b118c7c0eb7b4fdaf38c03a6e0c28e2785ff46a8b17f163b0a3e4fa10f6c881eb46cd084fe355e9cf90a7ad374fa218eb70cd3c408a0eb4d57dc23843cd5c83f067df3c309b12047893d121a190ae3af602b80603f2d468ca9ce1b800a0e753019eacd967d094fbedfa4c733560f03887082b9e36980e4def82809ea60bd6caeddb4636d7ee2311cb0dc0d91e700e394b5f00d33e4bb4b00ca5012011f2791cbb2c0c5d1c20ada6649649b88c48ce64d24b7fa2dbccd719301d96765e67b538331cf2c162ec2ada8f15277eb9de36aa4c4b664dca8319ddd817576f4267656aff3b6dc1dc181fd3e8d5c304e2414fccbf46fa499ceda59f9a57f086505485ac09833fdd5dcb3b97b688d5953b92cbe4a5b54359b55932e1ac59446f45091855d56a34a5606b58b98cd0642d912f5a5e8cb09b8813b1519408b1f963a9b2c7ed05d8b63894aebc20ba9ed243242518b73c3457d7b8182c5af96e0ec90f349046b81b2ba8be5330eb44404a0752bedc1e30b9036c515845b8d21967360ef113e2362b955e29f82b81978b1781363d8ccf98d6bc128bba5a2d13114913e9fd0f60ba2de40f1620999f8c5828b29d9cd7fccfaf72e07f780cb0ba0be08bbdc40fc0803cb2b928258de25ac152fc0c4cd6002b120fb08297404bf477a6c971c180be4e766f085d6a1cbe239bb04f486a8436df5068b5615df52555717ff63be5774ca3e7bbc0b4751f95aa046dc4b46810479b5e770809de9e3e33e530b6a09d925a4bbb674cd4f9775637cf99bb23d1330eb1a0c9babb34b363df68fb0c9090f67e8c7d9baaad5106a0dab29f1f09fcda477799fee3393194ca4e41ac85bc70724bad901d8e33aed4af5ed355523747fbdf9804391bea6f43b684b37cb3f41f40ffcee1a10803962a12d69510440dcc1ba2f74b821c58f42fc79155d9aa019a320482109ddba8edfc76029dfd0e9e0dbde33576cba0315528787127fcfd13611cf5ec11b378d145f56684adbbe4da7c2c545681a51697129ae58c56d4fbb72add6a75b5bd502ea2e59bb35381e7ac84ba91973c831ef6e43b5333620d6737c9677524afef10ba5d555b41e9f996d742c9cf0fa7ba69dcb63f1b1a0119390a3bc30777fd78cea7b4490f5e6a42f96a66ee79dd9bb04549fdba97c6f9532adf7f93ead1d85c62ef70d516ee0d9ce2ec85dfe3cb6f12663c271935e6ef4ffd76a5477c77c34a37555b408df5517cd967c5f3d53bb331f165fa489f15d3e3cf1718a71021455baa9ab06a3be5d11ff0cf89df497ca4940dca5c998bb053c7ec907cefef0b6303c689911d74bc971bb194dc169dd899e8b5c2b871122eb2c9d1b9f170829882d19631b18dc2c7a14741e1d29509321d4f0822618b750b0cf9596c4c1fbd37d3ed8c6779c2c60d217e65519af529cee3ef280a5cec485ead1355d6b50ddb84</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-blink">
+      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
   </entry>
   <entry>
     <title>简历</title>
@@ -1661,82 +2354,6 @@
       <tags>
         <tag>递归</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>浅谈远程桌面</title>
-    <url>/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>为了能够流畅的使用远程桌面（GUI），我尝试了多款软件，也查了一些资料，在这里记录一下。</p>
-<span id="more"></span>
-<h3 id="协议"><a class="header-anchor" href="#协议">¶</a>协议</h3>
-<table>
-<thead>
-<tr>
-<th>协议</th>
-<th><a href="https://support.microsoft.com/zh-cn/help/186607/understanding-the-remote-desktop-protocol-rdp">RDP</a></th>
-<th><a href="https://docs.vmware.com/cn/VMware-Horizon-7/7.2/com.vmware.horizon-view.installation.doc/GUID-E2FFCC1F-B14A-4A4E-A36C-994EACC542B6.html">PCoIP</a></th>
-<th><a href="https://en.wikipedia.org/wiki/Independent_Computing_Architecture">ICA</a></th>
-<th><a href="https://spice-space.org/">SPICE</a></th>
-<th><a href="https://en.wikipedia.org/wiki/RFB_protocol">RFB</a></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>公司</td>
-<td>Microsoft</td>
-<td>VMWare</td>
-<td>Citrix</td>
-<td>Red Hat</td>
-<td>RealVNC</td>
-</tr>
-<tr>
-<td>特点</td>
-<td>本地显卡渲染</td>
-<td>传输差分图像</td>
-<td>增强型 RDP</td>
-<td>KVM 虚拟化</td>
-<td>瘦客户端</td>
-</tr>
-<tr>
-<td>软件</td>
-<td>mstsc、FreeRDP</td>
-<td>TeamViwer、Splashtop</td>
-<td>Citrix Virtual</td>
-<td></td>
-<td>RealVNC、TightVNC</td>
-</tr>
-</tbody>
-</table>
-<p>另外，AnyDesk 和向日葵没找到具体协议信息，我个人用起来感觉是和 TeamViwer 一样的。</p>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-32.png" class="" title="盗图1">
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-22-19-42.png" class="" title="盗图2">
-<h3 id="建议"><a class="header-anchor" href="#建议">¶</a>建议</h3>
-<ol>
-<li>偶尔才用一次的朋友，用 QQ 或钉钉的远程协助功能就好</li>
-<li>首推 TeamViewer，综合实力杠杠的，虽然经常会检测到商用，然后就不免费了</li>
-</ol>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-06.png" class="" title="TeamViewer">
-<ol start="3">
-<li>自从 TeamViewer 把我 ban 掉后，向日葵已成为我的主力</li>
-</ol>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-05-52.png" class="" title="向日葵">
-<ol start="4">
-<li>其实 ZeroTier 等内网穿透方案，配合 mstsc 或 Splashtop 也挺好的</li>
-</ol>
-<img data-src="/2020/03/17/%E6%B5%85%E8%B0%88%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/2020-03-17-23-06-26.png" class="" title="mstsc">
-<ol start="5">
-<li>mstsc 由于是本地渲染，导致我远程玩全屏游戏的时候，会提示 DirectX 错误，具体原因待查</li>
-<li>Splashtop 的控制端和被控端是两个软件</li>
-</ol>
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>向日葵也是一款优秀的国产良心软件啊，👍</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>协议</tag>
       </tags>
   </entry>
   <entry>
