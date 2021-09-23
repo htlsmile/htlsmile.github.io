@@ -3023,4 +3023,74 @@ end
         <tag>编程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>《鸟哥的Linux私房菜-基础篇.第四版》读后感</title>
+    <url>/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>阅读时间：2021年9月14日晚 至 2021年9月21日（中秋节）晚，18日晚上出去聚餐了没看书，所以共计7晚，每晚花约2到4小时。</p>
+<p>之前零散的在网上查过一些关于Linux的资料，例如 <code>cd</code>、<code>ls</code>、<code>top</code> 及 <code>nohup</code> 等命令的用法。</p>
+<p>也尝试过用 <code>bash</code> 编写脚本，却苦于没有库函数，写得实在是痛苦，最后改用 <code>python</code> 来写。</p>
+<p>也简单学习过 <code>makefile</code> 的写法，用大学毕业就再没用过的 <code>C语言</code> 写了个程序，尽管代码风格收获了前辈大量的吐槽。</p>
+<p>这样看来，我都是在各种场合应急才会去简单涉猎一些知识，都没有完整的学习过<code>Linux</code>系统，实在是太功利了，得改。</p>
+<span id="more"></span>
+<hr>
+<h1>大道至简</h1>
+<p>系统性的学习 <code>Linux</code> ，果然还是事半功倍，比单独学独立的知识点再自己找联系要显得更加容易一些，毕竟融会贯通也是一项不可多得的能力。</p>
+<p>从总体来看， <code>Linux</code> 系统的设计与使用都有着很深的 <code>C语言</code> 风格，毕竟源代码就是用 <code>C语言</code> 写的。这会造成什么局面呢？好的一面当然是用 <code>C语言</code> 这种最接近底层的高级语言，拥有着其他高级语言难以望其项背的执行效率以及资源损耗，这样的特性使得 <code>Linux</code> 在服务器端大放异彩，不过平心而论，我个人觉得开源免费才是最重要的原因。</p>
+<p>但是就论设计而言，我不认为 <code>Linux</code> 在设计上有过人之处，尽管我直到现在还是个菜鸟。<code>Linux</code> 最著名的设计应该是“一切皆文件”，文本是文件，设备也是文件，甚至连套接字都是文件。那这么做有什么好处呢？用 <code>OOP</code> 的思想来看，这就是完成了一次最重要的抽象，就像在 <code>C#</code> 里“一切皆 <code>object</code>”一样，这是很了不起的想法。在<code>Linux</code>里，“一切皆文件”就意味着，所有的一切都可以按照文件的方式进行处理，例如你的个人文档应该在你的 <code>/home/[user]/</code> 目录之下，你的计算机设备应该在 <code>/dev</code> 目录之下，他们都可以通过 <code>ls</code> 命令去查看列表清单，都可以用 “open() / read() / write() / close()” 的方式来操作。</p>
+<p>借用<a href="https://www.zhihu.com/question/422144033/answer/1664116757">知乎网友的答案</a>：</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-22-23-46-09.png" class="" title="netkiller的回答">
+<p>但成也萧何败也萧何，尽管这样可以让很多针对文件做处理的工具具有更强的通用性，针对文件的设计有着更广泛的普适性，但是就回到 <code>OOP</code> 上来说，抽象并不是为了一招鲜吃遍天，而是为了让事物更容易被人理解，那么像 <code>/dev/zero</code> 及 <code>/dev/null</code> 等虚拟设备就很反直觉，这并不能让惯性思维保持其正确性，而需要记忆“特例”。这也就是 <code>Linux</code> 中的 <code>ioctl</code> 成为槽点的原因。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PLUS 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUBTRACT 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MULTIPLY 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEVIDE 3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Operation</span><span class="params">(<span class="keyword">int</span> cmd,<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(cmd)&#123;</span><br><span class="line">    <span class="keyword">case</span> PLUS: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> SUBTRACT: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> MULTIPLY: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> DEVIDE: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">default</span>: <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Plus</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Subtract</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Multiply</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Devide</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>这两种方式哪一种更直观也无需多言，统一到一个函数如同把一切归为文件一样，看似大道至简，实则过了头，只会徒增记忆负担。在设计模式的概念里，提出策略模式就是为了解决这种复杂的 <code>if</code> 和 <code>switch</code> 分支。</p>
+<h1>记忆负担</h1>
+<p>如同 iPhone 只设置一个 Home 键，需要“点击”、“双击”、“长按”，甚至在全面屏时代取消实体按键一般，“从底部轻扫”、“从底部轻扫并停顿”、“轻点两下或三下iPhone背面”、“主屏幕下滑”、“左上角下滑”、“右上角下滑”，这些需要你记忆甚至形成肌肉记忆的内容或许只是徒增烦恼，如果你自信于自己的记忆力并觉得 iPhone 做的挺好，那么思考以下这些问题：</p>
+<ol>
+<li>如何截图？</li>
+<li>如何关机？长按电源键是不是关机？</li>
+<li>如何重新启动？手机死机了，如何强制重启？</li>
+<li>如何开启紧急呼叫 SOS ？</li>
+<li>如何启用 Siri ？</li>
+<li>如何进入 Apple Pay 付款页面？</li>
+<li>“响铃/静音”切换的逻辑是什么？静音状态是不是就没有声音了？</li>
+<li>在不同版本的 iPhone 中，以上操作的实现方式是否一致？</li>
+</ol>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/iOS_Android_Button.drawio.png" class="" title="iOS_Android_按钮">
+<p>在 <code>Linux</code> 的设计里，走向了极端，与系统的交互，也就是最常用的 <code>Shell</code> 类软件，以及运行于 <code>Shell</code> 之上的各种工具，你需要大量的记忆才能 do what you want，比如各种命令工具的用法。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-10-32.png" class="" title="command">
+<p>不论是命令本身，还是其参数，基本上都是简写，命令得死记硬背，参数记不清了还得靠 <code>man</code> 复习复习。</p>
+<p>例如 <code>info</code> 这个指令便是我看了忘，忘了看，始终记不住的一个指令。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-34-53.png" class="" title="info page 各说明文件相关性的示意图">
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-36-24.png" class="" title="info 按键功能">
+<p>其他的各种命令基本都是靠着你<strong>强大的记忆与理解能力</strong>才能正确高效使用，例如 <code>Vi</code> 和 <code>Vim</code>。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-59-00.png" class="" title="Vi移动光标">
+<p>我始终不能接受 <code>hjkl</code> 作为上下左右使用，我猜测是因为先定义了 <code>i</code> 代表插入（Insert），所以方向键不能是 <code>ijkl</code>。</p>
+<p><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">How do I exit the Vim editor?</a> 能成为一个热门问题，是有原因的。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-41-32.png" class="" title="https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;11828573&#x2F;7344695">
+<p><code>Linux</code> 初期没有把图形化界面考虑进去实在是一大憾事，不过同为半吊子后端开发的我表示十分理解，毕竟写界面太费时间了，写一个 <code>kernel</code> 已经是很了不起的成就。</p>
+<p>但回到系统本身来说，<code>C语言</code> 的影子，所导致的问题便是，缺少可靠高效的数据存储及传递方式，存储方面像 <code>/etc/passwd</code> 等纯数据类的文本，都是CSV，当然，这不能怪 <code>Linux</code>，因为在当时，数据库也是在不断发展，出现广泛使用的 <code>SQLite</code> 单文件型数据库都是很后来的事了。重点在另一方面————数据传递，<code>C语言</code> 自身没有严格的数据类型定义，例如 <code>int</code> 和 <code>long</code> 之类的类型长度得靠具体的编译器决定，简而言之就是缺乏标准，这也就让各类工具间的数据传递方式都是采用文本传递，也就是字符串（可 <code>C语言</code> 的字符串不是一个标准类型），这就引出了一些很神奇的用法：</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-45-56.png" class="" title="join指令">
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-47-47.png" class="" title="xargs指令">
+<p>我可真是记不住啊。</p>
+<p><code>.</code>、<code>..</code>、<code>-</code>、<code>:</code>、<code>/</code>、<code>?</code>、<code>--stdin</code>、<code>--stdout</code>、<code>|</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;&lt;</code>、<code>&gt;&gt;</code>、<code>;</code>、<code>^</code>、<code>[</code>、<code>]</code>、<code>$</code>、<code>#</code>、<code>'</code>、<code>&quot;</code></p>
+<p>就单纯摆一些符号在这，我都不觉得有谁能够准确描述这些符号在不同场合的意义。<code>bash</code> 可以脚本也只算是实现了一套不太好用的解释性 <code>C语言</code> 执行器。</p>
+<h1>何谓优雅</h1>
+<p>围棋用很简单的规则，定义了一种极其复杂的游戏；象棋用相对简单的规则，定义了一种相对复杂的游戏；三国杀用相对复杂的规则，定义了一种相对简单的游戏。</p>
+<p><code>Linux</code> 如同三国杀一般，给了一个相当自由的环境，允许用新程序做很多事情，犹如三国杀可以一直出新卡，一直加规则，反倒失去了乐趣。</p>
+<p>终端用户在使用操作系统时，理应是向操作系统表达需求，由操作系统自动完成一系列操作来满足用户需求，在当中需要用户做出选择时，给出相应提示即可，就像使用 <code>yum install</code> 来安装软件一般。可 <code>Linux</code> 就是给了一堆相当硬核的工具和使用手册，要求用户自己正确搭配使用工具来满足自己的需求，这也太不友好了，和优雅完全不搭边，如同“CSS如何让元素居中？”这个问题一般，有太多的适用场景和实现方法可供选择，最后得自己挨个试，看哪个是自己真正想要的。</p>
+<p>再来看看我最喜欢的 <code>C#</code> ，搭配 <code>.NET</code>，相较于其他语言，可谓是相当优雅，深得我心，当然 <code>C#</code> 也有 <code>IDisposable</code> 这样令人迷惑的设计，相当不优雅。</p>
+<hr>
+<h1>后记</h1>
+<p>《鸟哥的Linux私房菜》是一本好书，感谢鸟哥，从最基础的硬件一路讲到核心编译，当作科普类文档去泛读也是不错的，但全书内容还是相当硬核，没有很深的计算机各类知识打辅助，恐怕是难以吃透全书的。</p>
+<p>我都靠泛读跳过了许多内容 😁</p>
+<p>留一个下载地址好了：<a href="https://htlsmilework.glitch.me/Book/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87.%E7%AC%AC%E5%9B%9B%E7%89%88.pdf">鸟哥的Linux私房菜-基础篇.第四版.pdf</a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
