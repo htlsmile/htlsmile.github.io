@@ -2087,7 +2087,7 @@
     <title>算法小结之动态规划</title>
     <url>/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>在上篇讨论<a href="/2020/03/12/算法小结之递归/" target="_blank"><strong>递归</strong></a>的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。</p>
+<p>在上篇讨论 <a href="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E9%80%92%E5%BD%92/" title="递归">递归</a> 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。</p>
 <p>但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。</p>
 <span id="more"></span>
 <h3 id="八皇后"><a class="header-anchor" href="#八皇后">¶</a>八皇后</h3>
@@ -2464,7 +2464,7 @@ n! = 1 x 2 x 3 x … x (n - 1) x n , n &gt; 0</p>
 <p>在 8×8 格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
 </blockquote>
 <img data-src="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E9%80%92%E5%BD%92/2020-03-13-15-28-35.png" class="">
-<p>这个问题的思路在下一篇<a href="/2020/03/12/算法小结之动态规划/" target="_blank"><strong>动态规划</strong></a>中再做讨论。</p>
+<p>这个问题的思路在下一篇 <a href="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">动态规划</a> 中再做讨论。</p>
 <h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
 <p>三个递归问题的源码在<a href="https://github.com/htlsmile/HT.Algorithm">HT.Algorithm</a>的 Recursion 项目中。</p>
 <p>复杂的的问题通过递归算法能够写出很符合思维的优雅代码，不过通常这种优雅伴随着难以接受的时间复杂度和空间复杂度，这就涉及到更多有意思的知识了，大家可以去<a href="https://leetcode-cn.com/explore/featured/card/recursion-i/">LeetCodeCN-递归</a>中自行探索。当然这些问题也能够用非递归的方式去解决，例如汉诺塔的非递归解法，有兴趣的朋友自行百度。</p>
@@ -3092,5 +3092,71 @@ end
       <tags>
         <tag>Linux</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>路由器（梅林固件）实现局域网电脑远程开机</title>
+    <url>/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 <code>RT-AC86U</code>，具有koolshare软件中心，价格实在是不便宜，不过平心而论，<strong>强得很</strong>（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/iPhone_13_Pro.png" class="" title="iPhone 13 Pro">
+<span id="more"></span>
+<ul>
+<li><a href="https://www.asuswrt-merlin.net/">Asuswrt-Merlin</a>: <strong>Asuswrt-Merlin</strong> is a <strong>third party alternative firmware</strong> for Asus routers, with a special emphasis on tweaks and fixes rather than radical changes or collecting as many features as possible.</li>
+<li><a href="https://www.asuswrt-merlin.net/">梅林固件</a>：<strong>Asuswrt-Merlin</strong> 是华硕路由器的<strong>第三方替代固件</strong>，特别强调轻微调整和修复，而不是激进的更改或收集尽可能多的功能。</li>
+<li><a href="https://fw.koolcenter.com/Koolshare_ASUS_Official_Mod/">华硕官改固件</a>：华硕官改固件是根据华硕对应机型的源代码，在尽量不更改固件其它地方的前提下，增加koolshare软件中心。尽量保持官方固件的原汁原味，又能拥有软件中心。</li>
+<li>远程开机（Wake on LAN，WOL）：俗称远程唤醒，是现在很多网卡都支持的功能。而远程唤醒的实现，主要是向目标主机发送特殊格式的数据包，是AMD公司制作的MagicPacket这套软件以生成网络唤醒所需要的特殊数据包，俗称魔术包（Magic Packet）。MagicPacket格式虽然只是AMD公司开发推广的技术，并非世界公认的标准，但是仍然受到很多网卡制造商的支持，因此许多具有网络唤醒功能的网卡都能与之兼容。</li>
+</ul>
+<hr>
+<h1>实现思路</h1>
+<p>要想远程打开家里的电脑，首先电脑的主板和网卡必须都支持远程唤醒功能，其次得有个常开的路由器，最后要在公网上可以访问到这个路由器。当然，你如果有钱直接买向日葵的开机硬件产品也行，不过那些产品通常也需要连接WiFi。</p>
+<h1>网卡支持远程唤醒</h1>
+<p>在有线网卡的电源管理选项卡中，按照这个界面勾选即可，未勾选的“只允许幻数据包唤醒计算机”，代表着网络中的其他通信也可以唤醒计算机。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-20-54-06.png" class="" title="网卡电源管理">
+<h1>常开的路由器</h1>
+<p>给路由器24小时供电即可，如果路由器长时间运行不稳定，通常可以设置定时重启功能，非常有效。</p>
+<h1>公网访问路由器</h1>
+<p>你的家庭宽带如果可以直接获得公网IP，静态的最方便，动态的也可以使用DDNS功能，这一步就完成了。</p>
+<p>但通常都不会有公网IP，所以引出了内网穿透的概念。</p>
+<h1>内网穿透</h1>
+<h2 id="DDNSTO"><a class="header-anchor" href="#DDNSTO">¶</a>DDNSTO</h2>
+<p><a href="https://www.ddnsto.com/zh/guide/koolshare_merlin.html">DDNSTO使用教程</a></p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-03-22.png" class="" title="DDNSTO">
+<p>笔者之前一直使用的都是DDNSTO，远程登录路由器，再从路由器的网络工具——通过网络（LAN）唤醒功能去启动家里的计算机。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-11-40.png" class="" title="通过网络（LAN）唤醒">
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-13-10.png" class="" title="DDNSTO购买通道">
+<p>不过目前DDNSTO的服务器得每隔七天去主动申请一次免费服务才行，你也可以付费购买长期服务，另外，使用时可能需要微信扫码认证，略嫌麻烦，那个<strong>限时活动</strong>也戳伤了我，而后切换到了下面这种方式。</p>
+<h2 id="Zerotier"><a class="header-anchor" href="#Zerotier">¶</a>Zerotier</h2>
+<p>同样，在软件中心，可以安装Zerotier，然后在笔记本上也装上，台式机也可以装上，都连入同一个网络中，为了给Zerotier加速，可以参考以前的文章：<a href="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/" title="ZeroTier创建Moon节点">ZeroTier创建Moon节点</a>。</p>
+<p>而后，你就可以直接输入在Zerotier上分配给路由器的IP地址，从而访问到路由器上了，再通过路由器的界面去唤醒。</p>
+<h1>用脚本唤醒</h1>
+<p>但我懒得很，连打开浏览器界面按按钮都觉得费劲，于是乎，便去研究了路由器是如何唤醒计算机的，写了个简单脚本，实现启动脚本便唤醒指定计算机的功能。</p>
+<h2 id="开启SSH"><a class="header-anchor" href="#开启SSH">¶</a>开启SSH</h2>
+<p>不入虎穴焉得虎子，我们先进入路由器的系统管理——系统设置界面，开启SSH功能。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-25-38.png" class="" title="SSH服务">
+<p>在笔记本上用 <code>ssh-keygen</code> 生成 <code>rsa</code> 的密钥，然后将公钥内容填入授权密钥中，即可实现免密码访问。</p>
+<h2 id="分析网页源码"><a class="header-anchor" href="#分析网页源码">¶</a>分析网页源码</h2>
+<p>用SSH进入路由器后，即可查看 <code>/www/Main_WOL_Content.asp</code> 的内容。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-35-44.png" class="" title="Main_WOL_Content">
+<p>通过分析页面源码，可以知道实际上是通过 <code>/usr/sbin/ether-wake -i br0 -b 00:00:00:00:00:00</code> 这个命令去唤醒计算机的，最后一段便是网卡的 MAC地址。</p>
+<h2 id="脚本编写"><a class="header-anchor" href="#脚本编写">¶</a>脚本编写</h2>
+<p>一个简易脚本就新鲜出炉了。</p>
+<ol>
+<li>在文本编辑器（记事本、Notepad++等）中粘贴以下代码；</li>
+<li>IP地址（<strong>127.0.0.1</strong>）替换为在Zerotier中给路由器分配的IP地址；</li>
+<li>MAC地址（<strong>00:00:00:00:00:00</strong>）替换为待唤醒的计算机网卡MAC地址；</li>
+<li><strong>username</strong>替换为你路由器登录的用户名；</li>
+<li>另存为 <code>WakeOnLan.cmd</code>。</li>
+</ol>
+<p>如果之前在路由器SSH服务中，你已经设置好了授权密钥，那么双击脚本即可实现无密码确认，直接唤醒计算机；如果没有设置SSH公钥，你可以按照提示输入密码。</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">title</span> WakeOnLan</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> &quot;  _    _ _______ _       _____ __  __ _____ _      ______ </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |__   __| |     / ____|  \/  |_   _| |    |  ____|</span><br><span class="line"><span class="built_in">echo</span> &quot; | |__| |  | |  | |    | (___ | \  / | | | | |    | |__   </span><br><span class="line"><span class="built_in">echo</span> &quot; |  __  |  | |  | |     \___ \| |\/| | | | | |    |  __|  </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |  | |  | |____ ____) | |  | |_| |_| |____| |____ </span><br><span class="line"><span class="built_in">echo</span> &quot; |_|  |_|  |_|  |______|_____/|_|  |_|_____|______|______|</span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"></span><br><span class="line">:<span class="built_in">Ping</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">ping</span> -n <span class="number">1</span> <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">ERRORLEVEL</span> <span class="number">0</span> <span class="keyword">goto</span> Connected</span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">ERRORLEVEL</span> <span class="number">1</span> <span class="keyword">goto</span> NotConnected</span><br><span class="line"></span><br><span class="line">:NotConnected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">4</span>F</span><br><span class="line"><span class="built_in">echo</span>             Router Unreachable !</span><br><span class="line">TIMEOUT /T <span class="number">5</span></span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line"></span><br><span class="line">:Connected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">2</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>             Wake up MAC[<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>]</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line">ssh -l username <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span> &quot;/usr/sbin/ether-wake -i br0 -b <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>; <span class="keyword">exit</span>&quot;</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>             Wake up complete!</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line">TIMEOUT /T <span class="number">5</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用效果"><a class="header-anchor" href="#使用效果">¶</a>使用效果</h2>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-51-59.png" class="" title="WakeOnLan">
+<hr>
+<h1>后记</h1>
+<p>果然懒惰才能促使人进步，尽管写下这篇文章都花了两个小时，顺带一提，脚本中的那个字符画，是在 <a href="http://patorjk.com/software/taag/"><strong>Text to ASCII Art Generator (TAAG)</strong></a> 中生成的，好用得很。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
   </entry>
 </search>

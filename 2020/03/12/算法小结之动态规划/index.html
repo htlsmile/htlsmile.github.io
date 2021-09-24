@@ -26,12 +26,12 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="¶前言 在上篇讨论递归的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
+<meta name="description" content="¶前言 在上篇讨论 递归 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法小结之动态规划">
 <meta property="og:url" content="https://htlsmile.github.io/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="¶前言 在上篇讨论递归的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
+<meta property="og:description" content="¶前言 在上篇讨论 递归 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/2020-03-13-15-28-35.png">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/2020-03-14-19-54-00.png">
@@ -106,7 +106,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">38</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">39</span></a></li>
         <li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li>
         <li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
@@ -181,7 +181,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -315,7 +315,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>在上篇讨论<a href="/2020/03/12/算法小结之递归/" target="_blank"><strong>递归</strong></a>的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。</p>
+<p>在上篇讨论 <a href="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E9%80%92%E5%BD%92/" title="递归">递归</a> 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。</p>
 <p>但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。</p>
 <span id="more"></span>
 <h3 id="八皇后"><a class="header-anchor" href="#八皇后">¶</a>八皇后</h3>
@@ -672,13 +672,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">88k</span>
+    <span title="站点总字数">90k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:20</span>
+    <span title="站点阅读时长">1:22</span>
   </span>
 </div>
 <div class="busuanzi-count">
