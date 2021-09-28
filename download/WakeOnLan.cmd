@@ -60,8 +60,17 @@ echo.
 echo        Wake up MAC[%mac_address%]
 echo.
 ssh -l %router_username% %router_ip% "/usr/sbin/ether-wake -i br0 -b %mac_address%; exit"
+if ERRORLEVEL 1 goto SSHError
 echo.
 echo        Wake up complete!
+echo.
+goto ExitCmd
+
+:SSHError
+
+color 4F
+echo.
+echo        ssh [%router_ip%] error !
 echo.
 goto ExitCmd
 
