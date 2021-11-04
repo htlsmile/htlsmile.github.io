@@ -1369,8 +1369,7 @@
     <content><![CDATA[<h1>前言</h1>
 <p>Windows上安装WinRAR</p>
 <ul>
-<li>5.61简体中文版无广告，自动识别32位和64位系统：<a href="https://htlsmilework.glitch.me/Software/WinRAR/WinRAR-x86%2Bx64-561sc.exe">WinRAR-x86+x64-561sc.exe</a></li>
-<li>5.70简体中文版无广告，自动识别32位和64位系统：<a href="https://htlsmilework.glitch.me/Software/WinRAR/winrar-x86%2Bx64-570sc.exe">winrar-x86+x64-570sc.exe</a></li>
+<li>5.70简体中文版无广告，自动识别32位和64位系统：<a href="https://htlsmilework.glitch.me/Software/winrar-x86%2Bx64-570sc.exe">winrar-x86+x64-570sc.exe</a></li>
 </ul>
 <p>Linux发行版通常自带tar、zip、unzip等命令。</p>
 <p>如果有跨平台的需求，建议使用zip格式。</p>
@@ -3270,6 +3269,171 @@ end
 <hr>
 <h1>后记</h1>
 <p>当个听众。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《嵌入式Linux系统开发教程（第2版）》读后感</title>
+    <url>/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>先说结论，贺丹丹老师的这本书，虽说关于嵌入式开发的方方面面确都讲了，但需要读者自行补充<strong>亿点点</strong>细节，<strong>不建议初学者阅读</strong>。按照此书的目录，把每一章标题涉及的内容另行找本书看看再回来看这本书吧。</p>
+<p>不过，如果你只是当科普类书籍来读的话，还是可以初步了解一下嵌入式开发的知识。笔者就是被科普了一把。</p>
+<span id="more"></span>
+<hr>
+<h1>摘抄</h1>
+<ul>
+<li>根据国际电机工程师协会（IEEE）的定义，嵌入式系统是“控制、监视或者辅助装置、机器和运行的装置”。</li>
+<li>为了充分体现嵌入式系统的精髓，目前国内普遍认同的一个定义是：以应用为中心，以计算机技术为基础，软硬件可剪裁，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。</li>
+</ul>
+<img data-src="/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/%E5%B7%A5%E4%B8%9A%E6%8E%A7%E5%88%B6%E7%BD%91%E7%BB%9C.png" class="">
+<img data-src="/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/GT2440%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90%E5%88%86%E5%B8%83.png" class="">
+<h1>嵌入式开发基本流程</h1>
+<ol>
+<li>准备好硬件，例如<code>ARM开发板</code>；</li>
+<li>准备好一个用于开发嵌入式的<code>Linux系统</code>，例如<code>Ubuntu</code>；</li>
+<li>获取交叉编译工具，下载源代码自行编译或者直接下载成品，例如<code>arm-linux-gcc</code>；</li>
+<li>选定一个合适的<code>Bootloader</code>，例如<code>U-Boot</code>；</li>
+<li>下载编译<code>Linux内核</code>源码，定制内核，精简模块；</li>
+<li>使用<code>Busybox</code>制作文件系统；</li>
+<li>根据所用硬件需求，编写驱动程序；</li>
+<li>编写应用程序。</li>
+</ol>
+<p>前面七步都是为了打造合适的运行环境（软硬件环境），为应用程序铺路。如果应用程序本身就很简单，那么看起来为其打造环境则是一个相当大的代价，不过好处就是构建了一个稳定可靠的产品吧，不至于像使用win10一样被强行升级。</p>
+<hr>
+<h1>后记</h1>
+<p>最后一章的开发实例提供了一个很好的开发流程，软硬件项目都可以参考这个。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>查看Windows系统关机重启事件</title>
+    <url>/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h1>前言</h1>
+<ul>
+<li>
+<p><a href="https://www.shellhacks.com/windows-shutdown-reboot-event-ids-get-logs/">Windows: Shutdown/Reboot Event IDs – Get Logs</a></p>
+</li>
+<li>
+<p><a href="https://serverfault.com/questions/702828/windows-server-restart-shutdown-history">Windows Server restart / shutdown history</a></p>
+</li>
+<li>
+<p>相关事件ID：41,1074,1076,6005,6006,6008,6009,6013</p>
+</li>
+<li>
+<p>Win7事件ID：6005（开机）、6006（关机）</p>
+</li>
+<li>
+<p>Win10事件ID：30（开机）、7002（关机）</p>
+</li>
+</ul>
+<span id="more"></span>
+<hr>
+<h1>关机重启事件</h1>
+<table>
+<thead>
+<tr>
+<th><strong>事件ID</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30</td>
+<td>固件报告了启动指标。</td>
+<td></td>
+</tr>
+<tr>
+<td>41</td>
+<td>系统在没有彻底关闭的情况下重新启动。</td>
+<td>The system has rebooted without cleanly shutting down first.</td>
+</tr>
+<tr>
+<td>1074</td>
+<td>系统被某个用户或进程正常关闭。</td>
+<td>The system has been shutdown properly by a user or process.</td>
+</tr>
+<tr>
+<td>1076</td>
+<td>紧随事件ID 6008之后，表示在意外重启或关机后第一个拥有关机权限的用户登录到服务器并指定原因。</td>
+<td>Follows after Event ID 6008 and means that the first user with shutdown privileges logged on to the server after an unexpected restart or shutdown and specified the cause.</td>
+</tr>
+<tr>
+<td>6005</td>
+<td>事件日志服务已启动。表示系统启动。</td>
+<td>The Event Log service was started. Indicates the system startup.</td>
+</tr>
+<tr>
+<td>6006</td>
+<td>事件日志服务已停止。表示系统正常关闭。</td>
+<td>The Event Log service was stopped. Indicates the proper system shutdown.</td>
+</tr>
+<tr>
+<td>6008</td>
+<td>上次系统关闭是意外的。</td>
+<td>The previous system shutdown was unexpected.</td>
+</tr>
+<tr>
+<td>6009</td>
+<td>系统启动时检测到的操作系统版本。</td>
+<td>The operating system version detected at the system startup.</td>
+</tr>
+<tr>
+<td>6013</td>
+<td>系统正常运行时间，以秒为单位。</td>
+<td>The system uptime in seconds.</td>
+</tr>
+<tr>
+<td>7002</td>
+<td>客户体验改善计划的用户注销通知。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1>在事件查看器中查看</h1>
+<ol>
+<li>开始菜单内输入<code>event</code>或<code>eventvwr</code></li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-15-52-21.png" class="">
+<ol start="2">
+<li>点击<code>Windows 日志 - 系统</code></li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-06-20.png" class="">
+<ol start="3">
+<li>右键点击或在右侧选择<code>筛选当前日志</code></li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-07-37.png" class="">
+<ol start="4">
+<li>在<code>&lt;所有事件 ID&gt;</code>中输入<code>41,1074,1076,6005,6006,6008,6009,6013</code>或<code>30,7002,6005,6006</code>或并点击确定</li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-09-46.png" class="">
+<ul>
+<li>根据相近的<code>6005</code>与<code>6006</code>事件，确认系统在<code>2021/11/1 10:16:08</code>关机，在<code>2021/11/1 10:16:41</code>开机，可以判断出这是一次重启操作。</li>
+</ul>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-15-26.png" class="">
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-15-37.png" class="">
+<ul>
+<li>根据相近的<code>30</code>与<code>7002</code>事件，确认系统在<code>2021/11/1 10:16:31</code>开机，在<code>2021/11/1 11:06:49</code>关机。</li>
+</ul>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-30-24.png" class="">
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-30-33.png" class="">
+<h1>在PowerShell中查看</h1>
+<p>使用 <code>PowerShell</code> 的<code>Get-EventLog</code>命令从命令行检索 <code>Windows</code> 中的关机/重启日志。</p>
+<ul>
+<li>过滤系统事件日志中的最新<code>10000</code>条，然后仅显示与 <code>Windows</code> 开关机相关的事件，请运行：</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-EventLog</span> System <span class="literal">-Newest</span> <span class="number">10000</span> | `</span><br><span class="line"><span class="built_in">Where</span> EventId <span class="operator">-in</span> <span class="number">41</span>,<span class="number">1074</span>,<span class="number">1076</span>,<span class="number">6005</span>,<span class="number">6006</span>,<span class="number">6008</span>,<span class="number">6009</span>,<span class="number">6013</span> | `</span><br><span class="line"><span class="built_in">Format-Table</span> TimeGenerated,EventId,UserName,Message <span class="literal">-AutoSize</span> <span class="literal">-wrap</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>过滤<code>Win10</code>系统事件日志中的最新<code>10000</code>条，然后仅显示与 <code>Windows</code> 开关机相关的事件，请运行：</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-EventLog</span> System <span class="literal">-Newest</span> <span class="number">10000</span> | `</span><br><span class="line"><span class="built_in">Where</span> EventId <span class="operator">-in</span> <span class="number">30</span>,<span class="number">6005</span>,<span class="number">6006</span>,<span class="number">7002</span> | `</span><br><span class="line"><span class="built_in">Format-Table</span> TimeGenerated,EventId,UserName,Message <span class="literal">-AutoSize</span> <span class="literal">-wrap</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+<p>想搜技术知识，还是Google靠谱。</p>
 ]]></content>
       <categories>
         <category>随笔</category>
