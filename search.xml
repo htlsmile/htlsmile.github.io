@@ -3439,4 +3439,38 @@ end
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>复制VMware的Linux虚拟机不能联网的问题</title>
+    <url>/2021/12/09/%E5%A4%8D%E5%88%B6VMware%E7%9A%84Linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8D%E8%83%BD%E8%81%94%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>从别人那里直接将某个虚拟机的文件夹拷贝到自己电脑上运行时，VMware通常会提示你“此虚拟机可能已被移动或复制”，此时我们选择“我已复制该虚拟机”。</p>
+<p>如果这是个Linux系统的虚拟机，尝试切换<code>桥接模式</code>、<code>NAT模式</code>、<code>仅主机模式</code>，会发现网络都不通。</p>
+<span id="more"></span>
+<hr>
+<h1>查看网卡配置</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<p>使用该命令，发现目前只有<code>lo</code>存在。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+<p>使用该命令，会发现有<code>lo</code>和<code>eth1</code>存在。</p>
+<h1>原因</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts/</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>会看到<code>ifcfg-eth0</code>(也可能是<code>ifcfg-ens33</code>)及<code>ifcfg-lo</code>，两个配置文件。</p>
+<p>原来的网卡默认创建了<code>eth0</code>，相关的配置都是对着<code>eth0</code>完成的。而复制之后，由本机创建的网卡为<code>eth1</code>，没有任何配置，自然不能上网。</p>
+<h1>解决</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules</span><br></pre></td></tr></table></figure>
+<p>可能会看到类似的输出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:2b&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:1f&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth1&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>把eth0的两行删除，将eth1改为eth0，保存文件即可。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:1f&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br></pre></td></tr></table></figure>
+<p>之后重启，看看效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown -r now</span><br><span class="line"></span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<p>就会发现网络正常了。</p>
+<hr>
+<h1>后记</h1>
+<p>解决这个问题走了一堆弯路，还以为是VMware的网络功能出问题了。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
 </search>
