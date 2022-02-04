@@ -3473,4 +3473,259 @@ end
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>在重分析点缓冲区中的标记无效</title>
+    <url>/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>使用<code>OneDrive</code>同步文件删除时偶尔会引发这种问题。在<code>OneDrive</code>网页端查看文件已被正常删除，但在本地显示同步中的状态图标，打开文件会提示<strong>在重分析点缓冲区中的标记无效</strong>。</p>
+<span id="more"></span>
+<hr>
+<h1>解决</h1>
+<p>在OneDrive所在的磁盘，右键打开属性-工具-查错，选择扫描驱动器，发现问题后会提示修复，选择下次重启时修复，然后重启电脑就好了。</p>
+<img data-src="/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/2021-12-16-10-12-24.png" class="">
+<img data-src="/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/2021-12-16-10-12-46.png" class="">
+<hr>
+<h1>后记</h1>
+<p>很久之前遇到过，也解决了，然后忘了，这次又查了一次，所以记录下来。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2018年刑侦科推理试题</title>
+    <url>/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>2018年3月7日，忘了从哪看到的这套试题，初看时兴趣不大，觉得和玩数独一样，但还是保存到手机相册里了。</p>
+<span id="more"></span>
+<p>2019年7月30日，那天下班后，和朋友一起闲逛，不料突然下雨，便赶紧躲进一家小卖部避雨，眼瞅着雨越下越大，干脆就和朋友在小卖部门口的棚子里坐了下来，做起了这套试题，做到一半雨停了，于是赶紧回家，接着做题目，第一张草稿被雨水浸湿了，只剩下回家后用的第二张草稿。前后做了几个小时，最后发现还是穷举法好用。</p>
+<hr>
+<h1>题目</h1>
+<img data-src="/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/20180307_152557814_iOS.jpg" class="">
+<h1>答案</h1>
+<img data-src="/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/20190730_150537907_iOS.jpg" class="">
+<h1>解析</h1>
+<p>首先顺着读一遍题目，可以获取到一些基本信息，然后通过简要分析，我们应该不难看出第三题和第七题可以作为切入点。</p>
+<p>第七题所说，被选中次数最少，题目有十道，都是4个选项，那么意味着次数最少不可能是2次及以上。</p>
+<ul>
+<li>如果是3次，显然不可能</li>
+<li>如果是2次，十道题的答案必然是2+2+3+3=10，那么违背了单项选择的条件</li>
+<li>如果是0次，可由于第七题本身就会有一个答案，所以不会是0次</li>
+</ul>
+<p>那么，也就是说，<strong>第七题所选的答案，不会在其他题目中出现，只会在第七题出现1次</strong>。</p>
+<p>所以我在第七题上画了一个箭头，代表这个意思。</p>
+<p>那么，回过头来看第三题，我也没有其他巧妙的办法，只能一个个试了。</p>
+<h2 id="假设-3-A"><a class="header-anchor" href="#假设-3-A">¶</a>假设 3=A</h2>
+<p>那么 2=4=6，而且不为A，也就是在草稿上写的数学符号<code>┐A</code>，代表非A</p>
+<h3 id="假设-2-4-6-B"><a class="header-anchor" href="#假设-2-4-6-B">¶</a><s>假设 2=4=6=B</s></h3>
+<p>因为第二题是B，所以第五题是D，又根据第五题的描述，第七题是D，矛盾了，这个答案是<strong>错</strong>的</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="假设-2-4-6-C"><a class="header-anchor" href="#假设-2-4-6-C">¶</a>假设 2=4=6=C</h3>
+<p>因为第二题是C，所以第五题是A，又根据第五题的描述，第八题是A，那么第一题和第七题的答案不相邻，根据第七题答案独立的特性，第七题只能是B或D</p>
+<p>因为第四题是C，1和9的答案相同，也就是1=9</p>
+<p>因为第六题是C，8=3=10=A</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">A</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="假设-7-B"><a class="header-anchor" href="#假设-7-B">¶</a><s>假设 7=B</s></h4>
+<p>那么第一题只能是D，根据第四题的条件，1=9=D，而根据第九题的描述，推断出矛盾了，这也是<strong>错</strong>的</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="假设-7-D"><a class="header-anchor" href="#假设-7-D">¶</a>假设 7=D</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<p>那么第一题可能是A或B</p>
+<h5 id="假设1-A"><a class="header-anchor" href="#假设1-A">¶</a><s>假设1=A</s></h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<p>那么第九题也得是A，然而矛盾，所有答案都没有出现B，不符合我们对第七题的分析，这也是<strong>错</strong>的</p>
+<h5 id="假设1-B"><a class="header-anchor" href="#假设1-B">¶</a>假设1=B</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<p>那么第九题也得是B，8=3=10=5=A</p>
+<p>检验一下第十题，统计一下次数</p>
+<ul>
+<li>A:4</li>
+<li>B:2</li>
+<li>C:3</li>
+<li>D:1</li>
+</ul>
+<p><code>4 - 1 = 3</code> 是正确的，那么这个答案没有矛盾。</p>
+<p>至此，告一段落，至于有没有其他答案我就不关心了。</p>
+<hr>
+<h1>后记</h1>
+<p>非常有意思的题目，出题人得费多少脑细胞。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
 </search>
