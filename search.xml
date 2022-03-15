@@ -1,6 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2018年刑侦科推理试题</title>
+    <url>/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>2018年3月7日，忘了从哪看到的这套试题，初看时兴趣不大，觉得和玩数独一样，但还是保存到手机相册里了。</p>
+<span id="more"></span>
+<p>2019年7月30日，那天下班后，和朋友一起闲逛，不料突然下雨，便赶紧躲进一家小卖部避雨，眼瞅着雨越下越大，干脆就和朋友在小卖部门口的棚子里坐了下来，做起了这套试题，做到一半雨停了，于是赶紧回家，接着做题目，第一张草稿被雨水浸湿了，只剩下回家后用的第二张草稿。前后做了几个小时，最后发现还是穷举法好用。</p>
+<hr>
+<h1>题目</h1>
+<img data-src="/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/20180307_152557814_iOS.jpg" class="">
+<h1>答案</h1>
+<img data-src="/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/20190730_150537907_iOS.jpg" class="">
+<h1>解析</h1>
+<p>首先顺着读一遍题目，可以获取到一些基本信息，然后通过简要分析，我们应该不难看出第三题和第七题可以作为切入点。</p>
+<p>第七题所说，被选中次数最少，题目有十道，都是4个选项，那么意味着次数最少不可能是2次及以上。</p>
+<ul>
+<li>如果是3次，显然不可能</li>
+<li>如果是2次，十道题的答案必然是2+2+3+3=10，那么违背了单项选择的条件</li>
+<li>如果是0次，可由于第七题本身就会有一个答案，所以不会是0次</li>
+</ul>
+<p>那么，也就是说，<strong>第七题所选的答案，不会在其他题目中出现，只会在第七题出现1次</strong>。</p>
+<p>所以我在第七题上画了一个箭头，代表这个意思。</p>
+<p>那么，回过头来看第三题，我也没有其他巧妙的办法，只能一个个试了。</p>
+<h2 id="假设-3-A"><a class="header-anchor" href="#假设-3-A">¶</a>假设 3=A</h2>
+<p>那么 2=4=6，而且不为A，也就是在草稿上写的数学符号<code>┐A</code>，代表非A</p>
+<h3 id="假设-2-4-6-B"><a class="header-anchor" href="#假设-2-4-6-B">¶</a><s>假设 2=4=6=B</s></h3>
+<p>因为第二题是B，所以第五题是D，又根据第五题的描述，第七题是D，矛盾了，这个答案是<strong>错</strong>的</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="假设-2-4-6-C"><a class="header-anchor" href="#假设-2-4-6-C">¶</a>假设 2=4=6=C</h3>
+<p>因为第二题是C，所以第五题是A，又根据第五题的描述，第八题是A，那么第一题和第七题的答案不相邻，根据第七题答案独立的特性，第七题只能是B或D</p>
+<p>因为第四题是C，1和9的答案相同，也就是1=9</p>
+<p>因为第六题是C，8=3=10=A</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">A</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="假设-7-B"><a class="header-anchor" href="#假设-7-B">¶</a><s>假设 7=B</s></h4>
+<p>那么第一题只能是D，根据第四题的条件，1=9=D，而根据第九题的描述，推断出矛盾了，这也是<strong>错</strong>的</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="假设-7-D"><a class="header-anchor" href="#假设-7-D">¶</a>假设 7=D</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<p>那么第一题可能是A或B</p>
+<h5 id="假设1-A"><a class="header-anchor" href="#假设1-A">¶</a><s>假设1=A</s></h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<p>那么第九题也得是A，然而矛盾，所有答案都没有出现B，不符合我们对第七题的分析，这也是<strong>错</strong>的</p>
+<h5 id="假设1-B"><a class="header-anchor" href="#假设1-B">¶</a>假设1=B</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">A</td>
+</tr>
+</tbody>
+</table>
+<p>那么第九题也得是B，8=3=10=5=A</p>
+<p>检验一下第十题，统计一下次数</p>
+<ul>
+<li>A:4</li>
+<li>B:2</li>
+<li>C:3</li>
+<li>D:1</li>
+</ul>
+<p><code>4 - 1 = 3</code> 是正确的，那么这个答案没有矛盾。</p>
+<p>至此，告一段落，至于有没有其他答案我就不关心了。</p>
+<hr>
+<h1>后记</h1>
+<p>非常有意思的题目，出题人得费多少脑细胞。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ABP搬砖指南</title>
     <url>/2020/07/17/ABP%E6%90%AC%E7%A0%96%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h1>前言</h1>
@@ -51,6 +287,30 @@
         <tag>.NET</tag>
         <tag>Framework</tag>
         <tag>Core</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DateTime.ToString方法</title>
+    <url>/2021/08/18/DateTime-ToString%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>将当前 DateTime 对象的值转换为其等效的字符串表示形式。</p>
+<p>Converts the value of the current DateTime object to its equivalent string representation.</p>
+<p>参考：<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.datetime.tostring">DateTime.ToString 方法 (System) | Microsoft Docs</a></p>
+<span id="more"></span>
+<hr>
+<h1>输出</h1>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">zh-CN</span><br><span class="line">d <span class="number">2021</span>/<span class="number">8</span>/<span class="number">18</span></span><br><span class="line">D <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日</span><br><span class="line">f <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日 <span class="number">12</span>:<span class="number">48</span></span><br><span class="line">F <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日 <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">g <span class="number">2021</span>/<span class="number">8</span>/<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span></span><br><span class="line">G <span class="number">2021</span>/<span class="number">8</span>/<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">m <span class="number">8</span>月<span class="number">18</span>日</span><br><span class="line">o <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span>.<span class="number">5960000</span>+<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">r Wed, <span class="number">18</span> Aug <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> GMT</span><br><span class="line">s <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">t <span class="number">12</span>:<span class="number">48</span></span><br><span class="line">T <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">u <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span>Z</span><br><span class="line">U <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日 <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">Y <span class="number">2021</span>年<span class="number">8</span>月</span><br><span class="line"></span><br><span class="line">en-US</span><br><span class="line">d <span class="number">8</span>/<span class="number">18</span>/<span class="number">2021</span></span><br><span class="line">D Wednesday, August <span class="number">18</span>, <span class="number">2021</span></span><br><span class="line">f Wednesday, August <span class="number">18</span>, <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span> PM</span><br><span class="line">F Wednesday, August <span class="number">18</span>, <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">g <span class="number">8</span>/<span class="number">18</span>/<span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span> PM</span><br><span class="line">G <span class="number">8</span>/<span class="number">18</span>/<span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">m August <span class="number">18</span></span><br><span class="line">o <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span>.<span class="number">5970000</span>+<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">r Wed, <span class="number">18</span> Aug <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> GMT</span><br><span class="line">s <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">t <span class="number">12</span>:<span class="number">48</span> PM</span><br><span class="line">T <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">u <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span>Z</span><br><span class="line">U Wednesday, August <span class="number">18</span>, <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">Y August <span class="number">2021</span></span><br></pre></td></tr></table></figure>
+<h1>源代码</h1>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Globalization;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// Create an array of all supported standard date and time format specifiers.</span></span><br><span class="line">    <span class="built_in">string</span>[] formats = &#123;<span class="string">&quot;d&quot;</span>, <span class="string">&quot;D&quot;</span>, <span class="string">&quot;f&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;g&quot;</span>, <span class="string">&quot;G&quot;</span>, <span class="string">&quot;m&quot;</span>, <span class="string">&quot;o&quot;</span>, <span class="string">&quot;r&quot;</span>, <span class="string">&quot;s&quot;</span>, <span class="string">&quot;t&quot;</span>, <span class="string">&quot;T&quot;</span>, <span class="string">&quot;u&quot;</span>, <span class="string">&quot;U&quot;</span>, <span class="string">&quot;Y&quot;</span>&#125;;</span><br><span class="line">    <span class="comment">// Create an array of four cultures.</span></span><br><span class="line">    CultureInfo[] cultures = &#123;CultureInfo.CreateSpecificCulture(<span class="string">&quot;zh-CN&quot;</span>), </span><br><span class="line">                              CultureInfo.CreateSpecificCulture(<span class="string">&quot;en-US&quot;</span>)&#125;;</span><br><span class="line">    <span class="comment">// Iterate each standard format specifier.</span></span><br><span class="line">    <span class="keyword">foreach</span> (CultureInfo culture <span class="keyword">in</span> cultures)</span><br><span class="line">    &#123;</span><br><span class="line">      Console.WriteLine(culture.Name);</span><br><span class="line">      <span class="keyword">foreach</span> (<span class="built_in">string</span> formatSpecifier <span class="keyword">in</span> formats)</span><br><span class="line">      &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;&#123;0&#125; &#123;1&#125;&quot;</span>, formatSpecifier, DateTime.Now.ToString(formatSpecifier, culture));</span><br><span class="line">      &#125;</span><br><span class="line">      Console.WriteLine();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+<p>可以直接用 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.datetime.tostring#code-try-2">.NET 在线编辑器</a> 试试效果。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -134,7 +394,7 @@
 <figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">ssh-keygen -f id_ed25519 -p</span><br></pre></td></tr></table></figure>
 <img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-12-16-42-13.png" class="" title="修改SSH私钥密码">
 <h1>Git 全局配置</h1>
-<p>可以直接打开 <code>‪C:\Users\htlsmile\.gitconfig</code> 文件手动配置。</p>
+<p>可以直接打开 <code>C:\Users\htlsmile\.gitconfig</code> 文件手动配置。</p>
 <img data-src="/2021/08/12/GitHub%E6%B7%BB%E5%8A%A0SSH%E5%AF%86%E9%92%A5/2021-08-13-09-17-22.png" class="" title=".gitconfig">
 <h2 id="查看全局配置"><a class="header-anchor" href="#查看全局配置">¶</a>查看全局配置</h2>
 <figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
@@ -258,6 +518,468 @@
         <tag>Hexo</tag>
         <tag>博客</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Linux备忘录</title>
+    <url>/2022/03/08/Linux%E5%A4%87%E5%BF%98%E5%BD%95/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>温故而知新</p>
+<span id="more"></span>
+<hr>
+<h1>硬件设备</h1>
+<table>
+<thead>
+<tr>
+<th><strong>设备</strong></th>
+<th><strong>文件名</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCSI/SATA/USB</td>
+<td>/dev/sd[a-p]</td>
+<td>外存（硬盘、U盘）</td>
+</tr>
+<tr>
+<td>VirtI/O</td>
+<td>/dev/vd[a-p]</td>
+<td>虚拟机</td>
+</tr>
+<tr>
+<td>软盘</td>
+<td>/dev/fd[0-7]</td>
+<td></td>
+</tr>
+<tr>
+<td>打印机</td>
+<td>/dev/lp[0-2]</td>
+<td>25针打印机</td>
+</tr>
+<tr>
+<td>打印机</td>
+<td>/dev/usb/lp[0-15]</td>
+<td>USB 界面</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>/dev/input/mouse[0-15]</td>
+<td>USB</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>/dev/psaux</td>
+<td>PS/2</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>/dev/mouse</td>
+<td>当前鼠标</td>
+</tr>
+<tr>
+<td>CDROM/DVDROM</td>
+<td>/dev/scd[0-1]</td>
+<td>通用</td>
+</tr>
+<tr>
+<td>CDROM/DVDROM</td>
+<td>/dev/sr[0-1]</td>
+<td>通用，CentOS较常见</td>
+</tr>
+<tr>
+<td>CDROM/DVDROM</td>
+<td>/dev/cdrom</td>
+<td>当前CDROM</td>
+</tr>
+<tr>
+<td>磁带机</td>
+<td>/dev/ht0</td>
+<td>IDE</td>
+</tr>
+<tr>
+<td>磁带机</td>
+<td>/dev/st0</td>
+<td>SATA/SCSI</td>
+</tr>
+<tr>
+<td>磁带机</td>
+<td>/dev/tape</td>
+<td>当前磁带</td>
+</tr>
+<tr>
+<td>IDE硬盘</td>
+<td>/dev/hd[a-d]</td>
+<td>旧式系统才有</td>
+</tr>
+</tbody>
+</table>
+<h1>文件管理</h1>
+<h2 id="cat"><a class="header-anchor" href="#cat">¶</a>cat</h2>
+<blockquote>
+<p>concatenate<br>
+用于连接文件并打印到标准输出设备上</p>
+</blockquote>
+<h3 id="语法格式"><a class="header-anchor" href="#语法格式">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat [-AbeEnstTuv] [--help] [--version] fileName</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明"><a class="header-anchor" href="#参数说明">¶</a>参数说明</h3>
+<p>-n 或 --number：由 1 开始对所有输出的行数编号。<br>
+-b 或 --number-nonblank：和 -n 相似，只不过对于空白行不编号。<br>
+-s 或 --squeeze-blank：当遇到有连续两行以上的空白行，就代换为一行的空白行。<br>
+-v 或 --show-nonprinting：使用 ^ 和 M- 符号，除了 LFD 和 TAB 之外。<br>
+-E 或 --show-ends : 在每行结束处显示 $。<br>
+-T 或 --show-tabs: 将 TAB 字符显示为 ^I。<br>
+-A, --show-all：等价于 -vET。<br>
+-e：等价于&quot;-vE&quot;选项；<br>
+-t：等价于&quot;-vT&quot;选项；</p>
+<h3 id="实例"><a class="header-anchor" href="#实例">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 把 textfile1 的文档内容加上行号后输入 textfile2 这个文档里：</span></span></span><br><span class="line">cat -n textfile1 &gt; textfile2</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 把 textfile1 和 textfile2 的文档内容加上行号（空白行不加）之后将内容附加到 textfile3 文档里：</span></span></span><br><span class="line">cat -b textfile1 textfile2 &gt;&gt; textfile3</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 清空 /etc/test.txt 文档内容：</span></span></span><br><span class="line">cat /dev/null &gt; /etc/test.txt</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># cat 也可以用来制作镜像文件。例如要制作软盘的镜像文件，将软盘放好后输入：</span></span></span><br><span class="line">cat /dev/fd0 &gt; OUTFILE</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 相反的，如果想把 image file 写到软盘，输入：</span></span></span><br><span class="line">cat IMG_FILE &gt; /dev/fd0</span><br></pre></td></tr></table></figure>
+<h2 id="cksum"><a class="header-anchor" href="#cksum">¶</a>cksum</h2>
+<blockquote>
+<p>check sum<br>
+用于检查文件的CRC是否正确。确保文件从一个系统传输到另一个系统的过程中不被损坏。</p>
+</blockquote>
+<h3 id="语法格式-v2"><a class="header-anchor" href="#语法格式-v2">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cksum [--help][--version][文件...]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v2"><a class="header-anchor" href="#参数说明-v2">¶</a>参数说明</h3>
+<p>–help：在线帮助。<br>
+–version：显示版本信息。<br>
+文件…:需要进行检查的文件路径</p>
+<h3 id="实例-v2"><a class="header-anchor" href="#实例-v2">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 使用指令&quot;cksum&quot;计算文件&quot;testfile1&quot;的完整性，输入如下命令：</span></span></span><br><span class="line">cksum testfile1</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1263453430 78 testfile1         //输出信息</span></span> </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 上面的输出信息中，&quot;1263453430&quot;表示校验码，&quot;78&quot;表示字节数。</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 如果文件中有任何字符被修改，都将改变计算后CRC校验码的值。</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="cp"><a class="header-anchor" href="#cp">¶</a>cp</h2>
+<blockquote>
+<p>copy<br>
+用于复制文件或目录。</p>
+</blockquote>
+<h3 id="语法格式-v3"><a class="header-anchor" href="#语法格式-v3">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp [options] source... directory</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v3"><a class="header-anchor" href="#参数说明-v3">¶</a>参数说明</h3>
+<p>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。<br>
+-d：复制时保留链接。这里所说的链接相当于 Windows 系统中的快捷方式。<br>
+-f：覆盖已经存在的目标文件而不给出提示。<br>
+-i：与 -f 选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答 y 时目标文件将被覆盖。<br>
+-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。<br>
+-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。<br>
+-l：不复制文件，只是生成链接文件。</p>
+<h3 id="实例-v3"><a class="header-anchor" href="#实例-v3">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 复制目录</span></span></span><br><span class="line">cp -R dir1 dir2/</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 将文件test1复制并命名为test2</span></span></span><br><span class="line">cp -f test1 test2</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>文档编辑</h1>
+<h2 id="grep"><a class="header-anchor" href="#grep">¶</a>grep</h2>
+<blockquote>
+<p>Global Regular Expression Print<br>
+用于查找文件里符合条件的字符串。</p>
+</blockquote>
+<h3 id="语法格式-v4"><a class="header-anchor" href="#语法格式-v4">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">grep [-abcEFGhHilLnqrsvVwxy][-A&lt;显示行数&gt;][-B&lt;显示列数&gt;][-C&lt;显示列数&gt;][-d&lt;进行动作&gt;][-e&lt;范本样式&gt;][-f&lt;范本文件&gt;][--help][范本样式][文件或目录...]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v4"><a class="header-anchor" href="#参数说明-v4">¶</a>参数说明</h3>
+<p>-a 或 --text : 不要忽略二进制的数据。<br>
+-A&lt;显示行数&gt; 或 --after-context=&lt;显示行数&gt; : 除了显示符合范本样式的那一列之外，并显示该行之后的内容。<br>
+-b 或 --byte-offset : 在显示符合样式的那一行之前，标示出该行第一个字符的编号。<br>
+-B&lt;显示行数&gt; 或 --before-context=&lt;显示行数&gt; : 除了显示符合样式的那一行之外，并显示该行之前的内容。<br>
+-c 或 --count : 计算符合样式的列数。<br>
+-C&lt;显示行数&gt; 或 --context=&lt;显示行数&gt;或-&lt;显示行数&gt; : 除了显示符合样式的那一行之外，并显示该行之前后的内容。<br>
+-d &lt;动作&gt; 或 --directories=&lt;动作&gt; : 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。<br>
+-e&lt;范本样式&gt; 或 --regexp=&lt;范本样式&gt; : 指定字符串做为查找文件内容的样式。<br>
+-E 或 --extended-regexp : 将样式为延伸的正则表达式来使用。<br>
+-f&lt;规则文件&gt; 或 --file=&lt;规则文件&gt; : 指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。<br>
+-F 或 --fixed-regexp : 将样式视为固定字符串的列表。<br>
+-G 或 --basic-regexp : 将样式视为普通的表示法来使用。<br>
+-h 或 --no-filename : 在显示符合样式的那一行之前，不标示该行所属的文件名称。<br>
+-H 或 --with-filename : 在显示符合样式的那一行之前，表示该行所属的文件名称。<br>
+-i 或 --ignore-case : 忽略字符大小写的差别。<br>
+-l 或 --file-with-matches : 列出文件内容符合指定的样式的文件名称。<br>
+-L 或 --files-without-match : 列出文件内容不符合指定的样式的文件名称。<br>
+-n 或 --line-number : 在显示符合样式的那一行之前，标示出该行的列数编号。<br>
+-o 或 --only-matching : 只显示匹配PATTERN 部分。<br>
+-q 或 --quiet或–silent : 不显示任何信息。<br>
+-r 或 --recursive : 此参数的效果和指定&quot;-d recurse&quot;参数相同。<br>
+-s 或 --no-messages : 不显示错误信息。<br>
+-v 或 --invert-match : 显示不包含匹配文本的所有行。<br>
+-V 或 --version : 显示版本信息。<br>
+-w 或 --word-regexp : 只显示全字符合的列。<br>
+-x --line-regexp : 只显示全列符合的列。<br>
+-y : 此参数的效果和指定&quot;-i&quot;参数相同。</p>
+<h3 id="实例-v4"><a class="header-anchor" href="#实例-v4">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 在当前目录中，查找后缀有 file 字样的文件中包含 test 字符串的文件，并打印出该字符串的行。此时，可以使用如下命令：</span></span></span><br><span class="line">grep test *file</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># testfile1:This a Linux testfile! #列出testfile1 文件中包含test字符的行</span></span>  </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># testfile_2:This is a linux testfile! #列出testfile_2 文件中包含test字符的行</span></span>  </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># testfile_2:Linux test #列出testfile_2 文件中包含test字符的行</span></span> </span><br></pre></td></tr></table></figure>
+<hr>
+<h1>文件传输</h1>
+<h2 id="ftp"><a class="header-anchor" href="#ftp">¶</a>ftp</h2>
+<blockquote>
+<p>File Transfer Protocol<br>
+FTP是ARPANet的标准文件传输协议，该网络就是现今Internet的前身。</p>
+</blockquote>
+<h3 id="语法格式-v5"><a class="header-anchor" href="#语法格式-v5">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ftp [-dignv][主机名称或IP地址]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v5"><a class="header-anchor" href="#参数说明-v5">¶</a>参数说明</h3>
+<p>-d 详细显示指令执行过程，便于排错或分析程序执行的情形。<br>
+-i 关闭互动模式，不询问任何问题。<br>
+-g 关闭本地主机文件名称支持特殊字符的扩充特性。<br>
+-n 不使用自动登陆。<br>
+-v 显示指令执行过程。</p>
+<h3 id="实例-v5"><a class="header-anchor" href="#实例-v5">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 使用ftp命令匿名登录ftp.kernel.org服务器，该服务是Linux 内核的官方服务器，可以使用如下命令：</span></span></span><br><span class="line">ftp ftp.kernel.org #发起链接请求 </span><br></pre></td></tr></table></figure>
+<hr>
+<h1>磁盘管理</h1>
+<h2 id="cd"><a class="header-anchor" href="#cd">¶</a>cd</h2>
+<blockquote>
+<p>change directory<br>
+用于切换当前工作目录。<br>
+~ 也表示为 home 目录 的意思， . 则是表示目前所在的目录， … 则表示目前目录位置的上一层目录</p>
+</blockquote>
+<h3 id="语法格式-v6"><a class="header-anchor" href="#语法格式-v6">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd [dirName]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v6"><a class="header-anchor" href="#参数说明-v6">¶</a>参数说明</h3>
+<p>dirName：要切换的目标目录。若目录名称省略，则变换至使用者的 home 目录 (也就是刚 login 时所在的目录)。</p>
+<h3 id="实例-v6"><a class="header-anchor" href="#实例-v6">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 跳到 /usr/bin/ :</span></span></span><br><span class="line">cd /usr/bin</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 跳到自己的 home 目录 :</span></span></span><br><span class="line">cd ~</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 跳到目前目录的上上两层 :</span></span></span><br><span class="line">cd ../..</span><br></pre></td></tr></table></figure>
+<h2 id="pwd"><a class="header-anchor" href="#pwd">¶</a>pwd</h2>
+<blockquote>
+<p>print working directory<br>
+用于显示工作目录。</p>
+</blockquote>
+<h3 id="语法格式-v7"><a class="header-anchor" href="#语法格式-v7">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pwd [--help][--version]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v7"><a class="header-anchor" href="#参数说明-v7">¶</a>参数说明</h3>
+<p>–help 在线帮助。<br>
+–version 显示版本信息。</p>
+<h3 id="实例-v7"><a class="header-anchor" href="#实例-v7">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 查看当前所在目录：</span></span></span><br><span class="line">pwd</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 输出结果</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># /root/test</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="ls"><a class="header-anchor" href="#ls">¶</a>ls</h2>
+<blockquote>
+<p>list<br>
+显示指定工作目录下的内容及属性信息</p>
+</blockquote>
+<h3 id="语法格式-v8"><a class="header-anchor" href="#语法格式-v8">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd [dirName]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v8"><a class="header-anchor" href="#参数说明-v8">¶</a>参数说明</h3>
+<p>dirName：要切换的目标目录。若目录名称省略，则变换至使用者的 home 目录 (也就是刚 login 时所在的目录)。<br>
+-a	显示所有文件及目录 (包括以“.”开头的隐藏文件)<br>
+-l	使用长格式列出文件及目录信息<br>
+-r	将文件以相反次序显示(默认依英文字母次序)<br>
+-t	根据最后的修改时间排序<br>
+-A	同 -a ，但不列出 “.” (当前目录) 及 “…” (父目录)<br>
+-S	根据文件大小排序<br>
+-R	递归列出所有子目录</p>
+<h3 id="实例-v8"><a class="header-anchor" href="#实例-v8">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 列出当前工作目录下所有名称是 “s” 开头的文件</span></span></span><br><span class="line">ls -ltr s*</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>磁盘维护</h1>
+<h2 id="dd"><a class="header-anchor" href="#dd">¶</a>dd</h2>
+<blockquote>
+<p>Data Description，可能来源于IBM的工作控制语言（JCL）中的DD语句。<br>
+用于读取、转换并输出数据。</p>
+</blockquote>
+<h3 id="语法格式-v9"><a class="header-anchor" href="#语法格式-v9">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pwd [--help][--version]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v9"><a class="header-anchor" href="#参数说明-v9">¶</a>参数说明</h3>
+<p>if=文件名：输入文件名，默认为标准输入。即指定源文件。<br>
+of=文件名：输出文件名，默认为标准输出。即指定目的文件。</p>
+<h3 id="实例-v9"><a class="header-anchor" href="#实例-v9">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 在Linux 下制作启动盘，可使用如下命令</span></span></span><br><span class="line">dd if=boot.img of=/dev/fd0 bs=1440k </span><br></pre></td></tr></table></figure>
+<hr>
+<h1>网络通讯</h1>
+<h2 id="ifconfig"><a class="header-anchor" href="#ifconfig">¶</a>ifconfig</h2>
+<blockquote>
+<p>interfaces configuring<br>
+用于显示或设置网络设备。</p>
+</blockquote>
+<h3 id="语法格式-v10"><a class="header-anchor" href="#语法格式-v10">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ifconfig [网络设备][down up -allmulti -arp -promisc][add&lt;地址&gt;][del&lt;地址&gt;][&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;][io_addr&lt;I/O地址&gt;][irq&lt;IRQ地址&gt;][media&lt;网络媒介类型&gt;][mem_start&lt;内存地址&gt;][metric&lt;数目&gt;][mtu&lt;字节&gt;][netmask&lt;子网掩码&gt;][tunnel&lt;地址&gt;][-broadcast&lt;地址&gt;][-pointopoint&lt;地址&gt;][IP地址]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v10"><a class="header-anchor" href="#参数说明-v10">¶</a>参数说明</h3>
+<p>add&lt;地址&gt; 设置网络设备IPv6的IP地址。<br>
+del&lt;地址&gt; 删除网络设备IPv6的IP地址。<br>
+down 关闭指定的网络设备。<br>
+&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt; 设置网络设备的类型与硬件地址。<br>
+io_addr&lt;I/O地址&gt; 设置网络设备的I/O地址。<br>
+irq&lt;IRQ地址&gt; 设置网络设备的IRQ。<br>
+media&lt;网络媒介类型&gt; 设置网络设备的媒介类型。<br>
+mem_start&lt;内存地址&gt; 设置网络设备在主内存所占用的起始地址。<br>
+metric&lt;数目&gt; 指定在计算数据包的转送次数时，所要加上的数目。<br>
+mtu&lt;字节&gt; 设置网络设备的MTU。<br>
+netmask&lt;子网掩码&gt; 设置网络设备的子网掩码。<br>
+tunnel&lt;地址&gt; 建立IPv4与IPv6之间的隧道通信地址。<br>
+up 启动指定的网络设备。<br>
+-broadcast&lt;地址&gt; 将要送往指定地址的数据包当成广播数据包来处理。<br>
+-pointopoint&lt;地址&gt; 与指定地址的网络设备建立直接连线，此模式具有保密功能。<br>
+-promisc 关闭或启动指定网络设备的promiscuous模式。<br>
+[IP地址] 指定网络设备的IP地址。<br>
+[网络设备] 指定网络设备的名称。</p>
+<h3 id="实例-v10"><a class="header-anchor" href="#实例-v10">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 启动关闭指定网卡</span></span></span><br><span class="line">ifconfig eth0 down</span><br><span class="line">ifconfig eth0 up</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>系统管理</h1>
+<h2 id="date"><a class="header-anchor" href="#date">¶</a>date</h2>
+<blockquote>
+<p>date<br>
+用来显示或设定系统的日期与时间。</p>
+</blockquote>
+<h3 id="语法格式-v11"><a class="header-anchor" href="#语法格式-v11">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">date [-u] [-d datestr] [-s datestr] [--utc] [--universal] [--date=datestr] [--set=datestr] [--help] [--version] [+FORMAT] [MMDDhhmm[[CC]YY][.ss]]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v11"><a class="header-anchor" href="#参数说明-v11">¶</a>参数说明</h3>
+<p>-d datestr : 显示 datestr 中所设定的时间 (非系统时间)<br>
+–help : 显示辅助讯息<br>
+-s datestr : 将系统时间设为 datestr 中所设定的时间<br>
+-u : 显示目前的格林威治时间<br>
+–version : 显示版本编号</p>
+<h3 id="实例-v11"><a class="header-anchor" href="#实例-v11">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">date</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2022年 03月 10日 星期四 20:12:34 CST</span></span></span><br><span class="line"></span><br><span class="line">date +%Y/%m/%d</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2022/03/10</span></span></span><br><span class="line"></span><br><span class="line">date +%Y-%m-%d</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2022-03-10</span></span></span><br><span class="line"></span><br><span class="line">date +%H:%M:%S.%s</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 20:12:34.1646914099</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="top"><a class="header-anchor" href="#top">¶</a>top</h2>
+<blockquote>
+<p>top<br>
+用于实时显示 process 的动态。</p>
+</blockquote>
+<h3 id="语法格式-v12"><a class="header-anchor" href="#语法格式-v12">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">top [-] [d delay] [q] [c] [S] [s] [i] [n] [b]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v12"><a class="header-anchor" href="#参数说明-v12">¶</a>参数说明</h3>
+<p>d : 改变显示的更新速度，或是在交谈式指令列( interactive command)按 s<br>
+q : 没有任何延迟的显示速度，如果使用者是有 superuser 的权限，则 top 将会以最高的优先序执行<br>
+c : 切换显示模式，共有两种模式，一是只显示执行档的名称，另一种是显示完整的路径与名称<br>
+S : 累积模式，会将己完成或消失的子进程 ( dead child process ) 的 CPU time 累积起来<br>
+s : 安全模式，将交谈式指令取消, 避免潜在的危机<br>
+i : 不显示任何闲置 (idle) 或无用 (zombie) 的进程<br>
+n : 更新的次数，完成后将会退出 top<br>
+b : 批次档模式，搭配 “n” 参数一起使用，可以用来将 top 的结果输出到档案内</p>
+<h3 id="实例-v12"><a class="header-anchor" href="#实例-v12">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 设置信息更新时间，更新周期为3秒</span></span></span><br><span class="line">top -d 3</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 显示指定的进程信息，显示进程号为139的进程信息，CPU、内存占用率等</span></span></span><br><span class="line">top -p 139</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>系统设置</h1>
+<h2 id="time"><a class="header-anchor" href="#time">¶</a>time</h2>
+<blockquote>
+<p>time<br>
+量测特定指令执行时所需消耗的时间及系统资源等资讯。</p>
+</blockquote>
+<h3 id="语法格式-v13"><a class="header-anchor" href="#语法格式-v13">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">time [options] COMMAND [arguments]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v13"><a class="header-anchor" href="#参数说明-v13">¶</a>参数说明</h3>
+<p>-o 或 --output=FILE：设定结果输出档。这个选项会将 time 的输出写入 所指定的档案中。如果档案已经存在，系统将覆写其内容。<br>
+-a 或 --append：配合 -o 使用，会将结果写到档案的末端，而不会覆盖掉原来的内容。<br>
+-f FORMAT 或 --format=FORMAT：以 FORMAT 字串设定显示方式。当这个选项没有被设定的时候，会用系统预设的格式。不过你可以用环境变数 time 来设定这个格式，如此一来就不必每次登入系统都要设定一次。</p>
+<h3 id="实例-v13"><a class="header-anchor" href="#实例-v13">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">time date</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Sun Mar 26 22:45:34 GMT-8 2006</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span> </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># real    0m0.136s</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># user    0m0.010s</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># sys     0m0.070s</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1>备份压缩</h1>
+<h2 id="time-v2"><a class="header-anchor" href="#time-v2">¶</a>time</h2>
+<blockquote>
+<p>tar<br>
+用来建立，还原备份文件的工具程序，它可以加入，解开备份文件内的文件。</p>
+</blockquote>
+<h3 id="语法格式-v14"><a class="header-anchor" href="#语法格式-v14">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar [-ABcdgGhiklmMoOpPrRsStuUvwWxzZ][-b &lt;区块数目&gt;][-C &lt;目的目录&gt;][-f &lt;备份文件&gt;][-F &lt;Script文件&gt;][-K &lt;文件&gt;][-L &lt;媒体容量&gt;][-N &lt;日期时间&gt;][-T &lt;范本文件&gt;][-V &lt;卷册名称&gt;][-X &lt;范本文件&gt;][-&lt;设备编号&gt;&lt;存储密度&gt;][--after-date=&lt;日期时间&gt;][--atime-preserve][--backuup=&lt;备份方式&gt;][--checkpoint][--concatenate][--confirmation][--delete][--exclude=&lt;范本样式&gt;][--force-local][--group=&lt;群组名称&gt;][--help][--ignore-failed-read][--new-volume-script=&lt;Script文件&gt;][--newer-mtime][--no-recursion][--null][--numeric-owner][--owner=&lt;用户名称&gt;][--posix][--erve][--preserve-order][--preserve-permissions][--record-size=&lt;区块数目&gt;][--recursive-unlink][--remove-files][--rsh-command=&lt;执行指令&gt;][--same-owner][--suffix=&lt;备份字尾字符串&gt;][--totals][--use-compress-program=&lt;执行指令&gt;][--version][--volno-file=&lt;编号文件&gt;][文件或目录...]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v14"><a class="header-anchor" href="#参数说明-v14">¶</a>参数说明</h3>
+<p>-A或–catenate 新增文件到已存在的备份文件。<br>
+-b&lt;区块数目&gt;或–blocking-factor=&lt;区块数目&gt; 设置每笔记录的区块数目，每个区块大小为12Bytes。<br>
+-B或–read-full-records 读取数据时重设区块大小。<br>
+-c或–create 建立新的备份文件。<br>
+-C&lt;目的目录&gt;或–directory=&lt;目的目录&gt; 切换到指定的目录。<br>
+-d或–diff或–compare 对比备份文件内和文件系统上的文件的差异。<br>
+-f&lt;备份文件&gt;或–file=&lt;备份文件&gt; 指定备份文件。<br>
+-F&lt;Script文件&gt;或–info-script=&lt;Script文件&gt; 每次更换磁带时，就执行指定的Script文件。<br>
+-g或–listed-incremental 处理GNU格式的大量备份。<br>
+-G或–incremental 处理旧的GNU格式的大量备份。<br>
+-h或–dereference 不建立符号连接，直接复制该连接所指向的原始文件。<br>
+-i或–ignore-zeros 忽略备份文件中的0 Byte区块，也就是EOF。<br>
+-k或–keep-old-files 解开备份文件时，不覆盖已有的文件。<br>
+-K&lt;文件&gt;或–starting-file=&lt;文件&gt; 从指定的文件开始还原。<br>
+-l或–one-file-system 复制的文件或目录存放的文件系统，必须与tar指令执行时所处的文件系统相同，否则不予复制。<br>
+-L&lt;媒体容量&gt;或-tape-length=&lt;媒体容量&gt; 设置存放每体的容量，单位以1024 Bytes计算。<br>
+-m或–modification-time 还原文件时，不变更文件的更改时间。<br>
+-M或–multi-volume 在建立，还原备份文件或列出其中的内容时，采用多卷册模式。<br>
+-N&lt;日期格式&gt;或–newer=&lt;日期时间&gt; 只将较指定日期更新的文件保存到备份文件里。<br>
+-o或–old-archive或–portability 将资料写入备份文件时使用V7格式。<br>
+-O或–stdout 把从备份文件里还原的文件输出到标准输出设备。<br>
+-p或–same-permissions 用原来的文件权限还原文件。<br>
+-P或–absolute-names 文件名使用绝对名称，不移除文件名称前的&quot;/“号。<br>
+-r或–append 新增文件到已存在的备份文件的结尾部分。<br>
+-R或–block-number 列出每个信息在备份文件中的区块编号。<br>
+-s或–same-order 还原文件的顺序和备份文件内的存放顺序相同。<br>
+-S或–sparse 倘若一个文件内含大量的连续0字节，则将此文件存成稀疏文件。<br>
+-t或–list 列出备份文件的内容。<br>
+-T&lt;范本文件&gt;或–files-from=&lt;范本文件&gt; 指定范本文件，其内含有一个或多个范本样式，让tar解开或建立符合设置条件的文件。<br>
+-u或–update 仅置换较备份文件内的文件更新的文件。<br>
+-U或–unlink-first 解开压缩文件还原文件之前，先解除文件的连接。<br>
+-v或–verbose 显示指令执行过程。<br>
+-V&lt;卷册名称&gt;或–label=&lt;卷册名称&gt; 建立使用指定的卷册名称的备份文件。<br>
+-w或–interactive 遭遇问题时先询问用户。<br>
+-W或–verify 写入备份文件后，确认文件正确无误。<br>
+-x或–extract或–get 从备份文件中还原文件。<br>
+-X&lt;范本文件&gt;或–exclude-from=&lt;范本文件&gt; 指定范本文件，其内含有一个或多个范本样式，让ar排除符合设置条件的文件。<br>
+-z或–gzip或–ungzip 通过gzip指令处理备份文件。<br>
+-Z或–compress或–uncompress 通过compress指令处理备份文件。<br>
+-&lt;设备编号&gt;&lt;存储密度&gt; 设置备份用的外围设备编号及存放数据的密度。<br>
+–after-date=&lt;日期时间&gt; 此参数的效果和指定”-N&quot;参数相同。<br>
+–atime-preserve 不变更文件的存取时间。<br>
+–backup=&lt;备份方式&gt;或–backup 移除文件前先进行备份。<br>
+–checkpoint 读取备份文件时列出目录名称。<br>
+–concatenate 此参数的效果和指定&quot;-A&quot;参数相同。<br>
+–confirmation 此参数的效果和指定&quot;-w&quot;参数相同。<br>
+–delete 从备份文件中删除指定的文件。<br>
+–exclude=&lt;范本样式&gt; 排除符合范本样式的文件。<br>
+–group=&lt;群组名称&gt; 把加入设备文件中的文件的所属群组设成指定的群组。<br>
+–help 在线帮助。<br>
+–ignore-failed-read 忽略数据读取错误，不中断程序的执行。<br>
+–new-volume-script=&lt;Script文件&gt; 此参数的效果和指定&quot;-F&quot;参数相同。<br>
+–newer-mtime 只保存更改过的文件。<br>
+–no-recursion 不做递归处理，也就是指定目录下的所有文件及子目录不予处理。<br>
+–null 从null设备读取文件名称。<br>
+–numeric-owner 以用户识别码及群组识别码取代用户名称和群组名称。<br>
+–owner=&lt;用户名称&gt; 把加入备份文件中的文件的拥有者设成指定的用户。<br>
+–posix 将数据写入备份文件时使用POSIX格式。<br>
+–preserve 此参数的效果和指定&quot;-ps&quot;参数相同。<br>
+–preserve-order 此参数的效果和指定&quot;-A&quot;参数相同。<br>
+–preserve-permissions 此参数的效果和指定&quot;-p&quot;参数相同。<br>
+–record-size=&lt;区块数目&gt; 此参数的效果和指定&quot;-b&quot;参数相同。<br>
+–recursive-unlink 解开压缩文件还原目录之前，先解除整个目录下所有文件的连接。<br>
+–remove-files 文件加入备份文件后，就将其删除。<br>
+–rsh-command=&lt;执行指令&gt; 设置要在远端主机上执行的指令，以取代rsh指令。<br>
+–same-owner 尝试以相同的文件拥有者还原文件。<br>
+–suffix=&lt;备份字尾字符串&gt; 移除文件前先行备份。<br>
+–totals 备份文件建立后，列出文件大小。<br>
+–use-compress-program=&lt;执行指令&gt; 通过指定的指令处理备份文件。<br>
+–version 显示版本信息。<br>
+–volno-file=&lt;编号文件&gt; 使用指定文件内的编号取代预设的卷册编号。</p>
+<h3 id="实例-v14"><a class="header-anchor" href="#实例-v14">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 压缩a文件为a.tar.gz</span></span></span><br><span class="line">tar -czvf a.tar.gz a</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 解压a.tar.gz为a文件</span></span></span><br><span class="line">tar -xzvf a.tar.gz </span><br></pre></td></tr></table></figure>
+<hr>
+<h1>设备管理</h1>
+<h2 id="poweroff"><a class="header-anchor" href="#poweroff">¶</a>poweroff</h2>
+<blockquote>
+<p>power off<br>
+用于关闭计算器并切断电源。</p>
+</blockquote>
+<h3 id="语法格式-v15"><a class="header-anchor" href="#语法格式-v15">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">poweroff [-n] [-w] [-d] [-f] [-i] [-h]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v15"><a class="header-anchor" href="#参数说明-v15">¶</a>参数说明</h3>
+<p>-n : 在关机前不做将记忆体资料写回硬盘的动作<br>
+-w : 并不会真的关机，只是把记录写到 /var/log/wtmp 档案里<br>
+-d : 不把记录写到 /var/log/wtmp 文件里<br>
+-i : 在关机之前先把所有网络相关的装置先停止<br>
+-p : 关闭操作系统之前将系统中所有的硬件设置为备用模式。</p>
+<h3 id="实例-v15"><a class="header-anchor" href="#实例-v15">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 关闭系统</span></span></span><br><span class="line">poweroff</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>其他命令</h1>
+<h2 id="nohup"><a class="header-anchor" href="#nohup">¶</a>nohup</h2>
+<blockquote>
+<p>no hang up<br>
+用于在系统后台不挂断地运行命令，退出终端不会影响程序的运行。</p>
+</blockquote>
+<h3 id="语法格式-v16"><a class="header-anchor" href="#语法格式-v16">¶</a>语法格式</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nohup Command [ Arg … ] [　&amp; ]</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明-v16"><a class="header-anchor" href="#参数说明-v16">¶</a>参数说明</h3>
+<p>Command：要执行的命令。</p>
+<p>Arg：一些参数，可以指定输出文件。</p>
+<p>&amp;：让命令在后台执行，终端退出后命令仍旧执行。</p>
+<h3 id="实例-v16"><a class="header-anchor" href="#实例-v16">¶</a>实例</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 在后台执行 root 目录下的 runoob.sh 脚本：</span></span></span><br><span class="line">nohup /root/runoob.sh &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 在终端如果看到以下输出说明运行成功：</span></span></span><br><span class="line">appending output to nohup.out</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 这时我们打开 root 目录 可以看到生成了 nohup.out 文件。</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 如果要停止运行，你需要使用以下命令查找到 nohup 运行脚本到 PID，然后使用 kill 命令来删除：</span></span></span><br><span class="line">ps -aux | grep &quot;runoob.sh&quot; </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 找到 PID 后，就可以使用 kill PID 来删除。</span></span></span><br><span class="line">kill -9  进程号PID</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 以下命令在后台执行 root 目录下的 runoob.sh 脚本，并重定向输入到 runoob.log 文件：</span></span></span><br><span class="line">nohup /root/runoob.sh &gt; runoob.log 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2&gt;&amp;1 解释：</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 将标准错误 2 重定向到标准输出 &amp;1 ，标准输出 &amp;1 再被重定向输入到 runoob.log 文件中。</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 0 – stdin (standard input，标准输入)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1 – stdout (standard output，标准输出)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2 – stderr (standard error，标准错误输出)</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+<p>其实就是记不住</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
   </entry>
   <entry>
     <title>Office Tool Plus 使用教程</title>
@@ -1075,6 +1797,60 @@
       </tags>
   </entry>
   <entry>
+    <title>《假如给我三天光明》读后感</title>
+    <url>/2022/02/18/%E3%80%8A%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E4%B8%89%E5%A4%A9%E5%85%89%E6%98%8E%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
+  <script id="hbeData" type="hbeData" data-hmacdigest="1bd90b3eb448e2947f6b9c5d3547f6e779f3be8b44ad1fee772b833e1d94851b">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46b26ca1b13d41306807a752f568822f476a9cbc6eb2714003bacb60914c0c60900921da5625dc6e8a2519a92d28f4e50a42a2d7e35bccc6c441ed4c21698bcc264316e69713f35e09c5105b06820283633944dad9bc97b32b22ee0bb578a8b780445dd55b9b3232151eec362f5dfad4d7b0879f9347735e4baf3b90a7be464dfe95e9fd596232c2bfd99fe63b07f28022a078eace95baba2943527eea2260044347f2959189c5393856fc4dcbcfa174c8a840376efed224d7b61d93b06dbc7c548cadd493f060bd2509a0588751a818e621126a07a5bfd6de7b042e47df9b3e121c6def724e387e17f8bd13ad915ee183d2fc11dc3b07bf6ed340102ae10eb89559645c58a40e9450898c6b013dc2f91063212f868e614b7e0fdc3d5640d426a650287c84d236d5edf8fa1957a72273c0ed56663a0b4380985dfc011053a51b17808ec0f209f5ef1cb6e5c87eecef4112c65d4465f783f07783a3e8ce19fbb12b87a397c3fc91ad5aaf9217808263e813d65c11ee0b8cf2f3338f4ae3ce91d2f968edc100ea9f67628ada5aec123af23cae9b32a61ab6cf3580fdcc1a56930f78f29b33b4cf07a64a5c6c8c713f4c27da78c47cb4951d2878ea8e33ee6d1da2a5a8862df32a359b1d083df8a910bb12c83bb4be31b0510c9efe4f3fecbce962b701104e957358a0e29a0136a7cbb80f7014a76e3946b1dc0ece8b2437c58a42cb830da5c24680b2d1420371cbfcdedcb2db50cd990fd8c55c7d31cd7074ff152e19271e600d532b9671e6626639bd69dcd5ee5a40fb43fdfd5107dd8eb32276b3968f4314e44f3603668741db91eba936259fcb1d6eefefc0ecb4610ee204ea35733df237138a9d5e545d0175c90233cbc28d7affbfb0afbc5d732f1208a088abad060f0eaa6df1509ea031c8c7bc0e7be88bfa0231bcfdc21fe1e83e66314e9057f1b88d70652d1cca8ed67cb53057e8b487e8033667bfd93ee3b5ae3bfc02436eb190a6dce19bda951ab3edaaa210214dc9fad50e6fd05c1a182716e20592d98502798545d2dc76881dc7cb076f43132ee292bbc125929c953ad9a607fdd698ae18a1e0fca1612cffa49435de06261902abe31bfcfc5b02b7f58ff08057fb2663ecb427c3a8193a81ed284ccc0f48ea1043d508b043695bdefee85e205afd13753d97368550820a6290501d1003f42f5e2e944bba5eb9bcaf26e71732edbd2fb3a80809c958c31b0bb80d21b053d7a7d116e31f4bf1b1809716dada44df3733354cd79fdd25c462901b4552bf3ddc1c6b807e695e51717a8abf95cb7a8b95aa4a611090df6c8d1fe8dc41da76ebeabf6714b276516c4a6b69d16e019a90c4929ff1c74e3d73bed2541d77cab5b1688585d0166630b9e6ed8a2359512091578226194b76f7f0f76a949518c356ccc19afff305c1bf335537ad1ab2f020bee2cca4a0b0afb892a5e67373751cab3126468775143827bf65bf245f154dd98d47e057411985809a9052c33e4cec35d86bb892f57f65d73b04cd41b324ab2a4a6cd1cb2f8df9f11a590c3ae474e059641f455a7d9cdb5ab2cabdfb9d2fb0e3a477a1ce503a144eb919e96d38ce9e5246e08cadc71611967b40c17e33e1941be656467b2b5e712d248877580c7609bed4be8d89cee74e7107ca28335d5ab427c5276e6640fc1f2a96a31e91b11e9e55fb9a0431d01c0fd33fed6e6a99456fdae56b65a8da37666fe623c2c1aeba5b32588e530b5d7535127fac18405eec98f98783d2b8d2520d8388e3232c7d4e95a664b71d8f10332ba86988b671b8440497b733bd3efa8bee6370cdfd4f5027c270f921e5eaf354ec5d31ed884b2ba564f8bbbc7212756b9cb0d124d2deb4a4c017792e9269059e7f3c68d28826c774a5db29a6705fecb62752261cd64b44b9751c43473bcdd5c56baf7aa87e819c8179e8bcddc86bc5ed4cd5df9d21dd1b2a4867386ee70bee9a8310374c667184d5a1660aa8e1276d770aad8ff851293a38db389ca23945542ff91eee749f08c3f153bf82fc30e16c18ac8698ed6e01b5d617baab39d1211761aa355026fc05533c721cbe66aaf32067497b2e83889aac6cb402b1f5e2f730e2ab0323dd988932e6ce180bf27a83b8057e5b4f124514f9dd83382efbb40b91994dc94c62f32c1086c970dace3dae378242b7966a0d2e8dae80240dc33a4e10aa28af73fd53239a739243390564ea97f1c8c63d43035fc8d5f81f11c53316ab7bbbe5f1b2e9eb7aeee87f30b70421b26d0d1853dcf82d66bd26ba9041da2498e3e79e6a6dbf712a7af16ed408e7ce4e9d0e184f6de356043c3ae4bf2594fd71dab6b85ff8444f42050934083c772de6696ba2c00d3467204fd359413a4ca32040be11014a27495d6d291ec4e8991fad6ecd362bcbbeb004d62650f6d2d4f04ceddbbc163247c30074a004e7f6df6eeb2bbde48b70fe03cd25af55a836cfe623148baa7af20b2dc0ff35d70829ac5966394c371a61e70fbecdf0fde15802e1cde3afa72d0789861cafb1d6a291a31e5b6ad385eb046a942d9102fe3b1ab4029e0d635b799c235bd9934295d813c2fa7dd692748db39cf94d5c8d62712c7e7a847fa5166960d6bd38e2123820b6815a84a44dc8c03aa8cf8f37fa42e01ce2ca7e95a24f05db0f8c0ae8a128b49540bc8796cc7d606187ec9b67cefc457c8e471d2cf7006e0615d38e0aa6804464ac2afb214ea019ea2e87af49f50f899ecf0719b6e28a92ca170cca6876c7e00e7a467a44e0c5e4b19d556a9e61ecf35d1166d352cf5fec6452b6f8abb42cf134930fc2829dd1d2aef24ee2e683b23628a9975d4efa8a0495624d1778149b15c10240bdd8a3a610c1ca73070887504a06627eab21a949e47b7e0fd0c6900da0857467144fc26d8bee80aecc66914a5e51f71fd75129796709d875f5737de7901d3afbd9113d787646bd75b5d75282c0c6bfe04657744146261b8a71a05e0d53aa607e2596ab7cabc81bfcae2e1c8b5defbf804264e8ca4aefebf4a41a47b3a2edb5100578c16f53edf20afd12416665c9ab54872ca1d4c50614d572a5617356e94eb8c5a837c656bdc6e4fb2140a4f4d481a3dd2063b4b120c57c926cee13880c4d2123695045041ae2ea6c7f252fb263358c5c7eb8dc060fb73a24bb649aa1c3158f3c9ba36c7ea3082018fa8754b06a545eaee5c835d1b508ac51ce3b3745e18c239fe72e81b0880bf4d0b564d4b79316c9a6d8ce0dc98bd0192fdac325268eddd5cbeea336b1709c1d9e4a277a799caa1e1d194f622f1ccf691df286fabf0824c89391fbcc5220cb77490d8c49c1a310c10c6c5322bc2eac97dfa936c665901d3b0d2a7f34195e1f120a008ba5750234d795e70188af3f787d946dfce71c5240e5cf40cd2d84f59ae2cdee8685ffafa57efac62c30eaef42c444c36a39e866181242e43b803602e05e0e62bdbe5a1f9ed06c5d5faaba55c26de1f864cd78e14dab0f5f7242b7055113f2a8ac9d9435f3aa4582e284a924f75b0c8fd2fb9fa218a86a3ae2ec43af8fb17ec5ad6ad9c7af48a3464cd13e68da08dc704958ef53fbb6fe18604218fa1634581b5cd757b6ae82648b90e3ad1b57f5f63446431629aab2e7b79ca05af0de5fb1c7219ea4afd18dcd3552dc9a1f0e5a69a6d216463c32807f91a1e7a57cd9cc3e74394da631bebc7c6289f3147c76da2bba01c15379a7195106371717b4d91f54ced1da9896e5b37ed53e6a00d54697d445635987f87bd964fcdd2264f9381ef77518863979a5d86f8acf64be084b46a9de5ba53304aba2f4d31003a5784fa9470206a5690cb90a445037cb61e7ab15e85b3b7a1871393e064be62523c856a49afbb0241ab44276ac998fa666e1cb7e09b633b609905129ba7e3d1f70518fc5b5c20f0eb05f7572ede2a2a20755dcf498b98ae399fe7c0318f46d7a97dfdb95e2503a2f0af1c3abc8f3f9e21b141d43c488f93299e5af7e17bba6a838f2659f84962485b3099baddc220fb1826849cbeae710017bd169672a841d0190eee2ac4ecec2b01939cfe81e25c259383f2c9ef7924b25fa6e375c432e2f8951ad39f2f8ef45da2ba2cc882bada3b9003d1a10a0991e7f18f7820555a7f36a4adb6b079e0e3a0a354e6745310aba3a040bf52a589ca197bb0cb2b43cb8516a7913a59ada24a17f2497daf4b1585a7e03463c0df8b208fe930772da639eb948f90687599b66699a72145cb8b826c9a5ffab2146678452310529b780a02d977f71a7a283ede37fd43e165e2bac74df8f5052c91097cbe462ebc5117f8bd689cb00a22784325f4e954b166bf2191c8d59413296245783d1cf62d200e082a7bd0aa2a2b60e1f1c2a765e6efeef3ddf6f09fe8ed91cd8f7f5a4d9aa17a870b4bce0a90af23cfe78bb25e64a35ab81cf93f27da7e720e359c07dae3a3be2985173f3747764506f8d218340b8035c3f07bc94523683a72700ca67c00676465727628bc55e13901beb0c071ebc0cff08485e8ea1da86a696c03801a74a6edbf52a9393838c4a34e2d8984084fec119977e02eccd1db122762508efffc4edebd342c47b7b914cc0db5425c7c86523b4f3816ed87a06d226bd8be8c5920b92dccfe1304a2416534e030f0a63ceff95d6141fd511d30b0d6f2d6a0867756beababf8070872fcccda388ff3cf2cf666e22bda1b91078d439c4282c1fcb63bbd47a034f312293507334d5c8d901f4014d3067a4cda43777ac48f561a70d128a88a54f95424cbf8f5a7f9ea8a4e8c8e8e41e7631ae2399f6dfbf290c5940b06e81f475fec70701544711ce05155377246a2ac511267f36819dbb6deaecf87524e0450d86045bb92aa36d4e423b68c62d433f3d6c964c71270f942cd765695c3aaa8</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-blink">
+      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《嵌入式Linux系统开发教程（第2版）》读后感</title>
+    <url>/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>先说结论，贺丹丹老师的这本书，虽说关于嵌入式开发的方方面面确都讲了，但需要读者自行补充<strong>亿点点</strong>细节，<strong>不建议初学者阅读</strong>。按照此书的目录，把每一章标题涉及的内容另行找本书看看再回来看这本书吧。</p>
+<p>不过，如果你只是当科普类书籍来读的话，还是可以初步了解一下嵌入式开发的知识。笔者就是被科普了一把。</p>
+<span id="more"></span>
+<hr>
+<h1>摘抄</h1>
+<ul>
+<li>根据国际电机工程师协会（IEEE）的定义，嵌入式系统是“控制、监视或者辅助装置、机器和运行的装置”。</li>
+<li>为了充分体现嵌入式系统的精髓，目前国内普遍认同的一个定义是：以应用为中心，以计算机技术为基础，软硬件可剪裁，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。</li>
+</ul>
+<img data-src="/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/%E5%B7%A5%E4%B8%9A%E6%8E%A7%E5%88%B6%E7%BD%91%E7%BB%9C.png" class="">
+<img data-src="/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/GT2440%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90%E5%88%86%E5%B8%83.png" class="">
+<h1>嵌入式开发基本流程</h1>
+<ol>
+<li>准备好硬件，例如<code>ARM开发板</code>；</li>
+<li>准备好一个用于开发嵌入式的<code>Linux系统</code>，例如<code>Ubuntu</code>；</li>
+<li>获取交叉编译工具，下载源代码自行编译或者直接下载成品，例如<code>arm-linux-gcc</code>；</li>
+<li>选定一个合适的<code>Bootloader</code>，例如<code>U-Boot</code>；</li>
+<li>下载编译<code>Linux内核</code>源码，定制内核，精简模块；</li>
+<li>使用<code>Busybox</code>制作文件系统；</li>
+<li>根据所用硬件需求，编写驱动程序；</li>
+<li>编写应用程序。</li>
+</ol>
+<p>前面七步都是为了打造合适的运行环境（软硬件环境），为应用程序铺路。如果应用程序本身就很简单，那么看起来为其打造环境则是一个相当大的代价，不过好处就是构建了一个稳定可靠的产品吧，不至于像使用win10一样被强行升级。</p>
+<hr>
+<h1>后记</h1>
+<p>最后一章的开发实例提供了一个很好的开发流程，软硬件项目都可以参考这个。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《架构整洁之道》读后感</title>
     <url>/2020/04/25/%E3%80%8A%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
@@ -1227,6 +2003,76 @@
       </categories>
       <tags>
         <tag>架构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《鸟哥的Linux私房菜-基础篇.第四版》读后感</title>
+    <url>/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>阅读时间：2021年9月14日晚 至 2021年9月21日（中秋节）晚，18日晚上出去聚餐了没看书，所以共计7晚，每晚花约2到4小时。</p>
+<p>之前零散的在网上查过一些关于Linux的资料，例如 <code>cd</code>、<code>ls</code>、<code>top</code> 及 <code>nohup</code> 等命令的用法。</p>
+<p>也尝试过用 <code>bash</code> 编写脚本，却苦于没有库函数，写得实在是痛苦，最后改用 <code>python</code> 来写。</p>
+<p>也简单学习过 <code>makefile</code> 的写法，用大学毕业就再没用过的 <code>C语言</code> 写了个程序，尽管代码风格收获了前辈大量的吐槽。</p>
+<p>这样看来，我都是在各种场合应急才会去简单涉猎一些知识，都没有完整的学习过<code>Linux</code>系统，实在是太功利了，得改。</p>
+<span id="more"></span>
+<hr>
+<h1>大道至简</h1>
+<p>系统性的学习 <code>Linux</code> ，果然还是事半功倍，比单独学独立的知识点再自己找联系要显得更加容易一些，毕竟融会贯通也是一项不可多得的能力。</p>
+<p>从总体来看， <code>Linux</code> 系统的设计与使用都有着很深的 <code>C语言</code> 风格，毕竟源代码就是用 <code>C语言</code> 写的。这会造成什么局面呢？好的一面当然是用 <code>C语言</code> 这种最接近底层的高级语言，拥有着其他高级语言难以望其项背的执行效率以及资源损耗，这样的特性使得 <code>Linux</code> 在服务器端大放异彩，不过平心而论，我个人觉得开源免费才是最重要的原因。</p>
+<p>但是就论设计而言，我不认为 <code>Linux</code> 在设计上有过人之处，尽管我直到现在还是个菜鸟。<code>Linux</code> 最著名的设计应该是“一切皆文件”，文本是文件，设备也是文件，甚至连套接字都是文件。那这么做有什么好处呢？用 <code>OOP</code> 的思想来看，这就是完成了一次最重要的抽象，就像在 <code>C#</code> 里“一切皆 <code>object</code>”一样，这是很了不起的想法。在<code>Linux</code>里，“一切皆文件”就意味着，所有的一切都可以按照文件的方式进行处理，例如你的个人文档应该在你的 <code>/home/[user]/</code> 目录之下，你的计算机设备应该在 <code>/dev</code> 目录之下，他们都可以通过 <code>ls</code> 命令去查看列表清单，都可以用 “open() / read() / write() / close()” 的方式来操作。</p>
+<p>借用<a href="https://www.zhihu.com/question/422144033/answer/1664116757">知乎网友的答案</a>：</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-22-23-46-09.png" class="" title="netkiller的回答">
+<p>但成也萧何败也萧何，尽管这样可以让很多针对文件做处理的工具具有更强的通用性，针对文件的设计有着更广泛的普适性，但是就回到 <code>OOP</code> 上来说，抽象并不是为了一招鲜吃遍天，而是为了让事物更容易被人理解，那么像 <code>/dev/zero</code> 及 <code>/dev/null</code> 等虚拟设备就很反直觉，这并不能让惯性思维保持其正确性，而需要记忆“特例”。这也就是 <code>Linux</code> 中的 <code>ioctl</code> 成为槽点的原因。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PLUS 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUBTRACT 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MULTIPLY 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEVIDE 3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Operation</span><span class="params">(<span class="keyword">int</span> cmd,<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(cmd)&#123;</span><br><span class="line">    <span class="keyword">case</span> PLUS: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> SUBTRACT: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> MULTIPLY: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> DEVIDE: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">default</span>: <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Plus</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Subtract</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Multiply</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Devide</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>这两种方式哪一种更直观也无需多言，统一到一个函数如同把一切归为文件一样，看似大道至简，实则过了头，只会徒增记忆负担。在设计模式的概念里，提出策略模式就是为了解决这种复杂的 <code>if</code> 和 <code>switch</code> 分支。</p>
+<h1>记忆负担</h1>
+<p>如同 iPhone 只设置一个 Home 键，需要“点击”、“双击”、“长按”，甚至在全面屏时代取消实体按键一般，“从底部轻扫”、“从底部轻扫并停顿”、“轻点两下或三下iPhone背面”、“主屏幕下滑”、“左上角下滑”、“右上角下滑”，这些需要你记忆甚至形成肌肉记忆的内容或许只是徒增烦恼，如果你自信于自己的记忆力并觉得 iPhone 做的挺好，那么思考以下这些问题：</p>
+<ol>
+<li>如何截图？</li>
+<li>如何关机？长按电源键是不是关机？</li>
+<li>如何重新启动？手机死机了，如何强制重启？</li>
+<li>如何开启紧急呼叫 SOS ？</li>
+<li>如何启用 Siri ？</li>
+<li>如何进入 Apple Pay 付款页面？</li>
+<li>“响铃/静音”切换的逻辑是什么？静音状态是不是就没有声音了？</li>
+<li>在不同版本的 iPhone 中，以上操作的实现方式是否一致？</li>
+</ol>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/iOS_Android_Button.drawio.png" class="" title="iOS_Android_按钮">
+<p>在 <code>Linux</code> 的设计里，走向了极端，与系统的交互，也就是最常用的 <code>Shell</code> 类软件，以及运行于 <code>Shell</code> 之上的各种工具，你需要大量的记忆才能 do what you want，比如各种命令工具的用法。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-10-32.png" class="" title="command">
+<p>不论是命令本身，还是其参数，基本上都是简写，命令得死记硬背，参数记不清了还得靠 <code>man</code> 复习复习。</p>
+<p>例如 <code>info</code> 这个指令便是我看了忘，忘了看，始终记不住的一个指令。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-34-53.png" class="" title="info page 各说明文件相关性的示意图">
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-36-24.png" class="" title="info 按键功能">
+<p>其他的各种命令基本都是靠着你<strong>强大的记忆与理解能力</strong>才能正确高效使用，例如 <code>Vi</code> 和 <code>Vim</code>。说到这里，得提名 <code>Total Commander</code> ，作为一款神器，却也是如此，对小白不友好。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-59-00.png" class="" title="Vi移动光标">
+<p>我始终不能接受 <code>hjkl</code> 作为上下左右使用，我猜测是因为先定义了 <code>i</code> 代表插入（Insert），所以方向键不能是 <code>ijkl</code>。</p>
+<p><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">How do I exit the Vim editor?</a> 能成为一个热门问题，是有原因的。</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-41-32.png" class="" title="https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;11828573&#x2F;7344695">
+<p><code>Linux</code> 初期没有把图形化界面考虑进去实在是一大憾事，不过同为半吊子后端开发的我表示十分理解，毕竟写界面太费时间了，写一个 <code>kernel</code> 已经是很了不起的成就。</p>
+<p>但回到系统本身来说，<code>C语言</code> 的影子，所导致的问题便是，缺少可靠高效的数据存储及传递方式，存储方面像 <code>/etc/passwd</code> 等纯数据类的文本，都是CSV，当然，这不能怪 <code>Linux</code>，因为在当时，数据库也是在不断发展，出现广泛使用的 <code>SQLite</code> 单文件型数据库都是很后来的事了。重点在另一方面————数据传递，<code>C语言</code> 自身没有严格的数据类型定义，例如 <code>int</code> 和 <code>long</code> 之类的类型长度得靠具体的编译器决定，简而言之就是缺乏标准，这也就让各类工具间的数据传递方式都是采用文本传递，也就是字符串（可 <code>C语言</code> 的字符串不是一个标准类型），这就引出了一些很神奇的用法：</p>
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-45-56.png" class="" title="join指令">
+<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-47-47.png" class="" title="xargs指令">
+<p>我可真是记不住啊。</p>
+<p><code>.</code>、<code>..</code>、<code>-</code>、<code>:</code>、<code>/</code>、<code>?</code>、<code>--stdin</code>、<code>--stdout</code>、<code>|</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;&lt;</code>、<code>&gt;&gt;</code>、<code>;</code>、<code>^</code>、<code>[</code>、<code>]</code>、<code>$</code>、<code>#</code>、<code>'</code>、<code>&quot;</code></p>
+<p>就单纯摆一些符号在这，我都不觉得有谁能够准确描述这些符号在不同场合的意义。<code>bash</code> 可以脚本也只算是实现了一套不太好用的解释性 <code>C语言</code> 执行器。</p>
+<h1>何谓优雅</h1>
+<p>围棋用很简单的规则，定义了一种极其复杂的游戏；象棋用相对简单的规则，定义了一种相对复杂的游戏；三国杀用相对复杂的规则，定义了一种相对简单的游戏。</p>
+<p><code>Linux</code> 如同三国杀一般，给了一个相当自由的环境，允许用新程序做很多事情，犹如三国杀可以一直出新卡，一直加规则，反倒失去了乐趣。</p>
+<p>终端用户在使用操作系统时，理应是向操作系统表达需求，由操作系统自动完成一系列操作来满足用户需求，在当中需要用户做出选择时，给出相应提示即可，就像使用 <code>yum install</code> 来安装软件一般。可 <code>Linux</code> 就是给了一堆相当硬核的工具和使用手册，要求用户自己正确搭配使用工具来满足自己的需求，这也太不友好了，和优雅完全不搭边，如同“CSS如何让元素居中？”这个问题一般，有太多的适用场景和实现方法可供选择，最后得自己挨个试，看哪个是自己真正想要的。</p>
+<p>再来看看我最喜欢的 <code>C#</code> ，搭配 <code>.NET</code>，相较于其他语言，可谓是相当优雅，深得我心，当然 <code>C#</code> 也有 <code>IDisposable</code> 这样令人迷惑的设计，相当不优雅。</p>
+<hr>
+<h1>后记</h1>
+<p>《鸟哥的Linux私房菜》是一本好书，感谢鸟哥，从最基础的硬件一路讲到核心编译，当作科普类文档去泛读也是不错的，但全书内容还是相当硬核，没有很深的计算机各类知识打辅助，恐怕是难以吃透全书的。</p>
+<p>我都靠泛读跳过了许多内容 😁</p>
+<p>留一个下载地址好了：<a href="https://htlsmilework.glitch.me/Book/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87.%E7%AC%AC%E5%9B%9B%E7%89%88.pdf">鸟哥的Linux私房菜-基础篇.第四版.pdf</a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1578,6 +2424,59 @@
       </categories>
   </entry>
   <entry>
+    <title>在重分析点缓冲区中的标记无效</title>
+    <url>/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>使用<code>OneDrive</code>同步文件删除时偶尔会引发这种问题。在<code>OneDrive</code>网页端查看文件已被正常删除，但在本地显示同步中的状态图标，打开文件会提示<strong>在重分析点缓冲区中的标记无效</strong>。</p>
+<span id="more"></span>
+<hr>
+<h1>解决</h1>
+<p>在OneDrive所在的磁盘，右键打开属性-工具-查错，选择扫描驱动器，发现问题后会提示修复，选择下次重启时修复，然后重启电脑就好了。</p>
+<img data-src="/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/2021-12-16-10-12-24.png" class="">
+<img data-src="/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/2021-12-16-10-12-46.png" class="">
+<hr>
+<h1>后记</h1>
+<p>很久之前遇到过，也解决了，然后忘了，这次又查了一次，所以记录下来。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>复制VMware的Linux虚拟机不能联网的问题</title>
+    <url>/2021/12/09/%E5%A4%8D%E5%88%B6VMware%E7%9A%84Linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8D%E8%83%BD%E8%81%94%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>从别人那里直接将某个虚拟机的文件夹拷贝到自己电脑上运行时，VMware通常会提示你“此虚拟机可能已被移动或复制”，此时我们选择“我已复制该虚拟机”。</p>
+<p>如果这是个Linux系统的虚拟机，尝试切换<code>桥接模式</code>、<code>NAT模式</code>、<code>仅主机模式</code>，会发现网络都不通。</p>
+<span id="more"></span>
+<hr>
+<h1>查看网卡配置</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<p>使用该命令，发现目前只有<code>lo</code>存在。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+<p>使用该命令，会发现有<code>lo</code>和<code>eth1</code>存在。</p>
+<h1>原因</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts/</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>会看到<code>ifcfg-eth0</code>(也可能是<code>ifcfg-ens33</code>)及<code>ifcfg-lo</code>，两个配置文件。</p>
+<p>原来的网卡默认创建了<code>eth0</code>，相关的配置都是对着<code>eth0</code>完成的。而复制之后，由本机创建的网卡为<code>eth1</code>，没有任何配置，自然不能上网。</p>
+<h1>解决</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules</span><br></pre></td></tr></table></figure>
+<p>可能会看到类似的输出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:2b&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:1f&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth1&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>把eth0的两行删除，将eth1改为eth0，保存文件即可。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:1f&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br></pre></td></tr></table></figure>
+<p>之后重启，看看效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown -r now</span><br><span class="line"></span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<p>就会发现网络正常了。</p>
+<hr>
+<h1>后记</h1>
+<p>解决这个问题走了一堆弯路，还以为是VMware的网络功能出问题了。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>如何才能成为更好的人？</title>
     <url>/2019/02/12/%E5%A6%82%E4%BD%95%E6%89%8D%E8%83%BD%E6%88%90%E4%B8%BA%E6%9B%B4%E5%A5%BD%E7%9A%84%E4%BA%BA%EF%BC%9F/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
@@ -1594,6 +2493,25 @@
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>密钥</title>
+    <url>/2020/08/25/%E5%AF%86%E9%92%A5/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
+  <script id="hbeData" type="hbeData" data-hmacdigest="8ffcd44e4ad7c4ad76ab7d8db51aa0135243178ba6e2ebf9b14d638ce7f6d081">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46bc0ab206439d1c0b4b5eba2057f9e0b6b97c706e200b244e1e7e0b61d7767ddf45ddb5dbaba20b69432d0999834c54942f7f567cec7df09931358570548b57efc303a903d285a8448372cf19fa27fbc6427f9a7917f76aa30b08d4e02c6341eded0542615d86a973e946d4367a251d045e2042d4ef1ffe4d1f45920fa5ed4cebb48c21c8938b2aae1e4a2fad93d28597d8d525abcd18f69bd2458f888c01aa0ad5d8879e3eb2613e84a7eb8074eae7a23dcf7e8103e1309b6895b3a86bad4e2e8b5cf07bfd53297b4ab3c6c8cb676ba40e65984fdfc84d69e283461d454326bdc67680505ca79e5dd96baaa7d3fd01a17a301b1f22b12533fe0c32e32eb527ca5a92d7f6090e5048d985704b851781584f3342e65867b78cd3946b1c53bff40921a57acd1ac18bd41c4104b21450f4039db19ddfda361d30ef60e4b5d6a0ade3898867d30cc3f7cd80f2b99980e3824c738ddda38a96b95c4f7cf5685f02bdf62a270c271a0fc86657658a7d7a247ffe818125c496dde899d83a65fc069989fb6100b10ae7aa53cb8db79d49f21cfde4207b516325d78ab40d393eaa8e3b3edf380637260aff1ff5a96afe7c3148bdc33a6694bcc0c95f548814228b06b8f79f0e1b942ba6d7c8f83ce84e94653473d86ceff0278d32fafb4f42b2cc0e6884e37d72d31dd0bd6c65bb16a641e58239891</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-blink">
+      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>记录</category>
       </categories>
   </entry>
   <entry>
@@ -1670,25 +2588,6 @@
         <tag>Tesseract</tag>
         <tag>OCR</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>密钥</title>
-    <url>/2020/08/25/%E5%AF%86%E9%92%A5/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
-  <script id="hbeData" type="hbeData" data-hmacdigest="8ffcd44e4ad7c4ad76ab7d8db51aa0135243178ba6e2ebf9b14d638ce7f6d081">7e78dea5c36fe531a89d1e3ebe4a606c7e449456f0c25de6e74d4b8af48ac46bc0ab206439d1c0b4b5eba2057f9e0b6b97c706e200b244e1e7e0b61d7767ddf45ddb5dbaba20b69432d0999834c54942f7f567cec7df09931358570548b57efc303a903d285a8448372cf19fa27fbc6427f9a7917f76aa30b08d4e02c6341eded0542615d86a973e946d4367a251d045e2042d4ef1ffe4d1f45920fa5ed4cebb48c21c8938b2aae1e4a2fad93d28597d8d525abcd18f69bd2458f888c01aa0ad5d8879e3eb2613e84a7eb8074eae7a23dcf7e8103e1309b6895b3a86bad4e2e8b5cf07bfd53297b4ab3c6c8cb676ba40e65984fdfc84d69e283461d454326bdc67680505ca79e5dd96baaa7d3fd01a17a301b1f22b12533fe0c32e32eb527ca5a92d7f6090e5048d985704b851781584f3342e65867b78cd3946b1c53bff40921a57acd1ac18bd41c4104b21450f4039db19ddfda361d30ef60e4b5d6a0ade3898867d30cc3f7cd80f2b99980e3824c738ddda38a96b95c4f7cf5685f02bdf62a270c271a0fc86657658a7d7a247ffe818125c496dde899d83a65fc069989fb6100b10ae7aa53cb8db79d49f21cfde4207b516325d78ab40d393eaa8e3b3edf380637260aff1ff5a96afe7c3148bdc33a6694bcc0c95f548814228b06b8f79f0e1b942ba6d7c8f83ce84e94653473d86ceff0278d32fafb4f42b2cc0e6884e37d72d31dd0bd6c65bb16a641e58239891</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-blink">
-      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请输入密码：">请输入密码：</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>记录</category>
-      </categories>
   </entry>
   <entry>
     <title>明日嫣红</title>
@@ -1828,6 +2727,136 @@
       </categories>
   </entry>
   <entry>
+    <title>查看Windows系统关机重启事件</title>
+    <url>/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h1>前言</h1>
+<ul>
+<li>
+<p><a href="https://www.shellhacks.com/windows-shutdown-reboot-event-ids-get-logs/">Windows: Shutdown/Reboot Event IDs – Get Logs</a></p>
+</li>
+<li>
+<p><a href="https://serverfault.com/questions/702828/windows-server-restart-shutdown-history">Windows Server restart / shutdown history</a></p>
+</li>
+<li>
+<p>相关事件ID：41,1074,1076,6005,6006,6008,6009,6013</p>
+</li>
+<li>
+<p>Win7事件ID：6005（开机）、6006（关机）</p>
+</li>
+<li>
+<p>Win10事件ID：30（开机）、7002（关机）</p>
+</li>
+</ul>
+<span id="more"></span>
+<hr>
+<h1>关机重启事件</h1>
+<table>
+<thead>
+<tr>
+<th><strong>事件ID</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30</td>
+<td>固件报告了启动指标。</td>
+<td></td>
+</tr>
+<tr>
+<td>41</td>
+<td>系统在没有彻底关闭的情况下重新启动。</td>
+<td>The system has rebooted without cleanly shutting down first.</td>
+</tr>
+<tr>
+<td>1074</td>
+<td>系统被某个用户或进程正常关闭。</td>
+<td>The system has been shutdown properly by a user or process.</td>
+</tr>
+<tr>
+<td>1076</td>
+<td>紧随事件ID 6008之后，表示在意外重启或关机后第一个拥有关机权限的用户登录到服务器并指定原因。</td>
+<td>Follows after Event ID 6008 and means that the first user with shutdown privileges logged on to the server after an unexpected restart or shutdown and specified the cause.</td>
+</tr>
+<tr>
+<td>6005</td>
+<td>事件日志服务已启动。表示系统启动。</td>
+<td>The Event Log service was started. Indicates the system startup.</td>
+</tr>
+<tr>
+<td>6006</td>
+<td>事件日志服务已停止。表示系统正常关闭。</td>
+<td>The Event Log service was stopped. Indicates the proper system shutdown.</td>
+</tr>
+<tr>
+<td>6008</td>
+<td>上次系统关闭是意外的。</td>
+<td>The previous system shutdown was unexpected.</td>
+</tr>
+<tr>
+<td>6009</td>
+<td>系统启动时检测到的操作系统版本。</td>
+<td>The operating system version detected at the system startup.</td>
+</tr>
+<tr>
+<td>6013</td>
+<td>系统正常运行时间，以秒为单位。</td>
+<td>The system uptime in seconds.</td>
+</tr>
+<tr>
+<td>7002</td>
+<td>客户体验改善计划的用户注销通知。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1>在事件查看器中查看</h1>
+<ol>
+<li>开始菜单内输入<code>event</code>或<code>eventvwr</code></li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-15-52-21.png" class="">
+<ol start="2">
+<li>点击<code>Windows 日志 - 系统</code></li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-06-20.png" class="">
+<ol start="3">
+<li>右键点击或在右侧选择<code>筛选当前日志</code></li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-07-37.png" class="">
+<ol start="4">
+<li>在<code>&lt;所有事件 ID&gt;</code>中输入<code>41,1074,1076,6005,6006,6008,6009,6013</code>或<code>30,7002,6005,6006</code>或并点击确定</li>
+</ol>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-09-46.png" class="">
+<ul>
+<li>根据相近的<code>6005</code>与<code>6006</code>事件，确认系统在<code>2021/11/1 10:16:08</code>关机，在<code>2021/11/1 10:16:41</code>开机，可以判断出这是一次重启操作。</li>
+</ul>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-15-26.png" class="">
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-15-37.png" class="">
+<ul>
+<li>根据相近的<code>30</code>与<code>7002</code>事件，确认系统在<code>2021/11/1 10:16:31</code>开机，在<code>2021/11/1 11:06:49</code>关机。</li>
+</ul>
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-30-24.png" class="">
+<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-30-33.png" class="">
+<h1>在PowerShell中查看</h1>
+<p>使用 <code>PowerShell</code> 的<code>Get-EventLog</code>命令从命令行检索 <code>Windows</code> 中的关机/重启日志。</p>
+<ul>
+<li>过滤系统事件日志中的最新<code>10000</code>条，然后仅显示与 <code>Windows</code> 开关机相关的事件，请运行：</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-EventLog</span> System <span class="literal">-Newest</span> <span class="number">10000</span> | `</span><br><span class="line"><span class="built_in">Where</span> EventId <span class="operator">-in</span> <span class="number">41</span>,<span class="number">1074</span>,<span class="number">1076</span>,<span class="number">6005</span>,<span class="number">6006</span>,<span class="number">6008</span>,<span class="number">6009</span>,<span class="number">6013</span> | `</span><br><span class="line"><span class="built_in">Format-Table</span> TimeGenerated,EventId,UserName,Message <span class="literal">-AutoSize</span> <span class="literal">-wrap</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>过滤<code>Win10</code>系统事件日志中的最新<code>10000</code>条，然后仅显示与 <code>Windows</code> 开关机相关的事件，请运行：</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-EventLog</span> System <span class="literal">-Newest</span> <span class="number">10000</span> | `</span><br><span class="line"><span class="built_in">Where</span> EventId <span class="operator">-in</span> <span class="number">30</span>,<span class="number">6005</span>,<span class="number">6006</span>,<span class="number">7002</span> | `</span><br><span class="line"><span class="built_in">Format-Table</span> TimeGenerated,EventId,UserName,Message <span class="literal">-AutoSize</span> <span class="literal">-wrap</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+<p>想搜技术知识，还是Google靠谱。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>浅谈直播</title>
     <url>/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
@@ -1900,72 +2929,6 @@
         <tag>OBS</tag>
         <tag>SMTP</tag>
         <tag>UDP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用微信发送视频文件</title>
-    <url>/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>近日有不止一个朋友，用微信发送的视频或者大文件的时候，被微信无情拒绝，问我何解。</p>
-<p>其实百度就有一堆答案，文件或视频太大就压缩，这里就写写用 <strong>格式工厂</strong> 来压缩视频吧。</p>
-<span id="more"></span>
-<h3 id="格式工厂"><a class="header-anchor" href="#格式工厂">¶</a>格式工厂</h3>
-<p>官方定位是一款免费多功能的多媒体文件转换工具。</p>
-<p><a href="http://down.pcgeshi.com/FormatFactory_setup.exe">下载链接</a>： <a href="http://down.pcgeshi.com/FormatFactory_setup.exe">http://down.pcgeshi.com/FormatFactory_setup.exe</a></p>
-<h3 id="微信限制"><a class="header-anchor" href="#微信限制">¶</a>微信限制</h3>
-<p>微信对于文件和视频有如下的大小限制：</p>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-41-57.png" class="">
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-42-35.png" class="">
-<p>你问为什么有这种限制，或者为什么限制到这么小，别问，问就是企业流量贼贵。</p>
-<h3 id="使用方法"><a class="header-anchor" href="#使用方法">¶</a>使用方法</h3>
-<ol>
-<li>下载安装好后，我们打开软件，进入主界面，点击按钮</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-32-11.png" class="">
-<ol start="2">
-<li>点击输出配置</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-33-46.png" class="">
-<ol start="3">
-<li>选择自定义</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-23.png" class="">
-<ol start="4">
-<li>在大小限制里，选择 25 MB</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-58.png" class="">
-<ol start="5">
-<li>其他不用改，点击确定</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-36-30.png" class="">
-<ol start="6">
-<li>点击添加文件，或者直接将文件拖入空白区域</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-37-30.png" class="">
-<ol start="7">
-<li>添加好后，点击确定</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-08.png" class="">
-<ol start="8">
-<li>在主界面可以看到该任务，点击开始</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-40.png" class="">
-<ol start="9">
-<li>任务完成后，我们点击进入输出文件夹</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-39-30.png" class="">
-<ol start="10">
-<li>这里可以看到，视频文件已经被压缩到 25 MB 以内了</li>
-</ol>
-<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-40-44.png" class="">
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>格式工厂真是一款国产良心软件，免费无广告不说，连个捐赠方式都没有，这让我设置打赏的这个操作很是汗颜。</p>
-]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
@@ -2042,6 +3005,72 @@
       </categories>
       <tags>
         <tag>协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用微信发送视频文件</title>
+    <url>/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>近日有不止一个朋友，用微信发送的视频或者大文件的时候，被微信无情拒绝，问我何解。</p>
+<p>其实百度就有一堆答案，文件或视频太大就压缩，这里就写写用 <strong>格式工厂</strong> 来压缩视频吧。</p>
+<span id="more"></span>
+<h3 id="格式工厂"><a class="header-anchor" href="#格式工厂">¶</a>格式工厂</h3>
+<p>官方定位是一款免费多功能的多媒体文件转换工具。</p>
+<p><a href="http://down.pcgeshi.com/FormatFactory_setup.exe">下载链接</a>： <a href="http://down.pcgeshi.com/FormatFactory_setup.exe">http://down.pcgeshi.com/FormatFactory_setup.exe</a></p>
+<h3 id="微信限制"><a class="header-anchor" href="#微信限制">¶</a>微信限制</h3>
+<p>微信对于文件和视频有如下的大小限制：</p>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-41-57.png" class="">
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-21-42-35.png" class="">
+<p>你问为什么有这种限制，或者为什么限制到这么小，别问，问就是企业流量贼贵。</p>
+<h3 id="使用方法"><a class="header-anchor" href="#使用方法">¶</a>使用方法</h3>
+<ol>
+<li>下载安装好后，我们打开软件，进入主界面，点击按钮</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-32-11.png" class="">
+<ol start="2">
+<li>点击输出配置</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-33-46.png" class="">
+<ol start="3">
+<li>选择自定义</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-23.png" class="">
+<ol start="4">
+<li>在大小限制里，选择 25 MB</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-35-58.png" class="">
+<ol start="5">
+<li>其他不用改，点击确定</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-36-30.png" class="">
+<ol start="6">
+<li>点击添加文件，或者直接将文件拖入空白区域</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-37-30.png" class="">
+<ol start="7">
+<li>添加好后，点击确定</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-08.png" class="">
+<ol start="8">
+<li>在主界面可以看到该任务，点击开始</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-38-40.png" class="">
+<ol start="9">
+<li>任务完成后，我们点击进入输出文件夹</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-39-30.png" class="">
+<ol start="10">
+<li>这里可以看到，视频文件已经被压缩到 25 MB 以内了</li>
+</ol>
+<img data-src="/2020/03/15/%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/2020-03-15-22-40-44.png" class="">
+<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
+<p>格式工厂真是一款国产良心软件，免费无广告不说，连个捐赠方式都没有，这让我设置打赏的这个操作很是汗颜。</p>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
@@ -2476,6 +3505,115 @@ n! = 1 x 2 x 3 x … x (n - 1) x n , n &gt; 0</p>
       </tags>
   </entry>
   <entry>
+    <title>纯音乐</title>
+    <url>/2021/10/17/%E7%BA%AF%E9%9F%B3%E4%B9%90/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>好听的纯音乐。</p>
+<span id="more"></span>
+<hr>
+<table>
+<thead>
+<tr>
+<th>引用</th>
+<th style="text-align:center">曲名</th>
+<th style="text-align:center">歌曲时长</th>
+<th style="text-align:center">发行时间</th>
+<th>作者</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动物世界</td>
+<td style="text-align:center">Just Blue</td>
+<td style="text-align:center">04:32</td>
+<td style="text-align:center">1978年</td>
+<td>法国电子音乐乐队Space</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=1747672#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>运动会</td>
+<td style="text-align:center">运动员进行曲</td>
+<td style="text-align:center">02:25</td>
+<td style="text-align:center">1971年</td>
+<td>吴光锐、贾双、李明秀</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=209637162#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>颁奖仪式</td>
+<td style="text-align:center">拉德斯基进行曲</td>
+<td style="text-align:center">03:05</td>
+<td style="text-align:center">1848年</td>
+<td>老约翰·施特劳斯</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=245581615#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>散场</td>
+<td style="text-align:center">回家</td>
+<td style="text-align:center">05:32</td>
+<td style="text-align:center">1989年</td>
+<td>凯丽金</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=1685010#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>新闻联播</td>
+<td style="text-align:center">《新闻联播》开始曲</td>
+<td style="text-align:center">00:19</td>
+<td style="text-align:center">1988年3月</td>
+<td>孟卫东</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=257290#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>天气预报</td>
+<td style="text-align:center">渔舟唱晚</td>
+<td style="text-align:center">02:55</td>
+<td style="text-align:center">1984年</td>
+<td>浦琦璋</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=102387735#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>中国颁奖晚会</td>
+<td style="text-align:center">The Magnificent Seven</td>
+<td style="text-align:center">01:49</td>
+<td style="text-align:center">1960年</td>
+<td>Elmer Bernstein</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=108411003#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>猫和老鼠</td>
+<td style="text-align:center">天堂与地狱序曲</td>
+<td style="text-align:center">09:23</td>
+<td style="text-align:center">1858年</td>
+<td>雅克·奥芬巴赫</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=263059113#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>上课铃</td>
+<td style="text-align:center">瓦妮莎的微笑</td>
+<td style="text-align:center">02:20</td>
+<td style="text-align:center">1997年</td>
+<td>理查德·克莱德曼</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=776852#webchat_redirect">QQ音乐</a></td>
+</tr>
+<tr>
+<td>春节</td>
+<td style="text-align:center">春节序曲</td>
+<td style="text-align:center">05:02</td>
+<td style="text-align:center">1955年</td>
+<td>李焕之</td>
+<td><a href="https://i.y.qq.com/v8/playsong.html?songid=747467#webchat_redirect">QQ音乐</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1>后记</h1>
+<p>当个听众。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>职业规划有意义吗？</title>
     <url>/2019/01/01/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92%E6%9C%89%E6%84%8F%E4%B9%89%E5%90%97%EF%BC%9F/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="不知道密码就别试了。" data-whm="Something woring...">
@@ -2681,6 +3819,79 @@ end
   </div>
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>路由器（梅林固件）实现局域网电脑远程开机</title>
+    <url>/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 <code>RT-AC86U</code>，具有koolshare软件中心，价格实在是不便宜，不过平心而论，<strong>强得很</strong>（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。</p>
+<span id="more"></span>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/iPhone_13_Pro.png" class="" title="iPhone 13 Pro">
+<ul>
+<li><a href="https://www.asuswrt-merlin.net/">Asuswrt-Merlin</a>: <strong>Asuswrt-Merlin</strong> is a <strong>third party alternative firmware</strong> for Asus routers, with a special emphasis on tweaks and fixes rather than radical changes or collecting as many features as possible.</li>
+<li><a href="https://www.asuswrt-merlin.net/">梅林固件</a>：<strong>Asuswrt-Merlin</strong> 是华硕路由器的<strong>第三方替代固件</strong>，特别强调轻微调整和修复，而不是激进的更改或收集尽可能多的功能。</li>
+<li><a href="https://fw.koolcenter.com/Koolshare_ASUS_Official_Mod/">华硕官改固件</a>：华硕官改固件是根据华硕对应机型的源代码，在尽量不更改固件其它地方的前提下，增加koolshare软件中心。尽量保持官方固件的原汁原味，又能拥有软件中心。</li>
+<li>远程开机（Wake on LAN，WOL）：俗称远程唤醒，是现在很多网卡都支持的功能。而远程唤醒的实现，主要是向目标主机发送特殊格式的数据包，是AMD公司制作的MagicPacket这套软件以生成网络唤醒所需要的特殊数据包，俗称魔术包（Magic Packet）。MagicPacket格式虽然只是AMD公司开发推广的技术，并非世界公认的标准，但是仍然受到很多网卡制造商的支持，因此许多具有网络唤醒功能的网卡都能与之兼容。</li>
+</ul>
+<hr>
+<h1>实现思路</h1>
+<p>要想远程打开家里的电脑，首先电脑的主板和网卡必须都支持远程唤醒功能，其次得有个常开的路由器，最后要在公网上可以访问到这个路由器。当然，你如果有钱直接买向日葵的开机硬件产品也行，不过那些产品通常也需要连接WiFi。</p>
+<h1>网卡支持远程唤醒</h1>
+<p>在有线网卡的电源管理选项卡中，按照这个界面勾选即可，未勾选的“只允许幻数据包唤醒计算机”，代表着网络中的其他通信也可以唤醒计算机。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-20-54-06.png" class="" title="网卡电源管理">
+<h1>常开的路由器</h1>
+<p>给路由器24小时供电即可，如果路由器长时间运行不稳定，通常可以设置定时重启功能，非常有效。</p>
+<h1>公网访问路由器</h1>
+<p>你的家庭宽带如果可以直接获得公网IP，静态的最方便，动态的也可以使用DDNS功能，这一步就完成了。</p>
+<p>但通常都不会有公网IP，所以引出了内网穿透的概念。</p>
+<h1>内网穿透</h1>
+<h2 id="DDNSTO"><a class="header-anchor" href="#DDNSTO">¶</a>DDNSTO</h2>
+<p><a href="https://www.ddnsto.com/zh/guide/koolshare_merlin.html">DDNSTO使用教程</a></p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-03-22.png" class="" title="DDNSTO">
+<p>笔者之前一直使用的都是DDNSTO，远程登录路由器，再从路由器的网络工具——通过网络（LAN）唤醒功能去启动家里的计算机。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-11-40.png" class="" title="通过网络（LAN）唤醒">
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-13-10.png" class="" title="DDNSTO购买通道">
+<p>不过目前DDNSTO的服务器得每隔七天去主动申请一次免费服务才行，你也可以付费购买长期服务，另外，使用时可能需要微信扫码认证，略嫌麻烦，那个<strong>限时活动</strong>也戳伤了我，而后切换到了下面这种方式。</p>
+<h2 id="Zerotier"><a class="header-anchor" href="#Zerotier">¶</a>Zerotier</h2>
+<p>同样，在软件中心，可以安装Zerotier，然后在笔记本上也装上，台式机也可以装上，都连入同一个网络中，为了给Zerotier加速，可以参考以前的文章：<a href="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/" title="ZeroTier创建Moon节点">ZeroTier创建Moon节点</a>。</p>
+<p>而后，你就可以直接输入在Zerotier上分配给路由器的IP地址，从而访问到路由器上了，再通过路由器的界面去唤醒。</p>
+<h1>用脚本唤醒</h1>
+<p>但我懒得很，连打开浏览器界面按按钮都觉得费劲，于是乎，便去研究了路由器是如何唤醒计算机的，写了个简单脚本，实现启动脚本便唤醒指定计算机的功能。</p>
+<h2 id="开启SSH"><a class="header-anchor" href="#开启SSH">¶</a>开启SSH</h2>
+<p>不入虎穴焉得虎子，我们先进入路由器的系统管理——系统设置界面，开启SSH功能。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-25-38.png" class="" title="SSH服务">
+<p>在笔记本上用 <code>ssh-keygen</code> 生成 <code>rsa</code> 的密钥，然后将公钥内容填入授权密钥中，即可实现免密码访问。</p>
+<h2 id="分析网页源码"><a class="header-anchor" href="#分析网页源码">¶</a>分析网页源码</h2>
+<p>用SSH进入路由器后，即可查看 <code>/www/Main_WOL_Content.asp</code> 的内容。</p>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-35-44.png" class="" title="Main_WOL_Content">
+<p>通过分析页面源码，可以知道实际上是通过 <code>/usr/sbin/ether-wake -i br0 -b 00:00:00:00:00:00</code> 这个命令去唤醒计算机的，最后一段便是网卡的 MAC地址。</p>
+<h2 id="脚本编写"><a class="header-anchor" href="#脚本编写">¶</a>脚本编写</h2>
+<p>一个简易脚本就新鲜出炉了，提供一个下载链接，也可以按照下面的方式手动创建。</p>
+<p>下载链接：<a href="/download/WakeOnLan.cmd">WakeOnLan.cmd</a></p>
+<p>手动创建：</p>
+<ol>
+<li>在文本编辑器（记事本、Notepad++等）中粘贴以下代码；</li>
+<li>第11行，将 <code>htlsmile</code> 替换为你自己设置的路由器登录用户名；</li>
+<li>第12行，将IP地址 <code>172.23.1.1</code> 替换为在Zerotier中给路由器分配的IP地址；</li>
+<li>第13行，将MAC地址 <code>98:EE:CB:B1:C5:07</code> 替换为待唤醒的计算机网卡MAC地址；</li>
+<li>另存为 <code>WakeOnLan.cmd</code>，建议同时设置该文件为只读。</li>
+</ol>
+<p>如果之前在路由器SSH服务中，你已经设置好了授权密钥，那么双击脚本即可实现无密码确认，直接唤醒计算机；如果没有设置SSH公钥，你可以按照提示输入密码。</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">:: *******Begin Comment**************</span><br><span class="line">::</span><br><span class="line">:: @description     This program attempts to wake up the computer through the Asuswrt-Merlin router.</span><br><span class="line">:: @author          htlsmile</span><br><span class="line">:: @<span class="built_in">date</span>            <span class="number">2021</span>/<span class="number">09</span>/<span class="number">25</span></span><br><span class="line">::</span><br><span class="line">:: *******End   Comment**************</span><br><span class="line"></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> router_username=htlsmile</span><br><span class="line"><span class="built_in">set</span> router_ip=<span class="number">172</span>.<span class="number">23</span>.<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="built_in">set</span> mac_address=<span class="number">98</span>:EE:CB:B1:C5:<span class="number">07</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">title</span> WakeOnLan</span><br><span class="line"><span class="built_in">color</span> <span class="number">1</span>F</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">437</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> &quot;  _    _ _______ _       _____ __  __ _____ _      ______ </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |__   __| |     / ____|  \/  |_   _| |    |  ____|</span><br><span class="line"><span class="built_in">echo</span> &quot; | |__| |  | |  | |    | (___ | \  / | | | | |    | |__   </span><br><span class="line"><span class="built_in">echo</span> &quot; |  __  |  | |  | |     \___ \| |\/| | | | | |    |  __|  </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |  | |  | |____ ____) | |  | |_| |_| |____| |____ </span><br><span class="line"><span class="built_in">echo</span> &quot; |_|  |_|  |_|  |______|_____/|_|  |_|_____|______|______|</span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"></span><br><span class="line">:<span class="built_in">Ping</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Try connecting to the router[<span class="variable">%router_ip%</span>]...</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">ping</span> -n <span class="number">1</span> <span class="variable">%router_ip%</span> &gt;<span class="built_in">nul</span></span><br><span class="line"></span><br><span class="line">:: 在批处理程序中使用 <span class="keyword">ERRORLEVEL</span> 值时，必须按降序列出它们。</span><br><span class="line">:: https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/choice#remarks</span><br><span class="line"></span><br><span class="line">:: <span class="keyword">if</span> 与 <span class="keyword">ERRORLEVEL</span> 的用法</span><br><span class="line">:: https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/<span class="keyword">if</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">1</span> <span class="keyword">goto</span> NotConnected</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">0</span> <span class="keyword">goto</span> Connected</span><br><span class="line"></span><br><span class="line">:NotConnected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">4</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Router[<span class="variable">%router_ip%</span>] Unreachable !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:Connected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">2</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Router[<span class="variable">%router_ip%</span>] Reachable !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Wake up MAC[<span class="variable">%mac_address%</span>]</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line">ssh -l <span class="variable">%router_username%</span> <span class="variable">%router_ip%</span> &quot;/usr/sbin/ether-wake -i br0 -b <span class="variable">%mac_address%</span>; <span class="keyword">exit</span>&quot;</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">1</span> <span class="keyword">goto</span> SSHError</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Wake up complete!</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:SSHError</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">4</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        ssh [<span class="variable">%router_ip%</span>] error !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:ExitCmd</span><br><span class="line">timeout /T <span class="number">5</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用效果"><a class="header-anchor" href="#使用效果">¶</a>使用效果</h2>
+<h3 id="尝试连接"><a class="header-anchor" href="#尝试连接">¶</a>尝试连接</h3>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-36.png" class="" title="WakeOnLan">
+<h3 id="连接成功"><a class="header-anchor" href="#连接成功">¶</a>连接成功</h3>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-26_08-58-33.png" class="" title="WakeOnLan">
+<h3 id="连接失败"><a class="header-anchor" href="#连接失败">¶</a>连接失败</h3>
+<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-52.png" class="" title="WakeOnLan">
+<hr>
+<h1>后记</h1>
+<p>果然懒惰才能促使人进步，尽管写下这篇文章都花了两个小时，顺带一提，脚本中的那个字符画，是在 <a href="http://patorjk.com/software/taag/"><strong>Text to ASCII Art Generator (TAAG)</strong></a> 中生成的，好用得很。</p>
+]]></content>
       <categories>
         <category>随笔</category>
       </categories>
@@ -2999,730 +4210,42 @@ end
       </categories>
   </entry>
   <entry>
-    <title>DateTime.ToString方法</title>
-    <url>/2021/08/18/DateTime-ToString%E6%96%B9%E6%B3%95/</url>
+    <title>Windows开启SSH服务</title>
+    <url>/2022/03/15/Windows%E5%BC%80%E5%90%AFSSH%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<h1>前言</h1>
-<p>将当前 DateTime 对象的值转换为其等效的字符串表示形式。</p>
-<p>Converts the value of the current DateTime object to its equivalent string representation.</p>
-<p>参考：<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.datetime.tostring">DateTime.ToString 方法 (System) | Microsoft Docs</a></p>
+<p>有时候需要远程控制家里的电脑，类似向日葵等远程桌面软件也算好用，不过有点费流量。给家里的<code>Windows</code>系统开启<code>SSH</code>服务，用<code>SSH</code>操作家里的电脑，岂不快哉。</p>
 <span id="more"></span>
 <hr>
-<h1>输出</h1>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">zh-CN</span><br><span class="line">d <span class="number">2021</span>/<span class="number">8</span>/<span class="number">18</span></span><br><span class="line">D <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日</span><br><span class="line">f <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日 <span class="number">12</span>:<span class="number">48</span></span><br><span class="line">F <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日 <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">g <span class="number">2021</span>/<span class="number">8</span>/<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span></span><br><span class="line">G <span class="number">2021</span>/<span class="number">8</span>/<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">m <span class="number">8</span>月<span class="number">18</span>日</span><br><span class="line">o <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span>.<span class="number">5960000</span>+<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">r Wed, <span class="number">18</span> Aug <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> GMT</span><br><span class="line">s <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">t <span class="number">12</span>:<span class="number">48</span></span><br><span class="line">T <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">u <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span>Z</span><br><span class="line">U <span class="number">2021</span>年<span class="number">8</span>月<span class="number">18</span>日 <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">Y <span class="number">2021</span>年<span class="number">8</span>月</span><br><span class="line"></span><br><span class="line">en-US</span><br><span class="line">d <span class="number">8</span>/<span class="number">18</span>/<span class="number">2021</span></span><br><span class="line">D Wednesday, August <span class="number">18</span>, <span class="number">2021</span></span><br><span class="line">f Wednesday, August <span class="number">18</span>, <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span> PM</span><br><span class="line">F Wednesday, August <span class="number">18</span>, <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">g <span class="number">8</span>/<span class="number">18</span>/<span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span> PM</span><br><span class="line">G <span class="number">8</span>/<span class="number">18</span>/<span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">m August <span class="number">18</span></span><br><span class="line">o <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span>.<span class="number">5970000</span>+<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">r Wed, <span class="number">18</span> Aug <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> GMT</span><br><span class="line">s <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span>T12:<span class="number">48</span>:<span class="number">39</span></span><br><span class="line">t <span class="number">12</span>:<span class="number">48</span> PM</span><br><span class="line">T <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">u <span class="number">2021</span>-<span class="number">08</span>-<span class="number">18</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span>Z</span><br><span class="line">U Wednesday, August <span class="number">18</span>, <span class="number">2021</span> <span class="number">12</span>:<span class="number">48</span>:<span class="number">39</span> PM</span><br><span class="line">Y August <span class="number">2021</span></span><br></pre></td></tr></table></figure>
-<h1>源代码</h1>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Globalization;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// Create an array of all supported standard date and time format specifiers.</span></span><br><span class="line">    <span class="built_in">string</span>[] formats = &#123;<span class="string">&quot;d&quot;</span>, <span class="string">&quot;D&quot;</span>, <span class="string">&quot;f&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;g&quot;</span>, <span class="string">&quot;G&quot;</span>, <span class="string">&quot;m&quot;</span>, <span class="string">&quot;o&quot;</span>, <span class="string">&quot;r&quot;</span>, <span class="string">&quot;s&quot;</span>, <span class="string">&quot;t&quot;</span>, <span class="string">&quot;T&quot;</span>, <span class="string">&quot;u&quot;</span>, <span class="string">&quot;U&quot;</span>, <span class="string">&quot;Y&quot;</span>&#125;;</span><br><span class="line">    <span class="comment">// Create an array of four cultures.</span></span><br><span class="line">    CultureInfo[] cultures = &#123;CultureInfo.CreateSpecificCulture(<span class="string">&quot;zh-CN&quot;</span>), </span><br><span class="line">                              CultureInfo.CreateSpecificCulture(<span class="string">&quot;en-US&quot;</span>)&#125;;</span><br><span class="line">    <span class="comment">// Iterate each standard format specifier.</span></span><br><span class="line">    <span class="keyword">foreach</span> (CultureInfo culture <span class="keyword">in</span> cultures)</span><br><span class="line">    &#123;</span><br><span class="line">      Console.WriteLine(culture.Name);</span><br><span class="line">      <span class="keyword">foreach</span> (<span class="built_in">string</span> formatSpecifier <span class="keyword">in</span> formats)</span><br><span class="line">      &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;&#123;0&#125; &#123;1&#125;&quot;</span>, formatSpecifier, DateTime.Now.ToString(formatSpecifier, culture));</span><br><span class="line">      &#125;</span><br><span class="line">      Console.WriteLine();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<hr>
-<h1>后记</h1>
-<p>可以直接用 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.datetime.tostring#code-try-2">.NET 在线编辑器</a> 试试效果。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《鸟哥的Linux私房菜-基础篇.第四版》读后感</title>
-    <url>/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>阅读时间：2021年9月14日晚 至 2021年9月21日（中秋节）晚，18日晚上出去聚餐了没看书，所以共计7晚，每晚花约2到4小时。</p>
-<p>之前零散的在网上查过一些关于Linux的资料，例如 <code>cd</code>、<code>ls</code>、<code>top</code> 及 <code>nohup</code> 等命令的用法。</p>
-<p>也尝试过用 <code>bash</code> 编写脚本，却苦于没有库函数，写得实在是痛苦，最后改用 <code>python</code> 来写。</p>
-<p>也简单学习过 <code>makefile</code> 的写法，用大学毕业就再没用过的 <code>C语言</code> 写了个程序，尽管代码风格收获了前辈大量的吐槽。</p>
-<p>这样看来，我都是在各种场合应急才会去简单涉猎一些知识，都没有完整的学习过<code>Linux</code>系统，实在是太功利了，得改。</p>
-<span id="more"></span>
-<hr>
-<h1>大道至简</h1>
-<p>系统性的学习 <code>Linux</code> ，果然还是事半功倍，比单独学独立的知识点再自己找联系要显得更加容易一些，毕竟融会贯通也是一项不可多得的能力。</p>
-<p>从总体来看， <code>Linux</code> 系统的设计与使用都有着很深的 <code>C语言</code> 风格，毕竟源代码就是用 <code>C语言</code> 写的。这会造成什么局面呢？好的一面当然是用 <code>C语言</code> 这种最接近底层的高级语言，拥有着其他高级语言难以望其项背的执行效率以及资源损耗，这样的特性使得 <code>Linux</code> 在服务器端大放异彩，不过平心而论，我个人觉得开源免费才是最重要的原因。</p>
-<p>但是就论设计而言，我不认为 <code>Linux</code> 在设计上有过人之处，尽管我直到现在还是个菜鸟。<code>Linux</code> 最著名的设计应该是“一切皆文件”，文本是文件，设备也是文件，甚至连套接字都是文件。那这么做有什么好处呢？用 <code>OOP</code> 的思想来看，这就是完成了一次最重要的抽象，就像在 <code>C#</code> 里“一切皆 <code>object</code>”一样，这是很了不起的想法。在<code>Linux</code>里，“一切皆文件”就意味着，所有的一切都可以按照文件的方式进行处理，例如你的个人文档应该在你的 <code>/home/[user]/</code> 目录之下，你的计算机设备应该在 <code>/dev</code> 目录之下，他们都可以通过 <code>ls</code> 命令去查看列表清单，都可以用 “open() / read() / write() / close()” 的方式来操作。</p>
-<p>借用<a href="https://www.zhihu.com/question/422144033/answer/1664116757">知乎网友的答案</a>：</p>
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-22-23-46-09.png" class="" title="netkiller的回答">
-<p>但成也萧何败也萧何，尽管这样可以让很多针对文件做处理的工具具有更强的通用性，针对文件的设计有着更广泛的普适性，但是就回到 <code>OOP</code> 上来说，抽象并不是为了一招鲜吃遍天，而是为了让事物更容易被人理解，那么像 <code>/dev/zero</code> 及 <code>/dev/null</code> 等虚拟设备就很反直觉，这并不能让惯性思维保持其正确性，而需要记忆“特例”。这也就是 <code>Linux</code> 中的 <code>ioctl</code> 成为槽点的原因。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PLUS 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUBTRACT 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MULTIPLY 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEVIDE 3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Operation</span><span class="params">(<span class="keyword">int</span> cmd,<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(cmd)&#123;</span><br><span class="line">    <span class="keyword">case</span> PLUS: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> SUBTRACT: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> MULTIPLY: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">case</span> DEVIDE: <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">default</span>: <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Plus</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Subtract</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Multiply</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Devide</span><span class="params">(<span class="keyword">double</span> param1, <span class="keyword">double</span> param2)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>这两种方式哪一种更直观也无需多言，统一到一个函数如同把一切归为文件一样，看似大道至简，实则过了头，只会徒增记忆负担。在设计模式的概念里，提出策略模式就是为了解决这种复杂的 <code>if</code> 和 <code>switch</code> 分支。</p>
-<h1>记忆负担</h1>
-<p>如同 iPhone 只设置一个 Home 键，需要“点击”、“双击”、“长按”，甚至在全面屏时代取消实体按键一般，“从底部轻扫”、“从底部轻扫并停顿”、“轻点两下或三下iPhone背面”、“主屏幕下滑”、“左上角下滑”、“右上角下滑”，这些需要你记忆甚至形成肌肉记忆的内容或许只是徒增烦恼，如果你自信于自己的记忆力并觉得 iPhone 做的挺好，那么思考以下这些问题：</p>
+<h1>安装 OpenSSH</h1>
+<blockquote>
+<p>可参考 <a href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">安装 OpenSSH | Microsoft Docs</a></p>
+</blockquote>
+<h2 id="Win11-Win10"><a class="header-anchor" href="#Win11-Win10">¶</a>Win11 / Win10</h2>
+<p>开始 -&gt; 设置 -&gt; 应用 -&gt; 可选功能 -&gt; 添加可选功能 -&gt; OpenSSH 服务器</p>
+<img data-src="/2022/03/15/Windows%E5%BC%80%E5%90%AFSSH%E6%9C%8D%E5%8A%A1/2022-03-15-15-58-34.png" class="">
+<p>根据需要，你可以设置<code>sshd</code>服务自动启动</p>
+<img data-src="/2022/03/15/Windows%E5%BC%80%E5%90%AFSSH%E6%9C%8D%E5%8A%A1/2022-03-15-16-02-46.png" class="">
+<h1>免密登录</h1>
 <ol>
-<li>如何截图？</li>
-<li>如何关机？长按电源键是不是关机？</li>
-<li>如何重新启动？手机死机了，如何强制重启？</li>
-<li>如何开启紧急呼叫 SOS ？</li>
-<li>如何启用 Siri ？</li>
-<li>如何进入 Apple Pay 付款页面？</li>
-<li>“响铃/静音”切换的逻辑是什么？静音状态是不是就没有声音了？</li>
-<li>在不同版本的 iPhone 中，以上操作的实现方式是否一致？</li>
+<li>在客户端使用 <code>ssh-keygen</code> 生成密钥</li>
+<li>在服务端的 <code>.ssh</code> 文件夹内创建一个 <code>authorized_keys</code> 的文件</li>
+<li>将客户端生成的 <code>id_rsa.pub</code> 文件的内容复制到 <code>authorized_keys</code> 中</li>
 </ol>
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/iOS_Android_Button.drawio.png" class="" title="iOS_Android_按钮">
-<p>在 <code>Linux</code> 的设计里，走向了极端，与系统的交互，也就是最常用的 <code>Shell</code> 类软件，以及运行于 <code>Shell</code> 之上的各种工具，你需要大量的记忆才能 do what you want，比如各种命令工具的用法。</p>
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-10-32.png" class="" title="command">
-<p>不论是命令本身，还是其参数，基本上都是简写，命令得死记硬背，参数记不清了还得靠 <code>man</code> 复习复习。</p>
-<p>例如 <code>info</code> 这个指令便是我看了忘，忘了看，始终记不住的一个指令。</p>
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-34-53.png" class="" title="info page 各说明文件相关性的示意图">
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-36-24.png" class="" title="info 按键功能">
-<p>其他的各种命令基本都是靠着你<strong>强大的记忆与理解能力</strong>才能正确高效使用，例如 <code>Vi</code> 和 <code>Vim</code>。说到这里，得提名 <code>Total Commander</code> ，作为一款神器，却也是如此，对小白不友好。</p>
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-59-00.png" class="" title="Vi移动光标">
-<p>我始终不能接受 <code>hjkl</code> 作为上下左右使用，我猜测是因为先定义了 <code>i</code> 代表插入（Insert），所以方向键不能是 <code>ijkl</code>。</p>
-<p><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">How do I exit the Vim editor?</a> 能成为一个热门问题，是有原因的。</p>
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-16-41-32.png" class="" title="https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;11828573&#x2F;7344695">
-<p><code>Linux</code> 初期没有把图形化界面考虑进去实在是一大憾事，不过同为半吊子后端开发的我表示十分理解，毕竟写界面太费时间了，写一个 <code>kernel</code> 已经是很了不起的成就。</p>
-<p>但回到系统本身来说，<code>C语言</code> 的影子，所导致的问题便是，缺少可靠高效的数据存储及传递方式，存储方面像 <code>/etc/passwd</code> 等纯数据类的文本，都是CSV，当然，这不能怪 <code>Linux</code>，因为在当时，数据库也是在不断发展，出现广泛使用的 <code>SQLite</code> 单文件型数据库都是很后来的事了。重点在另一方面————数据传递，<code>C语言</code> 自身没有严格的数据类型定义，例如 <code>int</code> 和 <code>long</code> 之类的类型长度得靠具体的编译器决定，简而言之就是缺乏标准，这也就让各类工具间的数据传递方式都是采用文本传递，也就是字符串（可 <code>C语言</code> 的字符串不是一个标准类型），这就引出了一些很神奇的用法：</p>
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-45-56.png" class="" title="join指令">
-<img data-src="/2021/09/22/%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%AC%AC%E5%9B%9B%E7%89%88%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/2021-09-23-20-47-47.png" class="" title="xargs指令">
-<p>我可真是记不住啊。</p>
-<p><code>.</code>、<code>..</code>、<code>-</code>、<code>:</code>、<code>/</code>、<code>?</code>、<code>--stdin</code>、<code>--stdout</code>、<code>|</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;&lt;</code>、<code>&gt;&gt;</code>、<code>;</code>、<code>^</code>、<code>[</code>、<code>]</code>、<code>$</code>、<code>#</code>、<code>'</code>、<code>&quot;</code></p>
-<p>就单纯摆一些符号在这，我都不觉得有谁能够准确描述这些符号在不同场合的意义。<code>bash</code> 可以脚本也只算是实现了一套不太好用的解释性 <code>C语言</code> 执行器。</p>
-<h1>何谓优雅</h1>
-<p>围棋用很简单的规则，定义了一种极其复杂的游戏；象棋用相对简单的规则，定义了一种相对复杂的游戏；三国杀用相对复杂的规则，定义了一种相对简单的游戏。</p>
-<p><code>Linux</code> 如同三国杀一般，给了一个相当自由的环境，允许用新程序做很多事情，犹如三国杀可以一直出新卡，一直加规则，反倒失去了乐趣。</p>
-<p>终端用户在使用操作系统时，理应是向操作系统表达需求，由操作系统自动完成一系列操作来满足用户需求，在当中需要用户做出选择时，给出相应提示即可，就像使用 <code>yum install</code> 来安装软件一般。可 <code>Linux</code> 就是给了一堆相当硬核的工具和使用手册，要求用户自己正确搭配使用工具来满足自己的需求，这也太不友好了，和优雅完全不搭边，如同“CSS如何让元素居中？”这个问题一般，有太多的适用场景和实现方法可供选择，最后得自己挨个试，看哪个是自己真正想要的。</p>
-<p>再来看看我最喜欢的 <code>C#</code> ，搭配 <code>.NET</code>，相较于其他语言，可谓是相当优雅，深得我心，当然 <code>C#</code> 也有 <code>IDisposable</code> 这样令人迷惑的设计，相当不优雅。</p>
-<hr>
-<h1>后记</h1>
-<p>《鸟哥的Linux私房菜》是一本好书，感谢鸟哥，从最基础的硬件一路讲到核心编译，当作科普类文档去泛读也是不错的，但全书内容还是相当硬核，没有很深的计算机各类知识打辅助，恐怕是难以吃透全书的。</p>
-<p>我都靠泛读跳过了许多内容 😁</p>
-<p>留一个下载地址好了：<a href="https://htlsmilework.glitch.me/Book/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C-%E5%9F%BA%E7%A1%80%E7%AF%87.%E7%AC%AC%E5%9B%9B%E7%89%88.pdf">鸟哥的Linux私房菜-基础篇.第四版.pdf</a></p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>路由器（梅林固件）实现局域网电脑远程开机</title>
-    <url>/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 <code>RT-AC86U</code>，具有koolshare软件中心，价格实在是不便宜，不过平心而论，<strong>强得很</strong>（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。</p>
-<span id="more"></span>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/iPhone_13_Pro.png" class="" title="iPhone 13 Pro">
-<ul>
-<li><a href="https://www.asuswrt-merlin.net/">Asuswrt-Merlin</a>: <strong>Asuswrt-Merlin</strong> is a <strong>third party alternative firmware</strong> for Asus routers, with a special emphasis on tweaks and fixes rather than radical changes or collecting as many features as possible.</li>
-<li><a href="https://www.asuswrt-merlin.net/">梅林固件</a>：<strong>Asuswrt-Merlin</strong> 是华硕路由器的<strong>第三方替代固件</strong>，特别强调轻微调整和修复，而不是激进的更改或收集尽可能多的功能。</li>
-<li><a href="https://fw.koolcenter.com/Koolshare_ASUS_Official_Mod/">华硕官改固件</a>：华硕官改固件是根据华硕对应机型的源代码，在尽量不更改固件其它地方的前提下，增加koolshare软件中心。尽量保持官方固件的原汁原味，又能拥有软件中心。</li>
-<li>远程开机（Wake on LAN，WOL）：俗称远程唤醒，是现在很多网卡都支持的功能。而远程唤醒的实现，主要是向目标主机发送特殊格式的数据包，是AMD公司制作的MagicPacket这套软件以生成网络唤醒所需要的特殊数据包，俗称魔术包（Magic Packet）。MagicPacket格式虽然只是AMD公司开发推广的技术，并非世界公认的标准，但是仍然受到很多网卡制造商的支持，因此许多具有网络唤醒功能的网卡都能与之兼容。</li>
-</ul>
-<hr>
-<h1>实现思路</h1>
-<p>要想远程打开家里的电脑，首先电脑的主板和网卡必须都支持远程唤醒功能，其次得有个常开的路由器，最后要在公网上可以访问到这个路由器。当然，你如果有钱直接买向日葵的开机硬件产品也行，不过那些产品通常也需要连接WiFi。</p>
-<h1>网卡支持远程唤醒</h1>
-<p>在有线网卡的电源管理选项卡中，按照这个界面勾选即可，未勾选的“只允许幻数据包唤醒计算机”，代表着网络中的其他通信也可以唤醒计算机。</p>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-20-54-06.png" class="" title="网卡电源管理">
-<h1>常开的路由器</h1>
-<p>给路由器24小时供电即可，如果路由器长时间运行不稳定，通常可以设置定时重启功能，非常有效。</p>
-<h1>公网访问路由器</h1>
-<p>你的家庭宽带如果可以直接获得公网IP，静态的最方便，动态的也可以使用DDNS功能，这一步就完成了。</p>
-<p>但通常都不会有公网IP，所以引出了内网穿透的概念。</p>
-<h1>内网穿透</h1>
-<h2 id="DDNSTO"><a class="header-anchor" href="#DDNSTO">¶</a>DDNSTO</h2>
-<p><a href="https://www.ddnsto.com/zh/guide/koolshare_merlin.html">DDNSTO使用教程</a></p>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-03-22.png" class="" title="DDNSTO">
-<p>笔者之前一直使用的都是DDNSTO，远程登录路由器，再从路由器的网络工具——通过网络（LAN）唤醒功能去启动家里的计算机。</p>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-11-40.png" class="" title="通过网络（LAN）唤醒">
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-13-10.png" class="" title="DDNSTO购买通道">
-<p>不过目前DDNSTO的服务器得每隔七天去主动申请一次免费服务才行，你也可以付费购买长期服务，另外，使用时可能需要微信扫码认证，略嫌麻烦，那个<strong>限时活动</strong>也戳伤了我，而后切换到了下面这种方式。</p>
-<h2 id="Zerotier"><a class="header-anchor" href="#Zerotier">¶</a>Zerotier</h2>
-<p>同样，在软件中心，可以安装Zerotier，然后在笔记本上也装上，台式机也可以装上，都连入同一个网络中，为了给Zerotier加速，可以参考以前的文章：<a href="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/" title="ZeroTier创建Moon节点">ZeroTier创建Moon节点</a>。</p>
-<p>而后，你就可以直接输入在Zerotier上分配给路由器的IP地址，从而访问到路由器上了，再通过路由器的界面去唤醒。</p>
-<h1>用脚本唤醒</h1>
-<p>但我懒得很，连打开浏览器界面按按钮都觉得费劲，于是乎，便去研究了路由器是如何唤醒计算机的，写了个简单脚本，实现启动脚本便唤醒指定计算机的功能。</p>
-<h2 id="开启SSH"><a class="header-anchor" href="#开启SSH">¶</a>开启SSH</h2>
-<p>不入虎穴焉得虎子，我们先进入路由器的系统管理——系统设置界面，开启SSH功能。</p>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-25-38.png" class="" title="SSH服务">
-<p>在笔记本上用 <code>ssh-keygen</code> 生成 <code>rsa</code> 的密钥，然后将公钥内容填入授权密钥中，即可实现免密码访问。</p>
-<h2 id="分析网页源码"><a class="header-anchor" href="#分析网页源码">¶</a>分析网页源码</h2>
-<p>用SSH进入路由器后，即可查看 <code>/www/Main_WOL_Content.asp</code> 的内容。</p>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-35-44.png" class="" title="Main_WOL_Content">
-<p>通过分析页面源码，可以知道实际上是通过 <code>/usr/sbin/ether-wake -i br0 -b 00:00:00:00:00:00</code> 这个命令去唤醒计算机的，最后一段便是网卡的 MAC地址。</p>
-<h2 id="脚本编写"><a class="header-anchor" href="#脚本编写">¶</a>脚本编写</h2>
-<p>一个简易脚本就新鲜出炉了，提供一个下载链接，也可以按照下面的方式手动创建。</p>
-<p>下载链接：<a href="/download/WakeOnLan.cmd">WakeOnLan.cmd</a></p>
-<p>手动创建：</p>
+<h1>修改服务端SSH配置</h1>
 <ol>
-<li>在文本编辑器（记事本、Notepad++等）中粘贴以下代码；</li>
-<li>第11行，将 <code>htlsmile</code> 替换为你自己设置的路由器登录用户名；</li>
-<li>第12行，将IP地址 <code>172.23.1.1</code> 替换为在Zerotier中给路由器分配的IP地址；</li>
-<li>第13行，将MAC地址 <code>98:EE:CB:B1:C5:07</code> 替换为待唤醒的计算机网卡MAC地址；</li>
-<li>另存为 <code>WakeOnLan.cmd</code>，建议同时设置该文件为只读。</li>
+<li>使用具有管理员权限的文本编辑器打开 <code>C:\ProgramData\ssh\sshd_config</code></li>
+<li>一定要保证最后两行是注释的状态，否则免密登录是无法成功的</li>
 </ol>
-<p>如果之前在路由器SSH服务中，你已经设置好了授权密钥，那么双击脚本即可实现无密码确认，直接唤醒计算机；如果没有设置SSH公钥，你可以按照提示输入密码。</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">:: *******Begin Comment**************</span><br><span class="line">::</span><br><span class="line">:: @description     This program attempts to wake up the computer through the Asuswrt-Merlin router.</span><br><span class="line">:: @author          htlsmile</span><br><span class="line">:: @<span class="built_in">date</span>            <span class="number">2021</span>/<span class="number">09</span>/<span class="number">25</span></span><br><span class="line">::</span><br><span class="line">:: *******End   Comment**************</span><br><span class="line"></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> router_username=htlsmile</span><br><span class="line"><span class="built_in">set</span> router_ip=<span class="number">172</span>.<span class="number">23</span>.<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="built_in">set</span> mac_address=<span class="number">98</span>:EE:CB:B1:C5:<span class="number">07</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">title</span> WakeOnLan</span><br><span class="line"><span class="built_in">color</span> <span class="number">1</span>F</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">437</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> &quot;  _    _ _______ _       _____ __  __ _____ _      ______ </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |__   __| |     / ____|  \/  |_   _| |    |  ____|</span><br><span class="line"><span class="built_in">echo</span> &quot; | |__| |  | |  | |    | (___ | \  / | | | | |    | |__   </span><br><span class="line"><span class="built_in">echo</span> &quot; |  __  |  | |  | |     \___ \| |\/| | | | | |    |  __|  </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |  | |  | |____ ____) | |  | |_| |_| |____| |____ </span><br><span class="line"><span class="built_in">echo</span> &quot; |_|  |_|  |_|  |______|_____/|_|  |_|_____|______|______|</span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"></span><br><span class="line">:<span class="built_in">Ping</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Try connecting to the router[<span class="variable">%router_ip%</span>]...</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">ping</span> -n <span class="number">1</span> <span class="variable">%router_ip%</span> &gt;<span class="built_in">nul</span></span><br><span class="line"></span><br><span class="line">:: 在批处理程序中使用 <span class="keyword">ERRORLEVEL</span> 值时，必须按降序列出它们。</span><br><span class="line">:: https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/choice#remarks</span><br><span class="line"></span><br><span class="line">:: <span class="keyword">if</span> 与 <span class="keyword">ERRORLEVEL</span> 的用法</span><br><span class="line">:: https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/<span class="keyword">if</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">1</span> <span class="keyword">goto</span> NotConnected</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">0</span> <span class="keyword">goto</span> Connected</span><br><span class="line"></span><br><span class="line">:NotConnected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">4</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Router[<span class="variable">%router_ip%</span>] Unreachable !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:Connected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">2</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Router[<span class="variable">%router_ip%</span>] Reachable !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Wake up MAC[<span class="variable">%mac_address%</span>]</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line">ssh -l <span class="variable">%router_username%</span> <span class="variable">%router_ip%</span> &quot;/usr/sbin/ether-wake -i br0 -b <span class="variable">%mac_address%</span>; <span class="keyword">exit</span>&quot;</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">1</span> <span class="keyword">goto</span> SSHError</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Wake up complete!</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:SSHError</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">4</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        ssh [<span class="variable">%router_ip%</span>] error !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:ExitCmd</span><br><span class="line">timeout /T <span class="number">5</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用效果"><a class="header-anchor" href="#使用效果">¶</a>使用效果</h2>
-<h3 id="尝试连接"><a class="header-anchor" href="#尝试连接">¶</a>尝试连接</h3>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-36.png" class="" title="WakeOnLan">
-<h3 id="连接成功"><a class="header-anchor" href="#连接成功">¶</a>连接成功</h3>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-26_08-58-33.png" class="" title="WakeOnLan">
-<h3 id="连接失败"><a class="header-anchor" href="#连接失败">¶</a>连接失败</h3>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-52.png" class="" title="WakeOnLan">
-<hr>
-<h1>后记</h1>
-<p>果然懒惰才能促使人进步，尽管写下这篇文章都花了两个小时，顺带一提，脚本中的那个字符画，是在 <a href="http://patorjk.com/software/taag/"><strong>Text to ASCII Art Generator (TAAG)</strong></a> 中生成的，好用得很。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>纯音乐</title>
-    <url>/2021/10/17/%E7%BA%AF%E9%9F%B3%E4%B9%90/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>好听的纯音乐。</p>
-<span id="more"></span>
-<hr>
-<table>
-<thead>
-<tr>
-<th>引用</th>
-<th style="text-align:center">曲名</th>
-<th style="text-align:center">歌曲时长</th>
-<th style="text-align:center">发行时间</th>
-<th>作者</th>
-<th>链接</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>动物世界</td>
-<td style="text-align:center">Just Blue</td>
-<td style="text-align:center">04:32</td>
-<td style="text-align:center">1978年</td>
-<td>法国电子音乐乐队Space</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=1747672#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>运动会</td>
-<td style="text-align:center">运动员进行曲</td>
-<td style="text-align:center">02:25</td>
-<td style="text-align:center">1971年</td>
-<td>吴光锐、贾双、李明秀</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=209637162#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>颁奖仪式</td>
-<td style="text-align:center">拉德斯基进行曲</td>
-<td style="text-align:center">03:05</td>
-<td style="text-align:center">1848年</td>
-<td>老约翰·施特劳斯</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=245581615#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>散场</td>
-<td style="text-align:center">回家</td>
-<td style="text-align:center">05:32</td>
-<td style="text-align:center">1989年</td>
-<td>凯丽金</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=1685010#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>新闻联播</td>
-<td style="text-align:center">《新闻联播》开始曲</td>
-<td style="text-align:center">00:19</td>
-<td style="text-align:center">1988年3月</td>
-<td>孟卫东</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=257290#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>天气预报</td>
-<td style="text-align:center">渔舟唱晚</td>
-<td style="text-align:center">02:55</td>
-<td style="text-align:center">1984年</td>
-<td>浦琦璋</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=102387735#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>中国颁奖晚会</td>
-<td style="text-align:center">The Magnificent Seven</td>
-<td style="text-align:center">01:49</td>
-<td style="text-align:center">1960年</td>
-<td>Elmer Bernstein</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=108411003#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>猫和老鼠</td>
-<td style="text-align:center">天堂与地狱序曲</td>
-<td style="text-align:center">09:23</td>
-<td style="text-align:center">1858年</td>
-<td>雅克·奥芬巴赫</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=263059113#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>上课铃</td>
-<td style="text-align:center">瓦妮莎的微笑</td>
-<td style="text-align:center">02:20</td>
-<td style="text-align:center">1997年</td>
-<td>理查德·克莱德曼</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=776852#webchat_redirect">QQ音乐</a></td>
-</tr>
-<tr>
-<td>春节</td>
-<td style="text-align:center">春节序曲</td>
-<td style="text-align:center">05:02</td>
-<td style="text-align:center">1955年</td>
-<td>李焕之</td>
-<td><a href="https://i.y.qq.com/v8/playsong.html?songid=747467#webchat_redirect">QQ音乐</a></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h1>后记</h1>
-<p>当个听众。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《嵌入式Linux系统开发教程（第2版）》读后感</title>
-    <url>/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>先说结论，贺丹丹老师的这本书，虽说关于嵌入式开发的方方面面确都讲了，但需要读者自行补充<strong>亿点点</strong>细节，<strong>不建议初学者阅读</strong>。按照此书的目录，把每一章标题涉及的内容另行找本书看看再回来看这本书吧。</p>
-<p>不过，如果你只是当科普类书籍来读的话，还是可以初步了解一下嵌入式开发的知识。笔者就是被科普了一把。</p>
-<span id="more"></span>
-<hr>
-<h1>摘抄</h1>
-<ul>
-<li>根据国际电机工程师协会（IEEE）的定义，嵌入式系统是“控制、监视或者辅助装置、机器和运行的装置”。</li>
-<li>为了充分体现嵌入式系统的精髓，目前国内普遍认同的一个定义是：以应用为中心，以计算机技术为基础，软硬件可剪裁，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。</li>
-</ul>
-<img data-src="/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/%E5%B7%A5%E4%B8%9A%E6%8E%A7%E5%88%B6%E7%BD%91%E7%BB%9C.png" class="">
-<img data-src="/2021/10/20/%E3%80%8A%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/GT2440%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90%E5%88%86%E5%B8%83.png" class="">
-<h1>嵌入式开发基本流程</h1>
-<ol>
-<li>准备好硬件，例如<code>ARM开发板</code>；</li>
-<li>准备好一个用于开发嵌入式的<code>Linux系统</code>，例如<code>Ubuntu</code>；</li>
-<li>获取交叉编译工具，下载源代码自行编译或者直接下载成品，例如<code>arm-linux-gcc</code>；</li>
-<li>选定一个合适的<code>Bootloader</code>，例如<code>U-Boot</code>；</li>
-<li>下载编译<code>Linux内核</code>源码，定制内核，精简模块；</li>
-<li>使用<code>Busybox</code>制作文件系统；</li>
-<li>根据所用硬件需求，编写驱动程序；</li>
-<li>编写应用程序。</li>
-</ol>
-<p>前面七步都是为了打造合适的运行环境（软硬件环境），为应用程序铺路。如果应用程序本身就很简单，那么看起来为其打造环境则是一个相当大的代价，不过好处就是构建了一个稳定可靠的产品吧，不至于像使用win10一样被强行升级。</p>
-<hr>
-<h1>后记</h1>
-<p>最后一章的开发实例提供了一个很好的开发流程，软硬件项目都可以参考这个。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>查看Windows系统关机重启事件</title>
-    <url>/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<h1>前言</h1>
-<ul>
-<li>
-<p><a href="https://www.shellhacks.com/windows-shutdown-reboot-event-ids-get-logs/">Windows: Shutdown/Reboot Event IDs – Get Logs</a></p>
-</li>
-<li>
-<p><a href="https://serverfault.com/questions/702828/windows-server-restart-shutdown-history">Windows Server restart / shutdown history</a></p>
-</li>
-<li>
-<p>相关事件ID：41,1074,1076,6005,6006,6008,6009,6013</p>
-</li>
-<li>
-<p>Win7事件ID：6005（开机）、6006（关机）</p>
-</li>
-<li>
-<p>Win10事件ID：30（开机）、7002（关机）</p>
-</li>
-</ul>
-<span id="more"></span>
-<hr>
-<h1>关机重启事件</h1>
-<table>
-<thead>
-<tr>
-<th><strong>事件ID</strong></th>
-<th><strong>描述</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>30</td>
-<td>固件报告了启动指标。</td>
-<td></td>
-</tr>
-<tr>
-<td>41</td>
-<td>系统在没有彻底关闭的情况下重新启动。</td>
-<td>The system has rebooted without cleanly shutting down first.</td>
-</tr>
-<tr>
-<td>1074</td>
-<td>系统被某个用户或进程正常关闭。</td>
-<td>The system has been shutdown properly by a user or process.</td>
-</tr>
-<tr>
-<td>1076</td>
-<td>紧随事件ID 6008之后，表示在意外重启或关机后第一个拥有关机权限的用户登录到服务器并指定原因。</td>
-<td>Follows after Event ID 6008 and means that the first user with shutdown privileges logged on to the server after an unexpected restart or shutdown and specified the cause.</td>
-</tr>
-<tr>
-<td>6005</td>
-<td>事件日志服务已启动。表示系统启动。</td>
-<td>The Event Log service was started. Indicates the system startup.</td>
-</tr>
-<tr>
-<td>6006</td>
-<td>事件日志服务已停止。表示系统正常关闭。</td>
-<td>The Event Log service was stopped. Indicates the proper system shutdown.</td>
-</tr>
-<tr>
-<td>6008</td>
-<td>上次系统关闭是意外的。</td>
-<td>The previous system shutdown was unexpected.</td>
-</tr>
-<tr>
-<td>6009</td>
-<td>系统启动时检测到的操作系统版本。</td>
-<td>The operating system version detected at the system startup.</td>
-</tr>
-<tr>
-<td>6013</td>
-<td>系统正常运行时间，以秒为单位。</td>
-<td>The system uptime in seconds.</td>
-</tr>
-<tr>
-<td>7002</td>
-<td>客户体验改善计划的用户注销通知。</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h1>在事件查看器中查看</h1>
-<ol>
-<li>开始菜单内输入<code>event</code>或<code>eventvwr</code></li>
-</ol>
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-15-52-21.png" class="">
-<ol start="2">
-<li>点击<code>Windows 日志 - 系统</code></li>
-</ol>
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-06-20.png" class="">
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#PubkeyAuthentication yes               #公钥认证默认是开启的，一般无需修改 </span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br><span class="line">PasswordAuthentication no               #如果想关闭密码登录功能</span><br><span class="line"></span><br><span class="line">#Match Group administrators</span><br><span class="line">#       AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>右键点击或在右侧选择<code>筛选当前日志</code></li>
+<li>在服务端重启<code>SSH</code></li>
 </ol>
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-07-37.png" class="">
-<ol start="4">
-<li>在<code>&lt;所有事件 ID&gt;</code>中输入<code>41,1074,1076,6005,6006,6008,6009,6013</code>或<code>30,7002,6005,6006</code>或并点击确定</li>
-</ol>
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-09-46.png" class="">
-<ul>
-<li>根据相近的<code>6005</code>与<code>6006</code>事件，确认系统在<code>2021/11/1 10:16:08</code>关机，在<code>2021/11/1 10:16:41</code>开机，可以判断出这是一次重启操作。</li>
-</ul>
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-15-26.png" class="">
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-15-37.png" class="">
-<ul>
-<li>根据相近的<code>30</code>与<code>7002</code>事件，确认系统在<code>2021/11/1 10:16:31</code>开机，在<code>2021/11/1 11:06:49</code>关机。</li>
-</ul>
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-30-24.png" class="">
-<img data-src="/2021/11/03/%E6%9F%A5%E7%9C%8BWindows%E7%B3%BB%E7%BB%9F%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E4%BA%8B%E4%BB%B6/2021-11-03-16-30-33.png" class="">
-<h1>在PowerShell中查看</h1>
-<p>使用 <code>PowerShell</code> 的<code>Get-EventLog</code>命令从命令行检索 <code>Windows</code> 中的关机/重启日志。</p>
-<ul>
-<li>过滤系统事件日志中的最新<code>10000</code>条，然后仅显示与 <code>Windows</code> 开关机相关的事件，请运行：</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-EventLog</span> System <span class="literal">-Newest</span> <span class="number">10000</span> | `</span><br><span class="line"><span class="built_in">Where</span> EventId <span class="operator">-in</span> <span class="number">41</span>,<span class="number">1074</span>,<span class="number">1076</span>,<span class="number">6005</span>,<span class="number">6006</span>,<span class="number">6008</span>,<span class="number">6009</span>,<span class="number">6013</span> | `</span><br><span class="line"><span class="built_in">Format-Table</span> TimeGenerated,EventId,UserName,Message <span class="literal">-AutoSize</span> <span class="literal">-wrap</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>过滤<code>Win10</code>系统事件日志中的最新<code>10000</code>条，然后仅显示与 <code>Windows</code> 开关机相关的事件，请运行：</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-EventLog</span> System <span class="literal">-Newest</span> <span class="number">10000</span> | `</span><br><span class="line"><span class="built_in">Where</span> EventId <span class="operator">-in</span> <span class="number">30</span>,<span class="number">6005</span>,<span class="number">6006</span>,<span class="number">7002</span> | `</span><br><span class="line"><span class="built_in">Format-Table</span> TimeGenerated,EventId,UserName,Message <span class="literal">-AutoSize</span> <span class="literal">-wrap</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h1>后记</h1>
-<p>想搜技术知识，还是Google靠谱。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>复制VMware的Linux虚拟机不能联网的问题</title>
-    <url>/2021/12/09/%E5%A4%8D%E5%88%B6VMware%E7%9A%84Linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8D%E8%83%BD%E8%81%94%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>从别人那里直接将某个虚拟机的文件夹拷贝到自己电脑上运行时，VMware通常会提示你“此虚拟机可能已被移动或复制”，此时我们选择“我已复制该虚拟机”。</p>
-<p>如果这是个Linux系统的虚拟机，尝试切换<code>桥接模式</code>、<code>NAT模式</code>、<code>仅主机模式</code>，会发现网络都不通。</p>
-<span id="more"></span>
-<hr>
-<h1>查看网卡配置</h1>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-<p>使用该命令，发现目前只有<code>lo</code>存在。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
-<p>使用该命令，会发现有<code>lo</code>和<code>eth1</code>存在。</p>
-<h1>原因</h1>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts/</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
-<p>会看到<code>ifcfg-eth0</code>(也可能是<code>ifcfg-ens33</code>)及<code>ifcfg-lo</code>，两个配置文件。</p>
-<p>原来的网卡默认创建了<code>eth0</code>，相关的配置都是对着<code>eth0</code>完成的。而复制之后，由本机创建的网卡为<code>eth1</code>，没有任何配置，自然不能上网。</p>
-<h1>解决</h1>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules</span><br></pre></td></tr></table></figure>
-<p>可能会看到类似的输出</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:2b&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:1f&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth1&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>把eth0的两行删除，将eth1改为eth0，保存文件即可。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># PCI device 0x8086:0x100f (e1000)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;,ATTR&#123;address&#125;==&quot;00:0c:29:65:fa:1f&quot;, ATTR&#123;type&#125;==&quot;1&quot;,KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br></pre></td></tr></table></figure>
-<p>之后重启，看看效果。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown -r now</span><br><span class="line"></span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-<p>就会发现网络正常了。</p>
-<hr>
-<h1>后记</h1>
-<p>解决这个问题走了一堆弯路，还以为是VMware的网络功能出问题了。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>在重分析点缓冲区中的标记无效</title>
-    <url>/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>使用<code>OneDrive</code>同步文件删除时偶尔会引发这种问题。在<code>OneDrive</code>网页端查看文件已被正常删除，但在本地显示同步中的状态图标，打开文件会提示<strong>在重分析点缓冲区中的标记无效</strong>。</p>
-<span id="more"></span>
-<hr>
-<h1>解决</h1>
-<p>在OneDrive所在的磁盘，右键打开属性-工具-查错，选择扫描驱动器，发现问题后会提示修复，选择下次重启时修复，然后重启电脑就好了。</p>
-<img data-src="/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/2021-12-16-10-12-24.png" class="">
-<img data-src="/2021/12/16/%E5%9C%A8%E9%87%8D%E5%88%86%E6%9E%90%E7%82%B9%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0%E6%97%A0%E6%95%88/2021-12-16-10-12-46.png" class="">
-<hr>
-<h1>后记</h1>
-<p>很久之前遇到过，也解决了，然后忘了，这次又查了一次，所以记录下来。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2018年刑侦科推理试题</title>
-    <url>/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>2018年3月7日，忘了从哪看到的这套试题，初看时兴趣不大，觉得和玩数独一样，但还是保存到手机相册里了。</p>
-<span id="more"></span>
-<p>2019年7月30日，那天下班后，和朋友一起闲逛，不料突然下雨，便赶紧躲进一家小卖部避雨，眼瞅着雨越下越大，干脆就和朋友在小卖部门口的棚子里坐了下来，做起了这套试题，做到一半雨停了，于是赶紧回家，接着做题目，第一张草稿被雨水浸湿了，只剩下回家后用的第二张草稿。前后做了几个小时，最后发现还是穷举法好用。</p>
-<hr>
-<h1>题目</h1>
-<img data-src="/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/20180307_152557814_iOS.jpg" class="">
-<h1>答案</h1>
-<img data-src="/2022/01/13/2018%E5%B9%B4%E5%88%91%E4%BE%A6%E7%A7%91%E6%8E%A8%E7%90%86%E8%AF%95%E9%A2%98/20190730_150537907_iOS.jpg" class="">
-<h1>解析</h1>
-<p>首先顺着读一遍题目，可以获取到一些基本信息，然后通过简要分析，我们应该不难看出第三题和第七题可以作为切入点。</p>
-<p>第七题所说，被选中次数最少，题目有十道，都是4个选项，那么意味着次数最少不可能是2次及以上。</p>
-<ul>
-<li>如果是3次，显然不可能</li>
-<li>如果是2次，十道题的答案必然是2+2+3+3=10，那么违背了单项选择的条件</li>
-<li>如果是0次，可由于第七题本身就会有一个答案，所以不会是0次</li>
-</ul>
-<p>那么，也就是说，<strong>第七题所选的答案，不会在其他题目中出现，只会在第七题出现1次</strong>。</p>
-<p>所以我在第七题上画了一个箭头，代表这个意思。</p>
-<p>那么，回过头来看第三题，我也没有其他巧妙的办法，只能一个个试了。</p>
-<h2 id="假设-3-A"><a class="header-anchor" href="#假设-3-A">¶</a>假设 3=A</h2>
-<p>那么 2=4=6，而且不为A，也就是在草稿上写的数学符号<code>┐A</code>，代表非A</p>
-<h3 id="假设-2-4-6-B"><a class="header-anchor" href="#假设-2-4-6-B">¶</a><s>假设 2=4=6=B</s></h3>
-<p>因为第二题是B，所以第五题是D，又根据第五题的描述，第七题是D，矛盾了，这个答案是<strong>错</strong>的</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th style="text-align:center">7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="假设-2-4-6-C"><a class="header-anchor" href="#假设-2-4-6-C">¶</a>假设 2=4=6=C</h3>
-<p>因为第二题是C，所以第五题是A，又根据第五题的描述，第八题是A，那么第一题和第七题的答案不相邻，根据第七题答案独立的特性，第七题只能是B或D</p>
-<p>因为第四题是C，1和9的答案相同，也就是1=9</p>
-<p>因为第六题是C，8=3=10=A</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th style="text-align:center">7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">A</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">A</td>
-</tr>
-</tbody>
-</table>
-<h4 id="假设-7-B"><a class="header-anchor" href="#假设-7-B">¶</a><s>假设 7=B</s></h4>
-<p>那么第一题只能是D，根据第四题的条件，1=9=D，而根据第九题的描述，推断出矛盾了，这也是<strong>错</strong>的</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th style="text-align:center">7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">A</td>
-</tr>
-</tbody>
-</table>
-<h4 id="假设-7-D"><a class="header-anchor" href="#假设-7-D">¶</a>假设 7=D</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th style="text-align:center">7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">A</td>
-</tr>
-</tbody>
-</table>
-<p>那么第一题可能是A或B</p>
-<h5 id="假设1-A"><a class="header-anchor" href="#假设1-A">¶</a><s>假设1=A</s></h5>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th style="text-align:center">7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-</tr>
-</tbody>
-</table>
-<p>那么第九题也得是A，然而矛盾，所有答案都没有出现B，不符合我们对第七题的分析，这也是<strong>错</strong>的</p>
-<h5 id="假设1-B"><a class="header-anchor" href="#假设1-B">¶</a>假设1=B</h5>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th style="text-align:center">7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">A</td>
-</tr>
-</tbody>
-</table>
-<p>那么第九题也得是B，8=3=10=5=A</p>
-<p>检验一下第十题，统计一下次数</p>
-<ul>
-<li>A:4</li>
-<li>B:2</li>
-<li>C:3</li>
-<li>D:1</li>
-</ul>
-<p><code>4 - 1 = 3</code> 是正确的，那么这个答案没有矛盾。</p>
-<p>至此，告一段落，至于有没有其他答案我就不关心了。</p>
-<hr>
-<h1>后记</h1>
-<p>非常有意思的题目，出题人得费多少脑细胞。</p>
+<p>感谢知乎网友。</p>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/111812831">多台WIN10之间的SSH免密登录 - 余生的文章 - 知乎</a></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>随笔</category>
