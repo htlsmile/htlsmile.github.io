@@ -4289,4 +4289,338 @@ end
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>macOS使用Homebrew安装软件</title>
+    <url>/2022/07/06/macOS%E4%BD%BF%E7%94%A8Homebrew%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p><a href="https://brew.sh/index_zh-cn">Homebrew官网</a></p>
+<span id="more"></span>
+<hr>
+<h1>报错问题</h1>
+<p>直接使用<code>brew</code>命令可能会遇到报错，例如</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install wget</span><br><span class="line">==&gt; &lt;省略...&gt;</span><br><span class="line">==&gt; &lt;省略...&gt;</span><br><span class="line">Error: Permission denied</span><br></pre></td></tr></table></figure>
+<p>而使用<code>sudo brew</code>同样会遇到报错，例如</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo brew install wget</span><br><span class="line">Password:</span><br><span class="line">Error: Running Homebrew as root is extremely dangerous and no longer supported.</span><br><span class="line">As Homebrew does not drop privileges on installation you would be giving all</span><br><span class="line">build scripts full access to your system.</span><br></pre></td></tr></table></figure>
+<p>从网上找到一种做法</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chown -R $(whoami) /usr/<span class="built_in">local</span></span><br><span class="line">Password:</span><br><span class="line">chown: /usr/<span class="built_in">local</span>: Operation not permitted</span><br></pre></td></tr></table></figure>
+<h1>解决方案</h1>
+<p>从<a href="https://blog.csdn.net/weixin_44317648/article/details/89044460">chown: /usr/local: Operation not permitted问题解决</a>这里找到了解决方案</p>
+<blockquote>
+<p>/usr/local 不再被 chown’d in High Sierra</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chown -R $(whoami) $(brew --prefix)/*</span><br></pre></td></tr></table></figure>
+<p>问题解决。</p>
+<hr>
+<h1>后记</h1>
+<p><a href="https://support.apple.com/zh-cn/HT211683">如何获取旧版 macOS</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>类型(Types)</title>
+    <url>/2022/09/17/%E7%B1%BB%E5%9E%8B-Types/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>C#、Go等语言的类型介绍</p>
+<span id="more"></span>
+<hr>
+<h1><a href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/">C#</a></h1>
+<h2 id="值类型"><a class="header-anchor" href="#值类型">¶</a><a href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/builtin-types/value-types">值类型</a></h2>
+<p>C# 提供以下内置值类型，也称为“简单类型”：</p>
+<ul>
+<li>整型数值类型</li>
+<li>浮点型数值类型</li>
+<li>bool，表示布尔值</li>
+<li>char，表示 Unicode UTF-16 字符</li>
+<li>enum，枚举类型</li>
+<li>struct，结构类型</li>
+<li>Tuple，元组类型</li>
+<li>可为null的值类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>C# 类型/关键字</strong></th>
+<th><strong>范围</strong></th>
+<th><strong>大小</strong></th>
+<th><strong>.NET 类型</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>true 或 false</td>
+<td></td>
+<td>System.Boolean</td>
+</tr>
+<tr>
+<td>sbyte</td>
+<td>-128 到 127</td>
+<td>8 位带符号整数</td>
+<td>System.SByte</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>0 到 255</td>
+<td>无符号的 8 位整数</td>
+<td>System.Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>-32,768 到 32,767</td>
+<td>有符号 16 位整数</td>
+<td>System.Int16</td>
+</tr>
+<tr>
+<td>ushort</td>
+<td>0 到 65,535</td>
+<td>无符号 16 位整数</td>
+<td>System.UInt16</td>
+</tr>
+<tr>
+<td>int</td>
+<td>-2,147,483,648 到 2,147,483,647</td>
+<td>带符号的 32 位整数</td>
+<td>System.Int32</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>0 到 4,294,967,295</td>
+<td>无符号的 32 位整数</td>
+<td>System.UInt32</td>
+</tr>
+<tr>
+<td>long</td>
+<td>-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+<td>64 位带符号整数</td>
+<td>System.Int64</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>0 到 18,446,744,073,709,551,615</td>
+<td>无符号 64 位整数</td>
+<td>System.UInt64</td>
+</tr>
+<tr>
+<td>nint</td>
+<td>取决于（在运行时计算的）平台</td>
+<td>带符号的 32 位或 64 位整数</td>
+<td>System.IntPtr</td>
+</tr>
+<tr>
+<td>nuint</td>
+<td>取决于（在运行时计算的）平台</td>
+<td>无符号的 32 位或 64 位整数</td>
+<td>System.UIntPtr</td>
+</tr>
+<tr>
+<td>float</td>
+<td>±1.5 x 10<sup>−45</sup> 至 ±3.4 x 10<sup>38</sup>，精度大约 6-9 位数字</td>
+<td>4 个字节</td>
+<td>System.Single</td>
+</tr>
+<tr>
+<td>double</td>
+<td>±5.0 × 10<sup>−324</sup> 到 ±1.7 × 10<sup>308</sup>，精度大约 15-17 位数字</td>
+<td>8 个字节</td>
+<td>System.Double</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>±1.0 x 10<sup>-28</sup> 至 ±7.9228 x 10<sup>28</sup>，精度28-29 位</td>
+<td>16 个字节</td>
+<td>System.Decimal</td>
+</tr>
+<tr>
+<td>char</td>
+<td>U+0000 到 U+FFFF</td>
+<td>16 位</td>
+<td>System.Char</td>
+</tr>
+</tbody>
+</table>
+<h2 id="引用类型"><a class="header-anchor" href="#引用类型">¶</a>引用类型</h2>
+<h3 id="声明引用类型"><a class="header-anchor" href="#声明引用类型">¶</a>声明引用类型</h3>
+<ul>
+<li>class</li>
+<li>interface</li>
+<li>delegate</li>
+<li>record</li>
+</ul>
+<h3 id="内置引用类型"><a class="header-anchor" href="#内置引用类型">¶</a>内置引用类型</h3>
+<ul>
+<li>dynamic, System.Object</li>
+<li>object, System.Object</li>
+<li>string, System.String</li>
+</ul>
+<h2 id="默认值"><a class="header-anchor" href="#默认值">¶</a>默认值</h2>
+<table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任何引用类型</td>
+<td>null</td>
+</tr>
+<tr>
+<td>任何内置整数数值类型</td>
+<td>0（零）</td>
+</tr>
+<tr>
+<td>任何内置浮点型数值类型</td>
+<td>0（零）</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>false</td>
+</tr>
+<tr>
+<td>char</td>
+<td>‘\0’ (U + 0000)</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>表达式 (E)0 生成的值，其中 E 是枚举标识符。</td>
+</tr>
+<tr>
+<td>struct</td>
+<td>通过如下设置生成的值：将所有值类型的字段设置为其默认值，将所有引用类型的字段设置为 null。</td>
+</tr>
+<tr>
+<td>任何可以为 null 的值类型</td>
+<td>HasValue 属性为 false 且 Value 属性未定义的实例。 该默认值也称为可以为 null 的值类型的“null” 值。</td>
+</tr>
+</tbody>
+</table>
+<h1><a href="https://golang.google.cn/ref/spec#Types">Go</a></h1>
+<h2 id="值类型-v2"><a class="header-anchor" href="#值类型-v2">¶</a>值类型</h2>
+<ul>
+<li>Boolean types</li>
+<li>Numeric types</li>
+<li>String types</li>
+<li>Array types</li>
+<li>Struct types</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Numeric types</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uint8</td>
+<td>the set of all unsigned  8-bit integers (0 to 255)</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>the set of all unsigned 16-bit integers (0 to 65535)</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>the set of all unsigned 32-bit integers (0 to 4294967295)</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>the set of all unsigned 64-bit integers (0 to 18446744073709551615)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>int8</td>
+<td>the set of all signed  8-bit integers (-128 to 127)</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>the set of all signed 16-bit integers (-32768 to 32767)</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>the set of all signed 32-bit integers (-2147483648 to 2147483647)</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>the set of all signed 64-bit integers (-9223372036854775808 to 9223372036854775807)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>float32</td>
+<td>the set of all IEEE-754 32-bit floating-point numbers</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>the set of all IEEE-754 64-bit floating-point numbers</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>the set of all complex numbers with float32 real and imaginary parts</td>
+</tr>
+<tr>
+<td>complex128</td>
+<td>the set of all complex numbers with float64 real and imaginary parts</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>byte</td>
+<td>alias for uint8</td>
+</tr>
+<tr>
+<td>rune</td>
+<td>alias for int32</td>
+</tr>
+</tbody>
+</table>
+<h2 id="引用类型-v2"><a class="header-anchor" href="#引用类型-v2">¶</a>引用类型</h2>
+<ul>
+<li>Slice types</li>
+<li>Pointer types</li>
+<li>Function types</li>
+<li>Interface types</li>
+<li>Map types</li>
+<li>Channel types</li>
+</ul>
+<hr>
+<h1>后记</h1>
+<h2 id="Markdown中如何输入上标、下标？"><a class="header-anchor" href="#Markdown中如何输入上标、下标？">¶</a>Markdown中如何输入上标、下标？</h2>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>Markdown代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X<sup>2</sup></td>
+<td><code>X^2^</code></td>
+</tr>
+<tr>
+<td>X<sub>0</sub></td>
+<td><code>X~0~</code></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+  </entry>
 </search>
