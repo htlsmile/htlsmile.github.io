@@ -4623,4 +4623,59 @@ end
         <category>编程</category>
       </categories>
   </entry>
+  <entry>
+    <title>计算哈希值</title>
+    <url>/2022/09/27/%E8%AE%A1%E7%AE%97%E5%93%88%E5%B8%8C%E5%80%BC/</url>
+    <content><![CDATA[<h1>前言</h1>
+<table>
+<thead>
+<tr>
+<th>system</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Windows</strong></td>
+<td>CertUtil -hashfile test.txt MD5</td>
+</tr>
+<tr>
+<td><strong>Windows</strong></td>
+<td>CertUtil -hashfile test.txt SHA1</td>
+</tr>
+<tr>
+<td><strong>Linux</strong></td>
+<td>md5sum test.txt</td>
+</tr>
+<tr>
+<td><strong>macOS</strong></td>
+<td>md5 test.txt</td>
+</tr>
+</tbody>
+</table>
+<span id="more"></span>
+<hr>
+<h1>Windows 计算哈希</h1>
+<img data-src="/2022/09/27/%E8%AE%A1%E7%AE%97%E5%93%88%E5%B8%8C%E5%80%BC/Windows_md5_2022-09-27-19-35-03.png" class="">
+<p><a href="https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/certutil">CertUtil</a></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\htlsmile\Downloads&gt; CertUtil <span class="literal">-hashfile</span> test.txt MD5</span><br><span class="line">MD5 的 test.txt 哈希:</span><br><span class="line"><span class="number">9</span>f06243abcb89c70e0c331c61d871fa7</span><br><span class="line">CertUtil: <span class="literal">-hashfile</span> 命令成功完成。</span><br><span class="line"><span class="built_in">PS</span> C:\Users\htlsmile\Downloads&gt; CertUtil <span class="literal">-hashfile</span> test.txt SHA1</span><br><span class="line">SHA1 的 test.txt 哈希:</span><br><span class="line">fde773a18bb29f5ed65e6f0a7aa717fd1fa485d4</span><br><span class="line">CertUtil: <span class="literal">-hashfile</span> 命令成功完成。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CertUtil -hashfile -?</span><br><span class="line">用法:</span><br><span class="line">  CertUtil [选项] -hashfile InFile [HashAlgorithm]</span><br><span class="line">  通过文件生成并显示加密哈希</span><br><span class="line"></span><br><span class="line">选项:</span><br><span class="line">  -Unicode          -- 以 Unicode 编写重定向输出</span><br><span class="line">  -gmt              -- 将时间显示为 GMT</span><br><span class="line">  -seconds          -- 用秒和毫秒显示时间</span><br><span class="line">  -v                -- 详细操作</span><br><span class="line">  -privatekey       -- 显示密码和私钥数据</span><br><span class="line">  -pin PIN                  -- 智能卡 PIN</span><br><span class="line">  -sid WELL_KNOWN_SID_TYPE  -- 数字 SID</span><br><span class="line">            22 -- 本地系统</span><br><span class="line">            23 -- 本地服务</span><br><span class="line">            24 -- 网络服务</span><br><span class="line"></span><br><span class="line">哈希算法: MD2 MD4 MD5 SHA1 SHA256 SHA384 SHA512</span><br></pre></td></tr></table></figure>
+<h1>Linux 计算哈希</h1>
+<img data-src="/2022/09/27/%E8%AE%A1%E7%AE%97%E5%93%88%E5%B8%8C%E5%80%BC/Linux_md5_2022-09-27-19-35-11.png" class="">
+<p><a href="https://man7.org/linux/man-pages/man1/md5sum.1.html">md5sum</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">htlsmile@DESKTOP-SOIUA64:~$ md5sum test.txt</span><br><span class="line">d8e8fca2dc0f896fd7cb4cb0031ba249  test.txt</span><br></pre></td></tr></table></figure>
+<h1>macOS 计算哈希</h1>
+<img data-src="/2022/09/27/%E8%AE%A1%E7%AE%97%E5%93%88%E5%B8%8C%E5%80%BC/macOS_md5_2022-09-27_19-42-19.png" class="">
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; md5 test.txt</span><br><span class="line">MD5 (test.txt) = d8e8fca2dc0f896fd7cb4cb0031ba249</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>后记</h1>
+<p>图方便就下软件<br>
+<a href="https://keir.net/hash.html">https://keir.net/hash.html</a></p>
+<img data-src="/2022/09/27/%E8%AE%A1%E7%AE%97%E5%93%88%E5%B8%8C%E5%80%BC/2022-09-27-19-59-37.png" class="">
+<p><a href="https://keir.net/download/hash.zip">下载 Hash 1.04</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
 </search>
