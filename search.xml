@@ -4724,4 +4724,30 @@ end
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>Vue3项目发布后页面空白问题</title>
+    <url>/2023/01/04/Vue3%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%E5%90%8E%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>Vue 3 项目使用 vite build 后，访问页面显示空白，控制台报错。</p>
+<span id="more"></span>
+<hr>
+<h1>问题</h1>
+<p>Vue 3 项目使用 vite build 后，访问页面显示空白，控制台报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Failed to load module script: Expected a JavaScript module script but the server responded with a MIME type of &quot;text/plain&quot;. Strict MIME type checking is enforced for module scripts per HTML spec.</span><br></pre></td></tr></table></figure>
+<h1>原因</h1>
+<p>Win10注册表默认将 <code>.js</code> 的 <code>Content-Type</code> 写为 <code>text/plain</code></p>
+<h1>解决</h1>
+<p>修改windows注册表添加以下字符串值：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[HKEY_CLASSES_ROOT\.js]</span><br><span class="line">&quot;Content Type&quot;=&quot;text/javascript&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.js]</span><br><span class="line">&quot;Content Type&quot;=&quot;text/javascript&quot;</span><br></pre></td></tr></table></figure>
+<h1>Win11的.js</h1>
+<p>Win11的 <code>.js</code> 的 <code>Content-Type</code> 是 <code>application/javascript</code></p>
+<img data-src="/2023/01/04/Vue3%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%E5%90%8E%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD%E9%97%AE%E9%A2%98/2023-01-04-20-32-03.png" class="">
+<hr>
+<h1>后记</h1>
+<p>参考<a href="https://www.cnblogs.com/9527l/p/16212940.html">https://www.cnblogs.com/9527l/p/16212940.html</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
 </search>
