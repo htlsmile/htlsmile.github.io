@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -17,18 +17,18 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="前言 之前读完了《架构整洁之道》，对其中提出的整洁架构深以为然。很早之前就了解到AspNet Boilerplate，但也一直没有实际上手过。倒是看了很久的中文文档，由ABPFrameWorkGroup&#x2F;AbpDocument2Chinese带来的翻译文档abp20170501_A4.pdf，感谢无私奉献的前辈们。 随后，也了解到他们的下一代作品ABP vNext，也就是ABP Framework">
+    <meta name="description" content="前言之前读完了《架构整洁之道》，对其中提出的整洁架构深以为然。很早之前就了解到AspNet Boilerplate，但也一直没有实际上手过。倒是看了很久的中文文档，由ABPFrameWorkGroup&#x2F;AbpDocument2Chinese带来的翻译文档abp20170501_A4.pdf，感谢无私奉献的前辈们。 随后，也了解到他们的下一代作品ABP vNext，也就是ABP Frame">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ABP搬砖指南">
 <meta property="og:url" content="https://htlsmile.github.io/2020/07/17/ABP%E6%90%AC%E7%A0%96%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="前言 之前读完了《架构整洁之道》，对其中提出的整洁架构深以为然。很早之前就了解到AspNet Boilerplate，但也一直没有实际上手过。倒是看了很久的中文文档，由ABPFrameWorkGroup&#x2F;AbpDocument2Chinese带来的翻译文档abp20170501_A4.pdf，感谢无私奉献的前辈们。 随后，也了解到他们的下一代作品ABP vNext，也就是ABP Framework">
+<meta property="og:description" content="前言之前读完了《架构整洁之道》，对其中提出的整洁架构深以为然。很早之前就了解到AspNet Boilerplate，但也一直没有实际上手过。倒是看了很久的中文文档，由ABPFrameWorkGroup&#x2F;AbpDocument2Chinese带来的翻译文档abp20170501_A4.pdf，感谢无私奉献的前辈们。 随后，也了解到他们的下一代作品ABP vNext，也就是ABP Frame">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://htlsmile.github.io/2020/07/17/ABP%E6%90%AC%E7%A0%96%E6%8C%87%E5%8D%97/2020-07-17-21-09-15.png">
 <meta property="og:image" content="https://htlsmile.github.io/2020/07/17/ABP%E6%90%AC%E7%A0%96%E6%8C%87%E5%8D%97/2020-07-17-21-10-13.png">
@@ -49,7 +49,7 @@
 <title>ABP搬砖指南 | 激不起的涟漪</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -99,7 +99,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">应用程序启动模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">开发顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.</span> <span class="nav-text">应用程序启动模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">开发顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,7 +165,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -269,7 +269,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>969</span>
+      <span>1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -286,35 +286,34 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>前言</h1>
-<p>之前读完了《架构整洁之道》，对其中提出的整洁架构深以为然。很早之前就了解到<a target="_blank" rel="noopener" href="https://aspnetboilerplate.com/">AspNet Boilerplate</a>，但也一直没有实际上手过。倒是看了很久的中文文档，由<a target="_blank" rel="noopener" href="https://github.com/ABPFrameWorkGroup/AbpDocument2Chinese">ABPFrameWorkGroup/AbpDocument2Chinese</a>带来的翻译文档<a href="/download/abp20170501_A4.pdf">abp20170501_A4.pdf</a>，感谢无私奉献的前辈们。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前读完了《架构整洁之道》，对其中提出的整洁架构深以为然。很早之前就了解到<a target="_blank" rel="noopener" href="https://aspnetboilerplate.com/">AspNet Boilerplate</a>，但也一直没有实际上手过。倒是看了很久的中文文档，由<a target="_blank" rel="noopener" href="https://github.com/ABPFrameWorkGroup/AbpDocument2Chinese">ABPFrameWorkGroup&#x2F;AbpDocument2Chinese</a>带来的翻译文档<a href="/download/abp20170501_A4.pdf">abp20170501_A4.pdf</a>，感谢无私奉献的前辈们。</p>
 <p>随后，也了解到他们的下一代作品<a target="_blank" rel="noopener" href="https://blog.abp.io/abp/Abp-vNext-Announcement">ABP vNext</a>，也就是<a target="_blank" rel="noopener" href="https://abp.io/">ABP Framework</a>，尽管我没用过<code>SSM</code>（毕竟我不写<code>JAVA</code>），但我觉得<code>ABP</code>按照这个趋势发展下去，携手<code>.NET 5</code>，可与<code>SSM</code>一战。</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Domain-Driven-Design">领域驱动设计(DDD)</a></p>
 </blockquote>
 <span id="more"></span>
+
 <hr>
-<h1><a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Startup-Templates/Application">应用程序启动模板</a></h1>
-<img data-src="/2020/07/17/ABP%E6%90%AC%E7%A0%96%E6%8C%87%E5%8D%97/2020-07-17-21-09-15.png" class="" title="解决方案目录">
+<h1 id="应用程序启动模板"><a href="#应用程序启动模板" class="headerlink" title="应用程序启动模板"></a><a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Startup-Templates/Application">应用程序启动模板</a></h1><img data-src="/2020/07/17/ABP%E6%90%AC%E7%A0%96%E6%8C%87%E5%8D%97/2020-07-17-21-09-15.png" class="" title="解决方案目录">
+
 <img data-src="/2020/07/17/ABP%E6%90%AC%E7%A0%96%E6%8C%87%E5%8D%97/2020-07-17-21-10-13.png" class="" title="依赖关系">
+
 <hr>
-<h1>开发顺序</h1>
-<ol>
-<li><strong><code>Domain.Shared</code></strong>：定义本地化文档(<code>Localization</code>)、实体接口(<code>Interface</code>)、枚举(<code>Enum</code>)、错误码(<code>ErrorCodes</code>)等；</li>
-<li><strong><code>Domain</code></strong>：定义<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Entities">实体(<code>Entity</code>)或聚合根(<code>AggregateRoot</code>)</a>、<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Domain-Services">领域服务</a>、<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Value-Types">值类型</a>、<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Repositories">仓储接口(<code>IRepository</code>)</a>，实现<code>IDataSeedContributor</code>用于添加<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Seeding">种子数据</a>；</li>
-<li><strong><code>EntityFrameworkCore</code></strong>：定义<code>DbContext</code>，<code>DbContextModelCreatingExtensions</code>里配置实体，实现仓储接口(<code>EfCoreRepository</code>)，<code>EntityFrameworkCoreModule</code>里添加仓储实现；</li>
-<li><strong><code>EntityFrameworkCore.DbMigrations</code></strong>：使用<code>Add-Migration</code>添加迁移；</li>
-<li><strong><code>DbMigrator</code></strong>：运行，生成数据库并添加<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Seeding">种子数据</a>；</li>
-<li><strong><code>Application.Contracts</code></strong>：定义<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Transfer-Objects">数据传输对象(DTO)</a>与<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Application-Services">应用服务</a>接口(<code>IAppService</code>)，定义权限(<code>Permissions</code>)；</li>
-<li><strong><code>Application</code></strong>：实现<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Application-Services">应用服务</a>接口，添加自动映射配置(<code>AutoMapperProfile</code>)；</li>
+<h1 id="开发顺序"><a href="#开发顺序" class="headerlink" title="开发顺序"></a>开发顺序</h1><ol>
+<li>**<code>Domain.Shared</code>**：定义本地化文档(<code>Localization</code>)、实体接口(<code>Interface</code>)、枚举(<code>Enum</code>)、错误码(<code>ErrorCodes</code>)等；</li>
+<li>**<code>Domain</code>**：定义<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Entities">实体(<code>Entity</code>)或聚合根(<code>AggregateRoot</code>)</a>、<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Domain-Services">领域服务</a>、<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Value-Types">值类型</a>、<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Repositories">仓储接口(<code>IRepository</code>)</a>，实现<code>IDataSeedContributor</code>用于添加<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Seeding">种子数据</a>；</li>
+<li>**<code>EntityFrameworkCore</code>**：定义<code>DbContext</code>，<code>DbContextModelCreatingExtensions</code>里配置实体，实现仓储接口(<code>EfCoreRepository</code>)，<code>EntityFrameworkCoreModule</code>里添加仓储实现；</li>
+<li>**<code>EntityFrameworkCore.DbMigrations</code>**：使用<code>Add-Migration</code>添加迁移；</li>
+<li>**<code>DbMigrator</code>**：运行，生成数据库并添加<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Seeding">种子数据</a>；</li>
+<li>**<code>Application.Contracts</code>**：定义<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Transfer-Objects">数据传输对象(DTO)</a>与<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Application-Services">应用服务</a>接口(<code>IAppService</code>)，定义权限(<code>Permissions</code>)；</li>
+<li>**<code>Application</code>**：实现<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Application-Services">应用服务</a>接口，添加自动映射配置(<code>AutoMapperProfile</code>)；</li>
 <li><strong><code>HttpApi</code></strong> <strong>可选</strong>：添加控制器，<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/API/Auto-API-Controllers">动态 API 控制器</a>会自动根据<code>Application</code>构建控制器；</li>
 <li><strong><code>HttpApi.Client</code></strong> <strong>可选</strong>：<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/API/Dynamic-CSharp-API-Clients">动态 C# API 客户端</a>；</li>
-<li><strong><code>Web</code></strong>：定义界面、菜单，根据DDD的理论，只使用应用服务接口(<code>IAppService</code>)或仓储接口(<code>IRepository</code>)，通过<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Transfer-Objects">数据传输对象(DTO)</a>封装数据；</li>
-<li><strong><code>Test</code></strong>：添加测试代码，运行测试。</li>
+<li>**<code>Web</code>**：定义界面、菜单，根据DDD的理论，只使用应用服务接口(<code>IAppService</code>)或仓储接口(<code>IRepository</code>)，通过<a target="_blank" rel="noopener" href="https://docs.abp.io/zh-Hans/abp/latest/Data-Transfer-Objects">数据传输对象(DTO)</a>封装数据；</li>
+<li>**<code>Test</code>**：添加测试代码，运行测试。</li>
 </ol>
 <hr>
-<h1>后记</h1>
-<p>再次感谢乐于奉献的开源贡献者们！</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>再次感谢乐于奉献的开源贡献者们！</p>
 
     </div>
 
@@ -391,7 +390,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -402,13 +401,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">123k</span>
+    <span title="站点总字数">126k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:52</span>
+    <span title="站点阅读时长">1:55</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -451,7 +450,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 

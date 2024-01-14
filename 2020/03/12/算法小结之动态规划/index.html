@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -17,18 +17,18 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="¶前言 在上篇讨论 递归 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
+    <meta name="description" content="前言在上篇讨论 递归 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法小结之动态规划">
 <meta property="og:url" content="https://htlsmile.github.io/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="¶前言 在上篇讨论 递归 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
+<meta property="og:description" content="前言在上篇讨论 递归 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。 但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/2020-03-13-15-28-35.png">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/2020-03-14-19-54-00.png">
@@ -52,7 +52,7 @@
 <title>算法小结之动态规划 | 激不起的涟漪</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -102,7 +102,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E"><span class="nav-number">2.</span> <span class="nav-text">八皇后</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">2.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%B0%8F%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">问题小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E8%9B%8B%E9%97%AE%E9%A2%98%EF%BC%88%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD%E3%80%81%E9%B9%B0%E8%9B%8B%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">双蛋问题（鸡蛋掉落、鹰蛋问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-v2"><span class="nav-number">3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-v2"><span class="nav-number">3.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%B0%8F%E7%BB%93-v2"><span class="nav-number">3.3.</span> <span class="nav-text">问题小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%B3%84%E9%B1%BC%E5%B0%8F%E5%B2%9B%EF%BC%88%E4%B8%8E%E6%9C%AC%E6%96%87%E6%97%A0%E5%85%B3%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">鳄鱼小岛（与本文无关）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-v3"><span class="nav-number">4.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-v3"><span class="nav-number">4.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%B0%8F%E7%BB%93-v3"><span class="nav-number">4.3.</span> <span class="nav-text">问题小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E"><span class="nav-number">2.</span> <span class="nav-text">八皇后</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">2.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%B0%8F%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">问题小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E8%9B%8B%E9%97%AE%E9%A2%98%EF%BC%88%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD%E3%80%81%E9%B9%B0%E8%9B%8B%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">双蛋问题（鸡蛋掉落、鹰蛋问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="nav-number">3.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%B0%8F%E7%BB%93-1"><span class="nav-number">3.3.</span> <span class="nav-text">问题小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%B3%84%E9%B1%BC%E5%B0%8F%E5%B2%9B%EF%BC%88%E4%B8%8E%E6%9C%AC%E6%96%87%E6%97%A0%E5%85%B3%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">鳄鱼小岛（与本文无关）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">4.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="nav-number">4.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%B0%8F%E7%BB%93-2"><span class="nav-number">4.3.</span> <span class="nav-text">问题小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,36 +289,30 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>在上篇讨论 <a href="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E9%80%92%E5%BD%92/" title="递归">递归</a> 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在上篇讨论 <a href="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E9%80%92%E5%BD%92/" title="算法小结之递归">递归</a> 的文章中，最后留了一道八皇后的问题，我们很自然的可以想到一种思路：顺着棋盘的每一行或每一列，我们找到一个可以放置皇后的位置，连续找到 8 个位置就是一组解。</p>
 <p>但和之前的三道递归问题有着明显的不同，每一次放置的棋子，不仅依赖于之前放置的棋子，同时也会影响剩下来的棋子，而且每次可以放置的位置并不都唯一。</p>
 <span id="more"></span>
-<h3 id="八皇后"><a class="header-anchor" href="#八皇后">¶</a>八皇后</h3>
-<h4 id="问题描述"><a class="header-anchor" href="#问题描述">¶</a>问题描述</h4>
-<blockquote>
+
+<h3 id="八皇后"><a href="#八皇后" class="headerlink" title="八皇后"></a>八皇后</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><blockquote>
 <p>在 8×8 格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
 </blockquote>
 <img data-src="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/2020-03-13-15-28-35.png" class="">
-<h4 id="解题思路"><a class="header-anchor" href="#解题思路">¶</a>解题思路</h4>
-<p>按照前言中的思路，定义棋盘 <code>bool[,] chessboard</code> ，我们尝试一下：</p>
+
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>按照前言中的思路，定义棋盘 <code>bool[,] chessboard</code> ，我们尝试一下：</p>
 <ol>
-<li>
-<p>先定义一个方法 <code>bool SetQueens(bool[,] chessboard, int row)</code>， 这个方法表示在第 <code>row</code> 行，放置一个皇后，如果找不到可以放置皇后的位置，则方法返回 <code>False</code></p>
+<li><p>先定义一个方法 <code>bool SetQueens(bool[,] chessboard, int row)</code>， 这个方法表示在第 <code>row</code> 行，放置一个皇后，如果找不到可以放置皇后的位置，则方法返回 <code>False</code></p>
 </li>
-<li>
-<p>对于每一行而言，每一个格子都需要尝试放置皇后，我们再定义一个方法 <code>bool CheckValid(bool[,] chessboard, int row, int col)</code> 用来判断在 <code>row</code> 行 <code>col</code> 列放置的皇后是否合法</p>
+<li><p>对于每一行而言，每一个格子都需要尝试放置皇后，我们再定义一个方法 <code>bool CheckValid(bool[,] chessboard, int row, int col)</code> 用来判断在 <code>row</code> 行 <code>col</code> 列放置的皇后是否合法</p>
 </li>
-<li>
-<p>如果找到一个合法位置，那么很显然我们要做的事情就是在下一行继续尝试放置皇后，同时，因为我们是在每一行的所有格子都要做一遍测试，所以在这一行的下一次尝试之前，我们需要取回这一次在这一行放置的棋子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for (int col = 0; col &lt; chessboard.GetLength(1); col++)</span><br><span class="line">&#123;</span><br><span class="line">    chessboard[row, col] = true;//放置皇后</span><br><span class="line">    if (CheckValid(chessboard, row, col))</span><br><span class="line">    &#123;</span><br><span class="line">        SetQueens(chessboard, row + 1);//放置合法，到下一行放置皇后</span><br><span class="line">    &#125;</span><br><span class="line">    chessboard[row, col] = false;//取回皇后，避免干扰同一行的下一次尝试</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>如果找到一个合法位置，那么很显然我们要做的事情就是在下一行继续尝试放置皇后，同时，因为我们是在每一行的所有格子都要做一遍测试，所以在这一行的下一次尝试之前，我们需要取回这一次在这一行放置的棋子</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> col = <span class="number">0</span>; col &lt; chessboard.GetLength(<span class="number">1</span>); col++)</span><br><span class="line">&#123;</span><br><span class="line">    chessboard[row, col] = <span class="literal">true</span>;<span class="comment">//放置皇后</span></span><br><span class="line">    <span class="keyword">if</span> (CheckValid(chessboard, row, col))</span><br><span class="line">    &#123;</span><br><span class="line">        SetQueens(chessboard, row + <span class="number">1</span>);<span class="comment">//放置合法，到下一行放置皇后</span></span><br><span class="line">    &#125;</span><br><span class="line">    chessboard[row, col] = <span class="literal">false</span>;<span class="comment">//取回皇后，避免干扰同一行的下一次尝试</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>不停的尝试下一行，直到放完所有行的时候，我们就得到了一个可行的解法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (row == chessboard.GetLength(0))</span><br><span class="line">&#123;</span><br><span class="line">    Result.Add((bool[,])chessboard.Clone());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li><p>不停的尝试下一行，直到放完所有行的时候，我们就得到了一个可行的解法</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (row == chessboard.GetLength(<span class="number">0</span>))</span><br><span class="line">&#123;</span><br><span class="line">    Result.Add((<span class="built_in">bool</span>[,])chessboard.Clone());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>整合一下，<code>bool SetQueens(bool[,] chessboard, int row)</code> 的方法体就是</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void SetQueens(bool[,] chessboard, int row = 0)</span><br><span class="line">&#123;</span><br><span class="line">    if (row == chessboard.GetLength(0))</span><br><span class="line">    &#123;</span><br><span class="line">        //到这里，chessboard的状态就是一组可行解</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int col = 0; col &lt; chessboard.GetLength(1); col++)</span><br><span class="line">    &#123;</span><br><span class="line">        chessboard[row, col] = true;</span><br><span class="line">        if (CheckValid(chessboard, row, col))</span><br><span class="line">        &#123;</span><br><span class="line">            SetQueens(chessboard, row + 1);</span><br><span class="line">        &#125;</span><br><span class="line">        chessboard[row, col] = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetQueens</span>(<span class="params"><span class="built_in">bool</span>[,] chessboard, <span class="built_in">int</span> row = <span class="number">0</span></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (row == chessboard.GetLength(<span class="number">0</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//到这里，chessboard的状态就是一组可行解</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> col = <span class="number">0</span>; col &lt; chessboard.GetLength(<span class="number">1</span>); col++)</span><br><span class="line">    &#123;</span><br><span class="line">        chessboard[row, col] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (CheckValid(chessboard, row, col))</span><br><span class="line">        &#123;</span><br><span class="line">            SetQueens(chessboard, row + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        chessboard[row, col] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>当然，之前我们定义了 <code>bool CheckValid(bool[,] chessboard, int row, int col)</code>，根据规则很容易理解就是横竖撇捺上不能有其他棋子。</p>
 <ul>
 <li>横：由于我们是一行一行放置的，所以横一定是唯一的，就不用判断了；</li>
@@ -327,17 +321,15 @@
 <li>捺：斜率为 -1 且经过 <code>(row, col)</code> 这个点的直线，在正方形内的整数坐标，做判断；</li>
 </ul>
 <p>根据这个思路，很容易写出方法体了：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">bool CheckValid(bool[,] chessboard, int row, int col)</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = 0, j; i &lt; chessboard.GetLength(0); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (i != row &amp;&amp; chessboard[i, col])//竖</span><br><span class="line">        &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        j = i + col - row;//撇：斜率为1</span><br><span class="line">        if (j &gt;= 0 &amp;&amp; j &lt; chessboard.GetLength(1) &amp;&amp; j != col &amp;&amp; chessboard[i, j])</span><br><span class="line">        &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        j = col + row - i;//捺：斜率为-1</span><br><span class="line">        if (j &gt;= 0 &amp;&amp; j &lt; chessboard.GetLength(1) &amp;&amp; j != col &amp;&amp; chessboard[i, j])</span><br><span class="line">        &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="问题小结"><a class="header-anchor" href="#问题小结">¶</a>问题小结</h4>
-<p>代码：<a target="_blank" rel="noopener" href="https://github.com/htlsmile/HT.Algorithm">HT.Algorithm</a>的 EightQueens</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">bool</span> <span class="title">CheckValid</span>(<span class="params"><span class="built_in">bool</span>[,] chessboard, <span class="built_in">int</span> row, <span class="built_in">int</span> col</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>, j; i &lt; chessboard.GetLength(<span class="number">0</span>); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i != row &amp;&amp; chessboard[i, col])<span class="comment">//竖</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        j = i + col - row;<span class="comment">//撇：斜率为1</span></span><br><span class="line">        <span class="keyword">if</span> (j &gt;= <span class="number">0</span> &amp;&amp; j &lt; chessboard.GetLength(<span class="number">1</span>) &amp;&amp; j != col &amp;&amp; chessboard[i, j])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        j = col + row - i;<span class="comment">//捺：斜率为-1</span></span><br><span class="line">        <span class="keyword">if</span> (j &gt;= <span class="number">0</span> &amp;&amp; j &lt; chessboard.GetLength(<span class="number">1</span>) &amp;&amp; j != col &amp;&amp; chessboard[i, j])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="问题小结"><a href="#问题小结" class="headerlink" title="问题小结"></a>问题小结</h4><p>代码：<a target="_blank" rel="noopener" href="https://github.com/htlsmile/HT.Algorithm">HT.Algorithm</a>的 EightQueens</p>
 <p>在这里不考虑对称的问题，八皇后有 92 组解。</p>
 <p>八皇后这个问题在网上很容易找到许多简短的算法，像用一维数组做记录、位运算之类的，但本质上都是需要回溯的，其他算法的精妙之处在这里按下不表。</p>
-<h3 id="双蛋问题（鸡蛋掉落、鹰蛋问题）"><a class="header-anchor" href="#双蛋问题（鸡蛋掉落、鹰蛋问题）">¶</a>双蛋问题（鸡蛋掉落、鹰蛋问题）</h3>
-<p>为了能够自然的引入这个问题，又写递归，又写八皇后的，都感觉有点买椟还珠了。😂</p>
+<h3 id="双蛋问题（鸡蛋掉落、鹰蛋问题）"><a href="#双蛋问题（鸡蛋掉落、鹰蛋问题）" class="headerlink" title="双蛋问题（鸡蛋掉落、鹰蛋问题）"></a>双蛋问题（鸡蛋掉落、鹰蛋问题）</h3><p>为了能够自然的引入这个问题，又写递归，又写八皇后的，都感觉有点买椟还珠了。😂</p>
 <p>其实是看了李永乐老师的一个视频，<a target="_blank" rel="noopener" href="https://www.ixigua.com/6802491359077859851">复工复产找工作？先来看看这道面试题：双蛋问题</a>，想记录一下解答过程。</p>
 <p><video src="/videos/西瓜视频/6802491359077859851.mp4" controls>复工复产找工作？先来看看这道面试题：双蛋问题</video></p>
-<h4 id="问题描述-v2"><a class="header-anchor" href="#问题描述-v2">¶</a>问题描述</h4>
-<p>问题大意：蛋在某层楼以下扔都不会碎，有 <code>T</code> 层楼，<code>N</code> 个蛋，在运气最差的情况下，找到临界楼层需至少要 <code>M</code> 次，求 <code>M</code> 的值。</p>
+<h4 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h4><p>问题大意：蛋在某层楼以下扔都不会碎，有 <code>T</code> 层楼，<code>N</code> 个蛋，在运气最差的情况下，找到临界楼层需至少要 <code>M</code> 次，求 <code>M</code> 的值。</p>
 <p>定义 <code>M(T,N)</code> 表示这个答案。</p>
 <p>视频中 11 分钟的表格我照抄一份：</p>
 <table>
@@ -355,8 +347,7 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -464,17 +455,16 @@
 <td>4</td>
 <td>4</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <img data-src="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/2020-03-14-19-54-00.png" class="">
-<h4 id="解题思路-v2"><a class="header-anchor" href="#解题思路-v2">¶</a>解题思路</h4>
-<p>在 <code>T</code> 层楼中选择第 <code>k</code> 层扔蛋：</p>
+
+<h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>在 <code>T</code> 层楼中选择第 <code>k</code> 层扔蛋：</p>
 <ol>
 <li>如果碎了，在 <code>(1, k - 1)</code> 之间，找出临界楼层还需要 <code>M(k - 1, N - 1)</code> 次</li>
 <li>如果没碎，在 <code>(k, T)</code> 之间，找出临界楼层还需要 <code>M(T - k, N)</code> 次</li>
 </ol>
 <p>考虑最坏情况，在 <code>k</code> 层开始扔，两种情况需要取次数较多的一种，加上在第 <code>k</code> 层的一次，即</p>
-<p>M<sub>k</sub>(T, N) = Max{ M(k - 1, N - 1), M(T - k, N) } + 1</p>
+<p>M<sub>k</sub>(T, N) &#x3D; Max{ M(k - 1, N - 1), M(T - k, N) } + 1</p>
 <p>那么，对于 k 而言，可以是 1 到 T 层中的任意一层，所以对应 M 的值有以下选择</p>
 <table>
 <thead>
@@ -487,8 +477,7 @@
 <th>T</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>M</td>
 <td>M<sub>1</sub></td>
 <td>M<sub>2</sub></td>
@@ -496,57 +485,44 @@
 <td>…</td>
 <td>M<sub>T</sub></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>根据题意，我们所求的 M，就是在 k 取[1,T]之间所对应的[M1,MT]中的最小值，即</p>
-<p>M(T, N) = Min{ M<sub>1</sub>, M<sub>2</sub>, M<sub>3</sub>, …, M<sub>T</sub> }</p>
+<p>M(T, N) &#x3D; Min{ M<sub>1</sub>, M<sub>2</sub>, M<sub>3</sub>, …, M<sub>T</sub> }</p>
 <p>那么，根据这个思路，就可以写出如下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">static int LeastTimes(int floor, int egg)</span><br><span class="line">&#123;</span><br><span class="line">    if (floor &lt; 1)</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;//一层都没有，不用扔蛋</span><br><span class="line">    &#125;</span><br><span class="line">    else if (floor == 1)</span><br><span class="line">    &#123;</span><br><span class="line">        return 1;//只有一层楼，只需要仍一次</span><br><span class="line">    &#125;</span><br><span class="line">    else if (egg == 1)</span><br><span class="line">    &#123;</span><br><span class="line">        return floor;//只有一个蛋，只能从一楼扔起，一个一个试</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int result = int.MaxValue;</span><br><span class="line">        for (int k = 1; k &lt;= floor; k++)//选取k楼从1到T全部试一次，选取最小值</span><br><span class="line">        &#123;</span><br><span class="line">            var Mk = Math.Max(LeastTimes(k - 1, egg - 1), LeastTimes(floor - kegg)) + 1;//碎没碎都有可能，运气差，取较大的</span><br><span class="line">            result = Math.Min(result, Mk);//记录最小值</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="问题小结-v2"><a class="header-anchor" href="#问题小结-v2">¶</a>问题小结</h4>
-<p>代码：<a target="_blank" rel="noopener" href="https://github.com/htlsmile/HT.Algorithm">HT.Algorithm</a>的 EggDrop</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">int</span> <span class="title">LeastTimes</span>(<span class="params"><span class="built_in">int</span> floor, <span class="built_in">int</span> egg</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (floor &lt; <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//一层都没有，不用扔蛋</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (floor == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//只有一层楼，只需要仍一次</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (egg == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> floor;<span class="comment">//只有一个蛋，只能从一楼扔起，一个一个试</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">int</span> result = <span class="built_in">int</span>.MaxValue;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> k = <span class="number">1</span>; k &lt;= floor; k++)<span class="comment">//选取k楼从1到T全部试一次，选取最小值</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> Mk = Math.Max(LeastTimes(k - <span class="number">1</span>, egg - <span class="number">1</span>), LeastTimes(floor - kegg)) + <span class="number">1</span>;<span class="comment">//碎没碎都有可能，运气差，取较大的</span></span><br><span class="line">            result = Math.Min(result, Mk);<span class="comment">//记录最小值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="问题小结-1"><a href="#问题小结-1" class="headerlink" title="问题小结"></a>问题小结</h4><p>代码：<a target="_blank" rel="noopener" href="https://github.com/htlsmile/HT.Algorithm">HT.Algorithm</a>的 EggDrop</p>
 <p>顺着李老师的思路，这类问题应该不难理解，虽然我在大学里始终参不透玄机。</p>
 <p>同款问题在<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/super-egg-drop/">LeetCodeCN-887. 鸡蛋掉落</a>，很显然你不能直接用上面的算法妄想去 AC，脑补一下时间复杂度，应该是过不了任何一家 OJ 的。</p>
-<h3 id="鳄鱼小岛（与本文无关）"><a class="header-anchor" href="#鳄鱼小岛（与本文无关）">¶</a>鳄鱼小岛（与本文无关）</h3>
-<p>李老师留的课后习题，一并写了吧。网上也有说猫捉老鼠。</p>
-<h4 id="问题描述-v3"><a class="header-anchor" href="#问题描述-v3">¶</a>问题描述</h4>
-<p>李永乐老师：假如有一个圆形的小岛，然后有一条鳄鱼在圆形小岛周围游弋，鳄鱼的速度是人的四倍，而且鳄鱼总是希望找到一个离人最近的位置，而这个人最开始在这个小岛的正中心，那么我问这个人该如何运动，才能够比鳄鱼先到达这个岛的边缘，从而逃离这个岛呢？</p>
-<h4 id="解题思路-v3"><a class="header-anchor" href="#解题思路-v3">¶</a>解题思路</h4>
-<p>先做些设定，这个岛的半径为 <code>r</code> 米，人的速度为 <code>v</code> 米/秒，那么鳄鱼的速度为 <code>4v</code> 米/秒。</p>
+<h3 id="鳄鱼小岛（与本文无关）"><a href="#鳄鱼小岛（与本文无关）" class="headerlink" title="鳄鱼小岛（与本文无关）"></a>鳄鱼小岛（与本文无关）</h3><p>李老师留的课后习题，一并写了吧。网上也有说猫捉老鼠。</p>
+<h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>李永乐老师：假如有一个圆形的小岛，然后有一条鳄鱼在圆形小岛周围游弋，鳄鱼的速度是人的四倍，而且鳄鱼总是希望找到一个离人最近的位置，而这个人最开始在这个小岛的正中心，那么我问这个人该如何运动，才能够比鳄鱼先到达这个岛的边缘，从而逃离这个岛呢？</p>
+<h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>先做些设定，这个岛的半径为 <code>r</code> 米，人的速度为 <code>v</code> 米&#x2F;秒，那么鳄鱼的速度为 <code>4v</code> 米&#x2F;秒。</p>
 <p>假设我就是那个被鳄鱼困在岛上的倒霉蛋，站在圆心，鳄鱼在正南方。</p>
 <ol>
-<li>
-<p>我想往正南方跑，那么我需要 <code>r/v</code> 秒的时间才能到，鳄鱼只需要 <code>(πr)/(4v)</code> 秒，很显然鳄鱼比我快，这样跑是不行的</p>
+<li><p>我想往正南方跑，那么我需要 <code>r/v</code> 秒的时间才能到，鳄鱼只需要 <code>(πr)/(4v)</code> 秒，很显然鳄鱼比我快，这样跑是不行的</p>
 </li>
-<li>
-<p>冷静想一下，根据题意，鳄鱼一定会选择劣弧，我沿着半径直线跑不行，那我始终沿着距离鳄鱼最远的点跑吧，也就是说，我需要更换我的目标点，这个点使得鳄鱼必须要再跑 <code>πr</code> 的路程</p>
+<li><p>冷静想一下，根据题意，鳄鱼一定会选择劣弧，我沿着半径直线跑不行，那我始终沿着距离鳄鱼最远的点跑吧，也就是说，我需要更换我的目标点，这个点使得鳄鱼必须要再跑 <code>πr</code> 的路程</p>
 </li>
-<li>
-<p>假设我更换目标点时，我已经跑了 <code>m</code> 米远，鳄鱼跑了 <code>n</code> 米远，我因为目的地转换而产生的圆心角为 <code>α</code> ,那么很显然，当 <code>α ≥ π/4</code> 时，我接下来要跑的路程比半径还远，鳄鱼一定比我快</p>
+<li><p>假设我更换目标点时，我已经跑了 <code>m</code> 米远，鳄鱼跑了 <code>n</code> 米远，我因为目的地转换而产生的圆心角为 <code>α</code> ,那么很显然，当 <code>α ≥ π/4</code> 时，我接下来要跑的路程比半径还远，鳄鱼一定比我快</p>
 </li>
 </ol>
 <img data-src="/2020/03/12/%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/2020-03-15-11-11-04.png" class="" title="灵魂画师，是吧">
+
 <ol start="4">
-<li>
-<p>那么，换个思路想，是否存在一个角度，这个角度可以使得我沿半径方向在逐步靠近边缘，而始终让鳄鱼需要再走 <code>πr</code> 的距离，也就是，我和圆心和鳄鱼共线在同一条直径上</p>
+<li><p>那么，换个思路想，是否存在一个角度，这个角度可以使得我沿半径方向在逐步靠近边缘，而始终让鳄鱼需要再走 <code>πr</code> 的距离，也就是，我和圆心和鳄鱼共线在同一条直径上</p>
 </li>
-<li>
-<p>很容易想到，在同一个圆心，半径为 <code>r/4</code> 的圆里，我是完全办得到的，因为在这个圆里，即便鳄鱼的速度是我的四倍，我跑的角速度也是大于或等于鳄鱼的角速度，使得三点共线</p>
+<li><p>很容易想到，在同一个圆心，半径为 <code>r/4</code> 的圆里，我是完全办得到的，因为在这个圆里，即便鳄鱼的速度是我的四倍，我跑的角速度也是大于或等于鳄鱼的角速度，使得三点共线</p>
 </li>
-<li>
-<p>那么，在我跑到 <code>r/4</code> 处，只要沿着圆心相反的方向再跑 <code>(3r)/4</code> 的距离就可以跑到边缘，对于我而言，我所需要的时间是 <code>(3r)/(4v)</code> 秒，而鳄鱼需要 <code>(πr)/(4v)</code> 秒，显然我更快，那么我就成功逃离了</p>
+<li><p>那么，在我跑到 <code>r/4</code> 处，只要沿着圆心相反的方向再跑 <code>(3r)/4</code> 的距离就可以跑到边缘，对于我而言，我所需要的时间是 <code>(3r)/(4v)</code> 秒，而鳄鱼需要 <code>(πr)/(4v)</code> 秒，显然我更快，那么我就成功逃离了</p>
 </li>
 </ol>
-<h4 id="问题小结-v3"><a class="header-anchor" href="#问题小结-v3">¶</a>问题小结</h4>
-<p>这道题，算数学问题还是算物理问题呢？</p>
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>用递归的方法去解决问题，代码看起来很优雅，但到了像比较复杂的动态规划里，普通递归的代码就带来肉眼可见的时空间复杂度，这往往是不可接受的。</p>
+<h4 id="问题小结-2"><a href="#问题小结-2" class="headerlink" title="问题小结"></a>问题小结</h4><p>这道题，算数学问题还是算物理问题呢？</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>用递归的方法去解决问题，代码看起来很优雅，但到了像比较复杂的动态规划里，普通递归的代码就带来肉眼可见的时空间复杂度，这往往是不可接受的。</p>
 <p>对于学习理解来说，这种写法尚可，但在实际解决问题时，需要去做优化，这种优化有的是基于强大的数学功底，例如</p>
 <ul>
-<li>
-<p>阶乘： <a target="_blank" rel="noopener" href="https://sites.google.com/site/examath/research/factorials">Exa-Math</a>，404 的话，我存了一份图片，用电脑看，<a href="../%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/sites.google.com_site_examath_research_factorials.png">网页截图</a></p>
+<li><p>阶乘： <a target="_blank" rel="noopener" href="https://sites.google.com/site/examath/research/factorials">Exa-Math</a>，404 的话，我存了一份图片，用电脑看，<a href="../%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%E4%B9%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/sites.google.com_site_examath_research_factorials.png">网页截图</a></p>
 </li>
-<li>
-<p>斐波那契数列：<a target="_blank" rel="noopener" href="https://www.mathsisfun.com/numbers/fibonacci-sequence.html">Math is fun</a></p>
+<li><p>斐波那契数列：<a target="_blank" rel="noopener" href="https://www.mathsisfun.com/numbers/fibonacci-sequence.html">Math is fun</a></p>
 </li>
 </ul>
 <p>有的则是记忆、剪枝等等，罢了，不说了，接着留坑吧。</p>
@@ -630,7 +606,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -641,13 +617,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">123k</span>
+    <span title="站点总字数">126k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:52</span>
+    <span title="站点阅读时长">1:55</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -690,7 +666,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -17,18 +17,18 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="¶前言 借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。">
+    <meta name="description" content="前言借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈直播">
 <meta property="og:url" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="¶前言 借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。">
+<meta property="og:description" content="前言借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-20.png">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-34.png">
@@ -57,7 +57,7 @@
 <title>浅谈直播 | 激不起的涟漪</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -107,7 +107,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -173,7 +173,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -294,23 +294,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>借着这次疫情的机会，已经平息的直播，又一次被唤醒。像钉钉（视频会议）、腾讯会议、瞩目之类的软件迅速冒出，不禁让我想起自己的毕业设计。在这里简单聊一下我的毕业设计和目前的直播平台搭建方式。</p>
 <span id="more"></span>
-<h3 id="忆往昔"><a class="header-anchor" href="#忆往昔">¶</a>忆往昔</h3>
-<p>大学的毕业设计，我选的课题叫做<strong>多媒体电子教室的设计与实现</strong>。</p>
+
+<h3 id="忆往昔"><a href="#忆往昔" class="headerlink" title="忆往昔"></a>忆往昔</h3><p>大学的毕业设计，我选的课题叫做<strong>多媒体电子教室的设计与实现</strong>。</p>
 <p>貌似全班就我一个人选了，连个讨论的人都找不到。😂</p>
 <p>这个课题简单来说就是设计一款局域网屏幕传输软件，方便老师在计算机教室上课教学。</p>
 <p>如果你对“方便”有疑惑的话，我就描述一下应用场景，印象中大学的计算机教室架了四台还是六台投影仪，幕布摆放的位置也只能穿插在两排座位之间，这就导致投影的效果很差，大部分位置的视角都很别扭。</p>
 <p>另说，那时候是用飞鸽传书来互传文件，比如交作业（代码）给老师。课堂上理所当然不允许讲话，所以咯，我们经常用飞鸽来聊天，搞定点爆破（针对性连续发送文件）。🤐</p>
-<h4 id="作品"><a class="header-anchor" href="#作品">¶</a>作品</h4>
-<blockquote>
+<h4 id="作品"><a href="#作品" class="headerlink" title="作品"></a>作品</h4><blockquote>
 <p>C#写的 Winform 程序，实现了局域网内的屏幕广播、聊天对话、举手和远程开关机。</p>
 </blockquote>
 <img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-20.png" class="">
+
 <img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-19-05-34.png" class="">
-<h4 id="过程"><a class="header-anchor" href="#过程">¶</a>过程</h4>
-<p>已经不记得当时的技术水平和具体思路了，毕业有点久了，只能捡一些回忆来讲。</p>
+
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><p>已经不记得当时的技术水平和具体思路了，毕业有点久了，只能捡一些回忆来讲。</p>
 <p>首先拿到这个课题，大脑里简单构思了一下，主要就是两项功能，一个是屏幕传输，另一个是聊天。</p>
 <p>作为一个度娘养大的孩子，凡事不懂先百度的习惯已经深入骨髓，搜了一些信息，就盯着“红蜘蛛”这款软件了。但是很显然，我只能看到一些功能描述和界面，具体源码是不可能搞得到的。所以，只能自己动手了。</p>
 <p>屏幕传输，简单点，就是连续截图，再连续发送就完了。实际用代码去实现的时候就发现问题来了，截图好说，TCP 发送好说，效果就很不好说了，开启广播就有巨大的流量，但客户端显示效果极差，比放 PPT 还差。</p>
@@ -319,23 +318,22 @@
 <p>换成这种实现方式，效果出奇得好，好到我准备的其他优化手段都用不上了。在局域网内，没有其他流量干扰，屏幕广播的延迟不超过一秒，流畅度和看电影差不多。</p>
 <p>聊天，那就更简单了，定向 TCP 连接就完了，不谈。远程开关机之类的，太简单，不谈。</p>
 <p>后续就是拿着软件，改了三遍论文，就去答辩了。</p>
-<h4 id="后续"><a class="header-anchor" href="#后续">¶</a>后续</h4>
-<p>答辩结束后，老师说想将我的软件实际投入教学使用，我那时候考虑的是，这个软件目前远不如我的预期，但迫于论文答辩，只能仓促完成，便婉拒了老师。当时还想着毕业了再完善一下这个软件，等到我自己认可这个软件的时候，再和老师联系。现实情况是，毕业了就开始忙着找工作，早就忘了这件事了。😅</p>
+<h4 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h4><p>答辩结束后，老师说想将我的软件实际投入教学使用，我那时候考虑的是，这个软件目前远不如我的预期，但迫于论文答辩，只能仓促完成，便婉拒了老师。当时还想着毕业了再完善一下这个软件，等到我自己认可这个软件的时候，再和老师联系。现实情况是，毕业了就开始忙着找工作，早就忘了这件事了。😅</p>
 <p>其实，作为一个电子教室软件，界面丑我是心知肚明的，对客户端的强力控制也是一个重点，奈何当初技术菜、时间短，就写了个 Kill 任务管理器的线程，然后在启动广播的时候把客户端置顶；另外，虽然屏幕传输实现了，但是音频传输也需要考虑，在教室四周摆上大音响的做法太不计科了；还有聊天功能，也不能只是纯文字聊天，富文本聊天、传输文件的功能也是要加的。</p>
 <p>基于以上种种要做却没做的功能，这个软件我自己实在不能认可。</p>
-<h3 id="看今朝"><a class="header-anchor" href="#看今朝">¶</a>看今朝</h3>
-<p>直播行业大火的时候，我就了解到 <a target="_blank" rel="noopener" href="https://obsproject.com/zh-cn">OBS</a> 这款软件，简单上手把玩了一番，发现此乃神器，全方位吊打我当初毕设软件的理想终极版。先简单说下直播的技术。</p>
+<h3 id="看今朝"><a href="#看今朝" class="headerlink" title="看今朝"></a>看今朝</h3><p>直播行业大火的时候，我就了解到 <a target="_blank" rel="noopener" href="https://obsproject.com/zh-cn">OBS</a> 这款软件，简单上手把玩了一番，发现此乃神器，全方位吊打我当初毕设软件的理想终极版。先简单说下直播的技术。</p>
 <ul>
 <li>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/42162310">如何搭建一个完整的视频直播系统？</a></li>
 <li>博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/kingmax54212008/article/details/84307500">直播平台整体架构</a></li>
 </ul>
 <p>直播的技术架构到如今也是很成熟的了，毕竟活不下去的也差不多都倒闭了，先来盗些图</p>
 <img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-04-09.png" class="">
+
 <img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-10-13.png" class="">
+
 <p>简单来讲，就是有人主动发起直播（推流），有流媒体服务器在处理（分发），有人在看（拉流）。</p>
 <p>我尝试着使用 OBS、SRS 和 Potplayer，在我那 1 核 2GB 1Mbps 的小水管服务器做了个测试，直播效果很勉强，有明显的卡顿，但至少是有效果的。</p>
-<h4 id="OBS（推流）"><a class="header-anchor" href="#OBS（推流）">¶</a><a target="_blank" rel="noopener" href="https://obsproject.com/zh-cn">OBS</a>（推流）</h4>
-<blockquote>
+<h4 id="OBS（推流）"><a href="#OBS（推流）" class="headerlink" title="OBS（推流）"></a><a target="_blank" rel="noopener" href="https://obsproject.com/zh-cn">OBS</a>（推流）</h4><blockquote>
 <p>OBS Studio 是免费的开源软件，用于视频记录和实时流媒体。目前可以使用 Linux，Mac 和 Windows Build。</p>
 <ul>
 <li>官方 OBS Studio 构建：<a target="_blank" rel="noopener" href="https://github.com/obsproject/obs-studio/releases">Github Release</a></li>
@@ -343,19 +341,19 @@
 </ul>
 </blockquote>
 <img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-20-55-56.png" class="">
-<h4 id="SRS（分发）"><a class="header-anchor" href="#SRS（分发）">¶</a><a target="_blank" rel="noopener" href="https://github.com/ossrs/srs">SRS</a>（分发）</h4>
-<blockquote>
-<p>SRS/3.0，OuXuli，是一个流媒体集群，支持 RTMP/HLS/WebRTC/SRT/GB28181，高效、稳定、易用，简单而快乐。</p>
-<p>SRS 定位是运营级的互联网直播服务器集群，追求更好的概念完整性和最简单实现的代码。SRS 提供了丰富的接入方案将 RTMP 流接入 SRS， 包括推送 RTMP 到 SRS、推送 RTSP/UDP/FLV 到 SRS、拉取流到 SRS。 SRS 还支持将接入的 RTMP 流进行各种变换，譬如将 RTMP 流转码、流截图、 转发给其他服务器、转封装成 HTTP-FLV 流、转封装成 HLS、 转封装成 HDS、转封装成 DASH、录制成 FLV/MP4。SRS 包含支大规模集群如 CDN 业务的关键特性， 譬如 RTMP 多级集群、源站集群、VHOST 虚拟服务器 、 无中断服务 Reload、HTTP-FLV 集群。此外，SRS 还提供丰富的应用接口， 包括 HTTP 回调、安全策略 Security、HTTP API 接口、 RTMP 测速。SRS 在源站和 CDN 集群中都得到了广泛的应用 Applications。</p>
+
+<h4 id="SRS（分发）"><a href="#SRS（分发）" class="headerlink" title="SRS（分发）"></a><a target="_blank" rel="noopener" href="https://github.com/ossrs/srs">SRS</a>（分发）</h4><blockquote>
+<p>SRS&#x2F;3.0，OuXuli，是一个流媒体集群，支持 RTMP&#x2F;HLS&#x2F;WebRTC&#x2F;SRT&#x2F;GB28181，高效、稳定、易用，简单而快乐。</p>
+<p>SRS 定位是运营级的互联网直播服务器集群，追求更好的概念完整性和最简单实现的代码。SRS 提供了丰富的接入方案将 RTMP 流接入 SRS， 包括推送 RTMP 到 SRS、推送 RTSP&#x2F;UDP&#x2F;FLV 到 SRS、拉取流到 SRS。 SRS 还支持将接入的 RTMP 流进行各种变换，譬如将 RTMP 流转码、流截图、 转发给其他服务器、转封装成 HTTP-FLV 流、转封装成 HLS、 转封装成 HDS、转封装成 DASH、录制成 FLV&#x2F;MP4。SRS 包含支大规模集群如 CDN 业务的关键特性， 譬如 RTMP 多级集群、源站集群、VHOST 虚拟服务器 、 无中断服务 Reload、HTTP-FLV 集群。此外，SRS 还提供丰富的应用接口， 包括 HTTP 回调、安全策略 Security、HTTP API 接口、 RTMP 测速。SRS 在源站和 CDN 集群中都得到了广泛的应用 Applications。</p>
 </blockquote>
 <img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-43-28.png" class="">
-<h4 id="VLC（拉流）"><a class="header-anchor" href="#VLC（拉流）">¶</a><a target="_blank" rel="noopener" href="https://www.videolan.org/vlc/">VLC</a>（拉流）</h4>
-<blockquote>
+
+<h4 id="VLC（拉流）"><a href="#VLC（拉流）" class="headerlink" title="VLC（拉流）"></a><a target="_blank" rel="noopener" href="https://www.videolan.org/vlc/">VLC</a>（拉流）</h4><blockquote>
 <p>VLC 是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议。</p>
 </blockquote>
 <img data-src="/2020/03/19/%E6%B5%85%E8%B0%88%E7%9B%B4%E6%92%AD/2020-03-19-21-30-03.png" class="">
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>依旧是留坑，看啥时候研究下 OBS，给当初的毕设软件换换血，再顺带把远程控制的功能一并做了。😁</p>
+
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>依旧是留坑，看啥时候研究下 OBS，给当初的毕设软件换换血，再顺带把远程控制的功能一并做了。😁</p>
 
     </div>
 
@@ -437,7 +435,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -448,13 +446,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">123k</span>
+    <span title="站点总字数">126k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:52</span>
+    <span title="站点阅读时长">1:55</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -497,7 +495,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 

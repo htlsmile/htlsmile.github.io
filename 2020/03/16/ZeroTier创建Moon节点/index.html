@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -17,18 +17,18 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="¶前言 折腾过内网穿透的玩家，ngrok、frp 都应该不陌生了，自己搭也好，用别人提供的免费服务也好，配置过程都显得有些繁琐。 有幸了解到 ZeroTier 的存在，使用起来真是非常方便，可以很轻松的将自己的电子设备加入同一个局域网，但由于其根服务器在国外，导致前期建立链接时访问速度较慢，好在 ZeroTier 也提供了加速方法，就是创建自己的根服务器，也就是 Moon 节点。">
+    <meta name="description" content="前言折腾过内网穿透的玩家，ngrok、frp 都应该不陌生了，自己搭也好，用别人提供的免费服务也好，配置过程都显得有些繁琐。 有幸了解到 ZeroTier 的存在，使用起来真是非常方便，可以很轻松的将自己的电子设备加入同一个局域网，但由于其根服务器在国外，导致前期建立链接时访问速度较慢，好在 ZeroTier 也提供了加速方法，就是创建自己的根服务器，也就是 Moon 节点。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ZeroTier创建Moon节点">
 <meta property="og:url" content="https://htlsmile.github.io/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="¶前言 折腾过内网穿透的玩家，ngrok、frp 都应该不陌生了，自己搭也好，用别人提供的免费服务也好，配置过程都显得有些繁琐。 有幸了解到 ZeroTier 的存在，使用起来真是非常方便，可以很轻松的将自己的电子设备加入同一个局域网，但由于其根服务器在国外，导致前期建立链接时访问速度较慢，好在 ZeroTier 也提供了加速方法，就是创建自己的根服务器，也就是 Moon 节点。">
+<meta property="og:description" content="前言折腾过内网穿透的玩家，ngrok、frp 都应该不陌生了，自己搭也好，用别人提供的免费服务也好，配置过程都显得有些繁琐。 有幸了解到 ZeroTier 的存在，使用起来真是非常方便，可以很轻松的将自己的电子设备加入同一个局域网，但由于其根服务器在国外，导致前期建立链接时访问速度较慢，好在 ZeroTier 也提供了加速方法，就是创建自己的根服务器，也就是 Moon 节点。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/2020-03-16-16-26-37.png">
 <meta property="og:image" content="https://htlsmile.github.io/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/2020-03-16-17-17-37.png">
@@ -55,7 +55,7 @@
 <title>ZeroTier创建Moon节点 | 激不起的涟漪</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -105,7 +105,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -171,7 +171,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -292,76 +292,82 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>折腾过内网穿透的玩家，ngrok、frp 都应该不陌生了，自己搭也好，用别人提供的免费服务也好，配置过程都显得有些繁琐。</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>折腾过内网穿透的玩家，ngrok、frp 都应该不陌生了，自己搭也好，用别人提供的免费服务也好，配置过程都显得有些繁琐。</p>
 <p>有幸了解到 ZeroTier 的存在，使用起来真是非常方便，可以很轻松的将自己的电子设备加入同一个局域网，但由于其根服务器在国外，导致前期建立链接时访问速度较慢，好在 ZeroTier 也提供了加速方法，就是创建自己的根服务器，也就是 Moon 节点。</p>
 <span id="more"></span>
-<h3 id="ZeroTier"><a class="header-anchor" href="#ZeroTier">¶</a>ZeroTier</h3>
-<p><a target="_blank" rel="noopener" href="https://www.zerotier.com/manual/">ZeroTier 用户手册</a></p>
+
+<h3 id="ZeroTier"><a href="#ZeroTier" class="headerlink" title="ZeroTier"></a>ZeroTier</h3><p><a target="_blank" rel="noopener" href="https://www.zerotier.com/manual/">ZeroTier 用户手册</a></p>
 <blockquote>
 <p>ZeroTier is a smart Ethernet switch for planet Earth.</p>
 <p>It’s a distributed network hypervisor built atop a cryptographically secure global peer to peer network. It provides advanced network virtualization and management capabilities on par with an enterprise SDN switch, but across both local and wide area networks and connecting almost any kind of app or device.</p>
 </blockquote>
 <p>大白话：ZeroTier 组建了一个虚拟局域网。</p>
-<h3 id="创建-Moon-节点"><a class="header-anchor" href="#创建-Moon-节点">¶</a>创建 Moon 节点</h3>
-<p>官方指引：<a target="_blank" rel="noopener" href="https://www.zerotier.com/manual/#4_4"><strong>4.4. Creating Your Own Roots (a.k.a. Moons)</strong></a></p>
-<h4 id="前提"><a class="header-anchor" href="#前提">¶</a>前提</h4>
-<blockquote>
+<h3 id="创建-Moon-节点"><a href="#创建-Moon-节点" class="headerlink" title="创建 Moon 节点"></a>创建 Moon 节点</h3><p>官方指引：<a target="_blank" rel="noopener" href="https://www.zerotier.com/manual/#4_4"><strong>4.4. Creating Your Own Roots (a.k.a. Moons)</strong></a></p>
+<h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><blockquote>
 <p>The first step in creating a moon is to deploy a set of root servers. In most cases we recommend two. These are regular ZeroTier nodes, but ones that are always on and have static (physical) IP addresses. These static IPs could be global Internet IPs or physical intranet IPs that are only reachable internally. In the latter case your moon’s roots won’t work outside your office, but that doesn’t matter. Roaming nodes will just use planetary roots instead.</p>
 </blockquote>
 <p>按照官方的意思，我们得有一个云服务器（常开且有固定的公网 IP），例如，我就有一台腾讯云的云服务器，这就符合条件了，我用的操作系统是 <code>CentOS 7.6 64位</code> 。</p>
 <img data-src="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/2020-03-16-16-26-37.png" class="">
-<h4 id="配置-Moon-节点（Linux）"><a class="header-anchor" href="#配置-Moon-节点（Linux）">¶</a>配置 Moon 节点（Linux）</h4>
-<p>插播广告：用宝塔面板进行以下操作，简单高效，没开玩笑。ennnnnn，话说在后记中，有更详细的广告。</p>
+
+<h4 id="配置-Moon-节点（Linux）"><a href="#配置-Moon-节点（Linux）" class="headerlink" title="配置 Moon 节点（Linux）"></a>配置 Moon 节点（Linux）</h4><p>插播广告：用宝塔面板进行以下操作，简单高效，没开玩笑。ennnnnn，话说在后记中，有更详细的广告。</p>
 <ol>
 <li>登录云服务器，安装 ZeroTier，官方提供了简便的命令</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://install.zerotier.com | sudo bash</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>使用 <code>zerotier-idtool</code> 生成 Moon 配置文件</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/zerotier-one</span><br><span class="line">sudo zerotier-idtool initmoon identity.public &gt; moon.json</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>编辑 moon.json，你可以用 vim 或其他方式，在 <code>stableEndpoints</code> 里添加你云服务器的公网 IP，例如 <code>119.29.29.29</code> ，端口号默认为 <code>9993</code></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim moon.json</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;id&quot;</span>: <span class="string">&quot;deadbeef00&quot;</span>,</span><br><span class="line">  <span class="string">&quot;objtype&quot;</span>: <span class="string">&quot;world&quot;</span>,</span><br><span class="line">  <span class="string">&quot;roots&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;identity&quot;</span>: <span class="string">&quot;deadbeef00:0:34031483094...&quot;</span>,</span><br><span class="line">      <span class="string">&quot;stableEndpoints&quot;</span>: []</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;signingKey&quot;</span>: <span class="string">&quot;b324d84cec708d1b51d5ac03e75afba501a12e2124705ec34a614bf8f9b2c800f44d9824ad3ab2e3da1ac52ecb39ac052ce3f54e58d8944b52632eb6d671d0e0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;signingKey_SECRET&quot;</span>: <span class="string">&quot;ffc5dd0b2baf1c9b220d1c9cb39633f9e2151cf350a6d0e67c913f8952bafaf3671d2226388e1406e7670dc645851bf7d3643da701fd4599fedb9914c3918db3&quot;</span>,</span><br><span class="line">  <span class="string">&quot;updatesMustBeSignedBy&quot;</span>: <span class="string">&quot;b324d84cec708d1b51d5ac03e75afba501a12e2124705ec34a614bf8f9b2c800f44d9824ad3ab2e3da1ac52ecb39ac052ce3f54e58d8944b52632eb6d671d0e0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;worldType&quot;</span>: <span class="string">&quot;moon&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;stableEndpoints&quot;</span>: [ <span class="string">&quot;119.29.29.29/9993&quot;</span> ]</span><br></pre></td></tr></table></figure>
+
 <ol>
 <li>生成 Moon 文件，执行命令后,会在 <code>/var/lib/zerotier-one</code> 目录下生成一个 0 开头的 <code>.moon</code> 的文件，例如 <code>000000096a34c024.moon</code></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zerotier-idtool genmoon moon.json</span><br></pre></td></tr></table></figure>
+
 <ol start="5">
 <li>创建 <code>moons.d</code> 文件夹，并将 <code>.moon</code> 文件移入该文件夹内</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir moons.d</span><br><span class="line">mv 000000096a34c024.moon moons.d/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> moons.d</span><br><span class="line"><span class="built_in">mv</span> 000000096a34c024.moon moons.d/</span><br></pre></td></tr></table></figure>
+
 <ol start="6">
 <li>重启 <code>zerotier-one</code> 服务，或者直接重启云服务器，就完成配置了</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service zerotier-one restart</span><br></pre></td></tr></table></figure>
-<h3 id="使用-Moon-节点（Win-10-）"><a class="header-anchor" href="#使用-Moon-节点（Win-10-）">¶</a>使用 Moon 节点（Win 10 ）</h3>
-<h4 id="配置-Moon-节点"><a class="header-anchor" href="#配置-Moon-节点">¶</a>配置 Moon 节点</h4>
-<ol>
+
+<h3 id="使用-Moon-节点（Win-10-）"><a href="#使用-Moon-节点（Win-10-）" class="headerlink" title="使用 Moon 节点（Win 10 ）"></a>使用 Moon 节点（Win 10 ）</h3><h4 id="配置-Moon-节点"><a href="#配置-Moon-节点" class="headerlink" title="配置 Moon 节点"></a>配置 Moon 节点</h4><ol>
 <li>将云服务器中生成的 <code>.moon</code> 文件下载出来，例如用宝塔面板进行下载</li>
 </ol>
 <img data-src="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/2020-03-16-17-17-37.png" class="">
+
 <ol start="2">
 <li>进入 <code>C:\ProgramData\ZeroTier\One\</code> 目录，同样创建 <code>moons.d</code> 文件夹，并将 <code>.moon</code> 文件移入该文件夹内</li>
 </ol>
 <img data-src="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/2020-03-16-16-54-16.png" class="">
+
 <ol start="3">
 <li>打开任务管理器，重启 <code>ZeroTierOneService</code> 服务</li>
 </ol>
 <img data-src="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/2020-03-16-16-56-20.png" class="">
-<h4 id="测试-Moon-节点"><a class="header-anchor" href="#测试-Moon-节点">¶</a>测试 Moon 节点</h4>
-<p>用管理员身份启动 CMD 或 Powershell，执行命令，如何有出现你的 Moon 节点，就成功了。</p>
+
+<h4 id="测试-Moon-节点"><a href="#测试-Moon-节点" class="headerlink" title="测试 Moon 节点"></a>测试 Moon 节点</h4><p>用管理员身份启动 CMD 或 Powershell，执行命令，如何有出现你的 Moon 节点，就成功了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier-cli listpeers</span><br></pre></td></tr></table></figure>
+
 <img data-src="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/2020-03-16-17-14-39.png" class="">
-<h3 id="后记"><a class="header-anchor" href="#后记">¶</a>后记</h3>
-<p>此文参考了官方用户手册，以及知乎 Doitky 的文章——<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96137545">云服务器配置 ZeroTier one Moon 节点</a></p>
+
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>此文参考了官方用户手册，以及知乎 Doitky 的文章——<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96137545">云服务器配置 ZeroTier one Moon 节点</a></p>
 <p>另外，推广一下 <a target="_blank" rel="noopener" href="https://www.bt.cn/">宝塔面板</a></p>
 <blockquote>
-<p>宝塔 Linux 面板是提升运维效率的服务器管理软件，支持一键 LAMP/LNMP/集群/监控/网站/FTP/数据库/JAVA 等 100 多项服务器管理功能。</p>
+<p>宝塔 Linux 面板是提升运维效率的服务器管理软件，支持一键 LAMP&#x2F;LNMP&#x2F;集群&#x2F;监控&#x2F;网站&#x2F;FTP&#x2F;数据库&#x2F;JAVA 等 100 多项服务器管理功能。</p>
 <p>有 20 个人的专业团队研发及维护，经过 200 多个版本的迭代，功能全，少出错且足够安全，已获得全球百万用户认可安装。运维要高效，装宝塔。</p>
 <p>宝塔服务器面板，一键全能部署及管理，送你 3188 元礼包，<a target="_blank" rel="noopener" href="https://www.bt.cn/?invite_code=MV9kaG5idHQ="><strong>点我领取</strong></a></p>
 </blockquote>
@@ -447,7 +453,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -458,13 +464,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">123k</span>
+    <span title="站点总字数">126k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:52</span>
+    <span title="站点阅读时长">1:55</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -507,7 +513,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 

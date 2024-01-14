@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -17,18 +17,18 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="前言 笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 RT-AC86U，具有koolshare软件中心，价格实在是不便宜，不过平心而论，强得很（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。">
+    <meta name="description" content="前言笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 RT-AC86U，具有koolshare软件中心，价格实在是不便宜，不过平心而论，强得很（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="路由器（梅林固件）实现局域网电脑远程开机">
 <meta property="og:url" content="https://htlsmile.github.io/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="前言 笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 RT-AC86U，具有koolshare软件中心，价格实在是不便宜，不过平心而论，强得很（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。">
+<meta property="og:description" content="前言笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 RT-AC86U，具有koolshare软件中心，价格实在是不便宜，不过平心而论，强得很（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://htlsmile.github.io/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/iPhone_13_Pro.png">
 <meta property="og:image" content="https://htlsmile.github.io/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-20-54-06.png">
@@ -57,7 +57,7 @@
 <title>路由器（梅林固件）实现局域网电脑远程开机 | 激不起的涟漪</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -107,7 +107,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">网卡支持远程唤醒</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">常开的路由器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">公网访问路由器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">内网穿透</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DDNSTO"><span class="nav-number">6.1.</span> <span class="nav-text">DDNSTO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zerotier"><span class="nav-number">6.2.</span> <span class="nav-text">Zerotier</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">用脚本唤醒</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AFSSH"><span class="nav-number">7.1.</span> <span class="nav-text">开启SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81"><span class="nav-number">7.2.</span> <span class="nav-text">分析网页源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99"><span class="nav-number">7.3.</span> <span class="nav-text">脚本编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%88%E6%9E%9C"><span class="nav-number">7.4.</span> <span class="nav-text">使用效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E8%BF%9E%E6%8E%A5"><span class="nav-number">7.4.1.</span> <span class="nav-text">尝试连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-number">7.4.2.</span> <span class="nav-text">连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5"><span class="nav-number">7.4.3.</span> <span class="nav-text">连接失败</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E5%8D%A1%E6%94%AF%E6%8C%81%E8%BF%9C%E7%A8%8B%E5%94%A4%E9%86%92"><span class="nav-number">3.</span> <span class="nav-text">网卡支持远程唤醒</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E5%BC%80%E7%9A%84%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">常开的路由器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">公网访问路由器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="nav-number">6.</span> <span class="nav-text">内网穿透</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DDNSTO"><span class="nav-number">6.1.</span> <span class="nav-text">DDNSTO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zerotier"><span class="nav-number">6.2.</span> <span class="nav-text">Zerotier</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E8%84%9A%E6%9C%AC%E5%94%A4%E9%86%92"><span class="nav-number">7.</span> <span class="nav-text">用脚本唤醒</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AFSSH"><span class="nav-number">7.1.</span> <span class="nav-text">开启SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81"><span class="nav-number">7.2.</span> <span class="nav-text">分析网页源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99"><span class="nav-number">7.3.</span> <span class="nav-text">脚本编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%88%E6%9E%9C"><span class="nav-number">7.4.</span> <span class="nav-text">使用效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E8%BF%9E%E6%8E%A5"><span class="nav-number">7.4.1.</span> <span class="nav-text">尝试连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-number">7.4.2.</span> <span class="nav-text">连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5"><span class="nav-number">7.4.3.</span> <span class="nav-text">连接失败</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">8.</span> <span class="nav-text">后记</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -173,7 +173,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -294,10 +294,11 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>前言</h1>
-<p>笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 <code>RT-AC86U</code>，具有koolshare软件中心，价格实在是不便宜，不过平心而论，<strong>强得很</strong>（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>笔者是从淘宝购得已刷好梅林固件的华硕路由器，型号为 <code>RT-AC86U</code>，具有koolshare软件中心，价格实在是不便宜，不过平心而论，<strong>强得很</strong>（借用iPhone 13的宣传语），今天就来介绍一个小功能，远程开机。我个人时常需要用笔记本电脑唤醒家里的台式机，来获取一些存货。</p>
 <span id="more"></span>
+
 <img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/iPhone_13_Pro.png" class="" title="iPhone 13 Pro">
+
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.asuswrt-merlin.net/">Asuswrt-Merlin</a>: <strong>Asuswrt-Merlin</strong> is a <strong>third party alternative firmware</strong> for Asus routers, with a special emphasis on tweaks and fixes rather than radical changes or collecting as many features as possible.</li>
 <li><a target="_blank" rel="noopener" href="https://www.asuswrt-merlin.net/">梅林固件</a>：<strong>Asuswrt-Merlin</strong> 是华硕路由器的<strong>第三方替代固件</strong>，特别强调轻微调整和修复，而不是激进的更改或收集尽可能多的功能。</li>
@@ -305,39 +306,34 @@
 <li>远程开机（Wake on LAN，WOL）：俗称远程唤醒，是现在很多网卡都支持的功能。而远程唤醒的实现，主要是向目标主机发送特殊格式的数据包，是AMD公司制作的MagicPacket这套软件以生成网络唤醒所需要的特殊数据包，俗称魔术包（Magic Packet）。MagicPacket格式虽然只是AMD公司开发推广的技术，并非世界公认的标准，但是仍然受到很多网卡制造商的支持，因此许多具有网络唤醒功能的网卡都能与之兼容。</li>
 </ul>
 <hr>
-<h1>实现思路</h1>
-<p>要想远程打开家里的电脑，首先电脑的主板和网卡必须都支持远程唤醒功能，其次得有个常开的路由器，最后要在公网上可以访问到这个路由器。当然，你如果有钱直接买向日葵的开机硬件产品也行，不过那些产品通常也需要连接WiFi。</p>
-<h1>网卡支持远程唤醒</h1>
-<p>在有线网卡的电源管理选项卡中，按照这个界面勾选即可，未勾选的“只允许幻数据包唤醒计算机”，代表着网络中的其他通信也可以唤醒计算机。</p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><p>要想远程打开家里的电脑，首先电脑的主板和网卡必须都支持远程唤醒功能，其次得有个常开的路由器，最后要在公网上可以访问到这个路由器。当然，你如果有钱直接买向日葵的开机硬件产品也行，不过那些产品通常也需要连接WiFi。</p>
+<h1 id="网卡支持远程唤醒"><a href="#网卡支持远程唤醒" class="headerlink" title="网卡支持远程唤醒"></a>网卡支持远程唤醒</h1><p>在有线网卡的电源管理选项卡中，按照这个界面勾选即可，未勾选的“只允许幻数据包唤醒计算机”，代表着网络中的其他通信也可以唤醒计算机。</p>
 <img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-20-54-06.png" class="" title="网卡电源管理">
-<h1>常开的路由器</h1>
-<p>给路由器24小时供电即可，如果路由器长时间运行不稳定，通常可以设置定时重启功能，非常有效。</p>
-<h1>公网访问路由器</h1>
-<p>你的家庭宽带如果可以直接获得公网IP，静态的最方便，动态的也可以使用DDNS功能，这一步就完成了。</p>
+
+<h1 id="常开的路由器"><a href="#常开的路由器" class="headerlink" title="常开的路由器"></a>常开的路由器</h1><p>给路由器24小时供电即可，如果路由器长时间运行不稳定，通常可以设置定时重启功能，非常有效。</p>
+<h1 id="公网访问路由器"><a href="#公网访问路由器" class="headerlink" title="公网访问路由器"></a>公网访问路由器</h1><p>你的家庭宽带如果可以直接获得公网IP，静态的最方便，动态的也可以使用DDNS功能，这一步就完成了。</p>
 <p>但通常都不会有公网IP，所以引出了内网穿透的概念。</p>
-<h1>内网穿透</h1>
-<h2 id="DDNSTO"><a class="header-anchor" href="#DDNSTO">¶</a>DDNSTO</h2>
-<p><a target="_blank" rel="noopener" href="https://www.ddnsto.com/zh/guide/koolshare_merlin.html">DDNSTO使用教程</a></p>
+<h1 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h1><h2 id="DDNSTO"><a href="#DDNSTO" class="headerlink" title="DDNSTO"></a>DDNSTO</h2><p><a target="_blank" rel="noopener" href="https://www.ddnsto.com/zh/guide/koolshare_merlin.html">DDNSTO使用教程</a></p>
 <img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-03-22.png" class="" title="DDNSTO">
+
 <p>笔者之前一直使用的都是DDNSTO，远程登录路由器，再从路由器的网络工具——通过网络（LAN）唤醒功能去启动家里的计算机。</p>
 <img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-11-40.png" class="" title="通过网络（LAN）唤醒">
+
 <img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-13-10.png" class="" title="DDNSTO购买通道">
+
 <p>不过目前DDNSTO的服务器得每隔七天去主动申请一次免费服务才行，你也可以付费购买长期服务，另外，使用时可能需要微信扫码认证，略嫌麻烦，那个<strong>限时活动</strong>也戳伤了我，而后切换到了下面这种方式。</p>
-<h2 id="Zerotier"><a class="header-anchor" href="#Zerotier">¶</a>Zerotier</h2>
-<p>同样，在软件中心，可以安装Zerotier，然后在笔记本上也装上，台式机也可以装上，都连入同一个网络中，为了给Zerotier加速，可以参考以前的文章：<a href="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/" title="ZeroTier创建Moon节点">ZeroTier创建Moon节点</a>。</p>
+<h2 id="Zerotier"><a href="#Zerotier" class="headerlink" title="Zerotier"></a>Zerotier</h2><p>同样，在软件中心，可以安装Zerotier，然后在笔记本上也装上，台式机也可以装上，都连入同一个网络中，为了给Zerotier加速，可以参考以前的文章：<a href="/2020/03/16/ZeroTier%E5%88%9B%E5%BB%BAMoon%E8%8A%82%E7%82%B9/" title="ZeroTier创建Moon节点">ZeroTier创建Moon节点</a>。</p>
 <p>而后，你就可以直接输入在Zerotier上分配给路由器的IP地址，从而访问到路由器上了，再通过路由器的界面去唤醒。</p>
-<h1>用脚本唤醒</h1>
-<p>但我懒得很，连打开浏览器界面按按钮都觉得费劲，于是乎，便去研究了路由器是如何唤醒计算机的，写了个简单脚本，实现启动脚本便唤醒指定计算机的功能。</p>
-<h2 id="开启SSH"><a class="header-anchor" href="#开启SSH">¶</a>开启SSH</h2>
-<p>不入虎穴焉得虎子，我们先进入路由器的系统管理——系统设置界面，开启SSH功能。</p>
+<h1 id="用脚本唤醒"><a href="#用脚本唤醒" class="headerlink" title="用脚本唤醒"></a>用脚本唤醒</h1><p>但我懒得很，连打开浏览器界面按按钮都觉得费劲，于是乎，便去研究了路由器是如何唤醒计算机的，写了个简单脚本，实现启动脚本便唤醒指定计算机的功能。</p>
+<h2 id="开启SSH"><a href="#开启SSH" class="headerlink" title="开启SSH"></a>开启SSH</h2><p>不入虎穴焉得虎子，我们先进入路由器的系统管理——系统设置界面，开启SSH功能。</p>
 <img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-25-38.png" class="" title="SSH服务">
+
 <p>在笔记本上用 <code>ssh-keygen</code> 生成 <code>rsa</code> 的密钥，然后将公钥内容填入授权密钥中，即可实现免密码访问。</p>
-<h2 id="分析网页源码"><a class="header-anchor" href="#分析网页源码">¶</a>分析网页源码</h2>
-<p>用SSH进入路由器后，即可查看 <code>/www/Main_WOL_Content.asp</code> 的内容。</p>
+<h2 id="分析网页源码"><a href="#分析网页源码" class="headerlink" title="分析网页源码"></a>分析网页源码</h2><p>用SSH进入路由器后，即可查看 <code>/www/Main_WOL_Content.asp</code> 的内容。</p>
 <img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/2021-09-24-21-35-44.png" class="" title="Main_WOL_Content">
+
 <p>通过分析页面源码，可以知道实际上是通过 <code>/usr/sbin/ether-wake -i br0 -b 00:00:00:00:00:00</code> 这个命令去唤醒计算机的，最后一段便是网卡的 MAC地址。</p>
-<h2 id="脚本编写"><a class="header-anchor" href="#脚本编写">¶</a>脚本编写</h2>
-<p>一个简易脚本就新鲜出炉了，提供一个下载链接，也可以按照下面的方式手动创建。</p>
+<h2 id="脚本编写"><a href="#脚本编写" class="headerlink" title="脚本编写"></a>脚本编写</h2><p>一个简易脚本就新鲜出炉了，提供一个下载链接，也可以按照下面的方式手动创建。</p>
 <p>下载链接：<a href="/download/WakeOnLan.cmd">WakeOnLan.cmd</a></p>
 <p>手动创建：</p>
 <ol>
@@ -349,16 +345,15 @@
 </ol>
 <p>如果之前在路由器SSH服务中，你已经设置好了授权密钥，那么双击脚本即可实现无密码确认，直接唤醒计算机；如果没有设置SSH公钥，你可以按照提示输入密码。</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">:: *******Begin Comment**************</span><br><span class="line">::</span><br><span class="line">:: @description     This program attempts to wake up the computer through the Asuswrt-Merlin router.</span><br><span class="line">:: @author          htlsmile</span><br><span class="line">:: @<span class="built_in">date</span>            <span class="number">2021</span>/<span class="number">09</span>/<span class="number">25</span></span><br><span class="line">::</span><br><span class="line">:: *******End   Comment**************</span><br><span class="line"></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> router_username=htlsmile</span><br><span class="line"><span class="built_in">set</span> router_ip=<span class="number">172</span>.<span class="number">23</span>.<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="built_in">set</span> mac_address=<span class="number">98</span>:EE:CB:B1:C5:<span class="number">07</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">title</span> WakeOnLan</span><br><span class="line"><span class="built_in">color</span> <span class="number">1</span>F</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">437</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> &quot;  _    _ _______ _       _____ __  __ _____ _      ______ </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |__   __| |     / ____|  \/  |_   _| |    |  ____|</span><br><span class="line"><span class="built_in">echo</span> &quot; | |__| |  | |  | |    | (___ | \  / | | | | |    | |__   </span><br><span class="line"><span class="built_in">echo</span> &quot; |  __  |  | |  | |     \___ \| |\/| | | | | |    |  __|  </span><br><span class="line"><span class="built_in">echo</span> &quot; | |  | |  | |  | |____ ____) | |  | |_| |_| |____| |____ </span><br><span class="line"><span class="built_in">echo</span> &quot; |_|  |_|  |_|  |______|_____/|_|  |_|_____|______|______|</span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"><span class="built_in">echo</span> &quot;                                                          </span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"></span><br><span class="line">:<span class="built_in">Ping</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Try connecting to the router[<span class="variable">%router_ip%</span>]...</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">ping</span> -n <span class="number">1</span> <span class="variable">%router_ip%</span> &gt;<span class="built_in">nul</span></span><br><span class="line"></span><br><span class="line">:: 在批处理程序中使用 <span class="keyword">ERRORLEVEL</span> 值时，必须按降序列出它们。</span><br><span class="line">:: https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/choice#remarks</span><br><span class="line"></span><br><span class="line">:: <span class="keyword">if</span> 与 <span class="keyword">ERRORLEVEL</span> 的用法</span><br><span class="line">:: https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/<span class="keyword">if</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">1</span> <span class="keyword">goto</span> NotConnected</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">0</span> <span class="keyword">goto</span> Connected</span><br><span class="line"></span><br><span class="line">:NotConnected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">4</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Router[<span class="variable">%router_ip%</span>] Unreachable !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:Connected</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">2</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Router[<span class="variable">%router_ip%</span>] Reachable !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Wake up MAC[<span class="variable">%mac_address%</span>]</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line">ssh -l <span class="variable">%router_username%</span> <span class="variable">%router_ip%</span> &quot;/usr/sbin/ether-wake -i br0 -b <span class="variable">%mac_address%</span>; <span class="keyword">exit</span>&quot;</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">ERRORLEVEL</span> <span class="number">1</span> <span class="keyword">goto</span> SSHError</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        Wake up complete!</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:SSHError</span><br><span class="line"></span><br><span class="line"><span class="built_in">color</span> <span class="number">4</span>F</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>        ssh [<span class="variable">%router_ip%</span>] error !</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="keyword">goto</span> ExitCmd</span><br><span class="line"></span><br><span class="line">:ExitCmd</span><br><span class="line">timeout /T <span class="number">5</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用效果"><a class="header-anchor" href="#使用效果">¶</a>使用效果</h2>
-<h3 id="尝试连接"><a class="header-anchor" href="#尝试连接">¶</a>尝试连接</h3>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-36.png" class="" title="WakeOnLan">
-<h3 id="连接成功"><a class="header-anchor" href="#连接成功">¶</a>连接成功</h3>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-26_08-58-33.png" class="" title="WakeOnLan">
-<h3 id="连接失败"><a class="header-anchor" href="#连接失败">¶</a>连接失败</h3>
-<img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-52.png" class="" title="WakeOnLan">
+
+<h2 id="使用效果"><a href="#使用效果" class="headerlink" title="使用效果"></a>使用效果</h2><h3 id="尝试连接"><a href="#尝试连接" class="headerlink" title="尝试连接"></a>尝试连接</h3><img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-36.png" class="" title="WakeOnLan">
+
+<h3 id="连接成功"><a href="#连接成功" class="headerlink" title="连接成功"></a>连接成功</h3><img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-26_08-58-33.png" class="" title="WakeOnLan">
+
+<h3 id="连接失败"><a href="#连接失败" class="headerlink" title="连接失败"></a>连接失败</h3><img data-src="/2021/09/24/%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88%E6%A2%85%E6%9E%97%E5%9B%BA%E4%BB%B6%EF%BC%89%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA/Snipaste_2021-09-25_20-07-52.png" class="" title="WakeOnLan">
+
 <hr>
-<h1>后记</h1>
-<p>果然懒惰才能促使人进步，尽管写下这篇文章都花了两个小时，顺带一提，脚本中的那个字符画，是在 <a target="_blank" rel="noopener" href="http://patorjk.com/software/taag/"><strong>Text to ASCII Art Generator (TAAG)</strong></a> 中生成的，好用得很。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>果然懒惰才能促使人进步，尽管写下这篇文章都花了两个小时，顺带一提，脚本中的那个字符画，是在 <a target="_blank" rel="noopener" href="http://patorjk.com/software/taag/"><strong>Text to ASCII Art Generator (TAAG)</strong></a> 中生成的，好用得很。</p>
 
     </div>
 
@@ -435,7 +430,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -446,13 +441,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">123k</span>
+    <span title="站点总字数">126k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:52</span>
+    <span title="站点阅读时长">1:55</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -495,7 +490,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 

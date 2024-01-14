@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -17,18 +17,18 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="前言 现在网上有不少分享的资源都是一些二道贩子，在互联网孤岛化的趋势下，谋求蝇头小利，把不知道从哪倒腾来的资源打个压缩包，加个密码，就打算卖钱。 通常这个有密码的压缩包会和一个说明文件一同再被压缩一次，生成一个没有密码的压缩包，然后就在网上开始扩散。 当你下载了压缩包解开后，发现说明文件里指向一个链接，要求你付费获得密码，价格不算贵但也不便宜，一般都是9.9元。 提供这种服务的平台，我见过的有八图">
+    <meta name="description" content="前言现在网上有不少分享的资源都是一些二道贩子，在互联网孤岛化的趋势下，谋求蝇头小利，把不知道从哪倒腾来的资源打个压缩包，加个密码，就打算卖钱。 通常这个有密码的压缩包会和一个说明文件一同再被压缩一次，生成一个没有密码的压缩包，然后就在网上开始扩散。 当你下载了压缩包解开后，发现说明文件里指向一个链接，要求你付费获得密码，价格不算贵但也不便宜，一般都是9.9元。 提供这种服务的平台，我见过的有八图片">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用John和hashcat破解压缩包密码">
 <meta property="og:url" content="https://htlsmile.github.io/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/index.html">
 <meta property="og:site_name" content="激不起的涟漪">
-<meta property="og:description" content="前言 现在网上有不少分享的资源都是一些二道贩子，在互联网孤岛化的趋势下，谋求蝇头小利，把不知道从哪倒腾来的资源打个压缩包，加个密码，就打算卖钱。 通常这个有密码的压缩包会和一个说明文件一同再被压缩一次，生成一个没有密码的压缩包，然后就在网上开始扩散。 当你下载了压缩包解开后，发现说明文件里指向一个链接，要求你付费获得密码，价格不算贵但也不便宜，一般都是9.9元。 提供这种服务的平台，我见过的有八图">
+<meta property="og:description" content="前言现在网上有不少分享的资源都是一些二道贩子，在互联网孤岛化的趋势下，谋求蝇头小利，把不知道从哪倒腾来的资源打个压缩包，加个密码，就打算卖钱。 通常这个有密码的压缩包会和一个说明文件一同再被压缩一次，生成一个没有密码的压缩包，然后就在网上开始扩散。 当你下载了压缩包解开后，发现说明文件里指向一个链接，要求你付费获得密码，价格不算贵但也不便宜，一般都是9.9元。 提供这种服务的平台，我见过的有八图片">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://htlsmile.github.io/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-19-28-30.png">
 <meta property="og:image" content="https://htlsmile.github.io/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-19-27-15.png">
@@ -68,7 +68,7 @@
 <title>使用John和hashcat破解压缩包密码 | 激不起的涟漪</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -118,7 +118,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -169,7 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">破解流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">开始实操</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">破解流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%AE%9E%E6%93%8D"><span class="nav-number">4.</span> <span class="nav-text">开始实操</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -184,7 +184,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -305,90 +305,103 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>前言</h1>
-<p>现在网上有不少分享的资源都是一些二道贩子，在互联网孤岛化的趋势下，谋求蝇头小利，把不知道从哪倒腾来的资源打个压缩包，加个密码，就打算卖钱。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>现在网上有不少分享的资源都是一些二道贩子，在互联网孤岛化的趋势下，谋求蝇头小利，把不知道从哪倒腾来的资源打个压缩包，加个密码，就打算卖钱。</p>
 <p>通常这个有密码的压缩包会和一个说明文件一同再被压缩一次，生成一个没有密码的压缩包，然后就在网上开始扩散。</p>
 <p>当你下载了压缩包解开后，发现说明文件里指向一个链接，要求你付费获得密码，价格不算贵但也不便宜，一般都是9.9元。</p>
 <p>提供这种服务的平台，我见过的有<a target="_blank" rel="noopener" href="https://www.8tupian.com/">八图片</a>、<a target="_blank" rel="noopener" href="https://www.youpumao.com/">有铺猫</a>之类的。</p>
 <span id="more"></span>
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-19-28-30.png" class="" title="八图片">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-19-27-15.png" class="" title="有铺猫">
+
 <p>如果是作者本人，开启了捐赠通道，我可能还会考虑一下，而对于这些二道贩子，钱是万万不可能付的。</p>
 <hr>
-<h1>破解流程</h1>
-<ol>
+<h1 id="破解流程"><a href="#破解流程" class="headerlink" title="破解流程"></a>破解流程</h1><ol>
 <li>使用<a target="_blank" rel="noopener" href="https://www.openwall.com/john/">John the Ripper</a>获取文件哈希(hash)</li>
 <li>使用<a target="_blank" rel="noopener" href="https://hashcat.net/hashcat/">hashcat</a>计算哈希(hash)获得密码</li>
 <li>都得到密码了，该干嘛就干嘛去吧</li>
 </ol>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-19-36-03.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-20-00-19.png" class="">
-<h1>准备工作</h1>
-<ul>
+
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
 <li>将John的run目录添加到环境变量path里，方便在其他地方通过命令行调用</li>
 </ul>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-20-04-52.png" class="">
+
 <ul>
-<li><s>将hashcat目录添加到环境变量path里，方便在其他地方通过命令行调用</s></li>
+<li><del>将hashcat目录添加到环境变量path里，方便在其他地方通过命令行调用</del></li>
 </ul>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-20-12-35.png" class="">
+
 <ul>
 <li>实测hashcat依赖了当前目录的OpenCL目录，得进hashcat.exe的所在目录里运行</li>
 </ul>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-10-01.png" class="">
+
 <ul>
 <li>hashcat需要使用GPU计算，假设你和我一样用的是NVIDIA显卡，那就按照要求去安装<code>&quot;NVIDIA Driver&quot; (440.64 or later) and &quot;CUDA Toolkit&quot; (9.0 or later)</code></li>
 </ul>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-07-46.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-11-32.png" class="">
+
 <ul>
 <li><a target="_blank" rel="noopener" href="https://hashcat.net/wiki/doku.php?id=hashcat">hashcat的参数</a>在需要使用时再去查表</li>
 </ul>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-13-50.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-14-21.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-15-10.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-44-13.png" class="">
-<h1>开始实操</h1>
-<ol>
+
+<h1 id="开始实操"><a href="#开始实操" class="headerlink" title="开始实操"></a>开始实操</h1><ol>
 <li>自己创建一个带密码的压缩包</li>
 </ol>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-20-47-43.png" class="">
+
 <ol start="2">
 <li>打开cmd或者powershell，输入<code>rar2john.exe .\test.rar</code>，也可以直接将结果保存至文件中<code>rar2john.exe .\test.rar &gt; test.hash</code></li>
 </ol>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-20-50-05.png" class="">
+
 <ol start="3">
 <li>将<code>test.hash</code>内容中的文件名及冒号删除，保留其余部分</li>
 </ol>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-20-53-54.png" class="">
+
 <ol start="4">
 <li>进入hashcat.exe所在的目录，使用hashcat对rar5类型的hash进行破解</li>
 </ol>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /d &quot;D:\Programs\hashcat-<span class="number">6</span>.<span class="number">2</span>.<span class="number">6</span>\&quot;</span><br><span class="line">hashcat -m <span class="number">13000</span> -w <span class="number">4</span> -a <span class="number">3</span> --session test_session -o &quot;E:\Downloads\test.log&quot; &quot;E:\Downloads\test.hash&quot;</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
-<th>Options Short / Long</th>
+<th>Options Short &#x2F; Long</th>
 <th>Type</th>
 <th>Description</th>
 <th>Example</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>-m, --hash-type</td>
+<tbody><tr>
+<td>-m, –hash-type</td>
 <td>Num</td>
 <td>Hash-type, references below (otherwise autodetect)</td>
 <td>-m 1000</td>
 </tr>
 <tr>
-<td>-w, --workload-profile</td>
+<td>-w, –workload-profile</td>
 <td>Num</td>
 <td>Enable a specific workload profile, see pool below</td>
 <td>-w 3</td>
 </tr>
 <tr>
-<td>-a, --attack-mode</td>
+<td>-a, –attack-mode</td>
 <td>Num</td>
 <td>Attack-mode, see references below</td>
 <td>-a 3</td>
@@ -397,33 +410,36 @@
 <td>–session</td>
 <td>Str</td>
 <td>Define specific session name</td>
-<td>–session=mysession</td>
+<td>–session&#x3D;mysession</td>
 </tr>
 <tr>
 <td>–restore</td>
 <td></td>
-<td>Restore session from --session</td>
+<td>Restore session from –session</td>
 <td></td>
 </tr>
 <tr>
-<td>-o, --outfile</td>
+<td>-o, –outfile</td>
 <td>File</td>
 <td>Define outfile for recovered hash</td>
 <td>-o outfile.txt</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-28-17.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-29-18.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-38-28.png" class="">
+
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-21-50-53.png" class="">
+
 <ol start="5">
 <li>耐心等待后，会获得结果，冒号后面的字符就是密码：<code>12341234</code></li>
 </ol>
 <img data-src="/2023/11/26/%E4%BD%BF%E7%94%A8John%E5%92%8Chashcat%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/2023-11-26-22-16-47.png" class="">
+
 <hr>
-<h1>后记</h1>
-<p>怀念那个论坛盛行的年代，大家都是无私分享，感谢当年那些愿意无偿照顾小白的大神们。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>怀念那个论坛盛行的年代，大家都是无私分享，感谢当年那些愿意无偿照顾小白的大神们。</p>
 
     </div>
 
@@ -477,6 +493,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/01/14/TotalCommander%E9%85%8D%E7%BD%AE/" rel="next" title="TotalCommander配置">
+                  TotalCommander配置 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -497,7 +516,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -508,13 +527,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">123k</span>
+    <span title="站点总字数">126k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:52</span>
+    <span title="站点阅读时长">1:55</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -557,7 +576,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
