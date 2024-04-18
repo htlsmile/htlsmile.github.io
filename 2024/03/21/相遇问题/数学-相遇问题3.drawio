@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" modified="2024-03-21T03:26:33.432Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0" etag="bGalj4emnyuxCWy28z-8" version="24.0.7" type="device">
+  <diagram id="2Pl5HlIxxQb_QpP7JWfI" name="第 1 页">
+    <mxGraphModel dx="2603" dy="827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-1" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;A&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; B&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="462.5" y="284" width="950" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-3" value="" style="shape=crossbar;whiteSpace=wrap;html=1;rounded=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="462.5" y="244" width="950" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-4" value="S&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;sub&gt;AB&lt;/sub&gt;&lt;/font&gt;&amp;nbsp;= X米&lt;div&gt;T&lt;sub&gt;1&lt;/sub&gt;是第一次相遇的时间&lt;/div&gt;&lt;div&gt;T&lt;sub&gt;2&lt;/sub&gt;是第一次相遇后，乙追上甲的时间&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="792.5" y="144" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-5" value="" style="shape=singleArrow;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="462.5" y="388" width="237.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-6" value="" style="shape=singleArrow;direction=west;whiteSpace=wrap;html=1;fillColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="700" y="388" width="712.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-7" value="" style="shape=actor;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="402.5" y="344" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-8" value="" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="1442.5" y="344" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-9" value="甲" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="390" y="294" width="65" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-10" value="乙" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="1430" y="294" width="65" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-16" value="800 = V&lt;sub&gt;甲&lt;/sub&gt; * T&lt;sub&gt;1&lt;/sub&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="510" y="364" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-18" value="" style="shape=crossbar;whiteSpace=wrap;html=1;rounded=1;direction=south;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="1402.5" y="204" width="20" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-23" value="V&lt;sub&gt;乙&lt;/sub&gt; * T&lt;sub&gt;1&lt;/sub&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="1290" y="364" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-29" value="" style="shape=crossbar;whiteSpace=wrap;html=1;rounded=1;direction=south;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="452" y="204" width="20" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="sXxsu7FE6Y24Ids7-lZW-36" value="甲乙二人分别从A、B两地出发相向而行，到达目的地后马上掉头回到出发地，他们第一次相遇距A地800米，第二次距B地500米，A、B两地相距多少米？" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=left;whiteSpace=wrap;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="492.5" y="70" width="900" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n7QTEbfh9rYQXFdFDrmp-6" value="&lt;div&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;X&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;= (V&lt;/span&gt;&lt;sub style=&quot;text-wrap: nowrap;&quot;&gt;甲&lt;/sub&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;+V&lt;/span&gt;&lt;sub style=&quot;text-wrap: nowrap;&quot;&gt;乙&lt;/sub&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;) * T&lt;/span&gt;&lt;sub style=&quot;text-wrap: nowrap;&quot;&gt;1&lt;/sub&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&amp;nbsp;= 800 + 800 * V&lt;/span&gt;&lt;sub style=&quot;text-wrap: nowrap;&quot;&gt;乙&lt;/sub&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&amp;nbsp;/ V&lt;/span&gt;&lt;sub style=&quot;text-wrap: nowrap;&quot;&gt;甲&lt;/sub&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;消去T&lt;sub&gt;1&lt;/sub&gt;、T&lt;sub&gt;2&lt;/sub&gt;，只保留V&lt;sub&gt;甲&lt;/sub&gt;和V&lt;sub&gt;乙&lt;/sub&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;11 * V&lt;/span&gt;&lt;sub style=&quot;background-color: initial;&quot;&gt;甲&lt;/sub&gt;&lt;span style=&quot;background-color: initial;&quot;&gt; / V&lt;/span&gt;&lt;sub style=&quot;background-color: initial;&quot;&gt;乙&lt;/sub&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;- 8 * V&lt;/span&gt;&lt;sub style=&quot;background-color: initial;&quot;&gt;乙&lt;/sub&gt;&lt;span style=&quot;background-color: initial;&quot;&gt; / V&lt;/span&gt;&lt;sub style=&quot;background-color: initial;&quot;&gt;甲&lt;/sub&gt;&lt;span style=&quot;background-color: initial;&quot;&gt; + 13 = 0&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;设 V&lt;sub&gt;乙&lt;/sub&gt;&amp;nbsp;/ V&lt;sub&gt;甲 &lt;/sub&gt;= H, 在此H应大于1&lt;/div&gt;&lt;div&gt;8H&lt;sup&gt;2&lt;/sup&gt; - 13H - 11 = 0&lt;br&gt;&lt;div&gt;求得 H ≈ 2.24,&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;X ≈&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;2592.366&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;whiteSpace=wrap;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="-90" y="204" width="450" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-1" value="" style="shape=singleArrow;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="484" width="580" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-2" value="" style="shape=singleArrow;direction=west;whiteSpace=wrap;html=1;fillColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="-118" y="484" width="818" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-4" value="" style="shape=singleArrow;direction=west;whiteSpace=wrap;html=1;fillColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;flipH=1;" vertex="1" parent="1">
+          <mxGeometry x="462" y="574" width="818" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-5" value="V&lt;sub&gt;甲&lt;/sub&gt; * T&lt;sub&gt;2&lt;/sub&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="892.5" y="464" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-6" value="V&lt;sub&gt;甲&lt;/sub&gt; * T&lt;sub&gt;1&lt;/sub&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="464" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-7" value="V&lt;sub&gt;乙&lt;/sub&gt;&amp;nbsp;* T&lt;sub&gt;2&lt;/sub&gt; - V&lt;sub&gt;甲&lt;/sub&gt;&amp;nbsp;* T&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="464" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-8" value="V&lt;sub&gt;乙&lt;/sub&gt;&amp;nbsp;* T&lt;sub&gt;2&lt;/sub&gt; - V&lt;sub&gt;甲&lt;/sub&gt;&amp;nbsp;* T&lt;sub style=&quot;font-size: 20px;&quot;&gt;1&lt;/sub&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="550" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-9" value="V&lt;sub&gt;甲&lt;/sub&gt;&amp;nbsp;* T&lt;sub&gt;1&lt;/sub&gt; + V&lt;sub&gt;甲&lt;/sub&gt;&amp;nbsp;* T&lt;sub&gt;2&lt;/sub&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="620" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-12" value="" style="shape=crossbar;whiteSpace=wrap;html=1;rounded=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="504" width="132" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="W8yODNv52512DjQFDLXG-13" value="500" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="1302.5" y="464" width="100" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
