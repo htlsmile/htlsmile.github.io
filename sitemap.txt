@@ -1,3 +1,4 @@
+https://htlsmile.github.io/2024/06/10/VMware-Workstation-%E8%99%9A%E6%8B%9F%E5%8C%96%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE/
 https://htlsmile.github.io/2024/04/18/Linux%E6%9B%B4%E6%94%B9ls%E5%91%BD%E4%BB%A4%E9%A2%9C%E8%89%B2/
 https://htlsmile.github.io/tags/index.html
 https://htlsmile.github.io/games/Astray/README.html
@@ -105,6 +106,9 @@ https://htlsmile.github.io/tags/%E6%95%B0%E5%AD%A6/
 https://htlsmile.github.io/tags/%E5%B0%8F%E5%AD%A6%E5%A5%A5%E6%95%B0/
 https://htlsmile.github.io/tags/%E8%A1%8C%E6%B5%8B/
 https://htlsmile.github.io/tags/%E7%AE%A1%E7%BB%BC/
+https://htlsmile.github.io/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/
+https://htlsmile.github.io/tags/Intel-VT-x-EPT/
+https://htlsmile.github.io/tags/AMD-V-RVI-V/
 https://htlsmile.github.io/categories/%E9%9A%8F%E7%AC%94/
 https://htlsmile.github.io/categories/%E6%95%99%E7%A8%8B/
 https://htlsmile.github.io/categories/%E7%BC%96%E7%A8%8B/
