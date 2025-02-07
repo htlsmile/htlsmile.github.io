@@ -4955,4 +4955,106 @@ end
         <tag>AMD-V/RVI(V)</tag>
       </tags>
   </entry>
+  <entry>
+    <title>编写期泛型</title>
+    <url>/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Go语言，编写期泛型，仅供娱乐。</p>
+<span id="more"></span>
+
+<p>视频里的编辑器看起来像是 <a href="https://www.sublimetext.com/">Sublime Text</a></p>
+<video controls muted autoplay="autoplay" loop="loop">
+  <source src="/videos/e6eac986-2332-11eb-842b-42b0c1a66098.mp4" type="video/mp4"></source>
+</video>
+
+<hr>
+<h1 id="在-VS-Code-中实现"><a href="#在-VS-Code-中实现" class="headerlink" title="在 VS Code 中实现"></a>在 VS Code 中实现</h1><h2 id="第一幕"><a href="#第一幕" class="headerlink" title="第一幕"></a>第一幕</h2><img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_153943.823.jpg" class="">
+
+<p>直接照着敲</p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-15-59-58.png" class="">
+
+<h2 id="第二幕"><a href="#第二幕" class="headerlink" title="第二幕"></a>第二幕</h2><img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_154011.738.jpg" class="">
+
+<blockquote>
+<p>按住<code>Shift</code>，再按方向键<code>↑</code>，<code>↓</code>，<code>←</code>，<code>→</code>，即可选中内容<br>按住<code>Shift</code>，再按一下<code>End</code>，即可选中当前光标位置到本行末尾，不包括本行结尾的换行符<br>按住<code>Shift</code>与<code>Ctrl</code>，再按一下<code>End</code>，即可选中当前光标位置到文件末尾，包括文件末尾的换行符（如果有的话）</p>
+</blockquote>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-06-16.png" class="">
+
+<p>按住<code>Shift</code>与<code>Ctrl</code>，再按一下<code>End</code></p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-06-37.png" class="">
+
+<p>依次按下 <code>Ctrl + C</code> <code>Ctrl + V</code> <code>Ctrl + V</code>，显然，第一次粘贴是覆盖了被选中的文本本身</p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-07-27.png" class="">
+
+<blockquote>
+<p>VS Code 菜单栏： 选择 → 列选择模式<br>快捷键，按住<code>Ctrl</code>与<code>Alt</code>，再按方向键<code>↑</code>或<code>↓</code>，即可向上或向下进行列选择，此时按<code>Esc</code>键可以退出列选择，返回当前行<br>快捷键，按住<code>Alt</code>与<code>Shift</code>，再使用鼠标拖动，即可进行列选择</p>
+</blockquote>
+<p>列选择，再敲一下<code>u</code>即可</p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-17-10.png" class="">
+
+<h2 id="第三幕"><a href="#第三幕" class="headerlink" title="第三幕"></a>第三幕</h2><img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_154023.060.jpg" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_154025.197.jpg" class="">
+
+<blockquote>
+<p>转换为大写，一般的编辑器都支持这个功能，只是 VS Code 默认没有设置快捷键<br>可以使用<code>Ctrl + Shift + P</code>唤出命令面板，键入<code>大写</code>或<code>upper</code>，即可使用该功能</p>
+</blockquote>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-22-49.png" class="">
+
+<p>继续列选择，依次键入内容，并选中下一列内容（<code>Shift + →</code>），使用命令转换为大写</p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-32-02.png" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-32-11.png" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-32-30.png" class="">
+
+<p>当然，你可能注意到视频里的回退了一下，这是为了复制这些类型，用于后面的粘贴操作，在列选择模式下，选中至末尾（<code>Shift + End</code>），然后按一下<code>Ctrl + C</code>，复制这些类型，然后使用词首字母大写命令</p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-34-49.png" class="">
+
+<h2 id="第四幕"><a href="#第四幕" class="headerlink" title="第四幕"></a>第四幕</h2><img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_164034.597.jpg" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-39-32.png" class="">
+
+<p>粘贴，<code>→</code>，空格，粘贴</p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-39-55.png" class="">
+
+<h2 id="第五幕"><a href="#第五幕" class="headerlink" title="第五幕"></a>第五幕</h2><img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_164356.270.jpg" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_164416.568.jpg" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/e6eac986-2332-11eb-842b-42b0c1a66098.mp4_20250207_153152.965.jpg" class="">
+
+<blockquote>
+<p>VS Code 格式化文档 <code>Shift + Alt + F</code></p>
+</blockquote>
+<p>这里就是照着敲，然后在指定位置插入分号，视频里的操作应该是输入分号后保存（<code>Ctrl + S</code>），保存操作触发了格式化文档（<code>Go</code>的特性），笔者这台电脑没有安装 <code>Go</code>，自然也就没有 <code>go fmt</code> 命令用于格式化文档，那就这样吧</p>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-45-31.png" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-48-17.png" class="">
+
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-16-49-00.png" class="">
+
+<h1 id="在-Notepad-中实现"><a href="#在-Notepad-中实现" class="headerlink" title="在 Notepad++ 中实现"></a>在 Notepad++ 中实现</h1><p>主要是一些快捷键不同，在这里列举一下吧：</p>
+<ul>
+<li>列选择 <code>Alt + Shift + ↑</code> <code>Alt + Shift + ↓</code></li>
+<li>转成大写 <code>Ctrl + Shift + U</code></li>
+<li>转成小写 <code>Ctrl + U</code></li>
+<li>每词转成仅首字母大写 <code>Alt + U</code></li>
+</ul>
+<img data-src="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/2025-02-07-17-05-29.png" class="">
+
+<p>Notepad++ 需要安装插件来实现格式化代码</p>
+<hr>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>当然，Go 语言在 <a href="https://golang.google.cn/doc/go1.18">1.18</a> 版本中引入了泛型。</p>
+<p><a href="min.go">下载 min.go</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>Sublime</tag>
+        <tag>VSCode</tag>
+        <tag>泛型</tag>
+      </tags>
+  </entry>
 </search>
