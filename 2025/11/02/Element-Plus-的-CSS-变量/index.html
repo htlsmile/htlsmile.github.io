@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="EZCGH4BJGjmnGe3d-_lVLArLsDPsPRVvA8DdxjaVifY">
+  <meta name="msvalidate.01" content="5F2C8C7F5C8EACB4C637756BFE75CEB2">
+  <meta name="baidu-site-verification" content="code-TdSvh6vSMc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.31/dist/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"htlsmile.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言在使用 Vue.js 和 Element Plus 做项目时，会有封装自定义组件的需求，而自定义组件通常会有使用原生HTML元素的情况，如果自己写样式，很难与 Element Plus 的风格保持一致，即便费力保持风格一致，也难以响应Element Plus 暗黑模式。于是，不如直接给原生HTML元素挂上 Element Plus 的样式，也就是通过 Element Plus 所定义的 CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Element Plus 的 CSS 变量">
+<meta property="og:url" content="https://htlsmile.github.io/2025/11/02/Element-Plus-%E7%9A%84-CSS-%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:site_name" content="激不起的涟漪">
+<meta property="og:description" content="前言在使用 Vue.js 和 Element Plus 做项目时，会有封装自定义组件的需求，而自定义组件通常会有使用原生HTML元素的情况，如果自己写样式，很难与 Element Plus 的风格保持一致，即便费力保持风格一致，也难以响应Element Plus 暗黑模式。于是，不如直接给原生HTML元素挂上 Element Plus 的样式，也就是通过 Element Plus 所定义的 CSS">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-02T02:39:11.000Z">
+<meta property="article:modified_time" content="2025-11-02T02:39:11.000Z">
+<meta property="article:author" content="只往反向走">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://htlsmile.github.io/2025/11/02/Element-Plus-%E7%9A%84-CSS-%E5%8F%98%E9%87%8F/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://htlsmile.github.io/2025/11/02/Element-Plus-%E7%9A%84-CSS-%E5%8F%98%E9%87%8F/","path":"2025/11/02/Element-Plus-的-CSS-变量/","title":"Element Plus 的 CSS 变量"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Element Plus 的 CSS 变量 | 激不起的涟漪</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115015828-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-115015828-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?57452bdeec60e9d3e0e83f1575fbc92f"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">激不起的涟漪</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">40</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">64</span></a></li><li class="menu-item menu-item-hot"><a href="/hot/" rel="section"><i class="fa fa-signal fa-fw"></i>热度</a></li><li class="menu-item menu-item-games"><a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%AF%E7%94%A8%E9%A2%9C%E8%89%B2"><span class="nav-number">2.</span> <span class="nav-text">查看可用颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#el-color"><span class="nav-number">2.1.</span> <span class="nav-text">--el-color-</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%AF%E7%94%A8%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">查看可用样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#el"><span class="nav-number">3.1.</span> <span class="nav-text">--el-</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="只往反向走"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">只往反向走</p>
+  <div class="site-description" itemprop="description">躲在被遗忘的角落</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/htlsmile" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;htlsmile" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:htlsmile@vip.qq.com" title="E-Mail → mailto:htlsmile@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://htlsmile.github.io/2025/11/02/Element-Plus-%E7%9A%84-CSS-%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="只往反向走">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="激不起的涟漪">
+      <meta itemprop="description" content="躲在被遗忘的角落">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Element Plus 的 CSS 变量 | 激不起的涟漪">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Element Plus 的 CSS 变量
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-11-02 10:39:11" itemprop="dateCreated datePublished" datetime="2025-11-02T10:39:11+08:00">2025-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2025/11/02/Element-Plus-%E7%9A%84-CSS-%E5%8F%98%E9%87%8F/" class="post-meta-item leancloud_visitors" data-flag-title="Element Plus 的 CSS 变量" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>40k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>36 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在使用 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/">Vue.js</a> 和 <a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/">Element Plus</a> 做项目时，会有封装自定义组件的需求，而自定义组件通常会有使用原生<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements">HTML元素</a>的情况，如果自己写样式，很难与 <code>Element Plus</code> 的风格保持一致，即便费力保持风格一致，也难以响应<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/guide/dark-mode">Element Plus 暗黑模式</a>。于是，不如直接给原生HTML元素挂上 <code>Element Plus</code> 的样式，也就是通过 <code>Element Plus</code> 所定义的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties">CSS变量</a>，赋予一致的样式。</p>
+<span id="more"></span>
+
+<p>不过 <code>Element Plus</code> 对于自己所定义的CSS变量并没有做详尽的说明，只在 <a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/component/color">Color 色彩</a> 里出现了一些，索性问了问 <a target="_blank" rel="noopener" href="https://chat.deepseek.com/">DeepSeek</a>，将获得的结论做如下整理。</p>
+<hr>
+<h1 id="查看可用颜色"><a href="#查看可用颜色" class="headerlink" title="查看可用颜色"></a>查看可用颜色</h1><p>在引入了 <code>Element Plus</code> 的网页上执行，就可以得到结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在浏览器控制台中获取所有颜色变量</span></span><br><span class="line"><span class="keyword">const</span> styles = <span class="title function_">getComputedStyle</span>(<span class="variable language_">document</span>.<span class="property">documentElement</span>);</span><br><span class="line"><span class="keyword">const</span> colorVariables = <span class="title class_">Array</span>.<span class="title function_">from</span>(styles)</span><br><span class="line">  .<span class="title function_">filter</span>(<span class="function"><span class="params">name</span> =&gt;</span> name.<span class="title function_">startsWith</span>(<span class="string">&#x27;--el-color-&#x27;</span>))</span><br><span class="line">  .<span class="title function_">map</span>(<span class="function"><span class="params">name</span> =&gt;</span> (&#123;</span><br><span class="line">    name,</span><br><span class="line">    <span class="attr">value</span>: styles.<span class="title function_">getPropertyValue</span>(name)</span><br><span class="line">  &#125;))</span><br><span class="line">  .<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.<span class="property">name</span>.<span class="title function_">localeCompare</span>(b.<span class="property">name</span>));</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(colorVariables);</span><br></pre></td></tr></table></figure>
+
+<h2 id="el-color"><a href="#el-color" class="headerlink" title="--el-color-"></a><code>--el-color-</code></h2><table>
+<capital>Color 色彩（50个，点击单元格复制，无提示）：</capital>
+<tr>
+    <th>CSS 变量</th>
+    <th>Light Mode</th>
+    <th>HEX</th>
+    <th>RGB</th>
+    <th>Dark Mode</th>
+    <th>HEX</th>
+    <th>RGB</th>
+</tr>
+
+<tr>
+    <td class="copy">--el-color-black</td>
+    <td style="background-color: #000000"></td>
+    <td class="copy">#000000</td>
+    <td class="copy">rgb(0, 0, 0)</td>
+    <td style="background-color: #000000"></td>
+    <td class="copy">#000000</td>
+    <td class="copy">rgb(0, 0, 0)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger-dark-2</td>
+    <td style="background-color: #c45656"></td>
+    <td class="copy">#c45656</td>
+    <td class="copy">rgb(196, 86, 86)</td>
+    <td style="background-color: #f78989"></td>
+    <td class="copy">#f78989</td>
+    <td class="copy">rgb(247, 137, 137)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger-light-3</td>
+    <td style="background-color: #f89898"></td>
+    <td class="copy">#f89898</td>
+    <td class="copy">rgb(248, 152, 152)</td>
+    <td style="background-color: #b25252"></td>
+    <td class="copy">#b25252</td>
+    <td class="copy">rgb(178, 82, 82)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger-light-5</td>
+    <td style="background-color: #fab6b6"></td>
+    <td class="copy">#fab6b6</td>
+    <td class="copy">rgb(250, 182, 182)</td>
+    <td style="background-color: #854040"></td>
+    <td class="copy">#854040</td>
+    <td class="copy">rgb(133, 64, 64)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger-light-7</td>
+    <td style="background-color: #fcd3d3"></td>
+    <td class="copy">#fcd3d3</td>
+    <td class="copy">rgb(252, 211, 211)</td>
+    <td style="background-color: #582e2e"></td>
+    <td class="copy">#582e2e</td>
+    <td class="copy">rgb(88, 46, 46)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger-light-8</td>
+    <td style="background-color: #fde2e2"></td>
+    <td class="copy">#fde2e2</td>
+    <td class="copy">rgb(253, 226, 226)</td>
+    <td style="background-color: #412626"></td>
+    <td class="copy">#412626</td>
+    <td class="copy">rgb(65, 38, 38)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger-light-9</td>
+    <td style="background-color: #fef0f0"></td>
+    <td class="copy">#fef0f0</td>
+    <td class="copy">rgb(254, 240, 240)</td>
+    <td style="background-color: #2a1d1d"></td>
+    <td class="copy">#2a1d1d</td>
+    <td class="copy">rgb(42, 29, 29)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-danger-rgb</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error-dark-2</td>
+    <td style="background-color: #c45656"></td>
+    <td class="copy">#c45656</td>
+    <td class="copy">rgb(196, 86, 86)</td>
+    <td style="background-color: #f78989"></td>
+    <td class="copy">#f78989</td>
+    <td class="copy">rgb(247, 137, 137)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error-light-3</td>
+    <td style="background-color: #f89898"></td>
+    <td class="copy">#f89898</td>
+    <td class="copy">rgb(248, 152, 152)</td>
+    <td style="background-color: #b25252"></td>
+    <td class="copy">#b25252</td>
+    <td class="copy">rgb(178, 82, 82)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error-light-5</td>
+    <td style="background-color: #fab6b6"></td>
+    <td class="copy">#fab6b6</td>
+    <td class="copy">rgb(250, 182, 182)</td>
+    <td style="background-color: #854040"></td>
+    <td class="copy">#854040</td>
+    <td class="copy">rgb(133, 64, 64)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error-light-7</td>
+    <td style="background-color: #fcd3d3"></td>
+    <td class="copy">#fcd3d3</td>
+    <td class="copy">rgb(252, 211, 211)</td>
+    <td style="background-color: #582e2e"></td>
+    <td class="copy">#582e2e</td>
+    <td class="copy">rgb(88, 46, 46)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error-light-8</td>
+    <td style="background-color: #fde2e2"></td>
+    <td class="copy">#fde2e2</td>
+    <td class="copy">rgb(253, 226, 226)</td>
+    <td style="background-color: #412626"></td>
+    <td class="copy">#412626</td>
+    <td class="copy">rgb(65, 38, 38)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error-light-9</td>
+    <td style="background-color: #fef0f0"></td>
+    <td class="copy">#fef0f0</td>
+    <td class="copy">rgb(254, 240, 240)</td>
+    <td style="background-color: #2a1d1d"></td>
+    <td class="copy">#2a1d1d</td>
+    <td class="copy">rgb(42, 29, 29)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-error-rgb</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+    <td style="background-color: #f56c6c"></td>
+    <td class="copy">#f56c6c</td>
+    <td class="copy">rgb(245, 108, 108)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info</td>
+    <td style="background-color: #909399"></td>
+    <td class="copy">#909399</td>
+    <td class="copy">rgb(144, 147, 153)</td>
+    <td style="background-color: #909399"></td>
+    <td class="copy">#909399</td>
+    <td class="copy">rgb(144, 147, 153)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info-dark-2</td>
+    <td style="background-color: #73767a"></td>
+    <td class="copy">#73767a</td>
+    <td class="copy">rgb(115, 118, 122)</td>
+    <td style="background-color: #a6a9ad"></td>
+    <td class="copy">#a6a9ad</td>
+    <td class="copy">rgb(166, 169, 173)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info-light-3</td>
+    <td style="background-color: #b1b3b8"></td>
+    <td class="copy">#b1b3b8</td>
+    <td class="copy">rgb(177, 179, 184)</td>
+    <td style="background-color: #6b6d71"></td>
+    <td class="copy">#6b6d71</td>
+    <td class="copy">rgb(107, 109, 113)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info-light-5</td>
+    <td style="background-color: #c8c9cc"></td>
+    <td class="copy">#c8c9cc</td>
+    <td class="copy">rgb(200, 201, 204)</td>
+    <td style="background-color: #525457"></td>
+    <td class="copy">#525457</td>
+    <td class="copy">rgb(82, 84, 87)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info-light-7</td>
+    <td style="background-color: #dedfe0"></td>
+    <td class="copy">#dedfe0</td>
+    <td class="copy">rgb(222, 223, 224)</td>
+    <td style="background-color: #393a3c"></td>
+    <td class="copy">#393a3c</td>
+    <td class="copy">rgb(57, 58, 60)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info-light-8</td>
+    <td style="background-color: #e9e9eb"></td>
+    <td class="copy">#e9e9eb</td>
+    <td class="copy">rgb(233, 233, 235)</td>
+    <td style="background-color: #2d2d2f"></td>
+    <td class="copy">#2d2d2f</td>
+    <td class="copy">rgb(45, 45, 47)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info-light-9</td>
+    <td style="background-color: #f4f4f5"></td>
+    <td class="copy">#f4f4f5</td>
+    <td class="copy">rgb(244, 244, 245)</td>
+    <td style="background-color: #202121"></td>
+    <td class="copy">#202121</td>
+    <td class="copy">rgb(32, 33, 33)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-info-rgb</td>
+    <td style="background-color: #909399"></td>
+    <td class="copy">#909399</td>
+    <td class="copy">rgb(144, 147, 153)</td>
+    <td style="background-color: #909399"></td>
+    <td class="copy">#909399</td>
+    <td class="copy">rgb(144, 147, 153)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+    <td class="copy">rgb(64, 158, 255)</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+    <td class="copy">rgb(64, 158, 255)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary-dark-2</td>
+    <td style="background-color: #337ecc"></td>
+    <td class="copy">#337ecc</td>
+    <td class="copy">rgb(51, 126, 204)</td>
+    <td style="background-color: #66b1ff"></td>
+    <td class="copy">#66b1ff</td>
+    <td class="copy">rgb(102, 177, 255)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary-light-3</td>
+    <td style="background-color: #79bbff"></td>
+    <td class="copy">#79bbff</td>
+    <td class="copy">rgb(121, 187, 255)</td>
+    <td style="background-color: #3375b9"></td>
+    <td class="copy">#3375b9</td>
+    <td class="copy">rgb(51, 117, 185)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary-light-5</td>
+    <td style="background-color: #a0cfff"></td>
+    <td class="copy">#a0cfff</td>
+    <td class="copy">rgb(160, 207, 255)</td>
+    <td style="background-color: #2a598a"></td>
+    <td class="copy">#2a598a</td>
+    <td class="copy">rgb(42, 89, 138)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary-light-7</td>
+    <td style="background-color: #c6e2ff"></td>
+    <td class="copy">#c6e2ff</td>
+    <td class="copy">rgb(198, 226, 255)</td>
+    <td style="background-color: #213d5b"></td>
+    <td class="copy">#213d5b</td>
+    <td class="copy">rgb(33, 61, 91)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary-light-8</td>
+    <td style="background-color: #d9ecff"></td>
+    <td class="copy">#d9ecff</td>
+    <td class="copy">rgb(217, 236, 255)</td>
+    <td style="background-color: #1d3043"></td>
+    <td class="copy">#1d3043</td>
+    <td class="copy">rgb(29, 48, 67)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary-light-9</td>
+    <td style="background-color: #ecf5ff"></td>
+    <td class="copy">#ecf5ff</td>
+    <td class="copy">rgb(236, 245, 255)</td>
+    <td style="background-color: #18222b"></td>
+    <td class="copy">#18222b</td>
+    <td class="copy">rgb(24, 34, 43)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-primary-rgb</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+    <td class="copy">rgb(64, 158, 255)</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+    <td class="copy">rgb(64, 158, 255)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success</td>
+    <td style="background-color: #67c23a"></td>
+    <td class="copy">#67c23a</td>
+    <td class="copy">rgb(103, 194, 58)</td>
+    <td style="background-color: #67c23a"></td>
+    <td class="copy">#67c23a</td>
+    <td class="copy">rgb(103, 194, 58)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success-dark-2</td>
+    <td style="background-color: #529b2e"></td>
+    <td class="copy">#529b2e</td>
+    <td class="copy">rgb(82, 155, 46)</td>
+    <td style="background-color: #85ce61"></td>
+    <td class="copy">#85ce61</td>
+    <td class="copy">rgb(133, 206, 97)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success-light-3</td>
+    <td style="background-color: #95d475"></td>
+    <td class="copy">#95d475</td>
+    <td class="copy">rgb(149, 212, 117)</td>
+    <td style="background-color: #4e8e2f"></td>
+    <td class="copy">#4e8e2f</td>
+    <td class="copy">rgb(78, 142, 47)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success-light-5</td>
+    <td style="background-color: #b3e19d"></td>
+    <td class="copy">#b3e19d</td>
+    <td class="copy">rgb(179, 225, 157)</td>
+    <td style="background-color: #3e6b27"></td>
+    <td class="copy">#3e6b27</td>
+    <td class="copy">rgb(62, 107, 39)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success-light-7</td>
+    <td style="background-color: #d1edc4"></td>
+    <td class="copy">#d1edc4</td>
+    <td class="copy">rgb(209, 237, 196)</td>
+    <td style="background-color: #2d481f"></td>
+    <td class="copy">#2d481f</td>
+    <td class="copy">rgb(45, 72, 31)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success-light-8</td>
+    <td style="background-color: #e1f3d8"></td>
+    <td class="copy">#e1f3d8</td>
+    <td class="copy">rgb(225, 243, 216)</td>
+    <td style="background-color: #25371c"></td>
+    <td class="copy">#25371c</td>
+    <td class="copy">rgb(37, 55, 28)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success-light-9</td>
+    <td style="background-color: #f0f9eb"></td>
+    <td class="copy">#f0f9eb</td>
+    <td class="copy">rgb(240, 249, 235)</td>
+    <td style="background-color: #1c2518"></td>
+    <td class="copy">#1c2518</td>
+    <td class="copy">rgb(28, 37, 24)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-success-rgb</td>
+    <td style="background-color: #67c23a"></td>
+    <td class="copy">#67c23a</td>
+    <td class="copy">rgb(103, 194, 58)</td>
+    <td style="background-color: #67c23a"></td>
+    <td class="copy">#67c23a</td>
+    <td class="copy">rgb(103, 194, 58)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning</td>
+    <td style="background-color: #e6a23c"></td>
+    <td class="copy">#e6a23c</td>
+    <td class="copy">rgb(230, 162, 60)</td>
+    <td style="background-color: #e6a23c"></td>
+    <td class="copy">#e6a23c</td>
+    <td class="copy">rgb(230, 162, 60)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning-dark-2</td>
+    <td style="background-color: #b88230"></td>
+    <td class="copy">#b88230</td>
+    <td class="copy">rgb(184, 130, 48)</td>
+    <td style="background-color: #ebb563"></td>
+    <td class="copy">#ebb563</td>
+    <td class="copy">rgb(235, 181, 99)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning-light-3</td>
+    <td style="background-color: #eebe77"></td>
+    <td class="copy">#eebe77</td>
+    <td class="copy">rgb(238, 190, 119)</td>
+    <td style="background-color: #a77730"></td>
+    <td class="copy">#a77730</td>
+    <td class="copy">rgb(167, 119, 48)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning-light-5</td>
+    <td style="background-color: #f3d19e"></td>
+    <td class="copy">#f3d19e</td>
+    <td class="copy">rgb(243, 209, 158)</td>
+    <td style="background-color: #7d5b28"></td>
+    <td class="copy">#7d5b28</td>
+    <td class="copy">rgb(125, 91, 40)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning-light-7</td>
+    <td style="background-color: #f8e3c5"></td>
+    <td class="copy">#f8e3c5</td>
+    <td class="copy">rgb(248, 227, 197)</td>
+    <td style="background-color: #533f20"></td>
+    <td class="copy">#533f20</td>
+    <td class="copy">rgb(83, 63, 32)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning-light-8</td>
+    <td style="background-color: #faecd8"></td>
+    <td class="copy">#faecd8</td>
+    <td class="copy">rgb(250, 236, 216)</td>
+    <td style="background-color: #3e301c"></td>
+    <td class="copy">#3e301c</td>
+    <td class="copy">rgb(62, 48, 28)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning-light-9</td>
+    <td style="background-color: #fdf6ec"></td>
+    <td class="copy">#fdf6ec</td>
+    <td class="copy">rgb(253, 246, 236)</td>
+    <td style="background-color: #292218"></td>
+    <td class="copy">#292218</td>
+    <td class="copy">rgb(41, 34, 24)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-warning-rgb</td>
+    <td style="background-color: #e6a23c"></td>
+    <td class="copy">#e6a23c</td>
+    <td class="copy">rgb(230, 162, 60)</td>
+    <td style="background-color: #e6a23c"></td>
+    <td class="copy">#e6a23c</td>
+    <td class="copy">rgb(230, 162, 60)</td>
+</tr>
+<tr>
+    <td class="copy">--el-color-white</td>
+    <td style="background-color: #ffffff"></td>
+    <td class="copy">#ffffff</td>
+    <td class="copy">rgb(255, 255, 255)</td>
+    <td style="background-color: #ffffff"></td>
+    <td class="copy">#ffffff</td>
+    <td class="copy">rgb(255, 255, 255)</td>
+</tr>
+
+
+</table>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// light length: 50</span></span><br><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-black&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#000000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f56c6c&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(196, 86, 86)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(248, 152, 152)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(250, 182, 182)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(252, 211, 211)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(253, 226, 226)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(254, 240, 240)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;245, 108, 108&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f56c6c&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(196, 86, 86)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(248, 152, 152)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(250, 182, 182)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(252, 211, 211)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(253, 226, 226)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(254, 240, 240)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;245, 108, 108&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#909399&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(115, 118, 122)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(177, 179, 184)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(200, 201, 204)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(222, 223, 224)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(233, 233, 235)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(244, 244, 245)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;144, 147, 153&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#409eff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(51, 126, 204)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(121, 187, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(160, 207, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(198, 226, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(217, 236, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(236, 245, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;64, 158, 255&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#67c23a&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(82, 155, 46)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(149, 212, 117)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(179, 225, 157)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(209, 237, 196)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(225, 243, 216)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(240, 249, 235)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;103, 194, 58&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#e6a23c&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(184, 130, 48)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(238, 190, 119)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(243, 209, 158)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(248, 227, 197)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(250, 236, 216)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(253, 246, 236)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;230, 162, 60&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-white&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ffffff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dark length: 50</span></span><br><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-black&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#000000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f56c6c&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(247, 137, 137)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(178, 82, 82)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(133, 64, 64)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(88, 46, 46)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(65, 38, 38)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(42, 29, 29)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-danger-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;245, 108, 108&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f56c6c&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(247, 137, 137)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(178, 82, 82)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(133, 64, 64)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(88, 46, 46)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(65, 38, 38)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(42, 29, 29)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-error-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;245, 108, 108&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#909399&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(166, 169, 173)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(107, 109, 113)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(82, 84, 87)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(57, 58, 60)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(45, 45, 47)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(32, 33, 33)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-info-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;144, 147, 153&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#409eff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(102, 177, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(51, 117, 185)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(42, 89, 138)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(33, 61, 91)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(29, 48, 67)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(24, 34, 43)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-primary-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;64, 158, 255&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#67c23a&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(133, 206, 97)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(78, 142, 47)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(62, 107, 39)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(45, 72, 31)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(37, 55, 28)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(28, 37, 24)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-success-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;103, 194, 58&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#e6a23c&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-dark-2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(235, 181, 99)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(167, 119, 48)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(125, 91, 40)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(83, 63, 32)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(62, 48, 28)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-light-9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(41, 34, 24)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-warning-rgb&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;230, 162, 60&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-color-white&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ffffff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="查看可用样式"><a href="#查看可用样式" class="headerlink" title="查看可用样式"></a>查看可用样式</h1><p>在引入了 <code>Element Plus</code> 的网页上执行，就可以得到结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在浏览器控制台中获取所有颜色变量</span></span><br><span class="line"><span class="keyword">const</span> styles = <span class="title function_">getComputedStyle</span>(<span class="variable language_">document</span>.<span class="property">documentElement</span>);</span><br><span class="line"><span class="keyword">const</span> styleVariables = <span class="title class_">Array</span>.<span class="title function_">from</span>(styles)</span><br><span class="line">  .<span class="title function_">filter</span>(<span class="function"><span class="params">name</span> =&gt;</span> name.<span class="title function_">startsWith</span>(<span class="string">&#x27;--el-&#x27;</span>) &amp;&amp; !name.<span class="title function_">startsWith</span>(<span class="string">&#x27;--el-color-&#x27;</span>))</span><br><span class="line">  .<span class="title function_">map</span>(<span class="function"><span class="params">name</span> =&gt;</span> (&#123;</span><br><span class="line">    name,</span><br><span class="line">    <span class="attr">value</span>: styles.<span class="title function_">getPropertyValue</span>(name)</span><br><span class="line">  &#125;))</span><br><span class="line">  .<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.<span class="property">name</span>.<span class="title function_">localeCompare</span>(b.<span class="property">name</span>));</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(styleVariables);</span><br></pre></td></tr></table></figure>
+
+<h2 id="el"><a href="#el" class="headerlink" title="--el-"></a><code>--el-</code></h2><table>
+<capital>Element Plus CSS 变量（87个，点击单元格复制，无提示）：</capital>
+<tr>
+    <th>CSS 变量</th>
+    <th>Light Mode</th>
+    <th>Value</th>
+    <th>Dark Mode</th>
+    <th>Value</th>
+</tr>
+
+<tr>
+    <td class="copy">--el-bg-color</td>
+    <td style="background-color: #ffffff"></td>
+    <td class="copy">#ffffff</td>
+    <td style="background-color: #141414"></td>
+    <td class="copy">#141414</td>
+</tr>
+<tr>
+    <td class="copy">--el-bg-color-overlay</td>
+    <td style="background-color: #ffffff"></td>
+    <td class="copy">#ffffff</td>
+    <td style="background-color: #1d1e1f"></td>
+    <td class="copy">#1d1e1f</td>
+</tr>
+<tr>
+    <td class="copy">--el-bg-color-page</td>
+    <td style="background-color: #f2f3f5"></td>
+    <td class="copy">#f2f3f5</td>
+    <td style="background-color: #0a0a0a"></td>
+    <td class="copy">#0a0a0a</td>
+</tr>
+<tr>
+    <td class="copy">--el-border</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1px solid #dcdfe6</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1px solid #4C4D4F</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-color</td>
+    <td style="background-color: #dcdfe6"></td>
+    <td class="copy">#dcdfe6</td>
+    <td style="background-color: #4C4D4F"></td>
+    <td class="copy">#4C4D4F</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-color-dark</td>
+    <td style="background-color: #d4d7de"></td>
+    <td class="copy">#d4d7de</td>
+    <td style="background-color: #58585B"></td>
+    <td class="copy">#58585B</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-color-darker</td>
+    <td style="background-color: #cdd0d6"></td>
+    <td class="copy">#cdd0d6</td>
+    <td style="background-color: #636466"></td>
+    <td class="copy">#636466</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-color-extra-light</td>
+    <td style="background-color: #f2f6fc"></td>
+    <td class="copy">#f2f6fc</td>
+    <td style="background-color: #2B2B2C"></td>
+    <td class="copy">#2B2B2C</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-color-hover</td>
+    <td style="background-color: #c0c4cc"></td>
+    <td class="copy">#c0c4cc</td>
+    <td style="background-color: #6C6E72"></td>
+    <td class="copy">#6C6E72</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-color-light</td>
+    <td style="background-color: #e4e7ed"></td>
+    <td class="copy">#e4e7ed</td>
+    <td style="background-color: #414243"></td>
+    <td class="copy">#414243</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-color-lighter</td>
+    <td style="background-color: #ebeef5"></td>
+    <td class="copy">#ebeef5</td>
+    <td style="background-color: #363637"></td>
+    <td class="copy">#363637</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-radius-base</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">4px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">4px</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-radius-circle</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">100%</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">100%</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-radius-round</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-radius-small</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">2px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">2px</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-style</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">solid</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">solid</td>
+</tr>
+<tr>
+    <td class="copy">--el-border-width</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1px</td>
+</tr>
+<tr>
+    <td class="copy">--el-box-shadow</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 12px 32px 4px rgba(0, 0, 0, .04), 0px 8px 20px rgba(0, 0, 0, .08)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 12px 32px 4px rgba(0, 0, 0, .36), 0px 8px 20px rgba(0, 0, 0, .72)</td>
+</tr>
+<tr>
+    <td class="copy">--el-box-shadow-dark</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 16px 48px 16px rgba(0, 0, 0, .08), 0px 12px 32px rgba(0, 0, 0, .12), 0px 8px 16px -8px rgba(0, 0, 0, .16)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 16px 48px 16px rgba(0, 0, 0, .72), 0px 12px 32px #000000, 0px 8px 16px -8px #000000</td>
+</tr>
+<tr>
+    <td class="copy">--el-box-shadow-light</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 0px 12px rgba(0, 0, 0, .12)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 0px 12px rgba(0, 0, 0, .72)</td>
+</tr>
+<tr>
+    <td class="copy">--el-box-shadow-lighter</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 0px 6px rgba(0, 0, 0, .12)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">0px 0px 6px rgba(0, 0, 0, .72)</td>
+</tr>
+<tr>
+    <td class="copy">--el-component-size</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">32px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">32px</td>
+</tr>
+<tr>
+    <td class="copy">--el-component-size-large</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">40px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">40px</td>
+</tr>
+<tr>
+    <td class="copy">--el-component-size-small</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">24px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">24px</td>
+</tr>
+<tr>
+    <td class="copy">--el-disabled-bg-color</td>
+    <td style="background-color: #f5f7fa"></td>
+    <td class="copy">#f5f7fa</td>
+    <td style="background-color: #262727"></td>
+    <td class="copy">#262727</td>
+</tr>
+<tr>
+    <td class="copy">--el-disabled-border-color</td>
+    <td style="background-color: #e4e7ed"></td>
+    <td class="copy">#e4e7ed</td>
+    <td style="background-color: #414243"></td>
+    <td class="copy">#414243</td>
+</tr>
+<tr>
+    <td class="copy">--el-disabled-text-color</td>
+    <td style="background-color: #a8abb2"></td>
+    <td class="copy">#a8abb2</td>
+    <td style="background-color: #8D9095"></td>
+    <td class="copy">#8D9095</td>
+</tr>
+<tr>
+    <td class="copy">--el-fill-color</td>
+    <td style="background-color: #f0f2f5"></td>
+    <td class="copy">#f0f2f5</td>
+    <td style="background-color: #303030"></td>
+    <td class="copy">#303030</td>
+</tr>
+<tr>
+    <td class="copy">--el-fill-color-blank</td>
+    <td style="background-color: #ffffff"></td>
+    <td class="copy">#ffffff</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">transparent</td>
+</tr>
+<tr>
+    <td class="copy">--el-fill-color-dark</td>
+    <td style="background-color: #ebedf0"></td>
+    <td class="copy">#ebedf0</td>
+    <td style="background-color: #39393A"></td>
+    <td class="copy">#39393A</td>
+</tr>
+<tr>
+    <td class="copy">--el-fill-color-darker</td>
+    <td style="background-color: #e6e8eb"></td>
+    <td class="copy">#e6e8eb</td>
+    <td style="background-color: #424243"></td>
+    <td class="copy">#424243</td>
+</tr>
+<tr>
+    <td class="copy">--el-fill-color-extra-light</td>
+    <td style="background-color: #fafcff"></td>
+    <td class="copy">#fafcff</td>
+    <td style="background-color: #191919"></td>
+    <td class="copy">#191919</td>
+</tr>
+<tr>
+    <td class="copy">--el-fill-color-light</td>
+    <td style="background-color: #f5f7fa"></td>
+    <td class="copy">#f5f7fa</td>
+    <td style="background-color: #262727"></td>
+    <td class="copy">#262727</td>
+</tr>
+<tr>
+    <td class="copy">--el-fill-color-lighter</td>
+    <td style="background-color: #fafafa"></td>
+    <td class="copy">#fafafa</td>
+    <td style="background-color: #1D1D1D"></td>
+    <td class="copy">#1D1D1D</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-family</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-line-height-primary</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">24px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">24px</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-size-base</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">14px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">14px</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-size-extra-large</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-size-extra-small</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">12px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">12px</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-size-large</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">18px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">18px</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-size-medium</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">16px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">16px</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-size-small</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">13px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">13px</td>
+</tr>
+<tr>
+    <td class="copy">--el-font-weight-primary</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">500</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">500</td>
+</tr>
+<tr>
+    <td class="copy">--el-index-normal</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1</td>
+</tr>
+<tr>
+    <td class="copy">--el-index-popper</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">2000</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">2000</td>
+</tr>
+<tr>
+    <td class="copy">--el-index-top</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1000</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">1000</td>
+</tr>
+<tr>
+    <td class="copy">--el-loading-fullscreen-spinner-size</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">50px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">50px</td>
+</tr>
+<tr>
+    <td class="copy">--el-loading-spinner-size</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">42px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">42px</td>
+</tr>
+<tr>
+    <td class="copy">--el-mask-color</td>
+    <td style="background-color: rgba(255, 255, 255, .9)"></td>
+    <td class="copy">rgba(255, 255, 255, .9)</td>
+    <td style="background-color: rgba(0, 0, 0, .8)"></td>
+    <td class="copy">rgba(0, 0, 0, .8)</td>
+</tr>
+<tr>
+    <td class="copy">--el-mask-color-extra-light</td>
+    <td style="background-color: rgba(255, 255, 255, .3)"></td>
+    <td class="copy">rgba(255, 255, 255, .3)</td>
+    <td style="background-color: rgba(0, 0, 0, .3)"></td>
+    <td class="copy">rgba(0, 0, 0, .3)</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-active-color</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-base-level-padding</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-bg-color</td>
+    <td style="background-color: #ffffff"></td>
+    <td class="copy">#ffffff</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">transparent</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-border-color</td>
+    <td style="background-color: #dcdfe6"></td>
+    <td class="copy">#dcdfe6</td>
+    <td style="background-color: #4C4D4F"></td>
+    <td class="copy">#4C4D4F</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-horizontal-height</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">60px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">60px</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-horizontal-sub-item-height</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">36px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">36px</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-hover-bg-color</td>
+    <td style="background-color: rgb(236, 245, 255)"></td>
+    <td class="copy">rgb(236, 245, 255)</td>
+    <td style="background-color: rgb(24, 34, 43)"></td>
+    <td class="copy">rgb(24, 34, 43)</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-hover-text-color</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+    <td style="background-color: #409eff"></td>
+    <td class="copy">#409eff</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-icon-width</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">24px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">24px</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-item-font-size</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">14px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">14px</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-item-height</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">56px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">56px</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-item-hover-fill</td>
+    <td style="background-color: rgb(236, 245, 255)"></td>
+    <td class="copy">rgb(236, 245, 255)</td>
+    <td style="background-color: rgb(24, 34, 43)"></td>
+    <td class="copy">rgb(24, 34, 43)</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-level-padding</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">20px</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-sub-item-height</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">calc(56px - 6px)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">calc(56px - 6px)</td>
+</tr>
+<tr>
+    <td class="copy">--el-menu-text-color</td>
+    <td style="background-color: #303133"></td>
+    <td class="copy">#303133</td>
+    <td style="background-color: #E5EAF3"></td>
+    <td class="copy">#E5EAF3</td>
+</tr>
+<tr>
+    <td class="copy">--el-overlay-color</td>
+    <td style="background-color: rgba(0, 0, 0, .8)"></td>
+    <td class="copy">rgba(0, 0, 0, .8)</td>
+    <td style="background-color: rgba(0, 0, 0, .8)"></td>
+    <td class="copy">rgba(0, 0, 0, .8)</td>
+</tr>
+<tr>
+    <td class="copy">--el-overlay-color-light</td>
+    <td style="background-color: rgba(0, 0, 0, .7)"></td>
+    <td class="copy">rgba(0, 0, 0, .7)</td>
+    <td style="background-color: rgba(0, 0, 0, .7)"></td>
+    <td class="copy">rgba(0, 0, 0, .7)</td>
+</tr>
+<tr>
+    <td class="copy">--el-overlay-color-lighter</td>
+    <td style="background-color: rgba(0, 0, 0, .5)"></td>
+    <td class="copy">rgba(0, 0, 0, .5)</td>
+    <td style="background-color: rgba(0, 0, 0, .5)"></td>
+    <td class="copy">rgba(0, 0, 0, .5)</td>
+</tr>
+<tr>
+    <td class="copy">--el-popup-modal-bg-color</td>
+    <td style="background-color: #000000"></td>
+    <td class="copy">#000000</td>
+    <td style="background-color: #000000"></td>
+    <td class="copy">#000000</td>
+</tr>
+<tr>
+    <td class="copy">--el-popup-modal-opacity</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">.5</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">.5</td>
+</tr>
+<tr>
+    <td class="copy">--el-svg-monochrome-grey</td>
+    <td style="background-color: #dcdfe6"></td>
+    <td class="copy">#dcdfe6</td>
+    <td style="background-color: #4C4D4F"></td>
+    <td class="copy">#4C4D4F</td>
+</tr>
+<tr>
+    <td class="copy">--el-text-color-disabled</td>
+    <td style="background-color: #c0c4cc"></td>
+    <td class="copy">#c0c4cc</td>
+    <td style="background-color: #6C6E72"></td>
+    <td class="copy">#6C6E72</td>
+</tr>
+<tr>
+    <td class="copy">--el-text-color-placeholder</td>
+    <td style="background-color: #a8abb2"></td>
+    <td class="copy">#a8abb2</td>
+    <td style="background-color: #8D9095"></td>
+    <td class="copy">#8D9095</td>
+</tr>
+<tr>
+    <td class="copy">--el-text-color-primary</td>
+    <td style="background-color: #303133"></td>
+    <td class="copy">#303133</td>
+    <td style="background-color: #E5EAF3"></td>
+    <td class="copy">#E5EAF3</td>
+</tr>
+<tr>
+    <td class="copy">--el-text-color-regular</td>
+    <td style="background-color: #606266"></td>
+    <td class="copy">#606266</td>
+    <td style="background-color: #CFD3DC"></td>
+    <td class="copy">#CFD3DC</td>
+</tr>
+<tr>
+    <td class="copy">--el-text-color-secondary</td>
+    <td style="background-color: #909399"></td>
+    <td class="copy">#909399</td>
+    <td style="background-color: #A3A6AD"></td>
+    <td class="copy">#A3A6AD</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-all</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">all .3s cubic-bezier(.645, .045, .355, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">all .3s cubic-bezier(.645, .045, .355, 1)</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-border</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">border-color .2s cubic-bezier(.645, .045, .355, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">border-color .2s cubic-bezier(.645, .045, .355, 1)</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-box-shadow</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">box-shadow .2s cubic-bezier(.645, .045, .355, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">box-shadow .2s cubic-bezier(.645, .045, .355, 1)</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-color</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">color .2s cubic-bezier(.645, .045, .355, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">color .2s cubic-bezier(.645, .045, .355, 1)</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-duration</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">.3s</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">.3s</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-duration-fast</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">.2s</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">.2s</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-fade</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">opacity .3s cubic-bezier(.23, 1, .32, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">opacity .3s cubic-bezier(.23, 1, .32, 1)</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-fade-linear</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">opacity .2s linear</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">opacity .2s linear</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-function-ease-in-out-bezier</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">cubic-bezier(.645, .045, .355, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">cubic-bezier(.645, .045, .355, 1)</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-function-fast-bezier</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">cubic-bezier(.23, 1, .32, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">cubic-bezier(.23, 1, .32, 1)</td>
+</tr>
+<tr>
+    <td class="copy">--el-transition-md-fade</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">transform .3s cubic-bezier(.23, 1, .32, 1), opacity .3s cubic-bezier(.23, 1, .32, 1)</td>
+    <td style="background-color: transparent"></td>
+    <td class="copy">transform .3s cubic-bezier(.23, 1, .32, 1), opacity .3s cubic-bezier(.23, 1, .32, 1)</td>
+</tr>
+
+</table>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// light length: 87</span></span><br><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ffffff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-bg-color-overlay&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ffffff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-bg-color-page&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f2f3f5&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1px solid #dcdfe6&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#dcdfe6&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-dark&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#d4d7de&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-darker&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#cdd0d6&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-extra-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f2f6fc&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-hover&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#c0c4cc&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#e4e7ed&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ebeef5&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-base&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;4px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-circle&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;100%&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-round&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;2px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-style&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;solid&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-width&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 12px 32px 4px rgba(0, 0, 0, .04), 0px 8px 20px rgba(0, 0, 0, .08)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow-dark&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 16px 48px 16px rgba(0, 0, 0, .08), 0px 12px 32px rgba(0, 0, 0, .12), 0px 8px 16px -8px rgba(0, 0, 0, .16)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 0px 12px rgba(0, 0, 0, .12)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 0px 6px rgba(0, 0, 0, .12)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-component-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;32px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-component-size-large&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;40px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-component-size-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;24px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-disabled-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f5f7fa&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-disabled-border-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#e4e7ed&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-disabled-text-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#a8abb2&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f0f2f5&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-blank&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ffffff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-dark&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ebedf0&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-darker&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#e6e8eb&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-extra-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#fafcff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#f5f7fa&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#fafafa&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-family&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;\\&quot;</span>Helvetica Neue\\<span class="string">&quot;, Helvetica, \\&quot;</span>PingFang SC\\<span class="string">&quot;, \\&quot;</span>Hiragino Sans GB\\<span class="string">&quot;, \\&quot;</span>Microsoft YaHei\\<span class="string">&quot;, \\&quot;</span>微软雅黑\\<span class="string">&quot;, Arial, sans-serif&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-line-height-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;24px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-base&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;14px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-extra-large&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-extra-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;12px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-large&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;18px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-medium&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;16px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;13px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-weight-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;500&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-index-normal&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-index-popper&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;2000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-index-top&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-loading-fullscreen-spinner-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;50px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-loading-spinner-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;42px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-mask-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(255, 255, 255, .9)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-mask-color-extra-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(255, 255, 255, .3)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-active-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#409eff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-base-level-padding&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#ffffff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-border-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#dcdfe6&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-horizontal-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;60px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-horizontal-sub-item-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;36px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-hover-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(236, 245, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-hover-text-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#409eff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-icon-width&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;24px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-item-font-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;14px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-item-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;56px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-item-hover-fill&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(236, 245, 255)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-level-padding&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-sub-item-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;calc(56px - 6px)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-text-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#303133&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-overlay-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .8)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-overlay-color-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .7)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-overlay-color-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .5)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-popup-modal-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#000000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-popup-modal-opacity&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;.5&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-svg-monochrome-grey&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#dcdfe6&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-disabled&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#c0c4cc&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-placeholder&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#a8abb2&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#303133&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-regular&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#606266&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-secondary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#909399&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-all&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;all .3s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-border&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;border-color .2s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-box-shadow&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;box-shadow .2s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;color .2s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-duration&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;.3s&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-duration-fast&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;.2s&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-fade&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;opacity .3s cubic-bezier(.23, 1, .32, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-fade-linear&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;opacity .2s linear&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-function-ease-in-out-bezier&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-function-fast-bezier&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;cubic-bezier(.23, 1, .32, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-md-fade&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;transform .3s cubic-bezier(.23, 1, .32, 1), opacity .3s cubic-bezier(.23, 1, .32, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dark length: 87</span></span><br><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#141414&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-bg-color-overlay&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#1d1e1f&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-bg-color-page&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#0a0a0a&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1px solid #4C4D4F&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#4C4D4F&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-dark&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#58585B&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-darker&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#636466&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-extra-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#2B2B2C&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-hover&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#6C6E72&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#414243&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-color-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#363637&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-base&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;4px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-circle&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;100%&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-round&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-radius-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;2px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-style&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;solid&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-border-width&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 12px 32px 4px rgba(0, 0, 0, .36), 0px 8px 20px rgba(0, 0, 0, .72)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow-dark&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 16px 48px 16px rgba(0, 0, 0, .72), 0px 12px 32px #000000, 0px 8px 16px -8px #000000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 0px 12px rgba(0, 0, 0, .72)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-box-shadow-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;0px 0px 6px rgba(0, 0, 0, .72)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-component-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;32px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-component-size-large&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;40px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-component-size-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;24px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-disabled-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#262727&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-disabled-border-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#414243&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-disabled-text-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#8D9095&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#303030&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-blank&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;transparent&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-dark&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#39393A&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-darker&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#424243&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-extra-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#191919&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#262727&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-fill-color-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#1D1D1D&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-family&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;\\&quot;</span>Helvetica Neue\\<span class="string">&quot;, Helvetica, \\&quot;</span>PingFang SC\\<span class="string">&quot;, \\&quot;</span>Hiragino Sans GB\\<span class="string">&quot;, \\&quot;</span>Microsoft YaHei\\<span class="string">&quot;, \\&quot;</span>微软雅黑\\<span class="string">&quot;, Arial, sans-serif&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-line-height-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;24px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-base&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;14px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-extra-large&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-extra-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;12px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-large&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;18px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-medium&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;16px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-size-small&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;13px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-font-weight-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;500&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-index-normal&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-index-popper&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;2000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-index-top&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-loading-fullscreen-spinner-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;50px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-loading-spinner-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;42px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-mask-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .8)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-mask-color-extra-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .3)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-active-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#409eff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-base-level-padding&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;transparent&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-border-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#4C4D4F&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-horizontal-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;60px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-horizontal-sub-item-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;36px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-hover-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(24, 34, 43)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-hover-text-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#409eff&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-icon-width&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;24px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-item-font-size&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;14px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-item-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;56px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-item-hover-fill&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgb(24, 34, 43)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-level-padding&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;20px&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-sub-item-height&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;calc(56px - 6px)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-menu-text-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#E5EAF3&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-overlay-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .8)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-overlay-color-light&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .7)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-overlay-color-lighter&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;rgba(0, 0, 0, .5)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-popup-modal-bg-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#000000&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-popup-modal-opacity&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;.5&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-svg-monochrome-grey&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#4C4D4F&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-disabled&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#6C6E72&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-placeholder&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#8D9095&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-primary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#E5EAF3&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-regular&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#CFD3DC&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-text-color-secondary&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;#A3A6AD&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-all&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;all .3s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-border&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;border-color .2s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-box-shadow&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;box-shadow .2s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-color&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;color .2s cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-duration&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;.3s&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-duration-fast&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;.2s&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-fade&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;opacity .3s cubic-bezier(.23, 1, .32, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-fade-linear&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;opacity .2s linear&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-function-ease-in-out-bezier&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;cubic-bezier(.645, .045, .355, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-function-fast-bezier&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;cubic-bezier(.23, 1, .32, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;--el-transition-md-fade&quot;</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;transform .3s cubic-bezier(.23, 1, .32, 1), opacity .3s cubic-bezier(.23, 1, .32, 1)&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>摘抄一下 <a target="_blank" rel="noopener" href="https://blog.csdn.net/jxy_1995/article/details/130097325">Markdown格式进阶之表格：合并单元格、颜色修改以及其他</a></p>
+<table>
+<capital>如何在Markdown里面画这样的表格：</capital>
+<tr>
+<th>普通表头</th>
+<th align="right"><i>斜体表头而且居右</th>
+<th colspan=2>表头横向合并单元格</th>
+<td width="80px">限制列宽为80px超出会自动换行</td>
+</tr>
+<tr>
+<th>左边也可以有表头</th>
+<td bgcolor=#ffffcc>涂个颜色</td>
+<td><mark>高亮文本</mark>但不全高亮</td>
+<td><b>有时候加粗</b><i>有时候斜体</i></td>
+<td width="20px">20px小于80px服从80px列宽命令无效</td>
+</tr>
+<tr>
+<td>表头不一定是一整行或者一整列的</td>
+<td rowspan=2>纵向合并单元格要注意<br>下一行少一个单元格<br>字太多必要时我会换行</td>
+<td rowspan=2 colspan=2>单元格也可以从两个方向合并</td>
+<td rowspan=2 width="10%">百分比和像素是可以混用的具体服从哪个取决于哪个大</td>
+</tr>
+<td align="left"> 简单做个居左 </td>
+</tr>
+</table>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">capital</span>&gt;</span>如何在Markdown里面画这样的表格：<span class="tag">&lt;/<span class="name">capital</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">th</span>&gt;</span>普通表头<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span>&gt;</span>斜体表头而且居右<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">th</span> <span class="attr">colspan</span>=<span class="string">2</span>&gt;</span>表头横向合并单元格<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">&quot;80px&quot;</span>&gt;</span>限制列宽为80px超出会自动换行<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">th</span>&gt;</span>左边也可以有表头<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">bgcolor</span>=<span class="string">#ffffcc</span>&gt;</span>涂个颜色<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">mark</span>&gt;</span>高亮文本<span class="tag">&lt;/<span class="name">mark</span>&gt;</span>但不全高亮<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>有时候加粗<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">i</span>&gt;</span>有时候斜体<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">&quot;20px&quot;</span>&gt;</span>20px小于80px服从80px列宽命令无效<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>表头不一定是一整行或者一整列的<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">2</span>&gt;</span>纵向合并单元格要注意<span class="tag">&lt;<span class="name">br</span>&gt;</span>下一行少一个单元格<span class="tag">&lt;<span class="name">br</span>&gt;</span>字太多必要时我会换行<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">2</span> <span class="attr">colspan</span>=<span class="string">2</span>&gt;</span>单元格也可以从两个方向合并<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">2</span> <span class="attr">width</span>=<span class="string">&quot;10%&quot;</span>&gt;</span>百分比和像素是可以混用的具体服从哪个取决于哪个大<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;left&quot;</span>&gt;</span> 简单做个居左 <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<style>
+.copy{
+    cursor: pointer;
+}
+</style>
+
+<script>
+window.onload = function () {
+    const elements = document.getElementsByClassName('copy');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', () => {
+            navigator.clipboard.writeText(elements[i].innerText);
+        });
+    }
+}
+</script>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="只往反向走 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="只往反向走 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>只往反向走
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://htlsmile.github.io/2025/11/02/Element-Plus-%E7%9A%84-CSS-%E5%8F%98%E9%87%8F/" title="Element Plus 的 CSS 变量">https://htlsmile.github.io/2025/11/02/Element-Plus-的-CSS-变量/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/02/07/%E7%BC%96%E5%86%99%E6%9C%9F%E6%B3%9B%E5%9E%8B/" rel="prev" title="编写期泛型">
+                  <i class="fa fa-angle-left"></i> 编写期泛型
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">只往反向走</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">177k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:41</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/htlsmile" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/ui@5.0.31/dist/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"OeYIMOjg1V1yRtmt9QnVP8eL-gzGzoHsz","app_key":"mgwTd8BfdTntGIrHEQF5KWgS","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"htlsmile","repo":"htlsmile.github.io","client_id":"0866a79ffdaf4c2e398c","client_secret":"f025796617054905d1a32f9fccbe170085646951","admin_user":"htlsmile","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://unpkg.com/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"691575f6ef68e493dca2d7183412a222"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
