@@ -1,0 +1,23 @@
+@import url(base-width.css);
+@import url(base-height.css);
+@import url(base-font-size.css);
+
+.container {
+    margin: 1rem;
+    padding: 1rem;
+    border: 0.5rem dashed red;
+}
+
+.item {
+    margin: 0.2rem;
+    padding: 0.2rem;
+    border: 0.5rem solid blue;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    /* filter: drop-shadow(0.1rem 0.1rem 0.2rem green); */
+}

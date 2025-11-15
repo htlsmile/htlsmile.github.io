@@ -6217,4 +6217,233 @@ window.onload = function () {
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>CSS 弹性盒子布局</title>
+    <url>/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>Flex 布局，可谓是用了忘，忘了查，查了用，用了又忘。还是写一些示例以备速查。</p>
+<span id="more"></span>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Guides/Flexible_box_layout">CSS 弹性盒子布局</a> 是 CSS 的模块之一，定义了一种针对用户界面设计而优化的 CSS 盒子模型。在弹性布局模型中，弹性容器的子元素可以在任何方向上排布，也可以“弹性伸缩”其尺寸，既可以增加尺寸以填满未使用的空间，也可以收缩尺寸以避免父元素溢出。子元素的水平对齐和垂直对齐都能很方便的进行操控。通过嵌套这些框（水平框在垂直框内，或垂直框在水平框内）可以在两个维度上构建布局。</p>
+<hr>
+<h1>flexbox 的两根轴线</h1>
+<p>当使用 flex 布局时，首先想到的是两根轴线 — <code>主轴</code>和<code>交叉轴</code>。主轴由 flex-direction 定义，另一根轴垂直于它。</p>
+<h2 id="主轴行向延伸"><a class="header-anchor" href="#主轴行向延伸">¶</a>主轴行向延伸</h2>
+<a class="fancybox" href="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics1.svg" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default">
+  <img data-src="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics1.svg" height="170">
+</a>
+<a class="fancybox" href="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics3.svg" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default">
+  <img data-src="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics3.svg" height="150">
+</a>
+<h2 id="主轴块向延伸"><a class="header-anchor" href="#主轴块向延伸">¶</a>主轴块向延伸</h2>
+<a class="fancybox" href="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics2.svg" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default">
+  <img data-src="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics2.svg" height="150">
+</a>
+<a class="fancybox" href="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics4.svg" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default">
+  <img data-src="/2025/11/15/CSS-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80/basics4.svg" height="170">
+</a>
+<h1>flex 容器的属性</h1>
+<p>将 容器(<code>.container</code>) 定义为红色虚线，将 Flex容器内的项目(<code>.item</code>)定义为蓝色实线。</p>
+<p>以下内容建议使用浏览器的 <strong>检查元素（ Ctrl + Shift + C ）</strong> 功能，方便查看元素对齐的标线。</p>
+<link rel="stylesheet" href="base.css">
+<script src="./show-source.js"></script>
+<h2 id="flex-direction"><a class="header-anchor" href="#flex-direction">¶</a>flex-direction</h2>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="row-（默认）-主轴为水平方向，起点在左端"><a class="header-anchor" href="#row-（默认）-主轴为水平方向，起点在左端">¶</a>row （默认） 主轴为水平方向，起点在左端</h3>
+<div id="flex-1-1"></div>
+<script async>
+  showSource('flex-1-1','flex-1-1_template.html')
+</script>
+<h3 id="row-reverse-主轴为水平方向，起点在右端"><a class="header-anchor" href="#row-reverse-主轴为水平方向，起点在右端">¶</a>row-reverse 主轴为水平方向，起点在右端</h3>
+<div id="flex-1-2"></div>
+<script async>
+  showSource('flex-1-2','flex-1-2_template.html')
+</script>
+<h3 id="column-主轴为垂直方向，起点在上沿"><a class="header-anchor" href="#column-主轴为垂直方向，起点在上沿">¶</a>column 主轴为垂直方向，起点在上沿</h3>
+<div id="flex-1-3"></div>
+<script async>
+  showSource('flex-1-3','flex-1-3_template.html')
+</script>
+<h3 id="column-reverse-主轴为垂直方向，起点在下沿"><a class="header-anchor" href="#column-reverse-主轴为垂直方向，起点在下沿">¶</a>column-reverse 主轴为垂直方向，起点在下沿</h3>
+<div id="flex-1-4"></div>
+<script async>
+  showSource('flex-1-4','flex-1-4_template.html')
+</script>
+<h2 id="flex-wrap"><a class="header-anchor" href="#flex-wrap">¶</a>flex-wrap</h2>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="nowrap-（默认）-不换行"><a class="header-anchor" href="#nowrap-（默认）-不换行">¶</a>nowrap （默认） 不换行</h3>
+<div id="flex-2-1"></div>
+<script async>
+  showSource('flex-2-1','flex-2-1_template.html')
+</script>
+<h3 id="wrap-换行，第一行在上方"><a class="header-anchor" href="#wrap-换行，第一行在上方">¶</a>wrap 换行，第一行在上方</h3>
+<div id="flex-2-2"></div>
+<script async>
+  showSource('flex-2-2','flex-2-2_template.html')
+</script>
+<h3 id="wrap-reverse-换行，第一行在下方"><a class="header-anchor" href="#wrap-reverse-换行，第一行在下方">¶</a>wrap-reverse 换行，第一行在下方</h3>
+<div id="flex-2-3"></div>
+<script async>
+  showSource('flex-2-3','flex-2-3_template.html')
+</script>
+<h2 id="flex-flow"><a class="header-anchor" href="#flex-flow">¶</a>flex-flow</h2>
+<p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex</span> &#123;</span><br><span class="line">    <span class="attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="justify-content"><a class="header-anchor" href="#justify-content">¶</a>justify-content</h2>
+<p><code>justify-content</code>属性定义了项目在主轴上的对齐方式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex</span> &#123;</span><br><span class="line">    <span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around | space-evenly;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="flex-start-（默认）-左对齐"><a class="header-anchor" href="#flex-start-（默认）-左对齐">¶</a>flex-start （默认） 左对齐</h3>
+<div id="flex-3-1"></div>
+<script async>
+  showSource('flex-3-1','flex-3-1_template.html')
+</script>
+<h3 id="flex-end-右对齐"><a class="header-anchor" href="#flex-end-右对齐">¶</a>flex-end 右对齐</h3>
+<div id="flex-3-2"></div>
+<script async>
+  showSource('flex-3-2','flex-3-2_template.html')
+</script>
+<h3 id="center-居中"><a class="header-anchor" href="#center-居中">¶</a>center 居中</h3>
+<div id="flex-3-3"></div>
+<script async>
+  showSource('flex-3-3','flex-3-3_template.html')
+</script>
+<h3 id="space-between-两端对齐，项目之间的间隔都相等"><a class="header-anchor" href="#space-between-两端对齐，项目之间的间隔都相等">¶</a>space-between 两端对齐，项目之间的间隔都相等</h3>
+<div id="flex-3-4"></div>
+<script async>
+  showSource('flex-3-4','flex-3-4_template.html')
+</script>
+<h3 id="space-around-每个项目两侧的间隔相等"><a class="header-anchor" href="#space-around-每个项目两侧的间隔相等">¶</a>space-around 每个项目两侧的间隔相等</h3>
+<div id="flex-3-5"></div>
+<script async>
+  showSource('flex-3-5','flex-3-5_template.html')
+</script>
+<h3 id="space-evenly-每个项目都沿着主轴均匀分布在指定的对齐容器中"><a class="header-anchor" href="#space-evenly-每个项目都沿着主轴均匀分布在指定的对齐容器中">¶</a>space-evenly 每个项目都沿着主轴均匀分布在指定的对齐容器中</h3>
+<div id="flex-3-6"></div>
+<script async>
+  showSource('flex-3-6','flex-3-6_template.html')
+</script>
+<h2 id="align-items"><a class="header-anchor" href="#align-items">¶</a>align-items</h2>
+<p><code>align-items</code>属性定义项目在交叉轴上如何对齐。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex</span> &#123;</span><br><span class="line">    <span class="attribute">align-items</span>: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="flex-start-交叉轴的起点对齐"><a class="header-anchor" href="#flex-start-交叉轴的起点对齐">¶</a>flex-start 交叉轴的起点对齐</h3>
+<div id="flex-4-1"></div>
+<script async>
+  showSource('flex-4-1','flex-4-1_template.html')
+</script>
+<h3 id="flex-end-交叉轴的终点对齐"><a class="header-anchor" href="#flex-end-交叉轴的终点对齐">¶</a>flex-end 交叉轴的终点对齐</h3>
+<div id="flex-4-2"></div>
+<script async>
+  showSource('flex-4-2','flex-4-2_template.html')
+</script>
+<h3 id="center-交叉轴的中点对齐"><a class="header-anchor" href="#center-交叉轴的中点对齐">¶</a>center 交叉轴的中点对齐</h3>
+<div id="flex-4-3"></div>
+<script async>
+  showSource('flex-4-3','flex-4-3_template.html')
+</script>
+<h3 id="baseline-项目的第一行文字的基线对齐"><a class="header-anchor" href="#baseline-项目的第一行文字的基线对齐">¶</a>baseline 项目的第一行文字的基线对齐</h3>
+<div id="flex-4-4"></div>
+<script async>
+  showSource('flex-4-4','flex-4-4_template.html')
+</script>
+<h3 id="stretch-（默认）-如果项目未设置高度或设为auto，将占满整个容器的高度"><a class="header-anchor" href="#stretch-（默认）-如果项目未设置高度或设为auto，将占满整个容器的高度">¶</a>stretch （默认） 如果项目未设置高度或设为auto，将占满整个容器的高度</h3>
+<div id="flex-4-5"></div>
+<script async>
+  showSource('flex-4-5','flex-4-5_template.html')
+</script>
+<h2 id="align-content"><a class="header-anchor" href="#align-content">¶</a>align-content</h2>
+<p><code>align-content</code>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex</span> &#123;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    <span class="attribute">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="flex-start-与交叉轴的起点对齐"><a class="header-anchor" href="#flex-start-与交叉轴的起点对齐">¶</a>flex-start 与交叉轴的起点对齐</h3>
+<div id="flex-5-1"></div>
+<script async>
+  showSource('flex-5-1','flex-5-1_template.html')
+</script>
+<h3 id="flex-end-与交叉轴的终点对齐"><a class="header-anchor" href="#flex-end-与交叉轴的终点对齐">¶</a>flex-end 与交叉轴的终点对齐</h3>
+<div id="flex-5-2"></div>
+<script async>
+  showSource('flex-5-2','flex-5-2_template.html')
+</script>
+<h3 id="center-与交叉轴的中点对齐"><a class="header-anchor" href="#center-与交叉轴的中点对齐">¶</a>center 与交叉轴的中点对齐</h3>
+<div id="flex-5-3"></div>
+<script async>
+  showSource('flex-5-3','flex-5-3_template.html')
+</script>
+<h3 id="space-between-与交叉轴两端对齐，轴线之间的间隔平均分布"><a class="header-anchor" href="#space-between-与交叉轴两端对齐，轴线之间的间隔平均分布">¶</a>space-between 与交叉轴两端对齐，轴线之间的间隔平均分布</h3>
+<div id="flex-5-4"></div>
+<script async>
+  showSource('flex-5-4','flex-5-4_template.html')
+</script>
+<h3 id="space-around-每根轴线两侧的间隔都相等"><a class="header-anchor" href="#space-around-每根轴线两侧的间隔都相等">¶</a>space-around 每根轴线两侧的间隔都相等</h3>
+<div id="flex-5-5"></div>
+<script async>
+  showSource('flex-5-5','flex-5-5_template.html')
+</script>
+<h3 id="stretch-（默认）-轴线占满整个交叉轴"><a class="header-anchor" href="#stretch-（默认）-轴线占满整个交叉轴">¶</a>stretch （默认） 轴线占满整个交叉轴</h3>
+<div id="flex-5-6"></div>
+<script async>
+  showSource('flex-5-6','flex-5-6_template.html')
+</script>
+<h1>flex 项目的属性</h1>
+<h2 id="order"><a class="header-anchor" href="#order">¶</a>order</h2>
+<p><code>order</code>属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">order</span>: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="flex-6-1"></div>
+<script async>
+  showSource('flex-6-1','flex-6-1_template.html')
+</script>
+<h2 id="flex-grow"><a class="header-anchor" href="#flex-grow">¶</a>flex-grow</h2>
+<p><code>flex-grow</code>属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="flex-6-2"></div>
+<script async>
+  showSource('flex-6-2','flex-6-2_template.html')
+</script>
+<h2 id="flex-shrink"><a class="header-anchor" href="#flex-shrink">¶</a>flex-shrink</h2>
+<p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* default 1 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="flex-6-3"></div>
+<script async>
+  showSource('flex-6-3','flex-6-3_template.html')
+</script>
+<h2 id="flex-basis"><a class="header-anchor" href="#flex-basis">¶</a>flex-basis</h2>
+<p><code>flex-basis</code>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="flex-6-4"></div>
+<script async>
+  showSource('flex-6-4','flex-6-4_template.html')
+</script>
+<h2 id="flex"><a class="header-anchor" href="#flex">¶</a>flex</h2>
+<p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: none | [ &lt;<span class="string">&#x27;flex-grow&#x27;</span>&gt; &lt;<span class="string">&#x27;flex-shrink&#x27;</span>&gt;? || &lt;<span class="string">&#x27;flex-basis&#x27;</span>&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="align-self"><a class="header-anchor" href="#align-self">¶</a>align-self</h2>
+<p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同 <a href="#align-items"><code>align-items</code></a></p>
+<h1>常见布局</h1>
+<h2 id="九宫格"><a class="header-anchor" href="#九宫格">¶</a>九宫格</h2>
+<div id="flex-sample-1"></div>
+<script async>
+  showSource('flex-sample-1','flex-sample-1_template.html')
+</script>
+<h2 id="首个项目占满"><a class="header-anchor" href="#首个项目占满">¶</a>首个项目占满</h2>
+<div id="flex-sample-2"></div>
+<script async>
+  showSource('flex-sample-2','flex-sample-2_template.html')
+</script>
+<h2 id="页面布局"><a class="header-anchor" href="#页面布局">¶</a>页面布局</h2>
+<div id="flex-sample-3"></div>
+<script async>
+  showSource('flex-sample-3','flex-sample-3_template.html')
+</script>
+<hr>
+<h1>后记</h1>
+<p>感谢阮一峰老师</p>
+<p><a href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程：语法篇</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
 </search>

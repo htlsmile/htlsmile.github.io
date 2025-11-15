@@ -1,0 +1,43 @@
+<template>
+    <style>
+        .flex-6-2 {
+            display: flex;
+        }
+
+        .item-6-2-1 {
+            flex-grow: 1;
+        }
+
+        .item-6-2-2 {
+            flex-grow: 2;
+        }
+
+        .item-6-2-3 {
+            flex-grow: 0;
+        }
+
+        .item-6-2-4 {
+            flex-grow: 1;
+        }
+
+        .item-6-2-5 {
+            flex-grow: 3;
+        }
+    </style>
+
+    <div class="container flex-6-2">
+        <div class="item w-3 h-3">1</div>
+        <div class="item w-1 h-5">2</div>
+        <div class="item w-2 h-2">3</div>
+        <div class="item w-5 h-4">4</div>
+        <div class="item w-4 h-1">5</div>
+    </div>
+
+    <div class="container flex-6-2">
+        <div class="item item-6-2-1 w-3 h-3">1 (g:1)</div>
+        <div class="item item-6-2-2 w-1 h-5">2 (g:2)</div>
+        <div class="item item-6-2-3 w-2 h-2">3 (g:0)</div>
+        <div class="item item-6-2-4 w-5 h-4">4 (g:1)</div>
+        <div class="item item-6-2-5 w-4 h-1">5 (g:3)</div>
+    </div>
+</template>

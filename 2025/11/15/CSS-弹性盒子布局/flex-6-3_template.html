@@ -1,0 +1,53 @@
+<template>
+    <style>
+        .flex-6-3 {
+            display: flex;
+        }
+
+        .item-6-3-1 {
+            flex-shrink: 1;
+        }
+
+        .item-6-3-2 {
+            flex-shrink: 2;
+        }
+
+        .item-6-3-3 {
+            flex-shrink: 0;
+        }
+
+        .item-6-3-4 {
+            flex-shrink: 1;
+        }
+
+        .item-6-3-5 {
+            flex-shrink: 3;
+        }
+    </style>
+
+    <div class="container flex-6-3">
+        <div class="item w-6 h-6">1</div>
+        <div class="item w-2 h-10">2</div>
+        <div class="item w-4 h-4">3</div>
+        <div class="item w-10 h-8">4</div>
+        <div class="item w-8 h-2">5</div>
+        <div class="item w-6 h-6">6</div>
+        <div class="item w-2 h-10">7</div>
+        <div class="item w-4 h-4">8</div>
+        <div class="item w-10 h-8">9</div>
+        <div class="item w-8 h-2">10</div>
+    </div>
+
+    <div class="container flex-6-3">
+        <div class="item item-6-3-1 w-6 h-6">1 (s:1)</div>
+        <div class="item item-6-3-2 w-2 h-10">2 (s:2)</div>
+        <div class="item item-6-3-3 w-4 h-4">3 (s:0)</div>
+        <div class="item item-6-3-4 w-10 h-8">4 (s:1)</div>
+        <div class="item item-6-3-5 w-8 h-2">5 (s:3)</div>
+        <div class="item item-6-3-1 w-6 h-6">6 (s:1)</div>
+        <div class="item item-6-3-2 w-2 h-10">7 (s:2)</div>
+        <div class="item item-6-3-3 w-4 h-4">8 (s:0)</div>
+        <div class="item item-6-3-4 w-10 h-8">9 (s:1)</div>
+        <div class="item item-6-3-5 w-8 h-2">10 (s:3)</div>
+    </div>
+</template>

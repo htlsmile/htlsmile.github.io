@@ -1,0 +1,43 @@
+<template>
+    <style>
+        .flex-6-4 {
+            display: flex;
+        }
+
+        .item-6-4-1 {
+           flex-basis: auto;
+        }
+
+        .item-6-4-2 {
+            flex-basis: 20%;
+        }
+
+        .item-6-4-3 {
+            flex-basis: 20px;
+        }
+
+        .item-6-4-4 {
+            flex-basis: 25%;
+        }
+
+        .item-6-4-5 {
+            flex-basis: 5rem;
+        }
+    </style>
+
+    <div class="container flex-6-4">
+        <div class="item h-3">1</div>
+        <div class="item h-5">2</div>
+        <div class="item h-2">3</div>
+        <div class="item h-4">4</div>
+        <div class="item h-1">5</div>
+    </div>
+
+    <div class="container flex-6-4">
+        <div class="item item-6-4-1 h-3">1 (b:auto)</div>
+        <div class="item item-6-4-2 h-5">2 (b:20%)</div>
+        <div class="item item-6-4-3 h-2">3 (b:20px)</div>
+        <div class="item item-6-4-4 h-4">4 (b:25%)</div>
+        <div class="item item-6-4-5 h-1">5 (b:5rem)</div>
+    </div>
+</template>

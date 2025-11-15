@@ -1,0 +1,55 @@
+<template>
+    <style>
+        .flex-sample-3 {
+            height: 20rem;
+        }
+
+        .flex-sample-3-row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 90%;
+        }
+
+        .flex-sample-3-col {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+        }
+
+        .item-sample-3-header {
+            width: 100%;
+            height: 10%;
+        }
+
+        .item-sample-3-aside {
+            width: 20%;
+        }
+
+        .item-sample-3-main {
+            width: 100%;
+            height: 90%;
+        }
+
+        .item-sample-3-footer {
+            width: 100%;
+            height: 10%;
+        }
+    </style>
+
+    <div class="container flex-sample-3 flex-sample-3-col">
+        <div class="item item-sample-3-header">Header</div>
+        <div class="container flex-sample-3-row">
+            <div class="item item-sample-3-aside">Aside</div>
+            <div class="container flex-sample-3-col">
+                <div class="item item-sample-3-main">Main</div>
+                <div class="item item-sample-3-footer">Footer</div>
+            </div>
+        </div>
+    </div>
+</template>
